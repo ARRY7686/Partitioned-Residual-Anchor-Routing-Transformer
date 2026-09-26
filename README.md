@@ -635,44 +635,6 @@ Further direct comparisons with related anchor-based architectures are required 
 
 ---
 
-# Repository Structure
-
-A suggested repository structure:
-
-```text
-.
-├── notebooks/
-│   ├── anchor-bottleneck-experiment.ipynb
-│   └── high-resolution-scaling.ipynb
-│
-├── src/
-│   ├── models/
-│   │   ├── vit.py
-│   │   ├── rart.py
-│   │   └── partition_rart.py
-│   │
-│   ├── attention/
-│   │   ├── local_attention.py
-│   │   ├── anchor_attention.py
-│   │   └── routing.py
-│   │
-│   └── utils/
-│       ├── partition.py
-│       └── benchmark.py
-│
-├── checkpoints/
-│
-├── results/
-│   ├── accuracy/
-│   ├── scaling/
-│   └── visualizations/
-│
-├── README.md
-└── requirements.txt
-```
-
----
-
 # Reproducing the Experiments
 
 The experiments were developed in a Kaggle GPU environment.
