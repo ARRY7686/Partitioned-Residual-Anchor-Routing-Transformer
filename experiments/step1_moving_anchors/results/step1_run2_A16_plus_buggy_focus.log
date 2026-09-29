@@ -1,0 +1,92 @@
+PyTorch: 2.11.0+cu128 | device: cuda NVIDIA GeForce RTX 5060 Laptop GPU
+Models: ['free', 'fixed', 'moving', 'focus'] | anchors: [4, 16] | epochs: 10 | dataset: cifar10 | seed: 42 
+Results file: working/step1_cifar10_seed42.json
+Canvas batch: (128, 3, 256, 256) | object patches per image: 16.0 of 256
+free    A=  4   11,259,786 parameters
+free    A= 16   11,261,322 parameters
+fixed   A=  4   11,361,162 parameters
+fixed   A= 16   11,362,698 parameters
+moving  A=  4   11,363,472 parameters
+moving  A= 16   11,365,008 parameters
+focus   A=  4   11,363,472 parameters
+focus   A= 16   11,365,008 parameters
+Loaded finished runs: ['fixed_A4', 'free_A4', 'moving_A4']
+Skipping free_A4: already in working/step1_cifar10_seed42.json
+Skipping fixed_A4: already in working/step1_cifar10_seed42.json
+Skipping moving_A4: already in working/step1_cifar10_seed42.json
+
+=== focus A=4 | 11,363,472 parameters ===
+focus A=4 epoch 01 | train acc 17.33% | test acc 21.09% | 2.64 min
+focus A=4 epoch 02 | train acc 23.91% | test acc 25.74% | 1.60 min
+focus A=4 epoch 03 | train acc 29.48% | test acc 30.60% | 1.56 min
+focus A=4 epoch 04 | train acc 32.82% | test acc 33.81% | 1.54 min
+focus A=4 epoch 05 | train acc 36.79% | test acc 36.34% | 1.52 min
+focus A=4 epoch 06 | train acc 39.35% | test acc 41.38% | 1.51 min
+focus A=4 epoch 07 | train acc 41.58% | test acc 41.31% | 1.52 min
+focus A=4 epoch 08 | train acc 36.62% | test acc 20.85% | 1.50 min
+focus A=4 epoch 09 | train acc 20.46% | test acc 21.93% | 1.72 min
+focus A=4 epoch 10 | train acc 22.42% | test acc 24.42% | 1.56 min
+Saved: working/step1_cifar10_seed42.json
+
+=== free A=16 | 11,261,322 parameters ===
+free A=16 epoch 01 | train acc 16.29% | test acc 19.65% | 1.44 min
+free A=16 epoch 02 | train acc 22.91% | test acc 27.44% | 1.92 min
+free A=16 epoch 03 | train acc 28.97% | test acc 30.62% | 1.44 min
+free A=16 epoch 04 | train acc 32.19% | test acc 34.70% | 1.44 min
+free A=16 epoch 05 | train acc 36.16% | test acc 36.56% | 1.41 min
+free A=16 epoch 06 | train acc 39.32% | test acc 40.21% | 1.43 min
+free A=16 epoch 07 | train acc 42.41% | test acc 43.82% | 1.46 min
+free A=16 epoch 08 | train acc 45.07% | test acc 45.57% | 1.40 min
+free A=16 epoch 09 | train acc 47.19% | test acc 46.87% | 1.43 min
+free A=16 epoch 10 | train acc 48.03% | test acc 47.82% | 1.45 min
+Saved: working/step1_cifar10_seed42.json
+
+=== fixed A=16 | 11,362,698 parameters ===
+fixed A=16 epoch 01 | train acc 17.20% | test acc 20.06% | 1.49 min
+fixed A=16 epoch 02 | train acc 23.36% | test acc 26.29% | 1.48 min
+fixed A=16 epoch 03 | train acc 28.48% | test acc 29.18% | 1.47 min
+fixed A=16 epoch 04 | train acc 31.94% | test acc 34.58% | 1.48 min
+fixed A=16 epoch 05 | train acc 35.54% | test acc 36.46% | 1.47 min
+fixed A=16 epoch 06 | train acc 38.81% | test acc 39.84% | 1.48 min
+fixed A=16 epoch 07 | train acc 42.14% | test acc 43.08% | 1.48 min
+fixed A=16 epoch 08 | train acc 45.27% | test acc 44.61% | 1.49 min
+fixed A=16 epoch 09 | train acc 46.92% | test acc 46.87% | 1.49 min
+fixed A=16 epoch 10 | train acc 48.37% | test acc 48.10% | 1.49 min
+Saved: working/step1_cifar10_seed42.json
+
+=== moving A=16 | 11,365,008 parameters ===
+moving A=16 epoch 01 | train acc 15.88% | test acc 19.44% | 1.57 min
+moving A=16 epoch 02 | train acc 23.37% | test acc 26.08% | 1.56 min
+moving A=16 epoch 03 | train acc 28.69% | test acc 31.37% | 1.57 min
+moving A=16 epoch 04 | train acc 32.41% | test acc 35.06% | 1.56 min
+moving A=16 epoch 05 | train acc 36.13% | test acc 37.42% | 1.57 min
+moving A=16 epoch 06 | train acc 39.80% | test acc 41.61% | 1.56 min
+moving A=16 epoch 07 | train acc 43.46% | test acc 44.96% | 1.56 min
+moving A=16 epoch 08 | train acc 45.89% | test acc 45.68% | 1.57 min
+moving A=16 epoch 09 | train acc 47.42% | test acc 48.07% | 1.57 min
+moving A=16 epoch 10 | train acc 49.00% | test acc 48.64% | 1.58 min
+Saved: working/step1_cifar10_seed42.json
+
+=== focus A=16 | 11,365,008 parameters ===
+focus A=16 epoch 01 | train acc 11.56% | test acc 11.04% | 1.69 min
+focus A=16 epoch 02 | train acc 12.19% | test acc 11.75% | 1.65 min
+focus A=16 epoch 03 | train acc 12.75% | test acc 14.02% | 1.68 min
+focus A=16 epoch 04 | train acc 13.21% | test acc 13.34% | 1.67 min
+focus A=16 epoch 05 | train acc 13.98% | test acc 15.43% | 1.67 min
+focus A=16 epoch 06 | train acc 13.02% | test acc 11.76% | 1.67 min
+focus A=16 epoch 07 | train acc 12.26% | test acc 12.00% | 1.67 min
+focus A=16 epoch 08 | train acc 12.86% | test acc 12.90% | 1.70 min
+focus A=16 epoch 09 | train acc 12.82% | test acc 13.11% | 1.66 min
+focus A=16 epoch 10 | train acc 13.12% | test acc 13.35% | 1.66 min
+Saved: working/step1_cifar10_seed42.json
+| Model | Anchors | Params | Final test acc | Best test acc | Map sim | Anchor spread | Object mass (last block) | Anchors touching object (last block) |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| free | 4 | 11.26M | 47.00% | 47.00% | 0.998 | 0.004 | 1.296 |  |
+| fixed | 4 | 11.36M | 47.08% | 47.08% | 0.000 | 0.530 | 0.800 | 0.39 |
+| moving | 4 | 11.36M | 47.61% | 47.61% | 0.000 | 0.549 | 0.681 | 0.33 |
+| focus | 4 | 11.36M | 24.42% | 41.38% | 0.000 | 0.080 | 0.434 | 0.46 |
+| free | 16 | 11.26M | 47.82% | 47.82% | 0.997 | 0.009 | 8.526 |  |
+| fixed | 16 | 11.36M | 48.10% | 48.10% | 0.000 | 0.507 | 1.897 | 0.19 |
+| moving | 16 | 11.37M | 48.64% | 48.64% | 0.000 | 0.533 | 1.731 | 0.20 |
+| focus | 16 | 11.37M | 13.35% | 15.43% | 0.000 | 0.614 | 1.302 | 0.21 |
+  positions = anchor_trajectories(model, images).cpu()

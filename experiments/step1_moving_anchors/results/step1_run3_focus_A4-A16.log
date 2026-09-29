@@ -1,0 +1,55 @@
+PyTorch: 2.11.0+cu128 | device: cuda NVIDIA GeForce RTX 5060 Laptop GPU
+Models: ['free', 'fixed', 'moving', 'focus'] | anchors: [4, 16] | epochs: 10 | dataset: cifar10 | grad clip: 0.0 | seed: 42 
+Results file: working/step1_cifar10_seed42.json
+Canvas batch: (128, 3, 256, 256) | object patches per image: 16.0 of 256
+free    A=  4   11,259,786 parameters
+free    A= 16   11,261,322 parameters
+fixed   A=  4   11,361,162 parameters
+fixed   A= 16   11,362,698 parameters
+moving  A=  4   11,363,472 parameters
+moving  A= 16   11,365,008 parameters
+focus   A=  4   11,363,472 parameters
+focus   A= 16   11,365,008 parameters
+Loaded finished runs: ['fixed_A16', 'fixed_A4', 'free_A16', 'free_A4', 'moving_A16', 'moving_A4']
+Skipping free_A4: already in working/step1_cifar10_seed42.json
+Skipping fixed_A4: already in working/step1_cifar10_seed42.json
+Skipping moving_A4: already in working/step1_cifar10_seed42.json
+
+=== focus A=4 | 11,363,472 parameters ===
+focus A=4 epoch 01 | train acc 17.47% | test acc 20.75% | grad norm median 2.14 max 9.96 | 1.54 min
+focus A=4 epoch 02 | train acc 24.20% | test acc 27.14% | grad norm median 2.17 max 4.42 | 1.54 min
+focus A=4 epoch 03 | train acc 29.98% | test acc 30.95% | grad norm median 2.18 max 3.91 | 1.54 min
+focus A=4 epoch 04 | train acc 33.10% | test acc 36.67% | grad norm median 2.16 max 3.63 | 1.54 min
+focus A=4 epoch 05 | train acc 37.12% | test acc 38.42% | grad norm median 2.15 max 3.39 | 1.54 min
+focus A=4 epoch 06 | train acc 40.63% | test acc 42.42% | grad norm median 2.17 max 4.04 | 1.53 min
+focus A=4 epoch 07 | train acc 43.49% | test acc 44.52% | grad norm median 2.18 max 3.46 | 1.54 min
+focus A=4 epoch 08 | train acc 46.42% | test acc 45.47% | grad norm median 2.25 max 3.75 | 1.54 min
+focus A=4 epoch 09 | train acc 48.36% | test acc 48.01% | grad norm median 2.28 max 3.34 | 1.54 min
+focus A=4 epoch 10 | train acc 49.17% | test acc 48.79% | grad norm median 2.26 max 3.11 | 1.54 min
+Saved: working/step1_cifar10_seed42.json
+Skipping free_A16: already in working/step1_cifar10_seed42.json
+Skipping fixed_A16: already in working/step1_cifar10_seed42.json
+Skipping moving_A16: already in working/step1_cifar10_seed42.json
+
+=== focus A=16 | 11,365,008 parameters ===
+focus A=16 epoch 01 | train acc 16.11% | test acc 20.08% | grad norm median 2.13 max 17.71 | 1.69 min
+focus A=16 epoch 02 | train acc 22.68% | test acc 26.15% | grad norm median 2.15 max 4.87 | 1.68 min
+focus A=16 epoch 03 | train acc 28.84% | test acc 30.16% | grad norm median 2.22 max 3.63 | 1.69 min
+focus A=16 epoch 04 | train acc 32.60% | test acc 36.01% | grad norm median 2.18 max 3.86 | 1.69 min
+focus A=16 epoch 05 | train acc 37.03% | test acc 38.42% | grad norm median 2.13 max 4.36 | 1.69 min
+focus A=16 epoch 06 | train acc 41.27% | test acc 42.44% | grad norm median 2.21 max 3.48 | 1.67 min
+focus A=16 epoch 07 | train acc 44.31% | test acc 45.82% | grad norm median 2.24 max 3.20 | 1.68 min
+focus A=16 epoch 08 | train acc 46.94% | test acc 47.20% | grad norm median 2.27 max 3.50 | 1.69 min
+focus A=16 epoch 09 | train acc 49.37% | test acc 48.62% | grad norm median 2.29 max 3.45 | 1.69 min
+focus A=16 epoch 10 | train acc 50.43% | test acc 49.63% | grad norm median 2.33 max 3.37 | 1.67 min
+Saved: working/step1_cifar10_seed42.json
+| Model | Anchors | Params | Final test acc | Best test acc | Map sim | Anchor spread | Object mass (last block) | Anchors touching object (last block) |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| free | 4 | 11.26M | 47.00% | 47.00% | 0.998 | 0.004 | 1.296 |  |
+| fixed | 4 | 11.36M | 47.08% | 47.08% | 0.000 | 0.530 | 0.800 | 0.39 |
+| moving | 4 | 11.36M | 47.61% | 47.61% | 0.000 | 0.549 | 0.681 | 0.33 |
+| free | 16 | 11.26M | 47.82% | 47.82% | 0.997 | 0.009 | 8.526 |  |
+| fixed | 16 | 11.36M | 48.10% | 48.10% | 0.000 | 0.507 | 1.897 | 0.19 |
+| moving | 16 | 11.37M | 48.64% | 48.64% | 0.000 | 0.533 | 1.731 | 0.20 |
+| focus | 4 | 11.36M | 48.79% | 48.79% | 0.000 | 0.485 | 1.569 | 0.57 |
+| focus | 16 | 11.37M | 49.63% | 49.63% | 0.000 | 0.443 | 2.141 | 0.24 |

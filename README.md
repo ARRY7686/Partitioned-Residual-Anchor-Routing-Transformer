@@ -648,7 +648,7 @@ Further direct comparisons with related anchor-based architectures are required 
 The [`experiments/`](experiments/) folder contains self-contained notebooks for the next stage:
 
 * **Step 0 — anchor collapse across designs.** RART-style, AnchorFormer-style and PaCa-style anchors, a competitive (slot-style) variant and the fixed partition, trained on one shared backbone. Anchors that are the same for every image collapse completely (map similarity ≈ 0.99), image-derived anchors are only partly diverse, and the fixed partition does not collapse and reached the best accuracy in both seeds (45.68% / 46.48%).
-* **Step 1–2 — moving anchors.** Positional anchors with an exclusive Voronoi partition on Cluttered CIFAR-10 (a small object on a large canvas with distractors). In progress.
+* **Step 1–2 — moving anchors.** Positional anchors with an exclusive Voronoi partition on Cluttered CIFAR-10 (a small object on a large canvas with distractors). A *focus* design — a quarter of the anchors on a coarse fixed grid for coverage, the rest placed at the peaks of a learned importance map — was the best model with 4 and 16 anchors (48.79% / 49.63%, against 47.08% / 48.10% for the fixed partition) without collapsing. This is one seed; more are needed before the gap can be claimed.
 
 See [`experiments/README.md`](experiments/README.md) for setup, full tables and how to run them.
 
@@ -682,7 +682,7 @@ If you use the implementation or experimental findings, please cite the reposito
 ```bibtex
 @misc{partitioned_rart,
   title  = {Partitioned Local-Global-Local Vision Transformer},
-  author = {Aadi Gupta},
+  author = {Aadi Gupta, Priyansh Saxena},
   year   = {2026},
   note   = {Ongoing research project}
 }
@@ -706,7 +706,8 @@ Current focus:
 * [x] 2048×2048 experiment
 * [x] Efficient transformer baseline comparison
 * [x] Anchor-collapse comparison across anchor designs (AnchorFormer-style, PaCa-style, competitive)
-* [ ] Moving anchors on a small-object task, with anchor-trajectory visualization (in progress)
+* [x] Moving anchors on a small-object task, with anchor-trajectory visualization (1 seed)
+* [ ] Multi-seed confirmation of the moving-anchor results
 * [ ] Direct comparison with the published AnchorFormer
 * [ ] High-resolution detection benchmark
 * [ ] Tiny-object evaluation
