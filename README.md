@@ -621,17 +621,36 @@ Related approaches include:
 * Anchor-based efficient transformers
 * Hierarchical vision transformers
 
-The project therefore does **not** claim that using anchors or reducing quadratic attention is novel by itself.
+Closest prior work for specific components:
+
+* **Fixed regional tokens:** [RegionViT](https://arxiv.org/abs/2106.02689) already associates each regional token with a fixed spatial group of local tokens and lets the regional tokens attend globally, which is close to the fixed partition used here.
+* **Anchor bottlenecks:** [AnchorFormer](https://arxiv.org/abs/2505.16463), [LeMeViT](https://arxiv.org/abs/2405.09789), [PaCa-ViT](https://arxiv.org/abs/2203.11987) and [Representative Attention](https://arxiv.org/abs/2605.14913) (gather–interact–distribute).
+* **Content-driven regions:** [SViT super tokens](https://arxiv.org/abs/2211.11167), [SALG](https://arxiv.org/abs/2211.14705), [TCFormer / FTCFormer](https://arxiv.org/abs/2507.10283).
+* **Learned movement toward important regions:** [DAT](https://arxiv.org/abs/2201.00520), [PS-ViT](https://arxiv.org/abs/2108.01684).
+* **High-resolution recognition under a memory budget:** [Differentiable Patch Selection](https://arxiv.org/abs/2104.03059), [Iterative Patch Selection](https://arxiv.org/abs/2210.13007).
+
+The project therefore does **not** claim that using anchors, reducing quadratic attention, or a fixed spatial partition is novel by itself.
 
 The current research direction focuses on the combination of:
 
-1. Explicit spatial partitioning
-2. Regional anchor specialization
+1. Explicit, exclusive spatial partitioning
+2. Anchors that move to important regions while keeping that partition
 3. Local → Global → Local information flow
-4. Analysis of anchor collapse
+4. Analysis of anchor collapse across anchor designs
 5. High-resolution scaling behavior
 
 Further direct comparisons with related anchor-based architectures are required before making a formal novelty claim.
+
+---
+
+# Follow-up Experiments
+
+The [`experiments/`](experiments/) folder contains self-contained notebooks for the next stage:
+
+* **Step 0 — anchor collapse across designs.** RART-style, AnchorFormer-style and PaCa-style anchors, a competitive (slot-style) variant and the fixed partition, trained on one shared backbone. Anchors that are the same for every image collapse completely (map similarity ≈ 0.99), image-derived anchors are only partly diverse, and the fixed partition does not collapse and reached the best accuracy in both seeds (45.68% / 46.48%).
+* **Step 1–2 — moving anchors.** Positional anchors with an exclusive Voronoi partition on Cluttered CIFAR-10 (a small object on a large canvas with distractors). In progress.
+
+See [`experiments/README.md`](experiments/README.md) for setup, full tables and how to run them.
 
 ---
 
@@ -686,10 +705,11 @@ Current focus:
 * [x] High-resolution scaling experiments
 * [x] 2048×2048 experiment
 * [x] Efficient transformer baseline comparison
-* [ ] Direct AnchorFormer comparison
+* [x] Anchor-collapse comparison across anchor designs (AnchorFormer-style, PaCa-style, competitive)
+* [ ] Moving anchors on a small-object task, with anchor-trajectory visualization (in progress)
+* [ ] Direct comparison with the published AnchorFormer
 * [ ] High-resolution detection benchmark
 * [ ] Tiny-object evaluation
-* [ ] Anchor visualization
 * [ ] Training scalability experiments
 * [ ] Formal ablation study
 * [ ] Paper / technical report

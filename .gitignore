@@ -1,0 +1,11 @@
+# Datasets and run outputs written by the notebooks
+working/
+data/
+
+# Per-run model checkpoints from the experiments (45 MB each; regenerate by running the notebooks)
+experiments/**/*.pth
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
