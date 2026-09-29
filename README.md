@@ -645,20 +645,40 @@ Further direct comparisons with related anchor-based architectures are required 
 
 # Follow-up Experiments
 
-The [`experiments/`](experiments/) folder contains self-contained notebooks for the next stage:
+Every experiment lives in its own numbered folder under [`experiments/`](experiments/), with a
+README, its notebook and its results. Experiments 01 and 02 are the work described above; 03–05
+follow on from it:
 
-* **Step 0 — anchor collapse across designs.** RART-style, AnchorFormer-style and PaCa-style anchors, a competitive (slot-style) variant and the fixed partition, trained on one shared backbone. Anchors that are the same for every image collapse completely (map similarity ≈ 0.99), image-derived anchors are only partly diverse, and the fixed partition does not collapse and reached the best accuracy in both seeds (45.68% / 46.48%).
-* **Step 1–2 — moving anchors.** Positional anchors with an exclusive Voronoi partition on Cluttered CIFAR-10 (a small object on a large canvas with distractors). A *focus* design — a quarter of the anchors on a coarse fixed grid for coverage, the rest placed at the peaks of a learned importance map — was the best model with 4 and 16 anchors (48.79% / 49.63%, against 47.08% / 48.10% for the fixed partition) without collapsing. This is one seed; more are needed before the gap can be claimed.
+* **[03 — Anchor collapse across designs](experiments/03_anchor_collapse/).** RART-style, AnchorFormer-style and PaCa-style anchors, a competitive (slot-style) variant and the fixed partition, trained on one shared backbone. Anchors that are the same for every image collapse completely (map similarity ≈ 0.99), image-derived anchors are only partly diverse, and the fixed partition does not collapse and reached the best accuracy in both seeds (45.68% / 46.48%).
+* **[04 — Moving anchors](experiments/04_moving_anchors/).** Positional anchors with an exclusive Voronoi partition on Cluttered CIFAR-10 (a small object on a large canvas with distractors). A *focus* design — a quarter of the anchors on a coarse fixed grid for coverage, the rest placed at the peaks of a learned importance map — beat the fixed partition in all 6 paired runs (3 seeds × 4 and 16 anchors): 47.52% vs 46.04% with 4 anchors and 49.84% vs 46.71% with 16 anchors (means), without collapse.
+* **[05 — Compute skipping](experiments/05_compute_skipping/) (in progress).** Using the learned importance map to let 75% of patches skip the feed-forward layers in blocks 3–6 cut compute by 25% (5.31 → 3.96 GFLOPs per image) for a 0.4-point accuracy drop in a first single-seed run; random and token-norm baselines are running.
 
-See [`experiments/README.md`](experiments/README.md) for setup, full tables and how to run them.
+See [`experiments/README.md`](experiments/README.md) for an index of all experiments and how to run them.
+
+---
+
+# Repository Layout
+
+```text
+README.md                        this overview
+docs/research_summary.md         detailed research log for experiments 01–02
+experiments/
+  README.md                      index of all experiments and how to run them
+  01_partition_rart/             ViT, RART, Local-Global-Local and Partition RART on CIFAR-100
+  02_resolution_scaling/         latency and memory from 224² to 2048², efficient baselines
+  03_anchor_collapse/            anchor collapse across five anchor designs
+  04_moving_anchors/             fixed, moving and focus anchors on Cluttered CIFAR-10
+  05_compute_skipping/           FFN skipping guided by the learned importance map
+```
+
+Each experiment folder contains a `README.md`, its notebook, and `results/` split into
+`tables/`, `figures/`, `logs/` and (not committed) `checkpoints/`.
 
 ---
 
 # Reproducing the Experiments
 
-The experiments were developed in a Kaggle GPU environment.
-
-The main environment used during development included:
+Experiments 01 and 02 were developed in a Kaggle GPU environment:
 
 ```text
 Python 3.12
@@ -667,9 +687,10 @@ CUDA 12.8
 Tesla T4
 ```
 
-The notebooks contain the model definitions, experiments, benchmarks, and analysis.
-
-For the CIFAR-100 experiments, the dataset should be available locally in the Kaggle input environment because the notebook is designed to work without relying on network downloads.
+Experiments 03–05 were run locally (PyTorch 2.11, CUDA 12.8, RTX 5060 Laptop GPU) and also run on
+Kaggle. Each notebook contains its own model definitions, experiments and analysis. The notebooks
+for 03–05 download CIFAR if it is not found under `/kaggle/input`; see
+[`experiments/README.md`](experiments/README.md) for their settings.
 
 ---
 
@@ -707,7 +728,8 @@ Current focus:
 * [x] Efficient transformer baseline comparison
 * [x] Anchor-collapse comparison across anchor designs (AnchorFormer-style, PaCa-style, competitive)
 * [x] Moving anchors on a small-object task, with anchor-trajectory visualization (1 seed)
-* [ ] Multi-seed confirmation of the moving-anchor results
+* [x] Multi-seed confirmation of the moving-anchor results (3 seeds)
+* [ ] Compute skipping with learned importance, against random and token-norm baselines (in progress)
 * [ ] Direct comparison with the published AnchorFormer
 * [ ] High-resolution detection benchmark
 * [ ] Tiny-object evaluation

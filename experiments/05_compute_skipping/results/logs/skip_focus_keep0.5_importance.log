@@ -1,0 +1,21 @@
+PyTorch: 2.11.0+cu128 | device: cuda NVIDIA GeForce RTX 5060 Laptop GPU
+Models: ['focus'] | anchors: [16] | epochs: 10 | dataset: cifar10 | grad clip: 0.0 | seed: 42 
+Results file: working/step1_cifar10_seed42_keep0.5-importance-from2.json
+Canvas batch: (128, 3, 256, 256) | object patches per image: 16.0 of 256
+focus   A= 16   11,365,008 parameters
+
+=== focus A=16 | 11,365,008 parameters ===
+focus A=16 epoch 01 | train acc 16.33% | test acc 19.36% | grad norm median 2.11 max 16.69 | 1.59 min
+focus A=16 epoch 02 | train acc 22.96% | test acc 25.96% | grad norm median 2.16 max 4.44 | 1.58 min
+focus A=16 epoch 03 | train acc 26.76% | test acc 25.36% | grad norm median 2.27 max 17.66 | 1.56 min
+focus A=16 epoch 04 | train acc 26.54% | test acc 26.54% | grad norm median 2.33 max 17.14 | 1.56 min
+focus A=16 epoch 05 | train acc 29.83% | test acc 30.76% | grad norm median 2.09 max 5.06 | 1.57 min
+focus A=16 epoch 06 | train acc 32.71% | test acc 34.57% | grad norm median 2.18 max 3.87 | 1.59 min
+focus A=16 epoch 07 | train acc 34.56% | test acc 34.25% | grad norm median 2.14 max 5.19 | 1.60 min
+focus A=16 epoch 08 | train acc 35.92% | test acc 36.35% | grad norm median 2.21 max 6.60 | 1.64 min
+focus A=16 epoch 09 | train acc 37.50% | test acc 37.46% | grad norm median 2.20 max 3.86 | 1.60 min
+focus A=16 epoch 10 | train acc 38.11% | test acc 38.25% | grad norm median 2.17 max 3.16 | 1.57 min
+Saved: working/step1_cifar10_seed42_keep0.5-importance-from2.json
+| Model | Anchors | Params | Final test acc | Best test acc | Map sim | Anchor spread | Object mass (last block) | Anchors touching object (last block) |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| focus | 16 | 11.37M | 38.25% | 38.25% | 0.000 | 0.536 | 2.423 | 0.25 |

@@ -1,0 +1,67 @@
+PyTorch: 2.11.0+cu128 | device: cuda NVIDIA GeForce RTX 5060 Laptop GPU
+Models: ['fixed', 'focus'] | anchors: [4, 16] | epochs: 10 | dataset: cifar10 | grad clip: 0.0 | seed: 43 
+Results file: working/step1_cifar10_seed43.json
+Canvas batch: (128, 3, 256, 256) | object patches per image: 16.0 of 256
+fixed   A=  4   11,361,162 parameters
+fixed   A= 16   11,362,698 parameters
+focus   A=  4   11,363,472 parameters
+focus   A= 16   11,365,008 parameters
+
+=== fixed A=4 | 11,361,162 parameters ===
+fixed A=4 epoch 01 | train acc 15.92% | test acc 20.62% | grad norm median 2.00 max 8.70 | 1.49 min
+fixed A=4 epoch 02 | train acc 22.78% | test acc 25.44% | grad norm median 1.97 max 3.82 | 2.34 min
+fixed A=4 epoch 03 | train acc 27.35% | test acc 27.00% | grad norm median 2.06 max 4.94 | 1.46 min
+fixed A=4 epoch 04 | train acc 30.90% | test acc 32.06% | grad norm median 2.05 max 3.39 | 1.46 min
+fixed A=4 epoch 05 | train acc 34.37% | test acc 34.83% | grad norm median 2.09 max 4.01 | 1.46 min
+fixed A=4 epoch 06 | train acc 37.48% | test acc 39.54% | grad norm median 2.14 max 3.90 | 1.46 min
+fixed A=4 epoch 07 | train acc 40.32% | test acc 40.29% | grad norm median 2.15 max 4.80 | 1.46 min
+fixed A=4 epoch 08 | train acc 42.89% | test acc 43.39% | grad norm median 2.17 max 3.43 | 1.46 min
+fixed A=4 epoch 09 | train acc 45.10% | test acc 44.95% | grad norm median 2.18 max 3.22 | 1.46 min
+fixed A=4 epoch 10 | train acc 46.07% | test acc 45.77% | grad norm median 2.22 max 3.04 | 1.46 min
+Saved: working/step1_cifar10_seed43.json
+
+=== focus A=4 | 11,363,472 parameters ===
+focus A=4 epoch 01 | train acc 16.10% | test acc 20.98% | grad norm median 2.17 max 20.16 | 1.53 min
+focus A=4 epoch 02 | train acc 22.75% | test acc 25.78% | grad norm median 2.23 max 5.30 | 1.53 min
+focus A=4 epoch 03 | train acc 27.33% | test acc 27.82% | grad norm median 2.23 max 5.51 | 1.53 min
+focus A=4 epoch 04 | train acc 31.01% | test acc 33.56% | grad norm median 2.18 max 3.89 | 1.54 min
+focus A=4 epoch 05 | train acc 34.57% | test acc 35.46% | grad norm median 2.15 max 3.68 | 1.53 min
+focus A=4 epoch 06 | train acc 37.95% | test acc 38.54% | grad norm median 2.26 max 3.57 | 1.54 min
+focus A=4 epoch 07 | train acc 41.39% | test acc 41.62% | grad norm median 2.22 max 3.54 | 1.51 min
+focus A=4 epoch 08 | train acc 44.15% | test acc 44.64% | grad norm median 2.24 max 3.53 | 1.51 min
+focus A=4 epoch 09 | train acc 46.22% | test acc 46.32% | grad norm median 2.27 max 3.72 | 1.50 min
+focus A=4 epoch 10 | train acc 47.24% | test acc 47.00% | grad norm median 2.31 max 3.20 | 1.51 min
+Saved: working/step1_cifar10_seed43.json
+
+=== fixed A=16 | 11,362,698 parameters ===
+fixed A=16 epoch 01 | train acc 17.46% | test acc 23.13% | grad norm median 2.05 max 11.88 | 1.46 min
+fixed A=16 epoch 02 | train acc 23.70% | test acc 26.78% | grad norm median 2.09 max 4.76 | 1.50 min
+fixed A=16 epoch 03 | train acc 28.82% | test acc 29.44% | grad norm median 2.13 max 3.77 | 1.49 min
+fixed A=16 epoch 04 | train acc 31.76% | test acc 34.21% | grad norm median 2.11 max 3.91 | 1.49 min
+fixed A=16 epoch 05 | train acc 35.95% | test acc 35.79% | grad norm median 2.12 max 3.60 | 1.49 min
+fixed A=16 epoch 06 | train acc 39.01% | test acc 40.07% | grad norm median 2.23 max 3.46 | 1.49 min
+fixed A=16 epoch 07 | train acc 41.96% | test acc 42.51% | grad norm median 2.24 max 4.35 | 1.49 min
+fixed A=16 epoch 08 | train acc 44.68% | test acc 44.51% | grad norm median 2.28 max 4.12 | 1.49 min
+fixed A=16 epoch 09 | train acc 46.64% | test acc 46.76% | grad norm median 2.31 max 3.63 | 1.50 min
+fixed A=16 epoch 10 | train acc 47.62% | test acc 47.23% | grad norm median 2.36 max 3.32 | 1.49 min
+Saved: working/step1_cifar10_seed43.json
+
+=== focus A=16 | 11,365,008 parameters ===
+focus A=16 epoch 01 | train acc 17.13% | test acc 21.93% | grad norm median 2.17 max 9.32 | 1.71 min
+focus A=16 epoch 02 | train acc 24.60% | test acc 29.18% | grad norm median 2.20 max 3.73 | 1.67 min
+focus A=16 epoch 03 | train acc 30.05% | test acc 31.68% | grad norm median 2.15 max 3.86 | 1.70 min
+focus A=16 epoch 04 | train acc 34.12% | test acc 36.05% | grad norm median 2.13 max 3.58 | 1.78 min
+focus A=16 epoch 05 | train acc 38.24% | test acc 39.58% | grad norm median 2.18 max 3.29 | 1.75 min
+focus A=16 epoch 06 | train acc 42.17% | test acc 42.85% | grad norm median 2.20 max 4.96 | 1.91 min
+focus A=16 epoch 07 | train acc 45.46% | test acc 45.20% | grad norm median 2.15 max 3.36 | 2.94 min
+focus A=16 epoch 08 | train acc 47.94% | test acc 47.92% | grad norm median 2.17 max 3.41 | 2.21 min
+focus A=16 epoch 09 | train acc 49.85% | test acc 49.48% | grad norm median 2.22 max 3.38 | 1.73 min
+focus A=16 epoch 10 | train acc 50.86% | test acc 50.13% | grad norm median 2.26 max 3.26 | 1.73 min
+Saved: working/step1_cifar10_seed43.json
+| Model | Anchors | Params | Final test acc | Best test acc | Map sim | Anchor spread | Object mass (last block) | Anchors touching object (last block) |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| fixed | 4 | 11.36M | 45.77% | 45.77% | 0.000 | 0.485 | 0.582 | 0.39 |
+| focus | 4 | 11.36M | 47.00% | 47.00% | 0.000 | 0.527 | 0.985 | 0.41 |
+| fixed | 16 | 11.36M | 47.23% | 47.23% | 0.000 | 0.534 | 1.431 | 0.19 |
+| focus | 16 | 11.37M | 50.13% | 50.13% | 0.000 | 0.471 | 1.814 | 0.20 |
+  "|---|---:|---:|---:|---:|---:|---:|---:|---:|",

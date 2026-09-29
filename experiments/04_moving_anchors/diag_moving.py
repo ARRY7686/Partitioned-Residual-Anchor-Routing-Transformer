@@ -1,4 +1,4 @@
-"""Diagnose a trained positional-anchor model from step1-moving-anchors.ipynb.
+"""Diagnose a trained positional-anchor model from moving-anchors.ipynb.
 
 Reports, per block, how strongly the learned importance map points at the object and how
 far the anchors move from their starting grid. Loads the model definitions from the
@@ -17,7 +17,7 @@ os.environ.setdefault("RART_SMOKE", "1")
 os.environ.setdefault("RART_DATASET", "cifar10")
 
 here = os.path.dirname(os.path.abspath(__file__))
-with open(os.path.join(here, "step1-moving-anchors.ipynb"), encoding="utf-8") as f:
+with open(os.path.join(here, "moving-anchors.ipynb"), encoding="utf-8") as f:
     cells = json.load(f)["cells"]
 code = []
 for cell in cells:
