@@ -651,7 +651,7 @@ follow on from it:
 
 * **[03 — Anchor collapse across designs](experiments/03_anchor_collapse/).** RART-style, AnchorFormer-style and PaCa-style anchors, a competitive (slot-style) variant and the fixed partition, trained on one shared backbone. Anchors that are the same for every image collapse completely (map similarity ≈ 0.99), image-derived anchors are only partly diverse, and the fixed partition does not collapse and reached the best accuracy in both seeds (45.68% / 46.48%).
 * **[04 — Moving anchors](experiments/04_moving_anchors/).** Positional anchors with an exclusive Voronoi partition on Cluttered CIFAR-10 (a small object on a large canvas with distractors). A *focus* design — a quarter of the anchors on a coarse fixed grid for coverage, the rest placed at the peaks of a learned importance map — beat the fixed partition in all 6 paired runs (3 seeds × 4 and 16 anchors): 47.52% vs 46.04% with 4 anchors and 49.84% vs 46.71% with 16 anchors (means), without collapse.
-* **[05 — Compute skipping](experiments/05_compute_skipping/) (in progress).** Using the learned importance map to let 75% of patches skip the feed-forward layers in blocks 3–6 cut compute by 25% (5.31 → 3.96 GFLOPs per image) for a 0.4-point accuracy drop in a first single-seed run; random and token-norm baselines are running.
+* **[05 — Compute skipping](experiments/05_compute_skipping/).** Letting 75% of patches skip the feed-forward layers in blocks 3–6 cut compute by 25% (5.31 → 3.96 GFLOPs per image) with no accuracy loss for either `focus` or the fixed partition (single seed). However, random and token-norm selection did as well as the learned importance map, so this does not yet show that learned importance picks better patches.
 
 See [`experiments/README.md`](experiments/README.md) for an index of all experiments and how to run them.
 
@@ -729,7 +729,8 @@ Current focus:
 * [x] Anchor-collapse comparison across anchor designs (AnchorFormer-style, PaCa-style, competitive)
 * [x] Moving anchors on a small-object task, with anchor-trajectory visualization (1 seed)
 * [x] Multi-seed confirmation of the moving-anchor results (3 seeds)
-* [ ] Compute skipping with learned importance, against random and token-norm baselines (in progress)
+* [x] Compute skipping against random and token-norm baselines (1 seed; learned importance not better)
+* [ ] Compute skipping: re-run keep-50% with a bounded gate, smaller budgets, more seeds
 * [ ] Direct comparison with the published AnchorFormer
 * [ ] High-resolution detection benchmark
 * [ ] Tiny-object evaluation

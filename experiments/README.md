@@ -10,7 +10,7 @@ notebook, and a `results/` folder split into `tables/` (JSON and Markdown summar
 | 02 | [Resolution scaling](02_resolution_scaling/) | Does RART scale better than a dense ViT? | Done | Faster than ViT from 1536²; 27× less memory at 2048²; slower than PVTv2 / EfficientViT |
 | 03 | [Anchor collapse](03_anchor_collapse/) | Do other anchor designs collapse too? | Done, 2 seeds | Image-independent anchors collapse (0.99); fixed exclusive regions do not and score best (45.7 / 46.5%) |
 | 04 | [Moving anchors](04_moving_anchors/) | Can anchors move to important regions without collapsing? | Done, 3 seeds (`fixed` / `focus`) | `focus` beats `fixed` in 6/6 paired runs: +1.48 (4 anchors) and +3.13 (16 anchors) points on average |
-| 05 | [Compute skipping](05_compute_skipping/) | Can learned importance save compute? | In progress, 1 seed | Keeping 25% of patches in the FFN of blocks 3–6: −25% GFLOPs for −0.4 points |
+| 05 | [Compute skipping](05_compute_skipping/) | Can learned importance save compute? | First round done, 1 seed | Keeping 25% of patches in the FFN of blocks 3–6 cuts GFLOPs by 25% at no accuracy cost, but random and token-norm selection do as well as learned importance |
 
 Result files inside 03–05 keep the notebooks' internal run names (`step0_…`, `step1_…`).
 
