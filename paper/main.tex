@@ -37,7 +37,8 @@ anchors move to image content but never pool the same patches. On a cluttered $2
 CIFAR-10 canvas trained for 30 epochs, focus anchors beat the fixed partition in 3 of 3
 paired seeds (+1.5 points, 95\% CI [0.5, 2.6]) and beat ViTs on downsampled inputs by
 4.7--11.8 points on this task and on a Tiny ImageNet canvas. Ablations show that hard exclusive
-assignment keeps training stable: soft assignment fails in every seed. We also report the
+assignment keeps training stable: its softmax relaxation fails in every seed, also with
+Sinkhorn balancing. We also report the
 limits: a CNN and PVTv2 are far more accurate in this from-scratch regime, and at $256^2$
 our routing is slower than dense attention.
 \keywords{Vision transformers \and Anchor tokens \and Token routing \and Representation collapse}
@@ -89,9 +90,12 @@ tokens. Slot Attention~\cite{locatello2020slot} makes slots compete for inputs w
 over slots. In ViTs, PaCa-ViT~\cite{grainger2023paca} attends from patches to learned
 clusters, LeMeViT~\cite{jiang2024lemevit} uses learnable meta tokens, and
 AnchorFormer~\cite{anchorformer2025} and Representative Attention~\cite{representative2026}
-gather into anchors, let them interact, and distribute back. None of these assign each patch
-to exactly one anchor, and we show in Sec.~\ref{sec:collapse} that simplified versions of
-two of them collapse.
+gather into anchors, let them interact, and distribute back. These methods route tokens
+with soft, similarity-based weights, and some normalise the mass each representative
+receives to keep all representatives in use. None of them assigns each patch to exactly one
+anchor. We show in Sec.~\ref{sec:collapse} that simplified versions of two of them collapse;
+we do not reproduce their full models or stabilisers, so this is evidence about the routing
+patterns, not about the published methods.
 
 \paragraph{Regional tokens and partitions.}
 RegionViT~\cite{chen2022regionvit} attaches one regional token to each fixed window of local
@@ -110,7 +114,8 @@ memory budget, attention sampling~\cite{katharopoulos2019attsampling} and differ
 iterative patch selection~\cite{cordonnier2021dps,bergner2023ips} process only selected
 patches. Token pruning and merging~\cite{rao2021dynamicvit,bolya2023tome},
 SparseViT~\cite{chen2023sparsevit} and mixture-of-depths~\cite{raposo2024mod} skip
-computation for some tokens. Our focus anchors move where global summaries are formed, not
+computation for some tokens, and A-ViT~\cite{yin2022avit} and ATS~\cite{fayyaz2022ats}
+adapt the number of tokens per image. Our focus anchors move where global summaries are formed, not
 which patches exist, and our skipping experiment (Sec.~\ref{sec:skipping}) compares
 learned importance against exactly these simpler selection rules.
 
@@ -277,9 +282,22 @@ anchors, $7\times7$ local windows. Only the anchor pathway changes:
 \textsc{paca}-style pathway (MLP cluster assignment), the fixed exclusive $4\times4$
 partition, and a \textsc{dense} pathway that replaces the anchors with global attention
 among all patches. The AnchorFormer- and PaCa-style pathways are simplified
-reimplementations, not the published models. We measure the mean pairwise cosine similarity
-of the anchors' pooling maps (1 = all anchors pool the same patches) and the share of pooled
-content that differs between anchors (\emph{spread}; 0 = identical anchors).
+reimplementations, not the published models.
+
+\paragraph{Metrics.} For one image and one block, let $P_j\in\Delta^{N-1}$ be anchor $j$'s
+pooling distribution over patches and $g_j\in\mathbb{R}^{d}$ the summary it pools. We report
+the mean pairwise cosine similarity of the pooling maps and the \emph{spread} of the
+summaries,
+\begin{equation}
+\mathrm{sim}=\frac{1}{A(A-1)}\sum_{j\neq k}\frac{\langle P_j,P_k\rangle}{\|P_j\|\,\|P_k\|},
+\qquad
+\mathrm{spread}=\frac{\sum_j\|g_j-\bar g\|^2}{\sum_j\|g_j\|^2},\quad \bar g=\frac{1}{A}\sum_j g_j ,
+\label{eq:metrics}
+\end{equation}
+averaged over 1{,}024 test images. Similarity 1 means all anchors pool the same patches;
+spread is the share of the summaries' energy that differs between anchors (0 = all anchors
+carry the same vector, 1 = summaries with zero mean). Spread measures diversity of the
+summaries themselves, so unlike map similarity it is not fixed by the partition.
 
 \begin{table}[t]
 \centering
@@ -493,6 +511,7 @@ Soft instead of hard assignment & 14.34 / 36.17 / 10.00 & diverged in seeds 42, 
 \focus-16 (full), clip & 53.78 $\pm$ 0.09 & \\
 No suppression, clip & 53.57 $\pm$ 0.43 & $-$0.21 [$-$1.51, +1.08] \\
 Soft assignment, clip & 10.00 / 10.00 / 10.00 & diverged in all seeds \\
+Soft + Sinkhorn balancing, clip & 9.98 / 10.00 / 12.44 & diverged in all seeds \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -505,8 +524,41 @@ once training is stabilised, but without it one of three runs diverged under the
 recipe; with all anchors free to land on the same peak, regions can empty and refill
 abruptly. The clearest result is soft assignment: replacing the hard Voronoi partition by
 its softmax relaxation diverged or stalled in every run, and still diverged in all three
-seeds with clipping and warmup (gradient norms reaching $10^{14}$ at epoch 6). Hard exclusive
-assignment is what makes moving anchors trainable here.
+seeds with clipping and warmup (gradient norms reaching $10^{14}$ at epoch 6). Balancing does
+not fix it. With three log-domain Sinkhorn iterations after the softmax, so that every anchor
+receives the same total mass as in balanced soft routing, the runs learned for two to five
+epochs (peaks of 37.5, 26.5 and 39.0\%) and then diverged in all three seeds, with gradient
+norms of $10^{11}$--$10^{15}$ despite clipping. Hard exclusive assignment is what makes moving
+anchors trainable here.
+
+\begin{table}[t]
+\centering
+\caption{Sensitivity of focus placement (Cluttered CIFAR-10, 16 anchors, 10 epochs, clip 1.0,
+warmup 2, seed 42). One parameter changed at a time from the defaults $\beta=10$,
+$\sigma_s=1.5$ patches, $\sigma_h=0.35$.}
+\label{tab:sensitivity}
+\begin{tabular}{lcc}
+\toprule
+Setting & Test accuracy (\%) & $\Delta$ \\
+\midrule
+Defaults & 53.68 & \\
+$\beta=3$ & 53.98 & +0.30 \\
+$\beta=30$ & 49.33 & $-$4.35 \\
+$\sigma_s=0.75$ & 53.59 & $-$0.09 \\
+$\sigma_s=3$ & 21.88 & $-$31.80 \\
+$\sigma_h=0.15$ & 52.90 & $-$0.78 \\
+$\sigma_h=1.0$ & 52.26 & $-$1.42 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:sensitivity} varies the placement hyperparameters one at a time, with one seed
+each, so differences below about one point are within seed noise
+(Table~\ref{tab:ablation}). Weaker or narrower suppression and a narrower or wider home prior
+stay within 1.5 points of the defaults. Placement breaks when suppression is too strong or too
+wide: $\beta=30$ costs 4.4 points, and with $\sigma_s=3$ patches training stalls near 20\% for
+all ten epochs. A suppression bump three patches wide covers much of the $16\times16$ grid, so
+later focus anchors are pushed away from the content the importance map has found.
 
 \subsection{Skipping per-patch computation}
 \label{sec:skipping}
@@ -582,7 +634,9 @@ PVTv2-B0 & 1.51 & 52.4 ms & 4.94 GB & 6{,}310 img/s & 1{,}174 MB \\
 patches, dense attention is cheap, and our routing (masked gather and scatter, plus one
 sequential soft-argmax per focus anchor) is not fused into efficient kernels. The fixed
 partition takes 1.9$\times$ and focus anchors 3.1$\times$ the training-step time of the dense
-ViT at the same FLOPs, and both use more training memory. FFN skipping lowers FLOPs but
+ViT at the same FLOPs, and both use more training memory. The sequential placement loop
+accounts for the gap between focus and fixed anchors: it adds about 3--4 ms per focus anchor
+per training step (99.3 against 60.7 ms with 12 focus anchors, 70.8 against 59.5 ms with 3). FFN skipping lowers FLOPs but
 barely changes wall-clock time, because the gather and scatter of kept patches is not fused.
 
 \begin{table}[t]
@@ -636,7 +690,12 @@ scratch for 10--30 epochs, are far from convergence (absolute accuracy on the Ti
 canvas is below 20\% for every transformer), and are clearly beaten by a CNN and by PVTv2.
 Three seeds give wide intervals, and several skipping and baseline rows use one or two seeds.
 There is no validation split, and the 30-epoch learning rate was chosen on test accuracy. The
-dense ViT baseline has no local windows, so it does not isolate the anchors from locality. The
+dense ViT baseline has no local windows, so it does not isolate the anchors from locality. We
+compare with simplified reimplementations of AnchorFormer- and PaCa-style routing, not with
+the published models and their stabilisers; our Sinkhorn test balances anchor mass but does
+not add their other stabilisers. The placement hyperparameters were set once; the sensitivity
+sweep uses one seed per setting and shows a failure range ($\sigma_s=3$) rather than a tuned
+optimum. The
 learned importance map marks content in general rather than the class object, and it does not
 beat simple rules for choosing which patches to compute. Finally, our implementation is not
 optimised; at moderate resolution it is slower than dense attention.
@@ -648,12 +707,16 @@ image-independent queries collapse to a single summary, and that an exclusive pa
 the patch grid prevents collapse by construction and gives the most accurate anchor pathway.
 Focus anchors keep that guarantee while letting most anchors move to image content: they beat
 the fixed partition in every paired run on Cluttered CIFAR-10, significantly so at 30
-epochs, and beat ViTs on downsampled inputs by 4.7--11.8 points on two datasets. Hard exclusive
-assignment is essential: its soft relaxation does not train. The gains are modest and sit
+epochs, and beat ViTs on downsampled inputs by 4.7--11.8 points on two datasets. In our setup, hard
+exclusive assignment is what makes moving anchors trainable: its soft relaxation does not
+train, with or without Sinkhorn balancing. The gains are modest and sit
 well below convolutional and hierarchical models in our from-scratch setting, and the
 efficiency benefit is limited to memory at high resolution. The next step is a real
 high-resolution task with pretrained backbones, where a model that does not have to
-downsample the image should show its advantage.
+downsample the image should show its advantage. Further directions are letting each patch
+read a few neighbouring anchors instead of one, a balancing loss against empty regions in
+place of the clamp, and weak supervision that steers focus anchors towards the class object
+rather than all content.
 
 \paragraph{Code and data availability.} Code, per-run logs and result files for every
 experiment: \url{https://github.com/ARRY7686/Partitioned-Residual-Anchor-Routing-Transformer}.

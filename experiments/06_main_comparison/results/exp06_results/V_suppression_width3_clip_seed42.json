@@ -1,0 +1,219 @@
+{
+  "tag": "V_suppression_width3_clip_seed42",
+  "kind": "focus",
+  "num_anchors": 16,
+  "seed": 42,
+  "epochs": 10,
+  "dataset": "cifar10",
+  "vit_input": 256,
+  "vit_patch": 16,
+  "keep_ratio": 1.0,
+  "skip_from": 2,
+  "skip_score": "importance",
+  "gate": "ratio",
+  "coverage_side": "auto",
+  "suppression": 10.0,
+  "suppression_width": 3.0,
+  "home_width": 0.35,
+  "assign": "hard",
+  "grad_clip": 1.0,
+  "warmup_epochs": 2.0,
+  "precision": "bf16",
+  "lr": 0.0003,
+  "params": 11365008,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.182303359527588,
+      "train_acc": 16.724,
+      "test_loss": 2.09862109375,
+      "test_acc": 20.28,
+      "minutes": 1.8674604083333786,
+      "grad_norm_median": 4.200901985168457,
+      "grad_norm_max": 130.0410614013672,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 2.087852773284912,
+      "train_acc": 20.484,
+      "test_loss": 2.125477734375,
+      "test_acc": 18.71,
+      "minutes": 1.8058096933333825,
+      "grad_norm_median": 4.591237545013428,
+      "grad_norm_max": 111.17719268798828,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 2.188379531173706,
+      "train_acc": 16.666,
+      "test_loss": 2.1318328125,
+      "test_acc": 19.27,
+      "minutes": 1.726481925000068,
+      "grad_norm_median": 5.737155914306641,
+      "grad_norm_max": 352.013916015625,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 4,
+      "train_loss": 2.1490715625,
+      "train_acc": 18.21,
+      "test_loss": 2.12022421875,
+      "test_acc": 19.46,
+      "minutes": 1.7296632283333262,
+      "grad_norm_median": 9.365408897399902,
+      "grad_norm_max": 6372.13330078125,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 5,
+      "train_loss": 2.139558007736206,
+      "train_acc": 18.832,
+      "test_loss": 2.150451953125,
+      "test_acc": 18.17,
+      "minutes": 1.7329627516666126,
+      "grad_norm_median": 15.512127876281738,
+      "grad_norm_max": 688.385009765625,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 6,
+      "train_loss": 2.142895078125,
+      "train_acc": 18.786,
+      "test_loss": 2.120195703125,
+      "test_acc": 19.61,
+      "minutes": 1.7279267750000145,
+      "grad_norm_median": 19.10633659362793,
+      "grad_norm_max": 73453.6171875,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 7,
+      "train_loss": 2.113122968597412,
+      "train_acc": 19.974,
+      "test_loss": 2.10111484375,
+      "test_acc": 20.67,
+      "minutes": 1.723374493333419,
+      "grad_norm_median": 20.541780471801758,
+      "grad_norm_max": 1263.686767578125,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 8,
+      "train_loss": 2.091881640701294,
+      "train_acc": 20.962,
+      "test_loss": 2.07936640625,
+      "test_acc": 21.26,
+      "minutes": 1.729986523333355,
+      "grad_norm_median": 24.22837257385254,
+      "grad_norm_max": 836.7179565429688,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 9,
+      "train_loss": 2.078069843826294,
+      "train_acc": 21.508,
+      "test_loss": 2.069978125,
+      "test_acc": 21.72,
+      "minutes": 1.7363799799998862,
+      "grad_norm_median": 21.872194290161133,
+      "grad_norm_max": 1189.0482177734375,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 10,
+      "train_loss": 2.072554375,
+      "train_acc": 21.542,
+      "test_loss": 2.06761015625,
+      "test_acc": 21.88,
+      "minutes": 1.7844622966667278,
+      "grad_norm_median": 18.890413284301758,
+      "grad_norm_max": 10882.0634765625,
+      "steps_skipped": 0
+    }
+  ],
+  "final_test_acc": 21.88,
+  "metrics_init": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.0537118511274457,
+      "object_mass": 0.9615267664194107,
+      "object_anchor_share": 0.20538330078125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.036695994436740875,
+      "object_mass": 0.8625942468643188,
+      "object_anchor_share": 0.2030029296875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.043533035553991795,
+      "object_mass": 0.9736795499920845,
+      "object_anchor_share": 0.2044677734375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.0343897994607687,
+      "object_mass": 0.9955204054713249,
+      "object_anchor_share": 0.20477294921875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.03612778661772609,
+      "object_mass": 0.9988568350672722,
+      "object_anchor_share": 0.20550537109375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.05595965636894107,
+      "object_mass": 1.1534570753574371,
+      "object_anchor_share": 0.20611572265625
+    }
+  ],
+  "metrics_trained": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.8100932613015175,
+      "object_mass": 2.562133103609085,
+      "object_anchor_share": 0.22528076171875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.3246374689042568,
+      "object_mass": 1.5275075733661652,
+      "object_anchor_share": 0.21173095703125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.25421582721173763,
+      "object_mass": 1.4011129140853882,
+      "object_anchor_share": 0.21331787109375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.3462553471326828,
+      "object_mass": 1.4764027744531631,
+      "object_anchor_share": 0.21673583984375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.28382758051157,
+      "object_mass": 1.2882794588804245,
+      "object_anchor_share": 0.21600341796875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.21422173455357552,
+      "object_mass": 1.2649558037519455,
+      "object_anchor_share": 0.209228515625
+    }
+  ],
+  "gflops_linear": 5.314371072,
+  "gflops_total": 5.491392,
+  "throughput_img_s": 1451.8721125269515,
+  "peak_train_memory_mb": 4481.90673828125,
+  "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "total_minutes": 17.56450807500017
+}

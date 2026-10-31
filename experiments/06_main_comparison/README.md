@@ -25,6 +25,7 @@ All phases use Cluttered CIFAR-10 at 256² with 3 seeds (42, 43, 44) unless note
 | R | ResNet-18 at lr 1.25e-4 and 1e-3 (30 epochs, and Tiny ImageNet 15 epochs); PVTv2-B0 at 30 epochs | 30 / 15 | Baselines from outside the ViT family (`timm`, no pretraining) |
 | D2 | soft assignment, no suppression, and the full model, each with clip 1.0 and 2-epoch warmup | 10 | Phase D's soft-assignment and no-suppression runs diverged: are they unstable or just worse? The full model is the matching reference. |
 | F2 | random skipping at keep 25% with clip 1.0 and 2-epoch warmup | 10 | Skipping cost under the stable recipe; the reference is D2's full model. The bounded-gate runs of this phase were stopped at epoch 5 (see results). |
+| V | focus-16 with soft assignment balanced by 3 Sinkhorn iterations (`RART_ASSIGN=balanced`, 3 seeds), and a one-at-a-time sweep of β (`RART_SUPPRESSION`), σ_s (`RART_SUPPRESSION_WIDTH`, patches) and σ_h (`RART_HOME_WIDTH`) at seed 42; all with clip 1.0 and 2-epoch warmup. The phase also lists `B_densewin` (anchor model with the anchor pathway replaced by global attention, local windows kept, 30 epochs), which was not run. | 10 | Review follow-ups: does balanced soft routing train, and how sensitive is focus placement? Reference: D2's full model. |
 
 Every run records:
 * final test accuracy
@@ -105,7 +106,8 @@ RART_PHASES=C RART_JOBS_PER_GPU=1 python run_suite.py
 
 ## Results
 
-All 102 runs finished on one vast.ai A100-80GB (2026-10-30/31, bf16). Mean ± std over seeds
+All 102 runs of phases A–F2 finished on one vast.ai A100-80GB (2026-10-30/31, bf16); phase V
+ran on an RTX 5060 laptop GPU (2026-10-31, bf16, log in `results/exp06_results/suite_V.log`). Mean ± std over seeds
 42 / 43 / 44; paired gaps with 95% t-intervals (n = 3). The full per-run table is printed at
 the end of each `results/suite_*.log`.
 
@@ -148,8 +150,26 @@ dense ViT is level with focus. PVTv2-B0 and ResNet-18 are far ahead in this from
 | no suppression, clip + warmup | 53.57 ± 0.43 | −0.21 [−1.51, +1.08] |
 | soft assignment, clip + warmup | 10.00 × 3 | diverged in every seed (grad norm up to 1e14) |
 
+Balancing does not rescue soft assignment. With 3 Sinkhorn iterations (every anchor receives
+the same total mass), clip and warmup, the runs peaked at 37.5 / 26.5 / 39.0% (epochs 4 / 2 / 5),
+then diverged with gradient norms of 1e11–1e15 and ended at 9.98 / 10.00 / 12.44% (phase V).
+
 Hard exclusive assignment is what keeps moving anchors trainable; suppression is a stability
 device, not an accuracy one.
+
+### Placement sensitivity (phase V, seed 42, clip + warmup)
+
+| Setting | Accuracy | vs D2 full seed 42 (53.68) |
+|---|---:|---:|
+| β = 3 | 53.98 | +0.30 |
+| β = 30 | 49.33 | −4.35 |
+| σ_s = 0.75 patches | 53.59 | −0.09 |
+| σ_s = 3 patches | 21.88 | −31.80 (stalled near 20% for all 10 epochs) |
+| σ_h = 0.15 | 52.90 | −0.78 |
+| σ_h = 1.0 | 52.26 | −1.42 |
+
+Defaults are β = 10, σ_s = 1.5 patches, σ_h = 0.35. Placement is robust around them and
+breaks when suppression is much stronger or wider.
 
 ### FFN skipping (focus-16, keep 25%, 10 epochs)
 

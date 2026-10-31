@@ -1,0 +1,219 @@
+{
+  "tag": "V_suppression_width0.75_clip_seed42",
+  "kind": "focus",
+  "num_anchors": 16,
+  "seed": 42,
+  "epochs": 10,
+  "dataset": "cifar10",
+  "vit_input": 256,
+  "vit_patch": 16,
+  "keep_ratio": 1.0,
+  "skip_from": 2,
+  "skip_score": "importance",
+  "gate": "ratio",
+  "coverage_side": "auto",
+  "suppression": 10.0,
+  "suppression_width": 0.75,
+  "home_width": 0.35,
+  "assign": "hard",
+  "grad_clip": 1.0,
+  "warmup_epochs": 2.0,
+  "precision": "bf16",
+  "lr": 0.0003,
+  "params": 11365008,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.159879492149353,
+      "train_acc": 17.3,
+      "test_loss": 2.002135546875,
+      "test_acc": 24.59,
+      "minutes": 2.197123775,
+      "grad_norm_median": 3.9764785766601562,
+      "grad_norm_max": 13.055465698242188,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.939143906211853,
+      "train_acc": 26.364,
+      "test_loss": 1.8963396484375,
+      "test_acc": 29.01,
+      "minutes": 2.2037118700000673,
+      "grad_norm_median": 3.0723378658294678,
+      "grad_norm_max": 7.7689127922058105,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.816524414024353,
+      "train_acc": 31.288,
+      "test_loss": 1.73296220703125,
+      "test_acc": 34.78,
+      "minutes": 2.199544431666679,
+      "grad_norm_median": 2.566523790359497,
+      "grad_norm_max": 6.344621658325195,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.70796919921875,
+      "train_acc": 36.178,
+      "test_loss": 1.66819072265625,
+      "test_acc": 37.69,
+      "minutes": 2.2028088549999665,
+      "grad_norm_median": 2.4587135314941406,
+      "grad_norm_max": 4.147126197814941,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.6174882421875,
+      "train_acc": 40.284,
+      "test_loss": 1.60620205078125,
+      "test_acc": 41.44,
+      "minutes": 2.2064462533333424,
+      "grad_norm_median": 2.4220547676086426,
+      "grad_norm_max": 4.224086284637451,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.5240118725967406,
+      "train_acc": 44.056,
+      "test_loss": 1.508712060546875,
+      "test_acc": 44.44,
+      "minutes": 2.1943169116667076,
+      "grad_norm_median": 2.412785768508911,
+      "grad_norm_max": 3.874852180480957,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.4370100133895873,
+      "train_acc": 47.884,
+      "test_loss": 1.4171336181640626,
+      "test_acc": 48.77,
+      "minutes": 2.1180031166666593,
+      "grad_norm_median": 2.3807930946350098,
+      "grad_norm_max": 3.6223299503326416,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.3541242560195923,
+      "train_acc": 51.292,
+      "test_loss": 1.3466965087890626,
+      "test_acc": 51.64,
+      "minutes": 1.8462016433333095,
+      "grad_norm_median": 2.503997325897217,
+      "grad_norm_max": 3.548713445663452,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 9,
+      "train_loss": 1.2939240362548827,
+      "train_acc": 53.798,
+      "test_loss": 1.3015222229003907,
+      "test_acc": 53.22,
+      "minutes": 1.750884853333264,
+      "grad_norm_median": 2.5516369342803955,
+      "grad_norm_max": 3.557206153869629,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 10,
+      "train_loss": 1.2671285509490966,
+      "train_acc": 54.666,
+      "test_loss": 1.2923488403320313,
+      "test_acc": 53.59,
+      "minutes": 1.9372967416666749,
+      "grad_norm_median": 2.5805962085723877,
+      "grad_norm_max": 4.227010250091553,
+      "steps_skipped": 0
+    }
+  ],
+  "final_test_acc": 53.59,
+  "metrics_init": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.08013360109180212,
+      "object_mass": 1.1312968581914902,
+      "object_anchor_share": 0.2044677734375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.0560750886797905,
+      "object_mass": 1.0362820774316788,
+      "object_anchor_share": 0.20452880859375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.0649350369349122,
+      "object_mass": 1.1517193168401718,
+      "object_anchor_share": 0.20416259765625
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.05035348003730178,
+      "object_mass": 1.1959573328495026,
+      "object_anchor_share": 0.20654296875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.053682591300457716,
+      "object_mass": 1.2038526833057404,
+      "object_anchor_share": 0.207763671875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.07526647951453924,
+      "object_mass": 1.4078445732593536,
+      "object_anchor_share": 0.211669921875
+    }
+  ],
+  "metrics_trained": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.438997820019722,
+      "object_mass": 1.7749693244695663,
+      "object_anchor_share": 0.213623046875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.5645023062825203,
+      "object_mass": 1.9142212122678757,
+      "object_anchor_share": 0.22247314453125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.5123420283198357,
+      "object_mass": 2.1620796620845795,
+      "object_anchor_share": 0.22930908203125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.4238384813070297,
+      "object_mass": 1.446164458990097,
+      "object_anchor_share": 0.1883544921875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.4276028163731098,
+      "object_mass": 1.707009494304657,
+      "object_anchor_share": 0.19329833984375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.46376848220825195,
+      "object_mass": 1.7861745059490204,
+      "object_anchor_share": 0.21295166015625
+    }
+  ],
+  "gflops_linear": 5.314371072,
+  "gflops_total": 5.491392,
+  "throughput_img_s": 1477.4165340454683,
+  "peak_train_memory_mb": 4481.90673828125,
+  "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "total_minutes": 20.85633845166667
+}

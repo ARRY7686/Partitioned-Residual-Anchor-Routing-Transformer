@@ -1,0 +1,14 @@
+[V_suppression_width0.75_clip_seed42] focus | anchors 16 | seed 42 | epochs 10 | device NVIDIA GeForce RTX 5060 Laptop GPU
+[V_suppression_width0.75_clip_seed42] 11,365,008 parameters
+[V_suppression_width0.75_clip_seed42] epoch 01/10 | train acc 17.30% | test acc 24.59% | grad norm median 3.98 max 13.06 | skipped steps 0 | 2.20 min
+[V_suppression_width0.75_clip_seed42] epoch 02/10 | train acc 26.36% | test acc 29.01% | grad norm median 3.07 max 7.77 | skipped steps 0 | 2.20 min
+[V_suppression_width0.75_clip_seed42] epoch 03/10 | train acc 31.29% | test acc 34.78% | grad norm median 2.57 max 6.34 | skipped steps 0 | 2.20 min
+[V_suppression_width0.75_clip_seed42] epoch 04/10 | train acc 36.18% | test acc 37.69% | grad norm median 2.46 max 4.15 | skipped steps 0 | 2.20 min
+[V_suppression_width0.75_clip_seed42] epoch 05/10 | train acc 40.28% | test acc 41.44% | grad norm median 2.42 max 4.22 | skipped steps 0 | 2.21 min
+[V_suppression_width0.75_clip_seed42] epoch 06/10 | train acc 44.06% | test acc 44.44% | grad norm median 2.41 max 3.87 | skipped steps 0 | 2.19 min
+[V_suppression_width0.75_clip_seed42] epoch 07/10 | train acc 47.88% | test acc 48.77% | grad norm median 2.38 max 3.62 | skipped steps 0 | 2.12 min
+[V_suppression_width0.75_clip_seed42] epoch 08/10 | train acc 51.29% | test acc 51.64% | grad norm median 2.50 max 3.55 | skipped steps 0 | 1.85 min
+[V_suppression_width0.75_clip_seed42] epoch 09/10 | train acc 53.80% | test acc 53.22% | grad norm median 2.55 max 3.56 | skipped steps 0 | 1.75 min
+[V_suppression_width0.75_clip_seed42] epoch 10/10 | train acc 54.67% | test acc 53.59% | grad norm median 2.58 max 4.23 | skipped steps 0 | 1.94 min
+W1031 18:45:53.302000 22840 site-packages\torch\utils\flop_counter.py:29] triton not found; flop counting will not work for triton kernels
+[V_suppression_width0.75_clip_seed42] done: 53.59% | 5.49 GFLOPs | 1477 img/s | saved C:\Users\aadig\rart_local\run\exp06_results\V_suppression_width0.75_clip_seed42.json

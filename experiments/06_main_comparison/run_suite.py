@@ -123,6 +123,25 @@ def phase_jobs(phase):
                 job(f"D_nohome_seed{seed}", 10, "router", home_width="inf", **base),
                 job(f"D_softassign_seed{seed}", 10, "router", assign="soft", **base),
             ]
+    if phase in ("V", "VT"):
+        # Review follow-ups. Dense-with-windows: the anchor model's blocks with global patch
+        # attention in place of the anchors, to separate locality from anchor routing.
+        stab = dict(grad_clip=1.0, warmup_epochs=2)
+        if phase == "VT":
+            jobs += [job(f"T_densewin_seed{s}", 15, "router_tin", kind="densewin", lr=1.25e-4,
+                         dataset="tinyimagenet", seed=s, **stab) for s in SEEDS]
+            return jobs
+        # Soft assignment with Sinkhorn balancing; reference D2_full_clip (same recipe).
+        jobs += [job(f"V_balanced_clip_seed{s}", 10, "router", kind="focus", anchors=16, assign="balanced",
+                     seed=s, **stab) for s in SEEDS]
+        # Placement sensitivity, seed 42; reference D2_full_clip_seed42 (beta 10, sigma_s 1.5, sigma_h 0.35).
+        for name, value in (("suppression", 3), ("suppression", 30), ("suppression_width", 0.75),
+                            ("suppression_width", 3), ("home_width", 0.15), ("home_width", 1.0)):
+            jobs += [job(f"V_{name}{value}_clip_seed42", 10, "router", kind="focus", anchors=16, seed=42,
+                         **{name: value}, **stab)]
+        # Last, as the longest runs (30 epochs, phase B recipe).
+        jobs += [job(f"B_densewin_seed{s}", 30, "router", kind="densewin", lr=1.25e-4, seed=s, **stab)
+                 for s in SEEDS]
     if phase == "F2":
         # Phase F's bounded importance gate diverged (seeds 42/44 grad > 1e5, keep 0.5 at chance)
         # in the exp-04 recipe. Same skipping with clip 1.0 + 2-epoch warmup; reference D2_full_clip.

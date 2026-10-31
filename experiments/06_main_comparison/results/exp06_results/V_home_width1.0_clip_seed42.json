@@ -1,0 +1,219 @@
+{
+  "tag": "V_home_width1.0_clip_seed42",
+  "kind": "focus",
+  "num_anchors": 16,
+  "seed": 42,
+  "epochs": 10,
+  "dataset": "cifar10",
+  "vit_input": 256,
+  "vit_patch": 16,
+  "keep_ratio": 1.0,
+  "skip_from": 2,
+  "skip_score": "importance",
+  "gate": "ratio",
+  "coverage_side": "auto",
+  "suppression": 10.0,
+  "suppression_width": 1.5,
+  "home_width": 1.0,
+  "assign": "hard",
+  "grad_clip": 1.0,
+  "warmup_epochs": 2.0,
+  "precision": "bf16",
+  "lr": 0.0003,
+  "params": 11365008,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.176566718902588,
+      "train_acc": 17.024,
+      "test_loss": 2.169084375,
+      "test_acc": 20.48,
+      "minutes": 1.7406254750001002,
+      "grad_norm_median": 3.6669273376464844,
+      "grad_norm_max": 13.107046127319336,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.974219296836853,
+      "train_acc": 25.168,
+      "test_loss": 1.93434697265625,
+      "test_acc": 27.94,
+      "minutes": 1.7207993350000228,
+      "grad_norm_median": 2.91123628616333,
+      "grad_norm_max": 7.464410305023193,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.850773984451294,
+      "train_acc": 29.938,
+      "test_loss": 1.79407412109375,
+      "test_acc": 31.8,
+      "minutes": 1.7569777083333369,
+      "grad_norm_median": 2.47806978225708,
+      "grad_norm_max": 4.641726016998291,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.75081650390625,
+      "train_acc": 34.526,
+      "test_loss": 1.6637429443359375,
+      "test_acc": 38.03,
+      "minutes": 1.7232641550000456,
+      "grad_norm_median": 2.3421998023986816,
+      "grad_norm_max": 3.9547102451324463,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.646346191329956,
+      "train_acc": 39.056,
+      "test_loss": 1.58943515625,
+      "test_acc": 42.06,
+      "minutes": 1.7204831016665898,
+      "grad_norm_median": 2.3414337635040283,
+      "grad_norm_max": 4.77210807800293,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.55546974609375,
+      "train_acc": 42.996,
+      "test_loss": 1.5326676025390624,
+      "test_acc": 43.74,
+      "minutes": 1.7305704833333342,
+      "grad_norm_median": 2.3489835262298584,
+      "grad_norm_max": 4.222029209136963,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.4689431860733033,
+      "train_acc": 46.91,
+      "test_loss": 1.455004736328125,
+      "test_acc": 46.64,
+      "minutes": 1.716812699999961,
+      "grad_norm_median": 2.484217882156372,
+      "grad_norm_max": 8.26774787902832,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.3945348902130128,
+      "train_acc": 49.68,
+      "test_loss": 1.3685617309570313,
+      "test_acc": 50.56,
+      "minutes": 1.7204815449999538,
+      "grad_norm_median": 2.6312949657440186,
+      "grad_norm_max": 8.206048965454102,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 9,
+      "train_loss": 1.333736679763794,
+      "train_acc": 51.92,
+      "test_loss": 1.3326565673828126,
+      "test_acc": 52.24,
+      "minutes": 1.719592303333411,
+      "grad_norm_median": 2.7298402786254883,
+      "grad_norm_max": 9.015253067016602,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 10,
+      "train_loss": 1.3069706775283814,
+      "train_acc": 53.058,
+      "test_loss": 1.3273879638671875,
+      "test_acc": 52.26,
+      "minutes": 1.8355862933333507,
+      "grad_norm_median": 2.688352346420288,
+      "grad_norm_max": 15.578335762023926,
+      "steps_skipped": 0
+    }
+  ],
+  "final_test_acc": 52.26,
+  "metrics_init": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.4168402627110481,
+      "object_mass": 0.8574279248714447,
+      "object_anchor_share": 0.17254638671875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.3644767329096794,
+      "object_mass": 0.9107863306999207,
+      "object_anchor_share": 0.1800537109375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.3663330674171448,
+      "object_mass": 0.8914471194148064,
+      "object_anchor_share": 0.17352294921875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.3637082986533642,
+      "object_mass": 0.9745897874236107,
+      "object_anchor_share": 0.17938232421875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.3814278244972229,
+      "object_mass": 0.9050219431519508,
+      "object_anchor_share": 0.17431640625
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.3530123792588711,
+      "object_mass": 1.1266407817602158,
+      "object_anchor_share": 0.17950439453125
+    }
+  ],
+  "metrics_trained": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.5746239423751831,
+      "object_mass": 1.633828952908516,
+      "object_anchor_share": 0.1798095703125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.6686343178153038,
+      "object_mass": 1.5499621033668518,
+      "object_anchor_share": 0.195068359375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.6804590225219727,
+      "object_mass": 2.510107636451721,
+      "object_anchor_share": 0.23504638671875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.702056385576725,
+      "object_mass": 2.186819463968277,
+      "object_anchor_share": 0.204833984375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.5870202705264091,
+      "object_mass": 3.057858854532242,
+      "object_anchor_share": 0.2908935546875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.5714100822806358,
+      "object_mass": 4.064275503158569,
+      "object_anchor_share": 0.30364990234375
+    }
+  ],
+  "gflops_linear": 5.314371072,
+  "gflops_total": 5.491392,
+  "throughput_img_s": 1419.757838116007,
+  "peak_train_memory_mb": 4481.90673828125,
+  "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "total_minutes": 17.385193100000105
+}

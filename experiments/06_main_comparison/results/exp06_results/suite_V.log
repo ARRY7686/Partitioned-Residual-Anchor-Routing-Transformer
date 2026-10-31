@@ -1,0 +1,10 @@
+12 jobs in phases ['V']: 0 done, 12 to run on GPUs [0], 1 per GPU
+Estimated GPU time left: 7.5 h (T4 speed; ~7.5 h wall clock on T4 x1)
+[ 0.49 h] GPU 0 done V_balanced_clip_seed42: 9.98% in 30 min (1/12)
+[ 0.81 h] GPU 0 done V_balanced_clip_seed43: 10.00% in 19 min (2/12)
+[ 1.12 h] GPU 0 done V_balanced_clip_seed44: 12.44% in 18 min (3/12)
+[ 1.43 h] GPU 0 done V_suppression3_clip_seed42: 53.98% in 19 min (4/12)
+[ 1.74 h] GPU 0 done V_suppression30_clip_seed42: 49.33% in 18 min (5/12)
+[ 2.09 h] GPU 0 done V_suppression_width0.75_clip_seed42: 53.59% in 21 min (6/12)
+[ 2.38 h] GPU 0 done V_suppression_width3_clip_seed42: 21.88% in 18 min (7/12)
+[ 2.67 h] GPU 0 done V_home_width0.15_clip_seed42: 52.90% in 17 min (8/12)

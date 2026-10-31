@@ -1,0 +1,219 @@
+{
+  "tag": "V_suppression30_clip_seed42",
+  "kind": "focus",
+  "num_anchors": 16,
+  "seed": 42,
+  "epochs": 10,
+  "dataset": "cifar10",
+  "vit_input": 256,
+  "vit_patch": 16,
+  "keep_ratio": 1.0,
+  "skip_from": 2,
+  "skip_score": "importance",
+  "gate": "ratio",
+  "coverage_side": "auto",
+  "suppression": 30.0,
+  "suppression_width": 1.5,
+  "home_width": 0.35,
+  "assign": "hard",
+  "grad_clip": 1.0,
+  "warmup_epochs": 2.0,
+  "precision": "bf16",
+  "lr": 0.0003,
+  "params": 11365008,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.164073886642456,
+      "train_acc": 17.232,
+      "test_loss": 2.0327640625,
+      "test_acc": 23.1,
+      "minutes": 1.8328959783334235,
+      "grad_norm_median": 4.0089802742004395,
+      "grad_norm_max": 11.95550537109375,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.948400390548706,
+      "train_acc": 25.596,
+      "test_loss": 1.87894765625,
+      "test_acc": 29.43,
+      "minutes": 1.774141128333334,
+      "grad_norm_median": 3.1281957626342773,
+      "grad_norm_max": 9.210474967956543,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.823737119102478,
+      "train_acc": 31.04,
+      "test_loss": 1.74600625,
+      "test_acc": 32.3,
+      "minutes": 1.7852833099999164,
+      "grad_norm_median": 2.5210976600646973,
+      "grad_norm_max": 6.695718288421631,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.722594550743103,
+      "train_acc": 35.556,
+      "test_loss": 1.655481689453125,
+      "test_acc": 38.94,
+      "minutes": 1.7701233233333673,
+      "grad_norm_median": 2.6918747425079346,
+      "grad_norm_max": 27.85980224609375,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.6819319872665406,
+      "train_acc": 37.586,
+      "test_loss": 1.665836474609375,
+      "test_acc": 38.89,
+      "minutes": 1.763047693333283,
+      "grad_norm_median": 3.657832145690918,
+      "grad_norm_max": 198.11546325683594,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.5918898779296875,
+      "train_acc": 41.67,
+      "test_loss": 1.569992822265625,
+      "test_acc": 42.72,
+      "minutes": 1.804209136666638,
+      "grad_norm_median": 2.9219512939453125,
+      "grad_norm_max": 112.8900146484375,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.5256590894317628,
+      "train_acc": 44.482,
+      "test_loss": 1.4988787841796876,
+      "test_acc": 45.4,
+      "minutes": 1.763456221666638,
+      "grad_norm_median": 10.082432746887207,
+      "grad_norm_max": 764.330810546875,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.4681558227920533,
+      "train_acc": 46.704,
+      "test_loss": 1.4469346313476563,
+      "test_acc": 47.0,
+      "minutes": 1.81876943999996,
+      "grad_norm_median": 4.702582359313965,
+      "grad_norm_max": 150.7998809814453,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 9,
+      "train_loss": 1.4138080799102783,
+      "train_acc": 48.634,
+      "test_loss": 1.412348828125,
+      "test_acc": 49.07,
+      "minutes": 1.827654726666636,
+      "grad_norm_median": 3.512343645095825,
+      "grad_norm_max": 53.430057525634766,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 10,
+      "train_loss": 1.3871242261505128,
+      "train_acc": 49.79,
+      "test_loss": 1.4035120361328124,
+      "test_acc": 49.33,
+      "minutes": 1.80451883333335,
+      "grad_norm_median": 3.255387306213379,
+      "grad_norm_max": 26.630502700805664,
+      "steps_skipped": 0
+    }
+  ],
+  "final_test_acc": 49.33,
+  "metrics_init": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.0643051490187645,
+      "object_mass": 1.0385102927684784,
+      "object_anchor_share": 0.20477294921875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.043435617815703154,
+      "object_mass": 0.9369459077715874,
+      "object_anchor_share": 0.202880859375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.05270492238923907,
+      "object_mass": 1.0640479773283005,
+      "object_anchor_share": 0.2041015625
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.04016418056562543,
+      "object_mass": 1.0883372128009796,
+      "object_anchor_share": 0.20526123046875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.04304253309965134,
+      "object_mass": 1.1006766110658646,
+      "object_anchor_share": 0.207275390625
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.06313398526981473,
+      "object_mass": 1.262640342116356,
+      "object_anchor_share": 0.20751953125
+    }
+  ],
+  "metrics_trained": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.35792360827326775,
+      "object_mass": 1.597428247332573,
+      "object_anchor_share": 0.2198486328125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.4159664995968342,
+      "object_mass": 1.4847584962844849,
+      "object_anchor_share": 0.20703125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.5014387629926205,
+      "object_mass": 2.0155040323734283,
+      "object_anchor_share": 0.22882080078125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.4849264957010746,
+      "object_mass": 1.92948617041111,
+      "object_anchor_share": 0.2054443359375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.43223246186971664,
+      "object_mass": 1.8364066630601883,
+      "object_anchor_share": 0.2027587890625
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.420233316719532,
+      "object_mass": 1.8081503808498383,
+      "object_anchor_share": 0.22100830078125
+    }
+  ],
+  "gflops_linear": 5.314371072,
+  "gflops_total": 5.491392,
+  "throughput_img_s": 1277.1118753525434,
+  "peak_train_memory_mb": 4481.90673828125,
+  "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "total_minutes": 17.944099791666545
+}

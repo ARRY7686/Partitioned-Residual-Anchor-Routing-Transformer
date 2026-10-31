@@ -54,8 +54,12 @@ GATE = env("RART_GATE", "ratio")
 # Focus ablations. Defaults reproduce experiment 04.
 COVERAGE_SIDE = env("RART_COVERAGE_SIDE", "auto")   # auto = max(1, isqrt(A // 4)); 0 = no coverage grid
 SUPPRESSION = float(env("RART_SUPPRESSION", "10"))
+SUPPRESSION_PATCHES = float(env("RART_SUPPRESSION_WIDTH", "1.5"))  # Gaussian width, in patches
 HOME_WIDTH = float(env("RART_HOME_WIDTH", "0.35"))  # inf = no home prior
-ASSIGN = env("RART_ASSIGN", "hard")                  # hard (straight-through) or soft
+# hard (straight-through), soft (distance softmax) or balanced (soft, then Sinkhorn
+# iterations so every anchor receives the same total mass, as balanced soft routing does).
+ASSIGN = env("RART_ASSIGN", "hard")
+SINKHORN_ITERS = 3
 
 # Training recipe. Defaults reproduce experiment 04 (no clipping, no warmup, cosine per
 # epoch). Phase B (30 epochs) uses clip 1.0 and a 2-epoch linear warmup: without them,
@@ -80,7 +84,9 @@ EMBED_DIM, DEPTH, HEADS, MLP_RATIO, WINDOW = 384, 6, 6, 3.0, 8
 ANCHOR_DIM, ANCHOR_HEADS = 128, 4
 METRIC_IMAGES = 256 if SMOKE else 1024
 TEST_LAYOUT_SEED = 1234
-ROUTER_KINDS = ("free", "fixed", "moving", "focus")
+# densewin: the anchor model's blocks with the anchor pathway replaced by global attention
+# among all patches (local windows kept), to separate locality from anchor routing.
+ROUTER_KINDS = ("free", "fixed", "moving", "focus", "densewin")
 
 OUT_DIR = env("RART_OUT_DIR", os.path.abspath("results"))
 DATA_DIR = env("RART_DATA_DIR", os.path.abspath("data"))
@@ -354,6 +360,15 @@ class VoronoiRouter(AnchorRouter):
         distance = (positions[:, :, None, :] - self.coords[None, None]).square().sum(dim=-1)
         soft = (-distance / self.tau).softmax(dim=1)
         hard = F.one_hot(soft.argmax(dim=1), self.num_anchors).transpose(1, 2).to(soft.dtype)
+        if ASSIGN == "balanced":
+            # Log-domain Sinkhorn: alternately give every anchor N/A of the mass and every
+            # patch a total of 1, ending on the patch constraint.
+            log_assign = (-distance / self.tau).log_softmax(dim=1)
+            target = math.log(distance.shape[-1] / self.num_anchors)
+            for _ in range(SINKHORN_ITERS):
+                log_assign = log_assign - log_assign.logsumexp(dim=-1, keepdim=True) + target
+                log_assign = log_assign.log_softmax(dim=1)
+            return log_assign.exp(), hard > 0.5
         assign = soft if ASSIGN == "soft" else hard + soft - soft.detach()
         return assign, hard > 0.5
 
@@ -404,7 +419,7 @@ class FocusRouter(VoronoiRouter):
     elsewhere. Each focus anchor also has a spread-out home position with a weak Gaussian
     prior. All anchors then share one exclusive Voronoi partition."""
 
-    SUPPRESSION_WIDTH = 1.5 / GRID
+    SUPPRESSION_WIDTH = SUPPRESSION_PATCHES / GRID
 
     def __init__(self, num_anchors):
         super().__init__(num_anchors, move=True)
@@ -434,7 +449,19 @@ class FocusRouter(VoronoiRouter):
         return torch.cat([coverage, torch.stack(peaks, dim=1)], dim=1), importance
 
 
+class DenseRouter(nn.Module):
+    """No anchors: global self-attention among all patches in place of the anchor pathway."""
+
+    def __init__(self, num_anchors):
+        super().__init__()
+        self.attention = SelfAttention(EMBED_DIM, HEADS)
+
+    def forward(self, x, state):
+        return self.attention(x), state
+
+
 ROUTERS = {
+    "densewin": lambda a: DenseRouter(a),
     "free": lambda a: FreeRouter(a),
     "fixed": lambda a: VoronoiRouter(a, move=False),
     "moving": lambda a: VoronoiRouter(a, move=True),
@@ -508,7 +535,7 @@ class AnchorViT(nn.Module):
         self.head = nn.Linear(EMBED_DIM, NUM_CLASSES)
 
     def routers(self):
-        return [block.router for block in self.blocks]
+        return [block.router for block in self.blocks if isinstance(block.router, AnchorRouter)]
 
     def forward(self, images):
         x = self.patch_embed(images).flatten(2).transpose(1, 2) + self.pos_embed
@@ -777,7 +804,7 @@ def run():
     config = {"kind": KIND, "num_anchors": NUM_ANCHORS if KIND in ROUTER_KINDS else 0, "seed": SEED,
               "epochs": NUM_EPOCHS, "dataset": DATASET, "vit_input": VIT_INPUT, "vit_patch": VIT_PATCH,
               "keep_ratio": KEEP_RATIO, "skip_from": SKIP_FROM, "skip_score": SKIP_SCORE, "gate": GATE,
-              "coverage_side": COVERAGE_SIDE, "suppression": SUPPRESSION, "home_width": HOME_WIDTH,
+              "coverage_side": COVERAGE_SIDE, "suppression": SUPPRESSION, "suppression_width": SUPPRESSION_PATCHES, "home_width": HOME_WIDTH,
               "assign": ASSIGN, "grad_clip": GRAD_CLIP, "warmup_epochs": WARMUP_EPOCHS, "precision": PRECISION, "lr": LR}
     result = {"tag": TAG, **config, "params": params, "history": history,
               "final_test_acc": history[-1]["test_acc"],
