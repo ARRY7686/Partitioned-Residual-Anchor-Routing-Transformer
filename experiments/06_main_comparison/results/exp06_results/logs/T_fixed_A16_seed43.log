@@ -1,0 +1,18 @@
+[T_fixed_A16_seed43] fixed | anchors 16 | seed 43 | epochs 15 | device NVIDIA A100-SXM4-80GB
+[T_fixed_A16_seed43] 11,435,848 parameters
+[T_fixed_A16_seed43] epoch 01/15 | train acc  0.83% | test acc  1.94% | grad norm median 2.57 max 5.31 | skipped steps 0 | 6.03 min
+[T_fixed_A16_seed43] epoch 02/15 | train acc  2.58% | test acc  3.09% | grad norm median 2.80 max 6.58 | skipped steps 0 | 6.03 min
+[T_fixed_A16_seed43] epoch 03/15 | train acc  3.83% | test acc  4.50% | grad norm median 2.85 max 5.81 | skipped steps 0 | 5.83 min
+[T_fixed_A16_seed43] epoch 04/15 | train acc  5.34% | test acc  6.07% | grad norm median 3.03 max 8.15 | skipped steps 0 | 5.18 min
+[T_fixed_A16_seed43] epoch 05/15 | train acc  6.78% | test acc  7.17% | grad norm median 3.34 max 6.59 | skipped steps 0 | 5.27 min
+[T_fixed_A16_seed43] epoch 06/15 | train acc  8.28% | test acc  9.31% | grad norm median 3.70 max 8.00 | skipped steps 0 | 5.27 min
+[T_fixed_A16_seed43] epoch 07/15 | train acc  9.90% | test acc  9.98% | grad norm median 3.98 max 11.22 | skipped steps 0 | 5.27 min
+[T_fixed_A16_seed43] epoch 08/15 | train acc 11.44% | test acc 11.78% | grad norm median 4.30 max 13.06 | skipped steps 0 | 5.27 min
+[T_fixed_A16_seed43] epoch 09/15 | train acc 12.91% | test acc 13.16% | grad norm median 4.68 max 12.80 | skipped steps 0 | 4.78 min
+[T_fixed_A16_seed43] epoch 10/15 | train acc 14.30% | test acc 14.63% | grad norm median 4.98 max 10.72 | skipped steps 0 | 4.23 min
+[T_fixed_A16_seed43] epoch 11/15 | train acc 15.38% | test acc 15.54% | grad norm median 5.35 max 12.98 | skipped steps 0 | 3.94 min
+[T_fixed_A16_seed43] epoch 12/15 | train acc 16.43% | test acc 16.31% | grad norm median 5.63 max 13.29 | skipped steps 0 | 3.95 min
+[T_fixed_A16_seed43] epoch 13/15 | train acc 17.09% | test acc 16.57% | grad norm median 5.93 max 19.81 | skipped steps 0 | 3.86 min
+[T_fixed_A16_seed43] epoch 14/15 | train acc 17.62% | test acc 16.92% | grad norm median 6.10 max 13.76 | skipped steps 0 | 3.82 min
+[T_fixed_A16_seed43] epoch 15/15 | train acc 17.63% | test acc 16.97% | grad norm median 6.15 max 14.32 | skipped steps 0 | 4.26 min
+[T_fixed_A16_seed43] done: 16.97% | 5.49 GFLOPs | 1370 img/s | saved /root/exp06/exp06_results/T_fixed_A16_seed43.json

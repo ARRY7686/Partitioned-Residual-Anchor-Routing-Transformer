@@ -1,0 +1,20 @@
+{
+  "tag": "C_focus_A4",
+  "measure_only": true,
+  "kind": "focus",
+  "num_anchors": 4,
+  "vit_input": 256,
+  "vit_patch": 16,
+  "keep_ratio": 1.0,
+  "skip_score": "importance",
+  "params": 11363472,
+  "batch_size": 128,
+  "train_step_ms": 70.7944268535357,
+  "peak_train_memory_mb": 4243.79052734375,
+  "throughput_img_s": 6207.395011301349,
+  "peak_inference_memory_mb": 765.1591796875,
+  "gflops_linear": 5.293100544,
+  "gflops_total": 5.450454528,
+  "gpu": "NVIDIA A100-SXM4-80GB",
+  "final_test_acc": null
+}

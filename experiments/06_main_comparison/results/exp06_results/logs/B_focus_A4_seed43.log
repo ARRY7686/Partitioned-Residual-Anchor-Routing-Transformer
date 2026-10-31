@@ -1,0 +1,33 @@
+[B_focus_A4_seed43] focus | anchors 4 | seed 43 | epochs 30 | device NVIDIA A100-SXM4-80GB
+[B_focus_A4_seed43] 11,363,472 parameters
+[B_focus_A4_seed43] epoch 01/30 | train acc 16.77% | test acc 23.47% | grad norm median 4.66 max 13.19 | skipped steps 0 | 2.11 min
+[B_focus_A4_seed43] epoch 02/30 | train acc 24.46% | test acc 25.18% | grad norm median 4.22 max 14.79 | skipped steps 0 | 2.11 min
+[B_focus_A4_seed43] epoch 03/30 | train acc 28.89% | test acc 31.76% | grad norm median 3.49 max 7.87 | skipped steps 0 | 2.12 min
+[B_focus_A4_seed43] epoch 04/30 | train acc 33.13% | test acc 35.22% | grad norm median 3.41 max 7.01 | skipped steps 0 | 2.11 min
+[B_focus_A4_seed43] epoch 05/30 | train acc 37.66% | test acc 39.00% | grad norm median 3.57 max 7.58 | skipped steps 0 | 2.13 min
+[B_focus_A4_seed43] epoch 06/30 | train acc 40.81% | test acc 42.20% | grad norm median 3.70 max 7.54 | skipped steps 0 | 2.11 min
+[B_focus_A4_seed43] epoch 07/30 | train acc 43.72% | test acc 45.38% | grad norm median 3.68 max 7.02 | skipped steps 0 | 2.11 min
+[B_focus_A4_seed43] epoch 08/30 | train acc 46.07% | test acc 47.53% | grad norm median 3.78 max 6.94 | skipped steps 0 | 2.11 min
+[B_focus_A4_seed43] epoch 09/30 | train acc 48.34% | test acc 49.82% | grad norm median 3.84 max 6.09 | skipped steps 0 | 2.12 min
+[B_focus_A4_seed43] epoch 10/30 | train acc 50.36% | test acc 50.48% | grad norm median 3.90 max 5.99 | skipped steps 0 | 2.11 min
+[B_focus_A4_seed43] epoch 11/30 | train acc 51.99% | test acc 52.51% | grad norm median 3.97 max 6.08 | skipped steps 0 | 2.11 min
+[B_focus_A4_seed43] epoch 12/30 | train acc 53.58% | test acc 53.17% | grad norm median 4.06 max 8.72 | skipped steps 0 | 2.11 min
+[B_focus_A4_seed43] epoch 13/30 | train acc 55.09% | test acc 54.85% | grad norm median 4.10 max 6.45 | skipped steps 0 | 2.11 min
+[B_focus_A4_seed43] epoch 14/30 | train acc 56.63% | test acc 55.83% | grad norm median 4.23 max 6.57 | skipped steps 0 | 2.12 min
+[B_focus_A4_seed43] epoch 15/30 | train acc 57.76% | test acc 55.90% | grad norm median 4.27 max 6.34 | skipped steps 0 | 2.11 min
+[B_focus_A4_seed43] epoch 16/30 | train acc 58.86% | test acc 58.03% | grad norm median 4.30 max 6.99 | skipped steps 0 | 2.12 min
+[B_focus_A4_seed43] epoch 17/30 | train acc 60.00% | test acc 58.69% | grad norm median 4.41 max 6.56 | skipped steps 0 | 2.59 min
+[B_focus_A4_seed43] epoch 18/30 | train acc 61.06% | test acc 59.52% | grad norm median 4.45 max 6.52 | skipped steps 0 | 3.65 min
+[B_focus_A4_seed43] epoch 19/30 | train acc 61.77% | test acc 60.03% | grad norm median 4.60 max 6.68 | skipped steps 0 | 3.64 min
+[B_focus_A4_seed43] epoch 20/30 | train acc 63.08% | test acc 61.26% | grad norm median 4.69 max 6.07 | skipped steps 0 | 3.64 min
+[B_focus_A4_seed43] epoch 21/30 | train acc 63.91% | test acc 62.31% | grad norm median 4.74 max 7.99 | skipped steps 0 | 3.64 min
+[B_focus_A4_seed43] epoch 22/30 | train acc 65.02% | test acc 62.54% | grad norm median 4.94 max 9.63 | skipped steps 0 | 3.65 min
+[B_focus_A4_seed43] epoch 23/30 | train acc 65.60% | test acc 63.20% | grad norm median 5.00 max 6.83 | skipped steps 0 | 3.62 min
+[B_focus_A4_seed43] epoch 24/30 | train acc 66.11% | test acc 63.42% | grad norm median 5.15 max 6.92 | skipped steps 0 | 3.63 min
+[B_focus_A4_seed43] epoch 25/30 | train acc 66.76% | test acc 63.72% | grad norm median 5.20 max 7.32 | skipped steps 0 | 3.38 min
+[B_focus_A4_seed43] epoch 26/30 | train acc 67.23% | test acc 63.99% | grad norm median 5.29 max 7.27 | skipped steps 0 | 3.31 min
+[B_focus_A4_seed43] epoch 27/30 | train acc 67.93% | test acc 64.64% | grad norm median 5.44 max 7.89 | skipped steps 0 | 3.31 min
+[B_focus_A4_seed43] epoch 28/30 | train acc 68.18% | test acc 64.91% | grad norm median 5.43 max 13.07 | skipped steps 0 | 3.32 min
+[B_focus_A4_seed43] epoch 29/30 | train acc 68.02% | test acc 64.71% | grad norm median 5.51 max 9.18 | skipped steps 0 | 3.39 min
+[B_focus_A4_seed43] epoch 30/30 | train acc 67.94% | test acc 64.96% | grad norm median 5.51 max 8.21 | skipped steps 0 | 3.44 min
+[B_focus_A4_seed43] done: 64.96% | 5.45 GFLOPs | 819 img/s | saved /root/exp06/exp06_results/B_focus_A4_seed43.json

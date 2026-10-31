@@ -649,9 +649,15 @@ Every experiment lives in its own numbered folder under [`experiments/`](experim
 README, its notebook and its results. Experiments 01 and 02 are the work described above; 03–05
 follow on from it:
 
-* **[03 — Anchor collapse across designs](experiments/03_anchor_collapse/).** RART-style, AnchorFormer-style and PaCa-style anchors, a competitive (slot-style) variant and the fixed partition, trained on one shared backbone. Anchors that are the same for every image collapse completely (map similarity ≈ 0.99), image-derived anchors are only partly diverse, and the fixed partition does not collapse and reached the best accuracy in both seeds (45.68% / 46.48%).
+* **[03 — Anchor collapse across designs](experiments/03_anchor_collapse/).** RART-style, AnchorFormer-style and PaCa-style anchors, a competitive (slot-style) variant, the fixed partition and a dense no-anchor reference, trained on one shared backbone. Anchors that are the same for every image collapse completely (map similarity ≈ 0.99), image-derived anchors are only partly diverse, and the fixed partition does not collapse and reached the best accuracy in all three seeds (46.31 ± 0.56%, against 40.93% for the dense pathway).
 * **[04 — Moving anchors](experiments/04_moving_anchors/).** Positional anchors with an exclusive Voronoi partition on Cluttered CIFAR-10 (a small object on a large canvas with distractors). A *focus* design — a quarter of the anchors on a coarse fixed grid for coverage, the rest placed at the peaks of a learned importance map — beat the fixed partition in all 6 paired runs (3 seeds × 4 and 16 anchors): 47.52% vs 46.04% with 4 anchors and 49.84% vs 46.71% with 16 anchors (means), without collapse.
 * **[05 — Compute skipping](experiments/05_compute_skipping/).** Letting 75% of patches skip the feed-forward layers in blocks 3–6 cut compute by 25% (5.31 → 3.96 GFLOPs per image) with no accuracy loss for either `focus` or the fixed partition (single seed). However, random and token-norm selection did as well as the learned importance map, so this does not yet show that learned importance picks better patches.
+* **[06 — Main comparison](experiments/06_main_comparison/).** 102 runs on an A100, 3 seeds each:
+  * 30 epochs on Cluttered CIFAR-10: focus-16 66.82% vs fixed-16 65.29% (paired +1.54, 95% CI [0.53, 2.55]) vs a dense ViT at 256² 61.99% and a ViT on a 128² input 55.05%
+  * Tiny ImageNet canvas (objects at native 64 px): focus 17.68% vs fixed 16.73%, level with the dense ViT (18.25%), 5 points above downsampled ViTs
+  * PVTv2-B0 (75.1%) and ResNet-18 (86.1%) are far ahead in this from-scratch regime
+  * ablations: the home prior matters (−2.6 points), coverage grid neutral, soft assignment diverges in every seed even with clipping
+  * at 256² the anchor models are 1.9–3.1× slower per training step than the dense ViT; learned-importance skipping with a bounded gate diverges, random skipping costs ~0.4 points for 25% fewer FLOPs
 
 See [`experiments/README.md`](experiments/README.md) for an index of all experiments and how to run them.
 
@@ -669,6 +675,8 @@ experiments/
   03_anchor_collapse/            anchor collapse across five anchor designs
   04_moving_anchors/             fixed, moving and focus anchors on Cluttered CIFAR-10
   05_compute_skipping/           FFN skipping guided by the learned importance map
+  06_main_comparison/            baselines, 30-epoch and Tiny ImageNet runs, ablations, cost (A100)
+paper/                           LNCS paper draft (main.tex, refs.bib, figures/)
 ```
 
 Each experiment folder contains a `README.md`, its notebook, and `results/` split into

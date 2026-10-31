@@ -1,0 +1,13 @@
+[A_vit256_seed44] vit | anchors 16 | seed 44 | epochs 10 | device NVIDIA A100-SXM4-80GB
+[A_vit256_seed44] 9,273,226 parameters
+[A_vit256_seed44] epoch 01/10 | train acc 15.71% | test acc 20.16% | grad norm median 2.06 max 16.73 | skipped steps 0 | 1.39 min
+[A_vit256_seed44] epoch 02/10 | train acc 23.39% | test acc 25.51% | grad norm median 2.16 max 3.97 | skipped steps 0 | 1.35 min
+[A_vit256_seed44] epoch 03/10 | train acc 28.17% | test acc 27.37% | grad norm median 2.14 max 4.19 | skipped steps 0 | 1.39 min
+[A_vit256_seed44] epoch 04/10 | train acc 31.23% | test acc 34.18% | grad norm median 2.18 max 3.74 | skipped steps 0 | 1.38 min
+[A_vit256_seed44] epoch 05/10 | train acc 34.48% | test acc 36.42% | grad norm median 2.17 max 3.89 | skipped steps 0 | 1.36 min
+[A_vit256_seed44] epoch 06/10 | train acc 37.96% | test acc 39.18% | grad norm median 2.18 max 4.50 | skipped steps 0 | 1.36 min
+[A_vit256_seed44] epoch 07/10 | train acc 40.70% | test acc 41.25% | grad norm median 2.29 max 3.75 | skipped steps 0 | 1.38 min
+[A_vit256_seed44] epoch 08/10 | train acc 43.21% | test acc 43.01% | grad norm median 2.33 max 4.07 | skipped steps 0 | 1.38 min
+[A_vit256_seed44] epoch 09/10 | train acc 45.24% | test acc 45.78% | grad norm median 2.45 max 3.53 | skipped steps 0 | 1.38 min
+[A_vit256_seed44] epoch 10/10 | train acc 46.38% | test acc 46.26% | grad norm median 2.48 max 3.57 | skipped steps 0 | 1.38 min
+[A_vit256_seed44] done: 46.26% | 5.28 GFLOPs | 2818 img/s | saved /root/exp06/exp06_results/A_vit256_seed44.json

@@ -1,0 +1,31 @@
+PyTorch: 2.11.0+cu128 | device: cuda NVIDIA A100-SXM4-80GB
+Models: ['dense'] | anchors: 16 | epochs: 10 | seed: 44 
+Results file: /root/exp03/dense/step0_results_A16_seed44.json
+Train: (50000, 3, 32, 32) | Test: (10000, 3, 32, 32) | CIFAR root: /root/exp03/dense/data
+dense           12,837,604 parameters
+perceiver       11,272,932 parameters
+competitive     11,272,932 parameters
+anchorformer    10,092,772 parameters
+paca            11,402,308 parameters
+partition       11,272,932 parameters
+
+=== dense | 12,837,604 parameters ===
+dense epoch 01 | train acc 10.64% | test acc 16.38% | 2.27 min
+dense epoch 02 | train acc 19.02% | test acc 21.71% | 2.22 min
+dense epoch 03 | train acc 24.69% | test acc 25.79% | 2.18 min
+dense epoch 04 | train acc 29.11% | test acc 29.23% | 2.23 min
+dense epoch 05 | train acc 34.12% | test acc 32.09% | 2.23 min
+dense epoch 06 | train acc 39.26% | test acc 35.32% | 2.21 min
+dense epoch 07 | train acc 44.72% | test acc 37.51% | 2.22 min
+dense epoch 08 | train acc 50.61% | test acc 39.26% | 2.21 min
+dense epoch 09 | train acc 56.06% | test acc 40.16% | 2.23 min
+dense epoch 10 | train acc 59.77% | test acc 40.43% | 2.21 min
+Saved: /root/exp03/dense/step0_results_A16_seed44.json
+| Model | Params | Final test acc | When | Map sim (mean / last block) | Effective patches (of 196) | Summary sim | Anchor spread |
+|---|---:|---:|---|---:|---:|---:|---:|
+| dense | 12.84M |  | init | — | — | — | — |
+|  |  | 40.43% | trained | — | — | — | — |
+Traceback (most recent call last):
+  File "/root/exp03/anchor_collapse.py", line 552, in <module>
+    import matplotlib
+ModuleNotFoundError: No module named 'matplotlib'

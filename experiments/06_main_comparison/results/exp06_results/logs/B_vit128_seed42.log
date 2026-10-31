@@ -1,0 +1,33 @@
+[B_vit128_seed42] vit | anchors 16 | seed 42 | epochs 30 | device NVIDIA A100-SXM4-80GB
+[B_vit128_seed42] 9,199,498 parameters
+[B_vit128_seed42] epoch 01/30 | train acc 18.05% | test acc 26.55% | grad norm median 4.15 max 10.47 | skipped steps 0 | 1.15 min
+[B_vit128_seed42] epoch 02/30 | train acc 27.07% | test acc 29.53% | grad norm median 4.19 max 13.49 | skipped steps 0 | 1.12 min
+[B_vit128_seed42] epoch 03/30 | train acc 30.63% | test acc 29.63% | grad norm median 3.38 max 6.66 | skipped steps 0 | 1.06 min
+[B_vit128_seed42] epoch 04/30 | train acc 33.69% | test acc 35.91% | grad norm median 3.23 max 5.64 | skipped steps 0 | 1.02 min
+[B_vit128_seed42] epoch 05/30 | train acc 35.74% | test acc 36.56% | grad norm median 3.15 max 5.09 | skipped steps 0 | 1.01 min
+[B_vit128_seed42] epoch 06/30 | train acc 37.60% | test acc 38.47% | grad norm median 3.11 max 4.42 | skipped steps 0 | 1.02 min
+[B_vit128_seed42] epoch 07/30 | train acc 39.53% | test acc 41.65% | grad norm median 3.06 max 4.92 | skipped steps 0 | 1.01 min
+[B_vit128_seed42] epoch 08/30 | train acc 40.76% | test acc 42.25% | grad norm median 3.09 max 4.62 | skipped steps 0 | 1.02 min
+[B_vit128_seed42] epoch 09/30 | train acc 42.07% | test acc 42.98% | grad norm median 3.05 max 4.02 | skipped steps 0 | 1.02 min
+[B_vit128_seed42] epoch 10/30 | train acc 43.24% | test acc 44.17% | grad norm median 3.15 max 4.17 | skipped steps 0 | 1.02 min
+[B_vit128_seed42] epoch 11/30 | train acc 44.34% | test acc 45.30% | grad norm median 3.14 max 4.27 | skipped steps 0 | 1.00 min
+[B_vit128_seed42] epoch 12/30 | train acc 45.51% | test acc 46.46% | grad norm median 3.21 max 4.58 | skipped steps 0 | 0.98 min
+[B_vit128_seed42] epoch 13/30 | train acc 46.52% | test acc 47.71% | grad norm median 3.28 max 4.44 | skipped steps 0 | 0.97 min
+[B_vit128_seed42] epoch 14/30 | train acc 47.57% | test acc 47.44% | grad norm median 3.35 max 4.93 | skipped steps 0 | 0.86 min
+[B_vit128_seed42] epoch 15/30 | train acc 48.38% | test acc 48.64% | grad norm median 3.40 max 5.38 | skipped steps 0 | 0.69 min
+[B_vit128_seed42] epoch 16/30 | train acc 49.14% | test acc 48.98% | grad norm median 3.47 max 4.83 | skipped steps 0 | 0.79 min
+[B_vit128_seed42] epoch 17/30 | train acc 49.91% | test acc 50.99% | grad norm median 3.55 max 4.81 | skipped steps 0 | 0.81 min
+[B_vit128_seed42] epoch 18/30 | train acc 50.89% | test acc 51.03% | grad norm median 3.64 max 5.06 | skipped steps 0 | 0.81 min
+[B_vit128_seed42] epoch 19/30 | train acc 51.73% | test acc 51.41% | grad norm median 3.73 max 5.20 | skipped steps 0 | 0.82 min
+[B_vit128_seed42] epoch 20/30 | train acc 52.56% | test acc 52.50% | grad norm median 3.89 max 5.38 | skipped steps 0 | 0.85 min
+[B_vit128_seed42] epoch 21/30 | train acc 52.83% | test acc 52.75% | grad norm median 3.95 max 5.05 | skipped steps 0 | 0.85 min
+[B_vit128_seed42] epoch 22/30 | train acc 53.77% | test acc 53.87% | grad norm median 4.10 max 5.19 | skipped steps 0 | 0.85 min
+[B_vit128_seed42] epoch 23/30 | train acc 54.26% | test acc 53.78% | grad norm median 4.18 max 5.37 | skipped steps 0 | 0.85 min
+[B_vit128_seed42] epoch 24/30 | train acc 54.82% | test acc 54.02% | grad norm median 4.27 max 5.51 | skipped steps 0 | 0.85 min
+[B_vit128_seed42] epoch 25/30 | train acc 54.98% | test acc 54.22% | grad norm median 4.38 max 7.23 | skipped steps 0 | 0.85 min
+[B_vit128_seed42] epoch 26/30 | train acc 55.38% | test acc 54.64% | grad norm median 4.37 max 6.96 | skipped steps 0 | 0.85 min
+[B_vit128_seed42] epoch 27/30 | train acc 55.76% | test acc 54.54% | grad norm median 4.50 max 6.33 | skipped steps 0 | 0.86 min
+[B_vit128_seed42] epoch 28/30 | train acc 55.75% | test acc 54.95% | grad norm median 4.53 max 7.11 | skipped steps 0 | 0.88 min
+[B_vit128_seed42] epoch 29/30 | train acc 56.08% | test acc 54.81% | grad norm median 4.54 max 5.98 | skipped steps 0 | 0.88 min
+[B_vit128_seed42] epoch 30/30 | train acc 56.08% | test acc 54.75% | grad norm median 4.56 max 6.43 | skipped steps 0 | 0.88 min
+[B_vit128_seed42] done: 54.75% | 1.21 GFLOPs | 4991 img/s | saved /root/exp06/exp06_results/B_vit128_seed42.json

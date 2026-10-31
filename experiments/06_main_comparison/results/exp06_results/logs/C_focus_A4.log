@@ -1,0 +1,2 @@
+[C_focus_A4] focus | anchors 4 | seed 42 | epochs 0 | device NVIDIA A100-SXM4-80GB
+[C_focus_A4] measured: 5.45 GFLOPs | 70.8 ms/step | 6207 img/s | 4244 MB

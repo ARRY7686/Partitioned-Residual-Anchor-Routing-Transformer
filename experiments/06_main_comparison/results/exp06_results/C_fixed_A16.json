@@ -1,0 +1,20 @@
+{
+  "tag": "C_fixed_A16",
+  "measure_only": true,
+  "kind": "fixed",
+  "num_anchors": 16,
+  "vit_input": 256,
+  "vit_patch": 16,
+  "keep_ratio": 1.0,
+  "skip_score": "importance",
+  "params": 11362698,
+  "batch_size": 128,
+  "train_step_ms": 60.682267002994195,
+  "peak_train_memory_mb": 4313.57373046875,
+  "throughput_img_s": 6408.329495214886,
+  "peak_inference_memory_mb": 765.8818359375,
+  "gflops_linear": 5.313191424,
+  "gflops_total": 5.490138624,
+  "gpu": "NVIDIA A100-SXM4-80GB",
+  "final_test_acc": null
+}

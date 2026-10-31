@@ -1,0 +1,18 @@
+[diag_fixed43_lr1.25e-4] fixed | anchors 16 | seed 43 | epochs 30 | device NVIDIA A100-SXM4-80GB
+[diag_fixed43_lr1.25e-4] 11,362,698 parameters
+[diag_fixed43_lr1.25e-4] epoch 01/30 | train acc 16.73% | test acc 22.96% | grad norm median 4.36 max 14.75 | skipped steps 0 | 2.31 min
+[diag_fixed43_lr1.25e-4] epoch 02/30 | train acc 24.89% | test acc 27.74% | grad norm median 4.12 max 13.21 | skipped steps 0 | 2.31 min
+[diag_fixed43_lr1.25e-4] epoch 03/30 | train acc 30.52% | test acc 32.43% | grad norm median 3.38 max 7.87 | skipped steps 0 | 2.31 min
+[diag_fixed43_lr1.25e-4] epoch 04/30 | train acc 35.39% | test acc 36.49% | grad norm median 3.31 max 6.30 | skipped steps 0 | 2.31 min
+[diag_fixed43_lr1.25e-4] epoch 05/30 | train acc 39.43% | test acc 41.14% | grad norm median 3.42 max 5.85 | skipped steps 0 | 2.31 min
+[diag_fixed43_lr1.25e-4] epoch 06/30 | train acc 42.49% | test acc 44.30% | grad norm median 3.47 max 5.56 | skipped steps 0 | 2.31 min
+[diag_fixed43_lr1.25e-4] epoch 07/30 | train acc 44.92% | test acc 46.04% | grad norm median 3.49 max 6.20 | skipped steps 0 | 2.31 min
+[diag_fixed43_lr1.25e-4] epoch 08/30 | train acc 47.29% | test acc 48.17% | grad norm median 3.60 max 5.90 | skipped steps 0 | 2.31 min
+[diag_fixed43_lr1.25e-4] epoch 09/30 | train acc 49.57% | test acc 50.07% | grad norm median 3.74 max 5.72 | skipped steps 0 | 2.31 min
+[diag_fixed43_lr1.25e-4] epoch 10/30 | train acc 51.19% | test acc 52.19% | grad norm median 3.72 max 5.83 | skipped steps 0 | 2.31 min
+[diag_fixed43_lr1.25e-4] epoch 11/30 | train acc 52.82% | test acc 53.55% | grad norm median 3.82 max 5.87 | skipped steps 0 | 2.31 min
+[diag_fixed43_lr1.25e-4] epoch 12/30 | train acc 54.49% | test acc 52.85% | grad norm median 3.83 max 6.08 | skipped steps 0 | 2.31 min
+[diag_fixed43_lr1.25e-4] epoch 13/30 | train acc 56.07% | test acc 55.37% | grad norm median 3.95 max 5.80 | skipped steps 0 | 2.31 min
+[diag_fixed43_lr1.25e-4] epoch 14/30 | train acc 57.50% | test acc 56.98% | grad norm median 4.06 max 5.37 | skipped steps 0 | 2.31 min
+[diag_fixed43_lr1.25e-4] epoch 15/30 | train acc 58.40% | test acc 56.54% | grad norm median 4.09 max 6.14 | skipped steps 0 | 2.31 min
+[diag_fixed43_lr1.25e-4] epoch 16/30 | train acc 59.49% | test acc 59.39% | grad norm median 4.12 max 6.04 | skipped steps 0 | 2.31 min

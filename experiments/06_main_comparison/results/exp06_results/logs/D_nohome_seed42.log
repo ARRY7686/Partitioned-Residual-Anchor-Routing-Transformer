@@ -1,0 +1,13 @@
+[D_nohome_seed42] focus | anchors 16 | seed 42 | epochs 10 | device NVIDIA A100-SXM4-80GB
+[D_nohome_seed42] 11,365,008 parameters
+[D_nohome_seed42] epoch 01/10 | train acc 15.69% | test acc 19.16% | grad norm median 2.04 max 12.33 | skipped steps 0 | 4.15 min
+[D_nohome_seed42] epoch 02/10 | train acc 21.67% | test acc 25.22% | grad norm median 2.01 max 4.29 | skipped steps 0 | 4.01 min
+[D_nohome_seed42] epoch 03/10 | train acc 27.41% | test acc 29.64% | grad norm median 2.02 max 4.30 | skipped steps 0 | 3.95 min
+[D_nohome_seed42] epoch 04/10 | train acc 31.28% | test acc 33.81% | grad norm median 2.02 max 3.45 | skipped steps 0 | 3.89 min
+[D_nohome_seed42] epoch 05/10 | train acc 35.40% | test acc 36.24% | grad norm median 2.01 max 3.51 | skipped steps 0 | 3.89 min
+[D_nohome_seed42] epoch 06/10 | train acc 38.84% | test acc 39.76% | grad norm median 2.09 max 3.36 | skipped steps 0 | 4.50 min
+[D_nohome_seed42] epoch 07/10 | train acc 42.07% | test acc 42.79% | grad norm median 2.09 max 3.50 | skipped steps 0 | 4.85 min
+[D_nohome_seed42] epoch 08/10 | train acc 44.61% | test acc 44.15% | grad norm median 2.15 max 3.41 | skipped steps 0 | 5.07 min
+[D_nohome_seed42] epoch 09/10 | train acc 46.25% | test acc 45.79% | grad norm median 2.14 max 3.56 | skipped steps 0 | 5.44 min
+[D_nohome_seed42] epoch 10/10 | train acc 47.41% | test acc 46.68% | grad norm median 2.15 max 3.21 | skipped steps 0 | 5.44 min
+[D_nohome_seed42] done: 46.68% | 5.49 GFLOPs | 474 img/s | saved /root/exp06/exp06_results/D_nohome_seed42.json

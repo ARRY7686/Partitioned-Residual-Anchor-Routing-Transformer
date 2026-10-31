@@ -1,0 +1,2 @@
+[C_vit64p8] vit | anchors 16 | seed 42 | epochs 0 | device NVIDIA A100-SXM4-80GB
+[C_vit64p8] measured: 1.18 GFLOPs | 20.3 ms/step | 43496 img/s | 1163 MB

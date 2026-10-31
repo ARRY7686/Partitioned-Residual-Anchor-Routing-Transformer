@@ -1,0 +1,7 @@
+[B_focus_A4_seed43] focus | anchors 4 | seed 43 | epochs 30 | device NVIDIA A100-SXM4-80GB
+[B_focus_A4_seed43] 11,363,472 parameters
+[B_focus_A4_seed43] epoch 01/30 | train acc 16.80% | test acc 22.97% | grad norm median 4.69 max 13.70 | skipped steps 0 | 2.11 min
+[B_focus_A4_seed43] epoch 02/30 | train acc 24.26% | test acc 26.55% | grad norm median 4.22 max 11.48 | skipped steps 0 | 2.12 min
+[B_focus_A4_seed43] epoch 03/30 | train acc 28.82% | test acc 32.00% | grad norm median 3.59 max 7.95 | skipped steps 0 | 2.12 min
+[B_focus_A4_seed43] epoch 04/30 | train acc 33.26% | test acc 34.02% | grad norm median 3.50 max 6.82 | skipped steps 0 | 2.11 min
+[B_focus_A4_seed43] epoch 05/30 | train acc 37.64% | test acc 38.37% | grad norm median 3.64 max 6.00 | skipped steps 0 | 2.12 min

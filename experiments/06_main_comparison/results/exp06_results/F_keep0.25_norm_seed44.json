@@ -1,0 +1,218 @@
+{
+  "tag": "F_keep0.25_norm_seed44",
+  "kind": "focus",
+  "num_anchors": 16,
+  "seed": 44,
+  "epochs": 10,
+  "dataset": "cifar10",
+  "vit_input": 256,
+  "vit_patch": 16,
+  "keep_ratio": 0.25,
+  "skip_from": 2,
+  "skip_score": "norm",
+  "gate": "ratio",
+  "coverage_side": "auto",
+  "suppression": 10.0,
+  "home_width": 0.35,
+  "assign": "hard",
+  "grad_clip": 0.0,
+  "warmup_epochs": 0.0,
+  "precision": "bf16",
+  "lr": 0.0003,
+  "params": 11365008,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.200448320388794,
+      "train_acc": 16.71,
+      "test_loss": 2.0757234375,
+      "test_acc": 20.94,
+      "minutes": 7.884152136516059,
+      "grad_norm_median": 2.1720163822174072,
+      "grad_norm_max": 14.723097801208496,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.994863125076294,
+      "train_acc": 24.068,
+      "test_loss": 1.9265435546875,
+      "test_acc": 25.75,
+      "minutes": 9.623442695916554,
+      "grad_norm_median": 2.1819241046905518,
+      "grad_norm_max": 7.431792736053467,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.841371035194397,
+      "train_acc": 30.612,
+      "test_loss": 1.8117423828125,
+      "test_acc": 31.25,
+      "minutes": 9.106203521299175,
+      "grad_norm_median": 2.0958399772644043,
+      "grad_norm_max": 4.738658905029297,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.737029560623169,
+      "train_acc": 35.13,
+      "test_loss": 1.7289099609375,
+      "test_acc": 36.07,
+      "minutes": 9.829444170000109,
+      "grad_norm_median": 2.123814821243286,
+      "grad_norm_max": 3.8733346462249756,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.6429928467559813,
+      "train_acc": 39.462,
+      "test_loss": 1.615088525390625,
+      "test_acc": 40.49,
+      "minutes": 9.835072046465939,
+      "grad_norm_median": 2.150927782058716,
+      "grad_norm_max": 3.4446821212768555,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.5591338818359375,
+      "train_acc": 42.932,
+      "test_loss": 1.5315952514648437,
+      "test_acc": 43.73,
+      "minutes": 8.360582163000556,
+      "grad_norm_median": 2.1281754970550537,
+      "grad_norm_max": 3.5800082683563232,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.4845117309188842,
+      "train_acc": 46.254,
+      "test_loss": 1.4618992919921876,
+      "test_acc": 46.95,
+      "minutes": 7.305765878816601,
+      "grad_norm_median": 2.2260642051696777,
+      "grad_norm_max": 3.2126073837280273,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.4242536376953125,
+      "train_acc": 48.622,
+      "test_loss": 1.4308345458984375,
+      "test_acc": 47.79,
+      "minutes": 6.2557112950986875,
+      "grad_norm_median": 2.2778754234313965,
+      "grad_norm_max": 4.008636474609375,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 9,
+      "train_loss": 1.372362783241272,
+      "train_acc": 50.51,
+      "test_loss": 1.3811463134765625,
+      "test_acc": 49.47,
+      "minutes": 6.696956502750981,
+      "grad_norm_median": 2.343977212905884,
+      "grad_norm_max": 3.2965950965881348,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 10,
+      "train_loss": 1.3438510705566407,
+      "train_acc": 51.7,
+      "test_loss": 1.3635262451171875,
+      "test_acc": 50.82,
+      "minutes": 6.920406496200788,
+      "grad_norm_median": 2.3813538551330566,
+      "grad_norm_max": 3.2798829078674316,
+      "steps_skipped": 0
+    }
+  ],
+  "final_test_acc": 50.82,
+  "metrics_init": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.08669254742562771,
+      "object_mass": 1.2963305413722992,
+      "object_anchor_share": 0.20709228515625
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.06737909512594342,
+      "object_mass": 1.2012826949357986,
+      "object_anchor_share": 0.2059326171875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.07480254396796227,
+      "object_mass": 1.2575380206108093,
+      "object_anchor_share": 0.204345703125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.0567237981595099,
+      "object_mass": 0.9870656579732895,
+      "object_anchor_share": 0.2025146484375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.07342103589326143,
+      "object_mass": 1.1847418695688248,
+      "object_anchor_share": 0.208740234375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.04669677559286356,
+      "object_mass": 1.2552443146705627,
+      "object_anchor_share": 0.2110595703125
+    }
+  ],
+  "metrics_trained": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.48788731172680855,
+      "object_mass": 1.5344342440366745,
+      "object_anchor_share": 0.21405029296875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.563806526362896,
+      "object_mass": 2.0022046267986298,
+      "object_anchor_share": 0.23675537109375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.3330219015479088,
+      "object_mass": 1.713952586054802,
+      "object_anchor_share": 0.19598388671875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.4143183007836342,
+      "object_mass": 2.0112012773752213,
+      "object_anchor_share": 0.215087890625
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.4626775085926056,
+      "object_mass": 1.9081594496965408,
+      "object_anchor_share": 0.20428466796875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.45114031806588173,
+      "object_mass": 1.769516184926033,
+      "object_anchor_share": 0.21380615234375
+    }
+  ],
+  "gflops_linear": 3.955416576,
+  "gflops_total": 4.132437504,
+  "throughput_img_s": 361.20740810485734,
+  "peak_train_memory_mb": 4025.10595703125,
+  "gpu": "NVIDIA A100-SXM4-80GB",
+  "total_minutes": 81.81773690606545
+}

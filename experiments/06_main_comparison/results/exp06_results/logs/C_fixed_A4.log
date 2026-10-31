@@ -1,0 +1,2 @@
+[C_fixed_A4] fixed | anchors 4 | seed 42 | epochs 0 | device NVIDIA A100-SXM4-80GB
+[C_fixed_A4] measured: 5.45 GFLOPs | 59.5 ms/step | 6704 img/s | 4081 MB

@@ -1,0 +1,218 @@
+{
+  "tag": "D2_full_clip_seed44",
+  "kind": "focus",
+  "num_anchors": 16,
+  "seed": 44,
+  "epochs": 10,
+  "dataset": "cifar10",
+  "vit_input": 256,
+  "vit_patch": 16,
+  "keep_ratio": 1.0,
+  "skip_from": 2,
+  "skip_score": "importance",
+  "gate": "ratio",
+  "coverage_side": "auto",
+  "suppression": 10.0,
+  "home_width": 0.35,
+  "assign": "hard",
+  "grad_clip": 1.0,
+  "warmup_epochs": 2.0,
+  "precision": "bf16",
+  "lr": 0.0003,
+  "params": 11365008,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.161271797027588,
+      "train_acc": 17.666,
+      "test_loss": 2.0126609375,
+      "test_acc": 23.58,
+      "minutes": 2.601722639700165,
+      "grad_norm_median": 3.9749011993408203,
+      "grad_norm_max": 15.61551570892334,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.9589903516387939,
+      "train_acc": 25.522,
+      "test_loss": 1.9269052734375,
+      "test_acc": 25.92,
+      "minutes": 2.6071035059168937,
+      "grad_norm_median": 3.143657922744751,
+      "grad_norm_max": 8.617891311645508,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.839414267539978,
+      "train_acc": 30.178,
+      "test_loss": 1.79770751953125,
+      "test_acc": 32.08,
+      "minutes": 2.5797098794505775,
+      "grad_norm_median": 2.5731914043426514,
+      "grad_norm_max": 5.688346862792969,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.722268144493103,
+      "train_acc": 35.648,
+      "test_loss": 1.6746191650390625,
+      "test_acc": 38.23,
+      "minutes": 2.6000672130826086,
+      "grad_norm_median": 2.425266981124878,
+      "grad_norm_max": 4.72202730178833,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.619260205116272,
+      "train_acc": 40.186,
+      "test_loss": 1.6021395385742188,
+      "test_acc": 41.03,
+      "minutes": 2.598965953917165,
+      "grad_norm_median": 2.425509452819824,
+      "grad_norm_max": 3.8831217288970947,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.5248622827529907,
+      "train_acc": 44.342,
+      "test_loss": 1.4773516845703125,
+      "test_acc": 45.97,
+      "minutes": 2.5641864076994048,
+      "grad_norm_median": 2.4198689460754395,
+      "grad_norm_max": 3.75407338142395,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.431058995437622,
+      "train_acc": 48.112,
+      "test_loss": 1.3999834411621093,
+      "test_acc": 48.75,
+      "minutes": 1.85422222923371,
+      "grad_norm_median": 2.4448866844177246,
+      "grad_norm_max": 4.395796775817871,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.3517584534454345,
+      "train_acc": 51.552,
+      "test_loss": 1.3491207824707032,
+      "test_acc": 50.93,
+      "minutes": 1.8999925846990664,
+      "grad_norm_median": 2.545413017272949,
+      "grad_norm_max": 4.448024272918701,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 9,
+      "train_loss": 1.2883566919326783,
+      "train_acc": 53.562,
+      "test_loss": 1.2937894287109375,
+      "test_acc": 53.49,
+      "minutes": 2.129067152067243,
+      "grad_norm_median": 2.5720691680908203,
+      "grad_norm_max": 3.555880546569824,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 10,
+      "train_loss": 1.25861969291687,
+      "train_acc": 54.776,
+      "test_loss": 1.2831944702148437,
+      "test_acc": 53.82,
+      "minutes": 2.1330039431340992,
+      "grad_norm_median": 2.601855754852295,
+      "grad_norm_max": 4.632810592651367,
+      "steps_skipped": 0
+    }
+  ],
+  "final_test_acc": 53.82,
+  "metrics_init": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.08682290092110634,
+      "object_mass": 1.2976659387350082,
+      "object_anchor_share": 0.2071533203125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.06748827314004302,
+      "object_mass": 1.2015403509140015,
+      "object_anchor_share": 0.20574951171875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.07483249809592962,
+      "object_mass": 1.2594651132822037,
+      "object_anchor_share": 0.20452880859375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.05696314061060548,
+      "object_mass": 0.9989979863166809,
+      "object_anchor_share": 0.20257568359375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.06794839538633823,
+      "object_mass": 1.1510693728923798,
+      "object_anchor_share": 0.20721435546875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.05183692276477814,
+      "object_mass": 1.3114887475967407,
+      "object_anchor_share": 0.21136474609375
+    }
+  ],
+  "metrics_trained": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.32862313464283943,
+      "object_mass": 1.5594438016414642,
+      "object_anchor_share": 0.20672607421875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.5637725219130516,
+      "object_mass": 1.7747149616479874,
+      "object_anchor_share": 0.22320556640625
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.4610647186636925,
+      "object_mass": 1.9912261366844177,
+      "object_anchor_share": 0.240234375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.4562581554055214,
+      "object_mass": 1.9820044189691544,
+      "object_anchor_share": 0.2127685546875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.5984820276498795,
+      "object_mass": 1.9514766037464142,
+      "object_anchor_share": 0.21142578125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.4920705668628216,
+      "object_mass": 2.405977487564087,
+      "object_anchor_share": 0.2203369140625
+    }
+  ],
+  "gflops_linear": 5.314371072,
+  "gflops_total": 5.491392,
+  "throughput_img_s": 1296.1997265716755,
+  "peak_train_memory_mb": 4522.419921875,
+  "gpu": "NVIDIA A100-SXM4-80GB",
+  "total_minutes": 23.568041508900933
+}

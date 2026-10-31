@@ -1,0 +1,87 @@
+50 jobs in phases ['A', 'B', 'D', 'F']: 0 done, 50 to run on GPUs [0], 6 per GPU
+Estimated GPU time left: 26.8 h (T4 speed; ~26.8 h wall clock on T4 x1)
+[ 1.04 h] GPU 0 done B_fixed_A16_seed42: 65.33% in 63 min (1/50)
+[ 1.05 h] GPU 0 done B_fixed_A16_seed43: 66.20% in 63 min (2/50)
+[ 1.37 h] GPU 0 done B_focus_A4_seed42: 64.58% in 82 min (3/50)
+[ 1.37 h] GPU 0 done B_focus_A4_seed43: 64.96% in 82 min (4/50)
+[ 1.87 h] GPU 0 done B_vit256_seed42: 62.53% in 30 min (5/50)
+[ 2.35 h] GPU 0 done B_vit256_seed43: 61.99% in 29 min (6/50)
+[ 2.36 h] GPU 0 done B_focus_A16_seed43: 67.27% in 142 min (7/50)
+[ 2.38 h] GPU 0 done B_focus_A16_seed42: 67.14% in 143 min (8/50)
+[ 2.79 h] GPU 0 done B_vit256_seed44: 61.46% in 27 min (9/50)
+[ 2.87 h] GPU 0 done B_fixed_A16_seed44: 64.33% in 91 min (10/50)
+[ 2.90 h] GPU 0 done B_focus_A4_seed44: 64.47% in 111 min (11/50)
+[ 3.05 h] GPU 0 done D_coverage3x3_seed42: 48.77% in 40 min (12/50)
+[ 3.21 h] GPU 0 done D_nocoverage_seed42: 49.31% in 51 min (13/50)
+[ 3.31 h] GPU 0 done D_nosuppression_seed42: 49.34% in 31 min (14/50)
+[ 3.63 h] GPU 0 done D_nohome_seed42: 46.68% in 46 min (15/50)
+[ 3.64 h] GPU 0 done B_focus_A16_seed44: 66.06% in 156 min (16/50)
+[ 3.66 h] GPU 0 done D_softassign_seed42: 14.34% in 46 min (17/50)
+[ 3.95 h] GPU 0 done D_coverage3x3_seed43: 50.27% in 44 min (18/50)
+[ 3.99 h] GPU 0 done D_nosuppression_seed43: 13.25% in 41 min (19/50)
+[ 4.07 h] GPU 0 done D_nocoverage_seed43: 49.82% in 61 min (20/50)
+[ 4.90 h] GPU 0 done D_nohome_seed43: 48.57% in 76 min (21/50)
+[ 4.93 h] GPU 0 done D_softassign_seed43: 36.17% in 78 min (22/50)
+[ 5.04 h] GPU 0 done D_nosuppression_seed44: 48.89% in 63 min (23/50)
+[ 5.16 h] GPU 0 done D_coverage3x3_seed44: 49.17% in 72 min (24/50)
+[ 5.19 h] GPU 0 done D_nocoverage_seed44: 49.77% in 92 min (25/50)
+[ 5.44 h] GPU 0 done D_nohome_seed44: 46.43% in 82 min (26/50)
+[ 6.22 h] GPU 0 done D_softassign_seed44: 10.00% in 79 min (27/50)
+[ 6.29 h] GPU 0 done F_keep0.25_importance-bounded_seed42: 15.67% in 81 min (28/50)
+[ 6.38 h] GPU 0 done F_keep0.25_importance-bounded_seed43: 28.50% in 80 min (29/50)
+[ 6.49 h] GPU 0 done F_keep0.25_importance-bounded_seed44: 14.27% in 80 min (30/50)
+[ 6.52 h] GPU 0 done F_keep0.5_importance-bounded_seed42: 15.09% in 80 min (31/50)
+[ 6.71 h] GPU 0 done A_vit256_seed42: 47.02% in 13 min (32/50)
+[ 6.76 h] GPU 0 done F_keep0.25_random_seed43: 50.15% in 79 min (33/50)
+[ 6.94 h] GPU 0 done A_vit256_seed43: 46.95% in 14 min (34/50)
+[ 6.98 h] GPU 0 done A_pvt_seed42: 71.85% in 28 min (35/50)
+[ 7.17 h] GPU 0 done A_vit256_seed44: 46.26% in 14 min (36/50)
+[ 7.22 h] GPU 0 done A_pvt_seed43: 71.52% in 28 min (37/50)
+[ 7.41 h] GPU 0 done A_pvt_seed44: 72.12% in 25 min (38/50)
+[ 7.58 h] GPU 0 done F_keep0.25_random_seed44: 46.76% in 82 min (39/50)
+[ 7.63 h] GPU 0 done B_vit128_seed42: 54.75% in 28 min (40/50)
+[ 7.66 h] GPU 0 done F_keep0.25_norm_seed43: 52.16% in 82 min (41/50)
+[ 7.67 h] GPU 0 done B_vit128_seed43: 55.18% in 27 min (42/50)
+[ 7.73 h] GPU 0 done A_vit128_seed42: 43.21% in 9 min (43/50)
+[ 7.75 h] GPU 0 done F_keep0.25_norm_seed44: 50.82% in 82 min (44/50)
+[ 7.78 h] GPU 0 done A_vit64p8_seed42: 42.75% in 9 min (45/50)
+[ 7.82 h] GPU 0 done A_vit128_seed43: 43.41% in 9 min (46/50)
+[ 7.82 h] GPU 0 done A_vit64p8_seed43: 42.49% in 9 min (47/50)
+[ 7.84 h] GPU 0 done B_vit128_seed44: 55.22% in 26 min (48/50)
+[ 7.86 h] GPU 0 done A_vit128_seed44: 42.97% in 8 min (49/50)
+[ 7.88 h] GPU 0 done A_vit64p8_seed44: 41.94% in 8 min (50/50)
+
+Finished 50, failed 0, not started (time budget) 0 in 7.88 h
+| Config | Seeds | Epochs | Params | Test acc (mean ± std) | GFLOPs (all) | GFLOPs (linear) | Throughput (img/s)* | Peak train memory (MB) |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| A_pvt | 3 | 10 | 3.41M | 71.83 ± 0.30 | 1.51 | 1.38 | 1843 | 4937 |
+| A_vit128 | 3 | 10 | 9.20M | 43.20 ± 0.22 | 1.21 | 1.17 | 5488 | 1174 |
+| A_vit256 | 3 | 10 | 9.27M | 46.74 ± 0.42 | 5.28 | 4.68 | 2885 | 3111 |
+| A_vit64p8 | 3 | 10 | 8.98M | 42.39 ± 0.41 | 1.18 | 1.14 | 5883 | 1163 |
+| B_fixed_A16 | 3 | 30 | 11.36M | 65.29 ± 0.94 | 5.49 | 5.31 | 1200 | 4315 |
+| B_focus_A16 | 3 | 30 | 11.37M | 66.82 ± 0.66 | 5.49 | 5.31 | 542 | 4529 |
+| B_focus_A4 | 3 | 30 | 11.36M | 64.67 ± 0.26 | 5.45 | 5.29 | 922 | 4245 |
+| B_pvt | 3 | 30 | 3.41M | 75.07 ± 0.25 | 1.51 | 1.38 | 1751 | 4935 |
+| B_resnet18_lr1.25e-4 | 1 | 30 | 11.18M | 75.02 | 4.74 | 4.74 | 2537 | 2504 |
+| B_resnet18_lr1e-3 | 1 | 30 | 11.18M | 85.85 | 4.74 | 4.74 | 3172 | 2504 |
+| B_vit128 | 3 | 30 | 9.20M | 55.05 ± 0.26 | 1.21 | 1.17 | 5256 | 1174 |
+| B_vit256 | 3 | 30 | 9.27M | 61.99 ± 0.54 | 5.28 | 4.68 | 4154 | 3111 |
+| D2_full_clip | 1 | 10 | 11.37M | 53.68 | 5.49 | 5.31 | 329 | 4522 |
+| D2_nosuppression_clip | 3 | 10 | 11.37M | 53.57 ± 0.43 | 5.49 | 5.31 | 523 | 4505 |
+| D2_softassign_clip | 3 | 10 | 11.37M | 10.00 ± 0.00 | 5.49 | 5.31 | 338 | 4517 |
+| D_coverage3x3 | 3 | 10 | 11.37M | 49.40 ± 0.78 | 5.49 | 5.31 | 592 | 4514 |
+| D_nocoverage | 3 | 10 | 11.37M | 49.63 ± 0.28 | 5.49 | 5.31 | 325 | 4541 |
+| D_nohome | 3 | 10 | 11.37M | 47.23 ± 1.17 | 5.49 | 5.31 | 388 | 4529 |
+| D_nosuppression | 3 | 10 | 11.37M | 37.16 ± 20.71 | 5.49 | 5.31 | 505 | 4505 |
+| D_softassign | 3 | 10 | 11.37M | 20.17 ± 14.03 | 5.49 | 5.31 | 361 | 4517 |
+| F_keep0.25_importance-bounded | 3 | 10 | 11.37M | 19.48 ± 7.84 | 4.13 | 3.96 | 326 | 4049 |
+| F_keep0.25_norm | 2 | 10 | 11.37M | 51.49 ± 0.95 | 4.13 | 3.96 | 366 | 4025 |
+| F_keep0.25_random | 2 | 10 | 11.37M | 48.45 ± 2.40 | 4.13 | 3.96 | 348 | 4025 |
+| F_keep0.5_importance-bounded | 1 | 10 | 11.37M | 15.09 | 4.59 | 4.41 | 277 | 4288 |
+| T_fixed_A16 | 3 | 15 | 11.44M | 16.73 ± 0.46 | 5.49 | 5.31 | 1115 | 5429 |
+| T_focus_A16 | 3 | 15 | 11.44M | 17.68 ± 0.33 | 5.49 | 5.31 | 581 | 5645 |
+| T_resnet18_lr1.25e-4 | 1 | 15 | 11.28M | 20.15 | 4.74 | 4.74 | 2213 | 3618 |
+| T_resnet18_lr1e-3 | 1 | 15 | 11.28M | 37.39 | 4.74 | 4.74 | 3137 | 3618 |
+| T_vit128 | 3 | 15 | 9.27M | 12.49 ± 0.28 | 1.21 | 1.17 | 4305 | 2290 |
+| T_vit256 | 3 | 15 | 9.35M | 18.25 ± 0.33 | 5.28 | 4.68 | 3428 | 4227 |
+| T_vit64p8 | 3 | 15 | 9.05M | 13.01 ± 0.39 | 1.18 | 1.14 | 4471 | 2277 |

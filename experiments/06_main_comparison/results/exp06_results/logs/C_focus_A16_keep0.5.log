@@ -1,0 +1,2 @@
+[C_focus_A16_keep0.5] focus | anchors 16 | seed 42 | epochs 0 | device NVIDIA A100-SXM4-80GB
+[C_focus_A16_keep0.5] measured: 4.59 GFLOPs | 98.5 ms/step | 5405 img/s | 4289 MB

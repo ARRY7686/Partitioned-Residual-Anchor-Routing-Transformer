@@ -1,0 +1,33 @@
+[B_fixed_A16_seed43] fixed | anchors 16 | seed 43 | epochs 30 | device NVIDIA A100-SXM4-80GB
+[B_fixed_A16_seed43] 11,362,698 parameters
+[B_fixed_A16_seed43] epoch 01/30 | train acc 16.74% | test acc 23.73% | grad norm median 4.45 max 14.59 | skipped steps 0 | 1.72 min
+[B_fixed_A16_seed43] epoch 02/30 | train acc 24.79% | test acc 27.63% | grad norm median 4.06 max 11.56 | skipped steps 0 | 1.74 min
+[B_fixed_A16_seed43] epoch 03/30 | train acc 30.56% | test acc 32.20% | grad norm median 3.36 max 8.35 | skipped steps 0 | 1.73 min
+[B_fixed_A16_seed43] epoch 04/30 | train acc 35.30% | test acc 37.45% | grad norm median 3.31 max 6.13 | skipped steps 0 | 1.74 min
+[B_fixed_A16_seed43] epoch 05/30 | train acc 39.84% | test acc 41.36% | grad norm median 3.45 max 6.11 | skipped steps 0 | 1.73 min
+[B_fixed_A16_seed43] epoch 06/30 | train acc 43.01% | test acc 44.46% | grad norm median 3.53 max 5.93 | skipped steps 0 | 1.73 min
+[B_fixed_A16_seed43] epoch 07/30 | train acc 45.33% | test acc 46.34% | grad norm median 3.56 max 7.61 | skipped steps 0 | 1.74 min
+[B_fixed_A16_seed43] epoch 08/30 | train acc 47.67% | test acc 48.92% | grad norm median 3.61 max 5.53 | skipped steps 0 | 1.74 min
+[B_fixed_A16_seed43] epoch 09/30 | train acc 49.65% | test acc 50.72% | grad norm median 3.74 max 6.02 | skipped steps 0 | 1.74 min
+[B_fixed_A16_seed43] epoch 10/30 | train acc 51.41% | test acc 52.18% | grad norm median 3.77 max 5.84 | skipped steps 0 | 1.73 min
+[B_fixed_A16_seed43] epoch 11/30 | train acc 52.93% | test acc 54.19% | grad norm median 3.80 max 5.98 | skipped steps 0 | 1.74 min
+[B_fixed_A16_seed43] epoch 12/30 | train acc 54.75% | test acc 53.31% | grad norm median 3.88 max 6.04 | skipped steps 0 | 1.72 min
+[B_fixed_A16_seed43] epoch 13/30 | train acc 56.34% | test acc 55.82% | grad norm median 3.96 max 6.32 | skipped steps 0 | 1.74 min
+[B_fixed_A16_seed43] epoch 14/30 | train acc 57.59% | test acc 56.81% | grad norm median 4.06 max 5.49 | skipped steps 0 | 1.73 min
+[B_fixed_A16_seed43] epoch 15/30 | train acc 58.60% | test acc 56.20% | grad norm median 4.08 max 5.80 | skipped steps 0 | 1.74 min
+[B_fixed_A16_seed43] epoch 16/30 | train acc 59.41% | test acc 59.26% | grad norm median 4.14 max 5.89 | skipped steps 0 | 1.74 min
+[B_fixed_A16_seed43] epoch 17/30 | train acc 60.97% | test acc 60.43% | grad norm median 4.27 max 6.41 | skipped steps 0 | 1.73 min
+[B_fixed_A16_seed43] epoch 18/30 | train acc 62.20% | test acc 60.55% | grad norm median 4.37 max 6.51 | skipped steps 0 | 1.73 min
+[B_fixed_A16_seed43] epoch 19/30 | train acc 63.01% | test acc 61.20% | grad norm median 4.50 max 6.07 | skipped steps 0 | 1.73 min
+[B_fixed_A16_seed43] epoch 20/30 | train acc 64.09% | test acc 62.78% | grad norm median 4.62 max 6.25 | skipped steps 0 | 1.74 min
+[B_fixed_A16_seed43] epoch 21/30 | train acc 65.13% | test acc 63.52% | grad norm median 4.68 max 5.97 | skipped steps 0 | 2.45 min
+[B_fixed_A16_seed43] epoch 22/30 | train acc 65.96% | test acc 64.33% | grad norm median 4.82 max 7.40 | skipped steps 0 | 2.88 min
+[B_fixed_A16_seed43] epoch 23/30 | train acc 66.53% | test acc 64.79% | grad norm median 4.86 max 6.57 | skipped steps 0 | 2.87 min
+[B_fixed_A16_seed43] epoch 24/30 | train acc 66.80% | test acc 65.28% | grad norm median 5.05 max 6.43 | skipped steps 0 | 2.89 min
+[B_fixed_A16_seed43] epoch 25/30 | train acc 67.53% | test acc 65.32% | grad norm median 5.13 max 6.67 | skipped steps 0 | 2.88 min
+[B_fixed_A16_seed43] epoch 26/30 | train acc 68.11% | test acc 65.41% | grad norm median 5.21 max 6.67 | skipped steps 0 | 2.87 min
+[B_fixed_A16_seed43] epoch 27/30 | train acc 68.37% | test acc 66.16% | grad norm median 5.28 max 7.64 | skipped steps 0 | 2.88 min
+[B_fixed_A16_seed43] epoch 28/30 | train acc 68.77% | test acc 66.33% | grad norm median 5.31 max 6.68 | skipped steps 0 | 2.87 min
+[B_fixed_A16_seed43] epoch 29/30 | train acc 68.77% | test acc 66.19% | grad norm median 5.37 max 6.89 | skipped steps 0 | 2.87 min
+[B_fixed_A16_seed43] epoch 30/30 | train acc 68.86% | test acc 66.20% | grad norm median 5.35 max 6.99 | skipped steps 0 | 2.84 min
+[B_fixed_A16_seed43] done: 66.20% | 5.49 GFLOPs | 1166 img/s | saved /root/exp06/exp06_results/B_fixed_A16_seed43.json

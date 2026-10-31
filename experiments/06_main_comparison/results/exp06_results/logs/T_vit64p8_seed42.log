@@ -1,0 +1,18 @@
+[T_vit64p8_seed42] vit | anchors 16 | seed 42 | epochs 15 | device NVIDIA A100-SXM4-80GB
+[T_vit64p8_seed42] 9,051,464 parameters
+[T_vit64p8_seed42] epoch 01/15 | train acc  1.17% | test acc  2.55% | grad norm median 2.59 max 5.25 | skipped steps 0 | 1.51 min
+[T_vit64p8_seed42] epoch 02/15 | train acc  3.52% | test acc  4.17% | grad norm median 2.77 max 5.17 | skipped steps 0 | 1.88 min
+[T_vit64p8_seed42] epoch 03/15 | train acc  4.91% | test acc  5.34% | grad norm median 2.75 max 5.52 | skipped steps 0 | 2.14 min
+[T_vit64p8_seed42] epoch 04/15 | train acc  6.04% | test acc  6.14% | grad norm median 2.93 max 6.78 | skipped steps 0 | 2.12 min
+[T_vit64p8_seed42] epoch 05/15 | train acc  7.14% | test acc  7.30% | grad norm median 3.16 max 6.98 | skipped steps 0 | 2.21 min
+[T_vit64p8_seed42] epoch 06/15 | train acc  8.24% | test acc  8.37% | grad norm median 3.47 max 7.49 | skipped steps 0 | 2.21 min
+[T_vit64p8_seed42] epoch 07/15 | train acc  9.25% | test acc  9.17% | grad norm median 3.68 max 6.52 | skipped steps 0 | 2.22 min
+[T_vit64p8_seed42] epoch 08/15 | train acc 10.15% | test acc  9.63% | grad norm median 3.97 max 8.76 | skipped steps 0 | 2.17 min
+[T_vit64p8_seed42] epoch 09/15 | train acc 11.13% | test acc 11.02% | grad norm median 4.21 max 9.28 | skipped steps 0 | 2.17 min
+[T_vit64p8_seed42] epoch 10/15 | train acc 11.98% | test acc 11.62% | grad norm median 4.52 max 10.19 | skipped steps 0 | 2.16 min
+[T_vit64p8_seed42] epoch 11/15 | train acc 12.89% | test acc 12.46% | grad norm median 4.82 max 10.92 | skipped steps 0 | 2.15 min
+[T_vit64p8_seed42] epoch 12/15 | train acc 13.37% | test acc 12.69% | grad norm median 5.09 max 9.99 | skipped steps 0 | 1.83 min
+[T_vit64p8_seed42] epoch 13/15 | train acc 13.93% | test acc 12.73% | grad norm median 5.22 max 13.08 | skipped steps 0 | 1.81 min
+[T_vit64p8_seed42] epoch 14/15 | train acc 14.35% | test acc 13.20% | grad norm median 5.38 max 11.33 | skipped steps 0 | 1.82 min
+[T_vit64p8_seed42] epoch 15/15 | train acc 14.21% | test acc 13.25% | grad norm median 5.44 max 11.16 | skipped steps 0 | 1.82 min
+[T_vit64p8_seed42] done: 13.25% | 1.18 GFLOPs | 4547 img/s | saved /root/exp06/exp06_results/T_vit64p8_seed42.json

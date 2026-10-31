@@ -1,0 +1,13 @@
+[F_keep0.25_importance-bounded_seed42] focus | anchors 16 | seed 42 | epochs 10 | device NVIDIA A100-SXM4-80GB
+[F_keep0.25_importance-bounded_seed42] 11,365,008 parameters
+[F_keep0.25_importance-bounded_seed42] epoch 01/10 | train acc 16.60% | test acc 18.75% | grad norm median 2.45 max 13.38 | skipped steps 0 | 9.19 min
+[F_keep0.25_importance-bounded_seed42] epoch 02/10 | train acc 19.33% | test acc 16.40% | grad norm median 2.66 max 25.45 | skipped steps 0 | 8.47 min
+[F_keep0.25_importance-bounded_seed42] epoch 03/10 | train acc 18.19% | test acc 20.49% | grad norm median 3.36 max 41.07 | skipped steps 0 | 7.67 min
+[F_keep0.25_importance-bounded_seed42] epoch 04/10 | train acc 15.60% | test acc 15.64% | grad norm median 3.82 max 191.04 | skipped steps 0 | 7.65 min
+[F_keep0.25_importance-bounded_seed42] epoch 05/10 | train acc 14.51% | test acc 14.16% | grad norm median 6.10 max 1426.89 | skipped steps 0 | 7.64 min
+[F_keep0.25_importance-bounded_seed42] epoch 06/10 | train acc 14.23% | test acc 15.38% | grad norm median 61.32 max 184014.30 | skipped steps 0 | 7.64 min
+[F_keep0.25_importance-bounded_seed42] epoch 07/10 | train acc 14.55% | test acc 16.01% | grad norm median 44.02 max 300915.09 | skipped steps 0 | 7.73 min
+[F_keep0.25_importance-bounded_seed42] epoch 08/10 | train acc 14.79% | test acc 15.38% | grad norm median 63.50 max 12649.08 | skipped steps 0 | 7.69 min
+[F_keep0.25_importance-bounded_seed42] epoch 09/10 | train acc 15.25% | test acc 15.84% | grad norm median 95.45 max 28423.50 | skipped steps 0 | 8.93 min
+[F_keep0.25_importance-bounded_seed42] epoch 10/10 | train acc 15.64% | test acc 15.67% | grad norm median 122.99 max 14280.75 | skipped steps 0 | 8.21 min
+[F_keep0.25_importance-bounded_seed42] done: 15.67% | 4.13 GFLOPs | 326 img/s | saved /root/exp06/exp06_results/F_keep0.25_importance-bounded_seed42.json

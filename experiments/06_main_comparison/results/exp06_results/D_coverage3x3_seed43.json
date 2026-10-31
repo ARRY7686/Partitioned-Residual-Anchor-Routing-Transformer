@@ -1,0 +1,218 @@
+{
+  "tag": "D_coverage3x3_seed43",
+  "kind": "focus",
+  "num_anchors": 16,
+  "seed": 43,
+  "epochs": 10,
+  "dataset": "cifar10",
+  "vit_input": 256,
+  "vit_patch": 16,
+  "keep_ratio": 1.0,
+  "skip_from": 2,
+  "skip_score": "importance",
+  "gate": "ratio",
+  "coverage_side": "3",
+  "suppression": 10.0,
+  "home_width": 0.35,
+  "assign": "hard",
+  "grad_clip": 0.0,
+  "warmup_epochs": 0.0,
+  "precision": "bf16",
+  "lr": 0.0003,
+  "params": 11365008,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.174688164138794,
+      "train_acc": 17.494,
+      "test_loss": 2.0543234375,
+      "test_acc": 21.26,
+      "minutes": 3.9488233360500695,
+      "grad_norm_median": 2.256821632385254,
+      "grad_norm_max": 10.333398818969727,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.983725351638794,
+      "train_acc": 24.626,
+      "test_loss": 1.9290546875,
+      "test_acc": 26.16,
+      "minutes": 4.176538734366962,
+      "grad_norm_median": 2.1508333683013916,
+      "grad_norm_max": 3.7475340366363525,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.846240859451294,
+      "train_acc": 29.986,
+      "test_loss": 1.8530916015625,
+      "test_acc": 30.79,
+      "minutes": 4.208768462250009,
+      "grad_norm_median": 2.157371997833252,
+      "grad_norm_max": 4.276553153991699,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.758549970664978,
+      "train_acc": 33.534,
+      "test_loss": 1.736269482421875,
+      "test_acc": 35.87,
+      "minutes": 4.4654355894677185,
+      "grad_norm_median": 2.119027614593506,
+      "grad_norm_max": 3.5069782733917236,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.672102841758728,
+      "train_acc": 37.658,
+      "test_loss": 1.6271609375,
+      "test_acc": 39.37,
+      "minutes": 4.458210812167575,
+      "grad_norm_median": 2.2085468769073486,
+      "grad_norm_max": 3.6727352142333984,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.5884087744903563,
+      "train_acc": 41.282,
+      "test_loss": 1.5618729125976563,
+      "test_acc": 42.7,
+      "minutes": 4.410790432116483,
+      "grad_norm_median": 2.2182869911193848,
+      "grad_norm_max": 3.30708909034729,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.5141402979278564,
+      "train_acc": 44.542,
+      "test_loss": 1.48918720703125,
+      "test_acc": 45.71,
+      "minutes": 4.399081445900568,
+      "grad_norm_median": 2.2219483852386475,
+      "grad_norm_max": 3.7287354469299316,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.4481669067382812,
+      "train_acc": 47.162,
+      "test_loss": 1.4381781005859375,
+      "test_acc": 47.49,
+      "minutes": 4.410560752800666,
+      "grad_norm_median": 2.258033514022827,
+      "grad_norm_max": 3.5237905979156494,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 9,
+      "train_loss": 1.3984547644424439,
+      "train_acc": 49.156,
+      "test_loss": 1.3933831909179688,
+      "test_acc": 49.34,
+      "minutes": 4.682026844351397,
+      "grad_norm_median": 2.3099544048309326,
+      "grad_norm_max": 3.3385839462280273,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 10,
+      "train_loss": 1.3667594982528686,
+      "train_acc": 50.474,
+      "test_loss": 1.3802215454101563,
+      "test_acc": 50.27,
+      "minutes": 4.9655631235509645,
+      "grad_norm_median": 2.3411355018615723,
+      "grad_norm_max": 3.0515830516815186,
+      "steps_skipped": 0
+    }
+  ],
+  "final_test_acc": 50.27,
+  "metrics_init": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.11487782467156649,
+      "object_mass": 1.4191620647907257,
+      "object_anchor_share": 0.21734619140625
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.0892612561583519,
+      "object_mass": 1.4030013233423233,
+      "object_anchor_share": 0.2177734375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.06101464247331023,
+      "object_mass": 1.276593193411827,
+      "object_anchor_share": 0.21746826171875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.059557012747973204,
+      "object_mass": 1.3463343977928162,
+      "object_anchor_share": 0.21636962890625
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.04733867710456252,
+      "object_mass": 1.0636274367570877,
+      "object_anchor_share": 0.21661376953125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.07451863866299391,
+      "object_mass": 1.3803137093782425,
+      "object_anchor_share": 0.21807861328125
+    }
+  ],
+  "metrics_trained": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.49607859924435616,
+      "object_mass": 1.9371486008167267,
+      "object_anchor_share": 0.22479248046875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.6092999875545502,
+      "object_mass": 2.275541454553604,
+      "object_anchor_share": 0.2440185546875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.4693051315844059,
+      "object_mass": 2.394344598054886,
+      "object_anchor_share": 0.24505615234375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.44600146636366844,
+      "object_mass": 2.3095046281814575,
+      "object_anchor_share": 0.24932861328125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.38053443655371666,
+      "object_mass": 2.354901522397995,
+      "object_anchor_share": 0.24957275390625
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.4839771091938019,
+      "object_mass": 2.6709059476852417,
+      "object_anchor_share": 0.25714111328125
+    }
+  ],
+  "gflops_linear": 5.314371072,
+  "gflops_total": 5.49136128,
+  "throughput_img_s": 589.5120511138971,
+  "peak_train_memory_mb": 4514.392578125,
+  "gpu": "NVIDIA A100-SXM4-80GB",
+  "total_minutes": 44.12579953302241
+}

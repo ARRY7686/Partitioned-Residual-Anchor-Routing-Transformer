@@ -1,0 +1,13 @@
+[D2_softassign_clip_seed44] focus | anchors 16 | seed 44 | epochs 10 | device NVIDIA A100-SXM4-80GB
+[D2_softassign_clip_seed44] 11,365,008 parameters
+[D2_softassign_clip_seed44] epoch 01/10 | train acc 18.18% | test acc 22.78% | grad norm median 4.30 max 16.17 | skipped steps 0 | 7.85 min
+[D2_softassign_clip_seed44] epoch 02/10 | train acc 25.49% | test acc 27.09% | grad norm median 3.42 max 9.32 | skipped steps 0 | 8.61 min
+[D2_softassign_clip_seed44] epoch 03/10 | train acc 28.77% | test acc 30.90% | grad norm median 2.86 max 13.74 | skipped steps 0 | 7.79 min
+[D2_softassign_clip_seed44] epoch 04/10 | train acc 33.07% | test acc 33.76% | grad norm median 2.59 max 5.72 | skipped steps 0 | 7.57 min
+[D2_softassign_clip_seed44] epoch 05/10 | train acc 32.46% | test acc 29.40% | grad norm median 3.76 max 25.42 | skipped steps 0 | 8.81 min
+[D2_softassign_clip_seed44] epoch 06/10 | train acc 18.37% | test acc 10.34% | grad norm median 92.89 max 7437.59 | skipped steps 0 | 8.92 min
+[D2_softassign_clip_seed44] epoch 07/10 | train acc 10.21% | test acc 10.29% | grad norm median 66217.23 max 2798009.00 | skipped steps 0 | 9.59 min
+[D2_softassign_clip_seed44] epoch 08/10 | train acc 10.18% | test acc  9.97% | grad norm median 753998.69 max 4215784.50 | skipped steps 0 | 9.60 min
+[D2_softassign_clip_seed44] epoch 09/10 | train acc 10.01% | test acc 10.01% | grad norm median 1283987.50 max 21878874.00 | skipped steps 0 | 9.31 min
+[D2_softassign_clip_seed44] epoch 10/10 | train acc 10.02% | test acc 10.00% | grad norm median 1524668.38 max 8046151.50 | skipped steps 0 | 7.73 min
+[D2_softassign_clip_seed44] done: 10.00% | 5.49 GFLOPs | 331 img/s | saved /root/exp06/exp06_results/D2_softassign_clip_seed44.json

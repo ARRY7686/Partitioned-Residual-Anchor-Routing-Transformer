@@ -1,0 +1,90 @@
+PyTorch: 2.11.0+cu128 | device: cuda NVIDIA A100-SXM4-80GB
+Models: ['perceiver', 'competitive', 'anchorformer', 'paca', 'partition'] | anchors: 16 | epochs: 10 | seed: 44 
+Results file: /root/exp03/working/step0_results_A16_seed44.json
+Train: (50000, 3, 32, 32) | Test: (10000, 3, 32, 32) | CIFAR root: /root/exp03/working/data
+perceiver       11,272,932 parameters
+competitive     11,272,932 parameters
+anchorformer    10,092,772 parameters
+paca            11,402,308 parameters
+partition       11,272,932 parameters
+
+=== perceiver | 11,272,932 parameters ===
+perceiver epoch 01 | train acc  9.92% | test acc 15.75% | 2.09 min
+perceiver epoch 02 | train acc 18.51% | test acc 21.48% | 2.09 min
+perceiver epoch 03 | train acc 23.26% | test acc 24.02% | 2.10 min
+perceiver epoch 04 | train acc 27.18% | test acc 28.31% | 2.10 min
+perceiver epoch 05 | train acc 31.41% | test acc 31.18% | 2.10 min
+perceiver epoch 06 | train acc 35.71% | test acc 33.86% | 2.10 min
+perceiver epoch 07 | train acc 40.44% | test acc 36.26% | 2.10 min
+perceiver epoch 08 | train acc 44.94% | test acc 38.46% | 2.10 min
+perceiver epoch 09 | train acc 48.48% | test acc 39.84% | 2.09 min
+perceiver epoch 10 | train acc 51.35% | test acc 40.85% | 2.09 min
+Saved: /root/exp03/working/step0_results_A16_seed44.json
+
+=== competitive | 11,272,932 parameters ===
+competitive epoch 01 | train acc  9.77% | test acc 15.59% | 2.18 min
+competitive epoch 02 | train acc 18.16% | test acc 20.99% | 2.17 min
+competitive epoch 03 | train acc 23.04% | test acc 24.57% | 2.14 min
+competitive epoch 04 | train acc 27.29% | test acc 28.96% | 1.98 min
+competitive epoch 05 | train acc 31.99% | test acc 32.32% | 1.99 min
+competitive epoch 06 | train acc 36.32% | test acc 35.79% | 1.99 min
+competitive epoch 07 | train acc 41.18% | test acc 37.47% | 1.99 min
+competitive epoch 08 | train acc 45.63% | test acc 40.11% | 1.99 min
+competitive epoch 09 | train acc 49.55% | test acc 41.71% | 1.99 min
+competitive epoch 10 | train acc 51.99% | test acc 42.31% | 2.00 min
+Saved: /root/exp03/working/step0_results_A16_seed44.json
+
+=== anchorformer | 10,092,772 parameters ===
+anchorformer epoch 01 | train acc 10.26% | test acc 15.70% | 1.51 min
+anchorformer epoch 02 | train acc 18.63% | test acc 21.68% | 1.51 min
+anchorformer epoch 03 | train acc 23.49% | test acc 24.67% | 1.51 min
+anchorformer epoch 04 | train acc 27.72% | test acc 28.58% | 1.59 min
+anchorformer epoch 05 | train acc 32.20% | test acc 31.58% | 1.81 min
+anchorformer epoch 06 | train acc 36.63% | test acc 35.54% | 1.80 min
+anchorformer epoch 07 | train acc 41.06% | test acc 38.03% | 1.80 min
+anchorformer epoch 08 | train acc 45.56% | test acc 40.11% | 1.80 min
+anchorformer epoch 09 | train acc 48.94% | test acc 41.24% | 1.80 min
+anchorformer epoch 10 | train acc 51.43% | test acc 41.95% | 1.80 min
+Saved: /root/exp03/working/step0_results_A16_seed44.json
+
+=== paca | 11,402,308 parameters ===
+paca epoch 01 | train acc 10.52% | test acc 16.58% | 1.79 min
+paca epoch 02 | train acc 18.99% | test acc 21.62% | 1.79 min
+paca epoch 03 | train acc 24.33% | test acc 25.73% | 1.78 min
+paca epoch 04 | train acc 29.30% | test acc 29.56% | 1.78 min
+paca epoch 05 | train acc 34.09% | test acc 32.41% | 1.79 min
+paca epoch 06 | train acc 39.10% | test acc 36.11% | 1.78 min
+paca epoch 07 | train acc 44.15% | test acc 39.18% | 1.78 min
+paca epoch 08 | train acc 49.34% | test acc 40.62% | 1.78 min
+paca epoch 09 | train acc 53.84% | test acc 41.63% | 1.79 min
+paca epoch 10 | train acc 56.73% | test acc 42.04% | 1.78 min
+Saved: /root/exp03/working/step0_results_A16_seed44.json
+
+=== partition | 11,272,932 parameters ===
+partition epoch 01 | train acc 10.68% | test acc 17.08% | 2.56 min
+partition epoch 02 | train acc 21.01% | test acc 25.13% | 2.60 min
+partition epoch 03 | train acc 27.96% | test acc 30.74% | 2.60 min
+partition epoch 04 | train acc 33.85% | test acc 34.52% | 2.59 min
+partition epoch 05 | train acc 38.63% | test acc 37.50% | 2.60 min
+partition epoch 06 | train acc 43.93% | test acc 41.13% | 2.60 min
+partition epoch 07 | train acc 49.03% | test acc 43.07% | 2.60 min
+partition epoch 08 | train acc 54.15% | test acc 45.34% | 2.59 min
+partition epoch 09 | train acc 58.37% | test acc 46.27% | 2.61 min
+partition epoch 10 | train acc 61.27% | test acc 46.77% | 2.60 min
+Saved: /root/exp03/working/step0_results_A16_seed44.json
+| Model | Params | Final test acc | When | Map sim (mean / last block) | Effective patches (of 196) | Summary sim | Anchor spread |
+|---|---:|---:|---|---:|---:|---:|---:|
+| perceiver | 11.27M |  | init | 1.000 / 1.000 | 195.9 | 1.000 | 0.000 |
+|  |  | 40.85% | trained | 0.998 / 0.999 | 87.3 | 0.997 | 0.004 |
+| competitive | 11.27M |  | init | 1.000 / 1.000 | 196.0 | 1.000 | 0.000 |
+|  |  | 42.31% | trained | 0.743 / 0.703 | 146.7 | 0.739 | 0.261 |
+| anchorformer | 10.09M |  | init | 1.000 / 1.000 | 196.0 | 1.000 | 0.000 |
+|  |  | 41.95% | trained | 0.990 / 1.000 | 194.8 | 0.944 | 0.053 |
+| paca | 11.40M |  | init | 0.989 / 0.992 | 194.9 | 0.991 | 0.008 |
+|  |  | 42.04% | trained | 0.577 / 0.718 | 62.5 | 0.797 | 0.191 |
+| partition | 11.27M |  | init | 0.000 / 0.000 | 12.2 | 0.629 | 0.352 |
+|  |  | 46.77% | trained | 0.000 / 0.000 | 9.6 | 0.347 | 0.621 |
+Traceback (most recent call last):
+  File "/root/exp03/anchor_collapse.py", line 534, in <module>
+    import matplotlib
+ModuleNotFoundError: No module named 'matplotlib'

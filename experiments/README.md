@@ -8,9 +8,12 @@ notebook, and a `results/` folder split into `tables/` (JSON and Markdown summar
 |---|---|---|---|---|
 | 01 | [Partition RART](01_partition_rart/) | Can anchors replace dense global attention? | Done, 1 seed | Partition RART 44.62% vs ViT 45.44% on CIFAR-100; unrestricted RART-32 anchors collapse (similarity ≈ 0.99) |
 | 02 | [Resolution scaling](02_resolution_scaling/) | Does RART scale better than a dense ViT? | Done | Faster than ViT from 1536²; 27× less memory at 2048²; slower than PVTv2 / EfficientViT |
-| 03 | [Anchor collapse](03_anchor_collapse/) | Do other anchor designs collapse too? | Done, 2 seeds | Image-independent anchors collapse (0.99); fixed exclusive regions do not and score best (45.7 / 46.5%) |
+| 03 | [Anchor collapse](03_anchor_collapse/) | Do other anchor designs collapse too? | Done, 3 seeds + dense reference | Image-independent anchors collapse (0.99); fixed exclusive regions do not and score best (46.31 ± 0.56%, vs 40.93% dense) |
 | 04 | [Moving anchors](04_moving_anchors/) | Can anchors move to important regions without collapsing? | Done, 3 seeds (`fixed` / `focus`) | `focus` beats `fixed` in 6/6 paired runs: +1.48 (4 anchors) and +3.13 (16 anchors) points on average |
 | 05 | [Compute skipping](05_compute_skipping/) | Can learned importance save compute? | First round done, 1 seed | Keeping 25% of patches in the FFN of blocks 3–6 cuts GFLOPs by 25% at no accuracy cost, but random and token-norm selection do as well as learned importance |
+| 06 | [Main comparison](06_main_comparison/) | Does focus beat downsampling and standard models at equal compute? Does it hold at 30 epochs and on Tiny ImageNet? Which parts matter? | Done, 3 seeds (102 runs, A100) | 30 ep: focus 66.82 vs fixed 65.29 (+1.54, CI [0.53, 2.55]) vs ViT 61.99; beats downsampled ViTs by 4.7–11.8; PVTv2 75.1 and ResNet-18 86.1 far ahead; soft assignment never trains |
+
+Experiment 06 has its own scripts and settings; see [its README](06_main_comparison/). The paper draft built from 03–06 is in [`../paper/`](../paper/).
 
 Result files inside 03–05 keep the notebooks' internal run names (`step0_…`, `step1_…`).
 

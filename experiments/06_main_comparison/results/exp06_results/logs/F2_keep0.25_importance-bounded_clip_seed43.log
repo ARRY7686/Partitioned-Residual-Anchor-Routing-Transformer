@@ -1,0 +1,7 @@
+[F2_keep0.25_importance-bounded_clip_seed43] focus | anchors 16 | seed 43 | epochs 10 | device NVIDIA A100-SXM4-80GB
+[F2_keep0.25_importance-bounded_clip_seed43] 11,365,008 parameters
+[F2_keep0.25_importance-bounded_clip_seed43] epoch 01/10 | train acc 16.99% | test acc 22.43% | grad norm median 3.92 max 17.70 | skipped steps 0 | 9.08 min
+[F2_keep0.25_importance-bounded_clip_seed43] epoch 02/10 | train acc 20.10% | test acc 17.29% | grad norm median 15.92 max 247.02 | skipped steps 0 | 7.94 min
+[F2_keep0.25_importance-bounded_clip_seed43] epoch 03/10 | train acc 18.81% | test acc 19.39% | grad norm median 31.34 max 458.37 | skipped steps 0 | 7.35 min
+[F2_keep0.25_importance-bounded_clip_seed43] epoch 04/10 | train acc 19.20% | test acc 18.21% | grad norm median 76.77 max 981.87 | skipped steps 0 | 7.99 min
+[F2_keep0.25_importance-bounded_clip_seed43] epoch 05/10 | train acc 19.40% | test acc 20.56% | grad norm median 58.48 max 1021.12 | skipped steps 0 | 9.67 min

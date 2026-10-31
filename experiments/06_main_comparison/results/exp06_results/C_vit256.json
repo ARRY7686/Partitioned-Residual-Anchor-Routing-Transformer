@@ -1,0 +1,20 @@
+{
+  "tag": "C_vit256",
+  "measure_only": true,
+  "kind": "vit",
+  "num_anchors": 0,
+  "vit_input": 256,
+  "vit_patch": 16,
+  "keep_ratio": 1.0,
+  "skip_score": "importance",
+  "params": 9273226,
+  "batch_size": 128,
+  "train_step_ms": 32.424102450022474,
+  "peak_train_memory_mb": 3111.3466796875,
+  "throughput_img_s": 11176.48167293005,
+  "peak_inference_memory_mb": 727.90185546875,
+  "gflops_linear": 4.680850944,
+  "gflops_total": 5.28483072,
+  "gpu": "NVIDIA A100-SXM4-80GB",
+  "final_test_acc": null
+}

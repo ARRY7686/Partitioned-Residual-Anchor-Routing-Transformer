@@ -1,0 +1,15 @@
+[B_focus_A4_seed43] focus | anchors 4 | seed 43 | epochs 30 | device NVIDIA A100-SXM4-80GB
+[B_focus_A4_seed43] 11,363,472 parameters
+[B_focus_A4_seed43] epoch 01/30 | train acc 17.14% | test acc 22.65% | grad norm median 2.23 max 10.02 | skipped steps 0 | 2.11 min
+[B_focus_A4_seed43] epoch 02/30 | train acc 23.57% | test acc 24.26% | grad norm median 2.17 max 4.63 | skipped steps 0 | 2.12 min
+[B_focus_A4_seed43] epoch 03/30 | train acc 28.51% | test acc 29.72% | grad norm median 2.20 max 4.01 | skipped steps 0 | 2.13 min
+[B_focus_A4_seed43] epoch 04/30 | train acc 31.69% | test acc 30.94% | grad norm median 2.13 max 3.55 | skipped steps 0 | 2.11 min
+[B_focus_A4_seed43] epoch 05/30 | train acc 34.16% | test acc 36.03% | grad norm median 2.12 max 4.76 | skipped steps 0 | 2.13 min
+[B_focus_A4_seed43] epoch 06/30 | train acc 36.94% | test acc 37.06% | grad norm median 2.12 max 3.62 | skipped steps 1 | 2.11 min
+[B_focus_A4_seed43] epoch 07/30 | train acc 39.61% | test acc 39.16% | grad norm median 2.18 max 3.64 | skipped steps 1 | 2.11 min
+[B_focus_A4_seed43] epoch 08/30 | train acc 41.38% | test acc 42.07% | grad norm median 2.12 max 3.60 | skipped steps 0 | 2.12 min
+[B_focus_A4_seed43] epoch 09/30 | train acc 43.65% | test acc 44.14% | grad norm median 2.11 max 3.43 | skipped steps 0 | 2.11 min
+[B_focus_A4_seed43] epoch 10/30 | train acc 45.17% | test acc 45.33% | grad norm median 2.18 max 4.08 | skipped steps 0 | 2.12 min
+[B_focus_A4_seed43] epoch 11/30 | train acc 47.27% | test acc 47.39% | grad norm median 2.12 max 3.63 | skipped steps 0 | 2.11 min
+[B_focus_A4_seed43] epoch 12/30 | train acc 48.20% | test acc 48.76% | grad norm median 2.19 max 3.90 | skipped steps 0 | 2.11 min
+[B_focus_A4_seed43] epoch 13/30 | train acc 50.42% | test acc 51.20% | grad norm median 2.13 max 3.17 | skipped steps 0 | 2.12 min

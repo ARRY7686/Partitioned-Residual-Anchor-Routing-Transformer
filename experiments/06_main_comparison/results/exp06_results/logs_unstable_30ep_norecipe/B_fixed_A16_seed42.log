@@ -1,0 +1,17 @@
+[B_fixed_A16_seed42] fixed | anchors 16 | seed 42 | epochs 30 | device NVIDIA A100-SXM4-80GB
+[B_fixed_A16_seed42] 11,362,698 parameters
+[B_fixed_A16_seed42] epoch 01/30 | train acc 16.81% | test acc 20.51% | grad norm median 2.05 max 9.28 | skipped steps 0 | 1.74 min
+[B_fixed_A16_seed42] epoch 02/30 | train acc 23.67% | test acc 26.40% | grad norm median 2.09 max 4.08 | skipped steps 0 | 1.75 min
+[B_fixed_A16_seed42] epoch 03/30 | train acc 27.40% | test acc 29.89% | grad norm median 2.14 max 4.41 | skipped steps 0 | 1.74 min
+[B_fixed_A16_seed42] epoch 04/30 | train acc 31.02% | test acc 32.18% | grad norm median 2.10 max 4.74 | skipped steps 0 | 1.75 min
+[B_fixed_A16_seed42] epoch 05/30 | train acc 34.24% | test acc 36.22% | grad norm median 2.14 max 3.62 | skipped steps 0 | 1.74 min
+[B_fixed_A16_seed42] epoch 06/30 | train acc 36.76% | test acc 37.58% | grad norm median 2.16 max 3.50 | skipped steps 1 | 1.74 min
+[B_fixed_A16_seed42] epoch 07/30 | train acc 39.48% | test acc 40.37% | grad norm median 2.10 max 3.34 | skipped steps 0 | 1.75 min
+[B_fixed_A16_seed42] epoch 08/30 | train acc 41.39% | test acc 42.51% | grad norm median 2.16 max 3.91 | skipped steps 0 | 1.75 min
+[B_fixed_A16_seed42] epoch 09/30 | train acc 43.54% | test acc 42.26% | grad norm median 2.16 max 3.28 | skipped steps 0 | 1.75 min
+[B_fixed_A16_seed42] epoch 10/30 | train acc 40.27% | test acc 41.88% | grad norm median 2.31 max 14.70 | skipped steps 0 | 1.74 min
+[B_fixed_A16_seed42] epoch 11/30 | train acc 41.54% | test acc 42.32% | grad norm median 2.37 max 17.38 | skipped steps 3 | 1.75 min
+[B_fixed_A16_seed42] epoch 12/30 | train acc 43.44% | test acc 45.85% | grad norm median 2.44 max 18.24 | skipped steps 0 | 1.74 min
+[B_fixed_A16_seed42] epoch 13/30 | train acc 47.03% | test acc 46.68% | grad norm median 2.13 max 7.86 | skipped steps 0 | 1.75 min
+[B_fixed_A16_seed42] epoch 14/30 | train acc 48.96% | test acc 48.82% | grad norm median 2.11 max 3.21 | skipped steps 0 | 1.75 min
+[B_fixed_A16_seed42] epoch 15/30 | train acc 49.73% | test acc 49.17% | grad norm median 2.10 max 3.10 | skipped steps 0 | 1.74 min

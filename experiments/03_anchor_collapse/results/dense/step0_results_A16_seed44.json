@@ -1,0 +1,93 @@
+{
+  "dense": {
+    "kind": "dense",
+    "num_anchors": 16,
+    "seed": 44,
+    "epochs": 10,
+    "params": 12837604,
+    "history": [
+      {
+        "epoch": 1,
+        "train_loss": 3.873010712966919,
+        "train_acc": 10.636,
+        "test_loss": 3.521589208984375,
+        "test_acc": 16.38,
+        "minutes": 2.2739702628498586
+      },
+      {
+        "epoch": 2,
+        "train_loss": 3.3316672801208496,
+        "train_acc": 19.022,
+        "test_loss": 3.225145440673828,
+        "test_acc": 21.71,
+        "minutes": 2.2238253098000618
+      },
+      {
+        "epoch": 3,
+        "train_loss": 3.049340208053589,
+        "train_acc": 24.692,
+        "test_loss": 3.0100669494628907,
+        "test_acc": 25.79,
+        "minutes": 2.181613679350509
+      },
+      {
+        "epoch": 4,
+        "train_loss": 2.80914096572876,
+        "train_acc": 29.112,
+        "test_loss": 2.8196557708740233,
+        "test_acc": 29.23,
+        "minutes": 2.231926525867311
+      },
+      {
+        "epoch": 5,
+        "train_loss": 2.5797822174835203,
+        "train_acc": 34.116,
+        "test_loss": 2.6831593322753906,
+        "test_acc": 32.09,
+        "minutes": 2.232781035815909
+      },
+      {
+        "epoch": 6,
+        "train_loss": 2.3406057763671875,
+        "train_acc": 39.26,
+        "test_loss": 2.543135220336914,
+        "test_acc": 35.32,
+        "minutes": 2.2142606159167673
+      },
+      {
+        "epoch": 7,
+        "train_loss": 2.091741491546631,
+        "train_acc": 44.722,
+        "test_loss": 2.4445527374267577,
+        "test_acc": 37.51,
+        "minutes": 2.223076453083195
+      },
+      {
+        "epoch": 8,
+        "train_loss": 1.8440729797363282,
+        "train_acc": 50.61,
+        "test_loss": 2.3697750274658205,
+        "test_acc": 39.26,
+        "minutes": 2.2138928238341276
+      },
+      {
+        "epoch": 9,
+        "train_loss": 1.6396248587036133,
+        "train_acc": 56.06,
+        "test_loss": 2.325442102813721,
+        "test_acc": 40.16,
+        "minutes": 2.2260186123661696
+      },
+      {
+        "epoch": 10,
+        "train_loss": 1.5102026745986938,
+        "train_acc": 59.766,
+        "test_loss": 2.3096778762817385,
+        "test_acc": 40.43,
+        "minutes": 2.2127493945338452
+      }
+    ],
+    "metrics_init": [],
+    "metrics_trained": []
+  }
+}

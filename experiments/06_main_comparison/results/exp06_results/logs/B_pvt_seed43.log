@@ -1,0 +1,33 @@
+[B_pvt_seed43] pvt | anchors 16 | seed 43 | epochs 30 | device NVIDIA A100-SXM4-80GB
+[B_pvt_seed43] 3,412,330 parameters
+[B_pvt_seed43] epoch 01/30 | train acc 15.02% | test acc 21.27% | grad norm median 2.25 max 37.28 | skipped steps 0 | 4.26 min
+[B_pvt_seed43] epoch 02/30 | train acc 26.00% | test acc 31.07% | grad norm median 6.59 max 33.71 | skipped steps 0 | 2.47 min
+[B_pvt_seed43] epoch 03/30 | train acc 35.32% | test acc 39.80% | grad norm median 7.94 max 67.85 | skipped steps 0 | 2.46 min
+[B_pvt_seed43] epoch 04/30 | train acc 43.00% | test acc 46.30% | grad norm median 8.15 max 38.97 | skipped steps 0 | 2.47 min
+[B_pvt_seed43] epoch 05/30 | train acc 48.84% | test acc 50.50% | grad norm median 9.84 max 32.26 | skipped steps 0 | 2.43 min
+[B_pvt_seed43] epoch 06/30 | train acc 52.40% | test acc 54.29% | grad norm median 9.92 max 32.96 | skipped steps 0 | 2.41 min
+[B_pvt_seed43] epoch 07/30 | train acc 55.62% | test acc 56.45% | grad norm median 10.01 max 24.45 | skipped steps 0 | 2.42 min
+[B_pvt_seed43] epoch 08/30 | train acc 58.37% | test acc 59.34% | grad norm median 10.21 max 29.37 | skipped steps 0 | 2.35 min
+[B_pvt_seed43] epoch 09/30 | train acc 60.84% | test acc 61.60% | grad norm median 10.38 max 25.21 | skipped steps 0 | 2.07 min
+[B_pvt_seed43] epoch 10/30 | train acc 62.85% | test acc 62.83% | grad norm median 9.84 max 27.41 | skipped steps 0 | 2.07 min
+[B_pvt_seed43] epoch 11/30 | train acc 64.28% | test acc 65.40% | grad norm median 10.27 max 28.54 | skipped steps 0 | 2.07 min
+[B_pvt_seed43] epoch 12/30 | train acc 65.98% | test acc 65.69% | grad norm median 9.79 max 29.64 | skipped steps 0 | 2.07 min
+[B_pvt_seed43] epoch 13/30 | train acc 67.24% | test acc 66.92% | grad norm median 9.59 max 29.38 | skipped steps 0 | 2.07 min
+[B_pvt_seed43] epoch 14/30 | train acc 68.22% | test acc 67.65% | grad norm median 9.60 max 19.90 | skipped steps 0 | 2.07 min
+[B_pvt_seed43] epoch 15/30 | train acc 69.79% | test acc 69.51% | grad norm median 9.45 max 28.40 | skipped steps 0 | 2.08 min
+[B_pvt_seed43] epoch 16/30 | train acc 70.69% | test acc 69.91% | grad norm median 9.66 max 26.08 | skipped steps 0 | 2.06 min
+[B_pvt_seed43] epoch 17/30 | train acc 71.69% | test acc 70.71% | grad norm median 9.46 max 22.78 | skipped steps 0 | 2.06 min
+[B_pvt_seed43] epoch 18/30 | train acc 72.46% | test acc 70.79% | grad norm median 9.69 max 18.92 | skipped steps 0 | 2.06 min
+[B_pvt_seed43] epoch 19/30 | train acc 73.26% | test acc 71.97% | grad norm median 9.57 max 20.68 | skipped steps 0 | 2.06 min
+[B_pvt_seed43] epoch 20/30 | train acc 73.70% | test acc 72.91% | grad norm median 9.60 max 20.70 | skipped steps 0 | 2.06 min
+[B_pvt_seed43] epoch 21/30 | train acc 74.24% | test acc 73.83% | grad norm median 9.55 max 20.00 | skipped steps 0 | 2.06 min
+[B_pvt_seed43] epoch 22/30 | train acc 74.97% | test acc 74.14% | grad norm median 9.42 max 17.42 | skipped steps 0 | 2.06 min
+[B_pvt_seed43] epoch 23/30 | train acc 75.45% | test acc 74.47% | grad norm median 9.36 max 19.74 | skipped steps 0 | 2.07 min
+[B_pvt_seed43] epoch 24/30 | train acc 75.82% | test acc 74.75% | grad norm median 9.53 max 15.54 | skipped steps 0 | 2.06 min
+[B_pvt_seed43] epoch 25/30 | train acc 76.17% | test acc 74.73% | grad norm median 9.78 max 20.55 | skipped steps 0 | 2.06 min
+[B_pvt_seed43] epoch 26/30 | train acc 76.33% | test acc 74.94% | grad norm median 9.60 max 20.06 | skipped steps 0 | 2.06 min
+[B_pvt_seed43] epoch 27/30 | train acc 76.49% | test acc 75.14% | grad norm median 9.52 max 17.06 | skipped steps 0 | 2.07 min
+[B_pvt_seed43] epoch 28/30 | train acc 76.42% | test acc 75.15% | grad norm median 9.66 max 16.28 | skipped steps 0 | 2.15 min
+[B_pvt_seed43] epoch 29/30 | train acc 76.61% | test acc 75.14% | grad norm median 9.68 max 16.96 | skipped steps 0 | 2.16 min
+[B_pvt_seed43] epoch 30/30 | train acc 76.68% | test acc 75.11% | grad norm median 9.66 max 18.30 | skipped steps 0 | 2.08 min
+[B_pvt_seed43] done: 75.11% | 1.51 GFLOPs | 1823 img/s | saved /root/exp06/exp06_results/B_pvt_seed43.json

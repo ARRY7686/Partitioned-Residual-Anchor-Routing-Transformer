@@ -20,23 +20,42 @@ All variants share one backbone (6 × [7×7 local window attention → anchor pa
 The AnchorFormer- and PaCa-style variants are simplified reimplementations, not the
 published models.
 
-| Model | Test acc, seed 42 / 43 | Map similarity* | Anchor spread** |
-|---|---:|---:|---:|
-| `perceiver` | 41.25% / 40.66% | 0.998 / 0.999 | ≈ 0.00 |
-| `competitive` | 42.71% / 41.41% | 0.815 / 0.818 | 0.21 |
-| `anchorformer` | 42.34% / 43.28% | 0.990 / 0.990 | 0.05 |
-| `paca` | 42.08% / 41.94% | 0.606 / 0.592 | 0.17 |
-| `partition` | **45.68% / 46.48%** | **0.000 / 0.000** | **0.59** |
+| Model | Test acc, mean ± std | Seeds 42 / 43 / 44 | Map similarity* | Anchor spread** |
+|---|---:|---:|---:|---:|
+| `perceiver` | 40.92 ± 0.30 | 41.25 / 40.66 / 40.85 | 0.998 | ≈ 0.00 |
+| `competitive` | 42.14 ± 0.67 | 42.71 / 41.41 / 42.31 | 0.792 | 0.22 |
+| `anchorformer` | 42.52 ± 0.68 | 42.34 / 43.28 / 41.95 | 0.990 | 0.06 |
+| `paca` | 42.02 ± 0.07 | 42.08 / 41.94 / 42.04 | 0.592 | 0.18 |
+| `dense` (no anchors) | 40.93 ± 0.95 | 42.02 / 40.33 / 40.43 | — | — |
+| `partition` | **46.31 ± 0.56** | **45.68 / 46.48 / 46.77** | **0.000** | **0.60** |
 
-\* Mean pairwise cosine similarity of the anchors' pooling maps (1 = every anchor pools the same patches).
-\*\* Share of the pooled content that differs between anchors (0 = identical anchors); seed 42.
+\* Mean pairwise cosine similarity of the anchors' pooling maps (1 = every anchor pools the same patches), averaged over blocks and seeds.
+\*\* Share of the pooled content that differs between anchors (0 = identical anchors), averaged over blocks and seeds.
+
+`dense` replaces the anchor pathway with global attention among all patches on the same
+backbone (local windows kept), as a no-anchor reference.
 
 ## Finding
 
- Anchors that are the same for every image (`perceiver`, `anchorformer`)
-collapse completely. Anchors derived from the image (`competitive`, `paca`) are partly
-diverse but grow more similar with depth. Fixed exclusive regions do not collapse and gave
-the best accuracy in both seeds.
+Anchors that are the same for every image (`perceiver`, `anchorformer`) collapse completely.
+Anchors derived from the image (`competitive`, `paca`) are partly diverse but grow more
+similar with depth. Fixed exclusive regions cannot collapse (zero overlap holds by
+construction) and gave the best accuracy in all three seeds: 3.0–5.9 points above every other
+anchor pathway in the same seed, and 5.4 points above the dense pathway.
+
+## Running
+
+[`anchor_collapse.py`](anchor_collapse.py) is the notebook as a script; seed 44 and the dense
+reference were run with it on a vast.ai A100 (2026-10-30/31):
+
+```bash
+RART_SEED=44 python anchor_collapse.py                        # all five anchor pathways
+RART_SEED=42 RART_MODELS=dense RART_WORK_DIR=dense python anchor_collapse.py
+```
+
+[`start_dense.sh`](start_dense.sh) is the exact launch used for the dense runs. The box had no
+matplotlib, so the run ends with an import error after the results are saved; the seed-44
+figure was plotted locally.
 
 ## Files
 
@@ -45,5 +64,6 @@ the best accuracy in both seeds.
 | `results/tables/` | Per-seed results (`.json`: accuracy history and per-block collapse metrics; `.md`: summary table) |
 | `results/figures/` | Per-block collapse metrics, trained (solid) and at initialisation (dashed) |
 | `results/logs/` | Training logs per seed |
+| `results/dense/` | The dense reference: per-seed tables and `logs/` |
 
 Result files keep the notebook's internal run name (`step0_…`).

@@ -1,0 +1,13 @@
+[A_vit64p8_seed43] vit | anchors 16 | seed 43 | epochs 10 | device NVIDIA A100-SXM4-80GB
+[A_vit64p8_seed43] 8,978,314 parameters
+[A_vit64p8_seed43] epoch 01/10 | train acc 19.46% | test acc 24.04% | grad norm median 2.17 max 14.81 | skipped steps 0 | 0.91 min
+[A_vit64p8_seed43] epoch 02/10 | train acc 25.99% | test acc 29.12% | grad norm median 2.15 max 3.66 | skipped steps 0 | 0.89 min
+[A_vit64p8_seed43] epoch 03/10 | train acc 29.58% | test acc 30.87% | grad norm median 2.23 max 3.62 | skipped steps 0 | 0.90 min
+[A_vit64p8_seed43] epoch 04/10 | train acc 32.12% | test acc 32.09% | grad norm median 2.18 max 3.65 | skipped steps 0 | 0.89 min
+[A_vit64p8_seed43] epoch 05/10 | train acc 34.52% | test acc 35.62% | grad norm median 2.28 max 3.49 | skipped steps 0 | 0.90 min
+[A_vit64p8_seed43] epoch 06/10 | train acc 36.68% | test acc 37.34% | grad norm median 2.30 max 3.87 | skipped steps 0 | 0.92 min
+[A_vit64p8_seed43] epoch 07/10 | train acc 38.33% | test acc 40.41% | grad norm median 2.39 max 3.78 | skipped steps 0 | 0.91 min
+[A_vit64p8_seed43] epoch 08/10 | train acc 40.26% | test acc 40.90% | grad norm median 2.47 max 3.95 | skipped steps 0 | 0.85 min
+[A_vit64p8_seed43] epoch 09/10 | train acc 41.20% | test acc 42.20% | grad norm median 2.50 max 3.71 | skipped steps 0 | 0.84 min
+[A_vit64p8_seed43] epoch 10/10 | train acc 42.20% | test acc 42.49% | grad norm median 2.55 max 3.47 | skipped steps 0 | 0.80 min
+[A_vit64p8_seed43] done: 42.49% | 1.18 GFLOPs | 5634 img/s | saved /root/exp06/exp06_results/A_vit64p8_seed43.json

@@ -1,0 +1,20 @@
+{
+  "tag": "C_focus_A16",
+  "measure_only": true,
+  "kind": "focus",
+  "num_anchors": 16,
+  "vit_input": 256,
+  "vit_patch": 16,
+  "keep_ratio": 1.0,
+  "skip_score": "importance",
+  "params": 11365008,
+  "batch_size": 128,
+  "train_step_ms": 99.25480834790505,
+  "peak_train_memory_mb": 4528.44873046875,
+  "throughput_img_s": 5259.026276340192,
+  "peak_inference_memory_mb": 766.7412109375,
+  "gflops_linear": 5.314371072,
+  "gflops_total": 5.491392,
+  "gpu": "NVIDIA A100-SXM4-80GB",
+  "final_test_acc": null
+}

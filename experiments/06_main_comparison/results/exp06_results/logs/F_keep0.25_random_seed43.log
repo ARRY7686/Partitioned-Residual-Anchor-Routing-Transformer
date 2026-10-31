@@ -1,0 +1,13 @@
+[F_keep0.25_random_seed43] focus | anchors 16 | seed 43 | epochs 10 | device NVIDIA A100-SXM4-80GB
+[F_keep0.25_random_seed43] 11,365,008 parameters
+[F_keep0.25_random_seed43] epoch 01/10 | train acc 17.04% | test acc 21.60% | grad norm median 2.22 max 10.24 | skipped steps 0 | 7.32 min
+[F_keep0.25_random_seed43] epoch 02/10 | train acc 24.50% | test acc 26.39% | grad norm median 2.15 max 3.66 | skipped steps 0 | 7.30 min
+[F_keep0.25_random_seed43] epoch 03/10 | train acc 30.50% | test acc 32.13% | grad norm median 2.14 max 3.98 | skipped steps 0 | 7.32 min
+[F_keep0.25_random_seed43] epoch 04/10 | train acc 34.61% | test acc 35.63% | grad norm median 2.09 max 3.79 | skipped steps 0 | 7.69 min
+[F_keep0.25_random_seed43] epoch 05/10 | train acc 39.20% | test acc 41.50% | grad norm median 2.14 max 3.78 | skipped steps 0 | 7.91 min
+[F_keep0.25_random_seed43] epoch 06/10 | train acc 42.96% | test acc 43.59% | grad norm median 2.15 max 3.43 | skipped steps 0 | 8.48 min
+[F_keep0.25_random_seed43] epoch 07/10 | train acc 46.05% | test acc 46.60% | grad norm median 2.18 max 3.46 | skipped steps 0 | 7.45 min
+[F_keep0.25_random_seed43] epoch 08/10 | train acc 48.37% | test acc 47.74% | grad norm median 2.22 max 3.33 | skipped steps 0 | 7.23 min
+[F_keep0.25_random_seed43] epoch 09/10 | train acc 50.23% | test acc 49.76% | grad norm median 2.28 max 3.23 | skipped steps 0 | 8.78 min
+[F_keep0.25_random_seed43] epoch 10/10 | train acc 51.55% | test acc 50.15% | grad norm median 2.28 max 3.08 | skipped steps 0 | 9.26 min
+[F_keep0.25_random_seed43] done: 50.15% | 4.13 GFLOPs | 293 img/s | saved /root/exp06/exp06_results/F_keep0.25_random_seed43.json

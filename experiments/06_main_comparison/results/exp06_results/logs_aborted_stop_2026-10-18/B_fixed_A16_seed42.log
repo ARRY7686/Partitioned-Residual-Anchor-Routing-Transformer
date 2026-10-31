@@ -1,0 +1,8 @@
+[B_fixed_A16_seed42] fixed | anchors 16 | seed 42 | epochs 30 | device NVIDIA A100-SXM4-80GB
+[B_fixed_A16_seed42] 11,362,698 parameters
+[B_fixed_A16_seed42] epoch 01/30 | train acc 16.87% | test acc 21.83% | grad norm median 4.55 max 16.62 | skipped steps 0 | 1.73 min
+[B_fixed_A16_seed42] epoch 02/30 | train acc 24.49% | test acc 27.97% | grad norm median 4.11 max 13.42 | skipped steps 0 | 1.73 min
+[B_fixed_A16_seed42] epoch 03/30 | train acc 30.30% | test acc 34.64% | grad norm median 3.42 max 7.86 | skipped steps 0 | 1.73 min
+[B_fixed_A16_seed42] epoch 04/30 | train acc 35.30% | test acc 39.11% | grad norm median 3.36 max 6.04 | skipped steps 0 | 1.73 min
+[B_fixed_A16_seed42] epoch 05/30 | train acc 39.06% | test acc 40.70% | grad norm median 3.41 max 6.92 | skipped steps 0 | 1.73 min
+[B_fixed_A16_seed42] epoch 06/30 | train acc 42.26% | test acc 42.62% | grad norm median 3.48 max 5.43 | skipped steps 0 | 1.73 min

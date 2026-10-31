@@ -1,0 +1,13 @@
+[D2_nosuppression_clip_seed42] focus | anchors 16 | seed 42 | epochs 10 | device NVIDIA A100-SXM4-80GB
+[D2_nosuppression_clip_seed42] 11,365,008 parameters
+[D2_nosuppression_clip_seed42] epoch 01/10 | train acc 17.26% | test acc 25.63% | grad norm median 3.99 max 13.39 | skipped steps 0 | 4.45 min
+[D2_nosuppression_clip_seed42] epoch 02/10 | train acc 26.04% | test acc 29.70% | grad norm median 3.01 max 7.96 | skipped steps 0 | 5.78 min
+[D2_nosuppression_clip_seed42] epoch 03/10 | train acc 30.99% | test acc 33.61% | grad norm median 2.62 max 4.63 | skipped steps 0 | 8.86 min
+[D2_nosuppression_clip_seed42] epoch 04/10 | train acc 36.13% | test acc 38.10% | grad norm median 2.49 max 4.31 | skipped steps 0 | 8.80 min
+[D2_nosuppression_clip_seed42] epoch 05/10 | train acc 40.57% | test acc 42.29% | grad norm median 2.42 max 4.32 | skipped steps 0 | 6.08 min
+[D2_nosuppression_clip_seed42] epoch 06/10 | train acc 44.34% | test acc 45.54% | grad norm median 2.37 max 3.63 | skipped steps 0 | 5.36 min
+[D2_nosuppression_clip_seed42] epoch 07/10 | train acc 48.31% | test acc 49.71% | grad norm median 2.39 max 4.22 | skipped steps 0 | 5.37 min
+[D2_nosuppression_clip_seed42] epoch 08/10 | train acc 51.80% | test acc 51.80% | grad norm median 2.47 max 3.78 | skipped steps 0 | 5.40 min
+[D2_nosuppression_clip_seed42] epoch 09/10 | train acc 53.74% | test acc 53.56% | grad norm median 2.53 max 3.89 | skipped steps 0 | 5.23 min
+[D2_nosuppression_clip_seed42] epoch 10/10 | train acc 54.88% | test acc 54.04% | grad norm median 2.55 max 3.68 | skipped steps 0 | 4.61 min
+[D2_nosuppression_clip_seed42] done: 54.04% | 5.49 GFLOPs | 632 img/s | saved /root/exp06/exp06_results/D2_nosuppression_clip_seed42.json

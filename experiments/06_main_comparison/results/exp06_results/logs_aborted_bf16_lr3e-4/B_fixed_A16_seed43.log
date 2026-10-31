@@ -1,0 +1,15 @@
+[B_fixed_A16_seed43] fixed | anchors 16 | seed 43 | epochs 30 | device NVIDIA A100-SXM4-80GB
+[B_fixed_A16_seed43] 11,362,698 parameters
+[B_fixed_A16_seed43] epoch 01/30 | train acc 17.64% | test acc 22.47% | grad norm median 3.81 max 14.61 | skipped steps 0 | 1.75 min
+[B_fixed_A16_seed43] epoch 02/30 | train acc 25.47% | test acc 27.54% | grad norm median 2.84 max 7.15 | skipped steps 0 | 1.76 min
+[B_fixed_A16_seed43] epoch 03/30 | train acc 29.99% | test acc 32.40% | grad norm median 2.44 max 4.66 | skipped steps 0 | 1.75 min
+[B_fixed_A16_seed43] epoch 04/30 | train acc 34.37% | test acc 36.42% | grad norm median 2.32 max 4.13 | skipped steps 0 | 1.75 min
+[B_fixed_A16_seed43] epoch 05/30 | train acc 38.15% | test acc 39.13% | grad norm median 2.26 max 4.11 | skipped steps 0 | 1.75 min
+[B_fixed_A16_seed43] epoch 06/30 | train acc 40.46% | test acc 42.38% | grad norm median 2.32 max 4.08 | skipped steps 0 | 1.75 min
+[B_fixed_A16_seed43] epoch 07/30 | train acc 43.30% | test acc 44.86% | grad norm median 2.24 max 3.59 | skipped steps 0 | 1.75 min
+[B_fixed_A16_seed43] epoch 08/30 | train acc 45.26% | test acc 45.58% | grad norm median 2.27 max 3.54 | skipped steps 0 | 1.76 min
+[B_fixed_A16_seed43] epoch 09/30 | train acc 47.42% | test acc 48.49% | grad norm median 2.23 max 3.41 | skipped steps 0 | 1.76 min
+[B_fixed_A16_seed43] epoch 10/30 | train acc 49.43% | test acc 49.94% | grad norm median 2.22 max 3.31 | skipped steps 0 | 1.75 min
+[B_fixed_A16_seed43] epoch 11/30 | train acc 51.08% | test acc 51.60% | grad norm median 2.22 max 3.88 | skipped steps 0 | 1.76 min
+[B_fixed_A16_seed43] epoch 12/30 | train acc 49.49% | test acc 10.07% | grad norm median 2.40 max 132.45 | skipped steps 0 | 1.75 min
+[B_fixed_A16_seed43] epoch 13/30 | train acc 13.88% | test acc 10.77% | grad norm median 15.86 max 3667549.25 | skipped steps 0 | 1.75 min

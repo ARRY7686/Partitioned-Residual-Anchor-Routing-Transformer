@@ -1,0 +1,33 @@
+[B_resnet18_lr1e-3_seed43] resnet | anchors 16 | seed 43 | epochs 30 | device NVIDIA A100-SXM4-80GB
+[B_resnet18_lr1e-3_seed43] 11,181,642 parameters
+[B_resnet18_lr1e-3_seed43] epoch 01/30 | train acc 23.57% | test acc 21.72% | grad norm median 1.45 max 12.24 | skipped steps 0 | 1.17 min
+[B_resnet18_lr1e-3_seed43] epoch 02/30 | train acc 41.43% | test acc 33.35% | grad norm median 5.39 max 14.81 | skipped steps 0 | 0.75 min
+[B_resnet18_lr1e-3_seed43] epoch 03/30 | train acc 50.79% | test acc 11.13% | grad norm median 4.91 max 13.04 | skipped steps 0 | 0.66 min
+[B_resnet18_lr1e-3_seed43] epoch 04/30 | train acc 57.30% | test acc 42.93% | grad norm median 4.30 max 8.79 | skipped steps 0 | 0.71 min
+[B_resnet18_lr1e-3_seed43] epoch 05/30 | train acc 62.63% | test acc 45.65% | grad norm median 3.74 max 10.34 | skipped steps 0 | 0.74 min
+[B_resnet18_lr1e-3_seed43] epoch 06/30 | train acc 66.15% | test acc 25.55% | grad norm median 3.57 max 7.66 | skipped steps 0 | 0.74 min
+[B_resnet18_lr1e-3_seed43] epoch 07/30 | train acc 69.17% | test acc 56.32% | grad norm median 3.24 max 7.82 | skipped steps 0 | 0.74 min
+[B_resnet18_lr1e-3_seed43] epoch 08/30 | train acc 72.57% | test acc 43.03% | grad norm median 3.10 max 10.81 | skipped steps 0 | 0.75 min
+[B_resnet18_lr1e-3_seed43] epoch 09/30 | train acc 75.24% | test acc 65.40% | grad norm median 2.90 max 7.32 | skipped steps 0 | 0.73 min
+[B_resnet18_lr1e-3_seed43] epoch 10/30 | train acc 77.16% | test acc 71.21% | grad norm median 2.81 max 6.31 | skipped steps 0 | 0.74 min
+[B_resnet18_lr1e-3_seed43] epoch 11/30 | train acc 78.89% | test acc 61.30% | grad norm median 2.77 max 6.73 | skipped steps 0 | 0.75 min
+[B_resnet18_lr1e-3_seed43] epoch 12/30 | train acc 80.42% | test acc 69.72% | grad norm median 2.64 max 5.68 | skipped steps 0 | 0.75 min
+[B_resnet18_lr1e-3_seed43] epoch 13/30 | train acc 81.87% | test acc 78.40% | grad norm median 2.57 max 6.72 | skipped steps 0 | 0.74 min
+[B_resnet18_lr1e-3_seed43] epoch 14/30 | train acc 83.17% | test acc 80.11% | grad norm median 2.56 max 4.77 | skipped steps 0 | 0.74 min
+[B_resnet18_lr1e-3_seed43] epoch 15/30 | train acc 84.21% | test acc 67.09% | grad norm median 2.58 max 5.22 | skipped steps 0 | 0.74 min
+[B_resnet18_lr1e-3_seed43] epoch 16/30 | train acc 85.29% | test acc 81.71% | grad norm median 2.56 max 5.35 | skipped steps 0 | 0.75 min
+[B_resnet18_lr1e-3_seed43] epoch 17/30 | train acc 86.40% | test acc 82.49% | grad norm median 2.61 max 5.81 | skipped steps 0 | 0.74 min
+[B_resnet18_lr1e-3_seed43] epoch 18/30 | train acc 87.22% | test acc 68.47% | grad norm median 2.62 max 5.08 | skipped steps 0 | 0.74 min
+[B_resnet18_lr1e-3_seed43] epoch 19/30 | train acc 88.19% | test acc 77.17% | grad norm median 2.56 max 5.33 | skipped steps 0 | 0.75 min
+[B_resnet18_lr1e-3_seed43] epoch 20/30 | train acc 88.93% | test acc 84.70% | grad norm median 2.63 max 5.08 | skipped steps 0 | 0.74 min
+[B_resnet18_lr1e-3_seed43] epoch 21/30 | train acc 89.90% | test acc 84.47% | grad norm median 2.61 max 5.19 | skipped steps 0 | 0.74 min
+[B_resnet18_lr1e-3_seed43] epoch 22/30 | train acc 90.55% | test acc 84.93% | grad norm median 2.66 max 5.24 | skipped steps 0 | 0.75 min
+[B_resnet18_lr1e-3_seed43] epoch 23/30 | train acc 91.47% | test acc 85.34% | grad norm median 2.66 max 5.04 | skipped steps 0 | 0.74 min
+[B_resnet18_lr1e-3_seed43] epoch 24/30 | train acc 91.68% | test acc 85.54% | grad norm median 2.75 max 6.61 | skipped steps 0 | 0.75 min
+[B_resnet18_lr1e-3_seed43] epoch 25/30 | train acc 92.43% | test acc 86.03% | grad norm median 2.62 max 5.09 | skipped steps 0 | 0.74 min
+[B_resnet18_lr1e-3_seed43] epoch 26/30 | train acc 92.81% | test acc 86.09% | grad norm median 2.68 max 4.69 | skipped steps 0 | 0.75 min
+[B_resnet18_lr1e-3_seed43] epoch 27/30 | train acc 93.14% | test acc 86.14% | grad norm median 2.68 max 4.80 | skipped steps 0 | 0.75 min
+[B_resnet18_lr1e-3_seed43] epoch 28/30 | train acc 93.43% | test acc 86.28% | grad norm median 2.66 max 6.12 | skipped steps 0 | 0.74 min
+[B_resnet18_lr1e-3_seed43] epoch 29/30 | train acc 93.51% | test acc 86.22% | grad norm median 2.65 max 5.06 | skipped steps 0 | 0.74 min
+[B_resnet18_lr1e-3_seed43] epoch 30/30 | train acc 93.53% | test acc 86.37% | grad norm median 2.66 max 5.92 | skipped steps 0 | 0.61 min
+[B_resnet18_lr1e-3_seed43] done: 86.37% | 4.74 GFLOPs | 5567 img/s | saved /root/exp06/exp06_results/B_resnet18_lr1e-3_seed43.json

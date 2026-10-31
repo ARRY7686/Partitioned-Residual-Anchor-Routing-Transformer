@@ -1,0 +1,13 @@
+[A_pvt_seed43] pvt | anchors 16 | seed 43 | epochs 10 | device NVIDIA A100-SXM4-80GB
+[A_pvt_seed43] 3,412,330 parameters
+[A_pvt_seed43] epoch 01/10 | train acc 26.40% | test acc 37.32% | grad norm median 2.92 max 17.00 | skipped steps 0 | 4.44 min
+[A_pvt_seed43] epoch 02/10 | train acc 43.52% | test acc 49.30% | grad norm median 4.59 max 17.33 | skipped steps 0 | 2.61 min
+[A_pvt_seed43] epoch 03/10 | train acc 53.56% | test acc 55.83% | grad norm median 5.54 max 17.55 | skipped steps 0 | 2.62 min
+[A_pvt_seed43] epoch 04/10 | train acc 59.15% | test acc 60.57% | grad norm median 5.32 max 12.32 | skipped steps 0 | 2.59 min
+[A_pvt_seed43] epoch 05/10 | train acc 63.04% | test acc 64.04% | grad norm median 5.36 max 13.18 | skipped steps 0 | 2.59 min
+[A_pvt_seed43] epoch 06/10 | train acc 66.36% | test acc 67.23% | grad norm median 5.12 max 11.13 | skipped steps 0 | 2.58 min
+[A_pvt_seed43] epoch 07/10 | train acc 68.91% | test acc 69.02% | grad norm median 5.21 max 10.27 | skipped steps 0 | 2.62 min
+[A_pvt_seed43] epoch 08/10 | train acc 70.66% | test acc 70.12% | grad norm median 5.31 max 9.70 | skipped steps 0 | 2.62 min
+[A_pvt_seed43] epoch 09/10 | train acc 72.29% | test acc 71.11% | grad norm median 5.37 max 10.33 | skipped steps 0 | 2.54 min
+[A_pvt_seed43] epoch 10/10 | train acc 72.90% | test acc 71.52% | grad norm median 5.23 max 9.22 | skipped steps 0 | 2.32 min
+[A_pvt_seed43] done: 71.52% | 1.51 GFLOPs | 1691 img/s | saved /root/exp06/exp06_results/A_pvt_seed43.json

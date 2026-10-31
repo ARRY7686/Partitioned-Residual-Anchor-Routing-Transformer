@@ -1,0 +1,13 @@
+[D_coverage3x3_seed43] focus | anchors 16 | seed 43 | epochs 10 | device NVIDIA A100-SXM4-80GB
+[D_coverage3x3_seed43] 11,365,008 parameters
+[D_coverage3x3_seed43] epoch 01/10 | train acc 17.49% | test acc 21.26% | grad norm median 2.26 max 10.33 | skipped steps 0 | 3.95 min
+[D_coverage3x3_seed43] epoch 02/10 | train acc 24.63% | test acc 26.16% | grad norm median 2.15 max 3.75 | skipped steps 0 | 4.18 min
+[D_coverage3x3_seed43] epoch 03/10 | train acc 29.99% | test acc 30.79% | grad norm median 2.16 max 4.28 | skipped steps 0 | 4.21 min
+[D_coverage3x3_seed43] epoch 04/10 | train acc 33.53% | test acc 35.87% | grad norm median 2.12 max 3.51 | skipped steps 0 | 4.47 min
+[D_coverage3x3_seed43] epoch 05/10 | train acc 37.66% | test acc 39.37% | grad norm median 2.21 max 3.67 | skipped steps 0 | 4.46 min
+[D_coverage3x3_seed43] epoch 06/10 | train acc 41.28% | test acc 42.70% | grad norm median 2.22 max 3.31 | skipped steps 0 | 4.41 min
+[D_coverage3x3_seed43] epoch 07/10 | train acc 44.54% | test acc 45.71% | grad norm median 2.22 max 3.73 | skipped steps 0 | 4.40 min
+[D_coverage3x3_seed43] epoch 08/10 | train acc 47.16% | test acc 47.49% | grad norm median 2.26 max 3.52 | skipped steps 0 | 4.41 min
+[D_coverage3x3_seed43] epoch 09/10 | train acc 49.16% | test acc 49.34% | grad norm median 2.31 max 3.34 | skipped steps 0 | 4.68 min
+[D_coverage3x3_seed43] epoch 10/10 | train acc 50.47% | test acc 50.27% | grad norm median 2.34 max 3.05 | skipped steps 0 | 4.97 min
+[D_coverage3x3_seed43] done: 50.27% | 5.49 GFLOPs | 590 img/s | saved /root/exp06/exp06_results/D_coverage3x3_seed43.json

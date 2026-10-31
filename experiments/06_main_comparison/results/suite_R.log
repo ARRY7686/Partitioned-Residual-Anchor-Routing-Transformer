@@ -1,0 +1,90 @@
+15 jobs in phases ['R']: 0 done, 15 to run on GPUs [0], 3 per GPU
+Estimated GPU time left: 6.3 h (T4 speed; ~6.3 h wall clock on T4 x1)
+[ 0.01 h] GPU 0 FAILED B_pvt_seed43 (exit 1); see logs/B_pvt_seed43.log
+[ 0.01 h] GPU 0 FAILED B_pvt_seed42 (exit 1); see logs/B_pvt_seed42.log
+[ 0.01 h] GPU 0 FAILED B_resnet18_lr1.25e-4_seed42 (exit 1); see logs/B_resnet18_lr1.25e-4_seed42.log
+[ 0.01 h] GPU 0 FAILED T_resnet18_lr1.25e-4_seed42 (exit 1); see logs/T_resnet18_lr1.25e-4_seed42.log
+[ 0.01 h] GPU 0 FAILED B_resnet18_lr1e-3_seed42 (exit 1); see logs/B_resnet18_lr1e-3_seed42.log
+[ 0.01 h] GPU 0 FAILED T_resnet18_lr1e-3_seed42 (exit 1); see logs/T_resnet18_lr1e-3_seed42.log
+[ 0.01 h] GPU 0 FAILED B_resnet18_lr1.25e-4_seed43 (exit 1); see logs/B_resnet18_lr1.25e-4_seed43.log
+[ 0.01 h] GPU 0 FAILED T_resnet18_lr1.25e-4_seed43 (exit 1); see logs/T_resnet18_lr1.25e-4_seed43.log
+[ 0.01 h] GPU 0 FAILED B_resnet18_lr1e-3_seed43 (exit 1); see logs/B_resnet18_lr1e-3_seed43.log
+[ 0.01 h] GPU 0 FAILED B_resnet18_lr1.25e-4_seed44 (exit 1); see logs/B_resnet18_lr1.25e-4_seed44.log
+[ 0.01 h] GPU 0 FAILED T_resnet18_lr1e-3_seed43 (exit 1); see logs/T_resnet18_lr1e-3_seed43.log
+[ 0.01 h] GPU 0 FAILED B_resnet18_lr1e-3_seed44 (exit 1); see logs/B_resnet18_lr1e-3_seed44.log
+[ 0.01 h] GPU 0 FAILED T_resnet18_lr1.25e-4_seed44 (exit 1); see logs/T_resnet18_lr1.25e-4_seed44.log
+[ 0.02 h] GPU 0 FAILED T_resnet18_lr1e-3_seed44 (exit 1); see logs/T_resnet18_lr1e-3_seed44.log
+=== restart Fri Oct 30 19:26:40 UTC 2026
+15 jobs in phases ['R']: 1 done, 14 to run on GPUs [0], 2 per GPU
+Estimated GPU time left: 5.4 h (T4 speed; ~5.4 h wall clock on T4 x1)
+[ 1.23 h] GPU 0 done B_pvt_seed44: 74.80% in 74 min (1/15)
+
+Finished 1, failed 14, not started (time budget) 0 in 1.23 h
+Failed: ['B_pvt_seed43', 'B_pvt_seed42', 'B_resnet18_lr1.25e-4_seed42', 'T_resnet18_lr1.25e-4_seed42', 'B_resnet18_lr1e-3_seed42', 'T_resnet18_lr1e-3_seed42', 'B_resnet18_lr1.25e-4_seed43', 'T_resnet18_lr1.25e-4_seed43', 'B_resnet18_lr1e-3_seed43', 'B_resnet18_lr1.25e-4_seed44', 'T_resnet18_lr1e-3_seed43', 'B_resnet18_lr1e-3_seed44', 'T_resnet18_lr1.25e-4_seed44', 'T_resnet18_lr1e-3_seed44']
+| Config | Seeds | Epochs | Params | Test acc (mean ± std) | GFLOPs (all) | GFLOPs (linear) | Throughput (img/s)* | Peak train memory (MB) |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| B_fixed_A16 | 3 | 30 | 11.36M | 65.29 ± 0.94 | 5.49 | 5.31 | 1200 | 4315 |
+| B_focus_A16 | 3 | 30 | 11.37M | 66.82 ± 0.66 | 5.49 | 5.31 | 542 | 4529 |
+| B_focus_A4 | 3 | 30 | 11.36M | 64.67 ± 0.26 | 5.45 | 5.29 | 922 | 4245 |
+| B_pvt | 1 | 30 | 3.41M | 74.80 | 1.51 | 1.38 | 1628 | 4937 |
+| B_vit256 | 3 | 30 | 9.27M | 61.99 ± 0.54 | 5.28 | 4.68 | 4154 | 3111 |
+| D2_nosuppression_clip | 1 | 10 | 11.37M | 54.04 | 5.49 | 5.31 | 632 | 4505 |
+| D2_softassign_clip | 1 | 10 | 11.37M | 10.00 | 5.49 | 5.31 | 352 | 4517 |
+| D_coverage3x3 | 3 | 10 | 11.37M | 49.40 ± 0.78 | 5.49 | 5.31 | 592 | 4514 |
+| D_nocoverage | 2 | 10 | 11.37M | 49.56 ± 0.36 | 5.49 | 5.31 | 343 | 4541 |
+| D_nohome | 2 | 10 | 11.37M | 47.62 ± 1.34 | 5.49 | 5.31 | 404 | 4529 |
+| D_nosuppression | 3 | 10 | 11.37M | 37.16 ± 20.71 | 5.49 | 5.31 | 505 | 4505 |
+| D_softassign | 2 | 10 | 11.37M | 25.26 ± 15.44 | 5.49 | 5.31 | 381 | 4517 |
+| T_fixed_A16 | 3 | 15 | 11.44M | 16.73 ± 0.46 | 5.49 | 5.31 | 1115 | 5429 |
+| T_focus_A16 | 2 | 15 | 11.44M | 17.51 ± 0.21 | 5.49 | 5.31 | 701 | 5645 |
+| T_vit256 | 3 | 15 | 9.35M | 18.25 ± 0.33 | 5.28 | 4.68 | 3428 | 4227 |
+[ 1.11 h] GPU 0 done B_pvt_seed42: 75.30% in 67 min (1/14)
+[ 1.12 h] GPU 0 done B_pvt_seed43: 75.11% in 67 min (2/14)
+[ 1.81 h] GPU 0 done T_resnet18_lr1.25e-4_seed42: 20.15% in 41 min (3/14)
+[ 1.84 h] GPU 0 done B_resnet18_lr1.25e-4_seed42: 75.02% in 44 min (4/14)
+[ 2.58 h] GPU 0 done T_resnet18_lr1e-3_seed42: 37.39% in 44 min (5/14)
+[ 2.59 h] GPU 0 done B_resnet18_lr1e-3_seed42: 85.85% in 47 min (6/14)
+[ 3.11 h] GPU 0 done T_resnet18_lr1.25e-4_seed43: 20.14% in 32 min (7/14)
+[ 3.12 h] GPU 0 done B_resnet18_lr1.25e-4_seed43: 74.40% in 33 min (8/14)
+[ 3.48 h] GPU 0 done T_resnet18_lr1e-3_seed43: 36.97% in 22 min (9/14)
+[ 3.49 h] GPU 0 done B_resnet18_lr1e-3_seed43: 86.37% in 23 min (10/14)
+[ 3.79 h] GPU 0 done T_resnet18_lr1.25e-4_seed44: 20.20% in 18 min (11/14)
+[ 3.80 h] GPU 0 done B_resnet18_lr1.25e-4_seed44: 73.46% in 19 min (12/14)
+[ 4.08 h] GPU 0 done T_resnet18_lr1e-3_seed44: 36.85% in 17 min (13/14)
+[ 4.08 h] GPU 0 done B_resnet18_lr1e-3_seed44: 86.12% in 17 min (14/14)
+
+Finished 14, failed 0, not started (time budget) 0 in 4.08 h
+| Config | Seeds | Epochs | Params | Test acc (mean ± std) | GFLOPs (all) | GFLOPs (linear) | Throughput (img/s)* | Peak train memory (MB) |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| A_pvt | 3 | 10 | 3.41M | 71.83 ± 0.30 | 1.51 | 1.38 | 1843 | 4937 |
+| A_vit128 | 3 | 10 | 9.20M | 43.20 ± 0.22 | 1.21 | 1.17 | 5488 | 1174 |
+| A_vit256 | 3 | 10 | 9.27M | 46.74 ± 0.42 | 5.28 | 4.68 | 2885 | 3111 |
+| A_vit64p8 | 3 | 10 | 8.98M | 42.39 ± 0.41 | 1.18 | 1.14 | 5883 | 1163 |
+| B_fixed_A16 | 3 | 30 | 11.36M | 65.29 ± 0.94 | 5.49 | 5.31 | 1200 | 4315 |
+| B_focus_A16 | 3 | 30 | 11.37M | 66.82 ± 0.66 | 5.49 | 5.31 | 542 | 4529 |
+| B_focus_A4 | 3 | 30 | 11.36M | 64.67 ± 0.26 | 5.45 | 5.29 | 922 | 4245 |
+| B_pvt | 3 | 30 | 3.41M | 75.07 ± 0.25 | 1.51 | 1.38 | 1751 | 4935 |
+| B_resnet18_lr1.25e-4 | 3 | 30 | 11.18M | 74.29 ± 0.79 | 4.74 | 4.74 | 5908 | 2504 |
+| B_resnet18_lr1e-3 | 3 | 30 | 11.18M | 86.11 ± 0.26 | 4.74 | 4.74 | 6310 | 2504 |
+| B_vit128 | 3 | 30 | 9.20M | 55.05 ± 0.26 | 1.21 | 1.17 | 5256 | 1174 |
+| B_vit256 | 3 | 30 | 9.27M | 61.99 ± 0.54 | 5.28 | 4.68 | 4154 | 3111 |
+| D2_full_clip | 3 | 10 | 11.37M | 53.78 ± 0.09 | 5.49 | 5.31 | 889 | 4522 |
+| D2_nosuppression_clip | 3 | 10 | 11.37M | 53.57 ± 0.43 | 5.49 | 5.31 | 523 | 4505 |
+| D2_softassign_clip | 3 | 10 | 11.37M | 10.00 ± 0.00 | 5.49 | 5.31 | 338 | 4517 |
+| D_coverage3x3 | 3 | 10 | 11.37M | 49.40 ± 0.78 | 5.49 | 5.31 | 592 | 4514 |
+| D_nocoverage | 3 | 10 | 11.37M | 49.63 ± 0.28 | 5.49 | 5.31 | 325 | 4541 |
+| D_nohome | 3 | 10 | 11.37M | 47.23 ± 1.17 | 5.49 | 5.31 | 388 | 4529 |
+| D_nosuppression | 3 | 10 | 11.37M | 37.16 ± 20.71 | 5.49 | 5.31 | 505 | 4505 |
+| D_softassign | 3 | 10 | 11.37M | 20.17 ± 14.03 | 5.49 | 5.31 | 361 | 4517 |
+| F2_keep0.25_random_clip | 3 | 10 | 11.37M | 53.40 ± 0.35 | 4.13 | 3.96 | 978 | 4017 |
+| F_keep0.25_importance-bounded | 3 | 10 | 11.37M | 19.48 ± 7.84 | 4.13 | 3.96 | 326 | 4049 |
+| F_keep0.25_norm | 2 | 10 | 11.37M | 51.49 ± 0.95 | 4.13 | 3.96 | 366 | 4025 |
+| F_keep0.25_random | 2 | 10 | 11.37M | 48.45 ± 2.40 | 4.13 | 3.96 | 348 | 4025 |
+| F_keep0.5_importance-bounded | 1 | 10 | 11.37M | 15.09 | 4.59 | 4.41 | 277 | 4288 |
+| T_fixed_A16 | 3 | 15 | 11.44M | 16.73 ± 0.46 | 5.49 | 5.31 | 1115 | 5429 |
+| T_focus_A16 | 3 | 15 | 11.44M | 17.68 ± 0.33 | 5.49 | 5.31 | 581 | 5645 |
+| T_resnet18_lr1.25e-4 | 3 | 15 | 11.28M | 20.16 ± 0.03 | 4.74 | 4.74 | 4795 | 3618 |
+| T_resnet18_lr1e-3 | 3 | 15 | 11.28M | 37.07 ± 0.28 | 4.74 | 4.74 | 5713 | 3618 |
+| T_vit128 | 3 | 15 | 9.27M | 12.49 ± 0.28 | 1.21 | 1.17 | 4305 | 2290 |
+| T_vit256 | 3 | 15 | 9.35M | 18.25 ± 0.33 | 5.28 | 4.68 | 3428 | 4227 |
+| T_vit64p8 | 3 | 15 | 9.05M | 13.01 ± 0.39 | 1.18 | 1.14 | 4471 | 2277 |
