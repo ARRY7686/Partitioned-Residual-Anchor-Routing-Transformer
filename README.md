@@ -1,673 +1,219 @@
-# Partitioned Local-Global-Local Vision Transformer
+# Partition RART: Anchors That Move Without Collapsing
 
-A research implementation investigating whether **global communication in Vision Transformers can be performed through spatially specialized regional anchor tokens instead of dense patch-to-patch attention**.
+Research code for a Vision Transformer whose global communication runs through a small set of
+**anchor tokens with exclusive regions**. Every patch belongs to exactly one anchor, so two
+anchors can never summarise the same patches. On top of that partition, **focus anchors** move
+to the parts of the image a learned importance map marks as relevant, while the partition stays
+exclusive.
 
-The project explores a Local → Global → Local architecture in which image patches first interact locally, communicate with a small set of spatially assigned anchors, allow those anchors to exchange information globally, and finally propagate the global information back to their corresponding regions.
+The paper draft is in [`paper/`](paper/) ("Anchors That Move Without Collapsing: Exclusive-Region
+Anchor Routing for Vision Transformers"). All experiments, logs and result files are in
+[`experiments/`](experiments/).
 
-> **Research status:** Experimental / ongoing research
+**Status:** research in progress. The results below are from small, from-scratch training runs
+on synthetic canvases. They study a mechanism, not state-of-the-art accuracy.
 
 ---
 
-## Overview
+## Summary of findings
 
-Standard Vision Transformers use global self-attention between all image patches. For an image represented by \(N\) patches, this introduces an \(O(N^2)\) attention interaction structure.
+1. **Anchors with image-independent queries collapse.** On one shared backbone, RART- and
+   AnchorFormer-style anchors learn nearly identical pooling maps (map similarity 0.998 and
+   0.990), and image-derived anchors are only partly diverse. The exclusive partition cannot collapse by construction, and it was the most
+   accurate anchor pathway in all three seeds on CIFAR-100 (46.31 ± 0.56%, against 40.93 ± 0.95%
+   for a dense pathway on the same backbone).
+2. **Focus anchors beat the fixed partition.** On a cluttered 256² CIFAR-10 canvas trained for
+   30 epochs, focus-16 reaches 66.82 ± 0.66% against 65.29 ± 0.94% for fixed-16. The paired gap is
+   +1.54 points (95% CI [0.53, 2.55]), and focus wins in 3 of 3 seeds.
+3. **Both beat downsampling.** Focus anchors beat ViTs on downsampled inputs by 4.7–11.8 points,
+   on Cluttered CIFAR-10 and on a Tiny ImageNet canvas.
+4. **Hard exclusive assignment is what makes moving anchors trainable.** Its softmax relaxation
+   diverges in every seed, with or without gradient clipping, and also with Sinkhorn balancing.
+5. **The limits are real.** PVTv2-B0 (75.1%) and ResNet-18 (86.1%) are far more accurate in this
+   from-scratch regime. At 256² the anchor models are slower per training step than a dense ViT
+   and use more memory. The memory advantage only appears at much higher resolution.
 
-This becomes increasingly expensive as image resolution grows.
+---
 
-This project investigates an alternative:
+## Method
+
+### One block: local, global through anchors, local
 
 ```text
-                    Image
-                      │
-                      ▼
-                Patch Embedding
-                      │
-                      ▼
-             Local Patch Attention
-                      │
-                      ▼
-             Spatial Partitioning
-                      │
-          ┌───────────┴───────────┐
-          ▼                       ▼
-     Regional Anchor 1       Regional Anchor N
-          │                       │
-          └───────────┬───────────┘
-                      ▼
-             Global Anchor Attention
-                      │
-                      ▼
-             Regional Anchor → Patch
-                      │
-                      ▼
-                    FFN
-                      │
-                      ▼
-                Next Block
+patches -> local window attention
+        -> gather: each anchor pools the patches of its own region      (N -> A)
+        -> anchor self-attention                                        (A x A)
+        -> scatter: each patch reads back from its own anchor           (A -> N)
+        -> FFN
 ```
 
-The central idea is to separate:
+The dense N × N attention of a ViT is replaced by A × A attention among anchors. At 224² with
+16 anchors, that is 196 + 16² = 452 global interactions instead of 196² = 38,416. This is an
+interaction count, not a wall-clock speedup.
 
-* **Local representation learning** between nearby patches
-* **Global communication** between a small number of regional anchors
-* **Local reconstruction / information propagation** from anchors back to patches
+### Exclusive regions
 
----
+Each patch is assigned to its nearest anchor, which splits the patch grid into Voronoi regions.
+The forward pass uses this hard assignment. Gradients reach the anchor positions through a
+straight-through softmax over distances. Anchors pool only inside their region. The pooling
+denominator is clamped at 1, which only affects empty regions. An epsilon clamp produced
+gradients of order 10⁹ when two moving anchors met.
 
-## Research Question
+With anchors fixed on a grid, the block is **Partition RART** (`fixed`).
 
-The project investigates three related questions:
+### Focus anchors
 
-1. Can anchor tokens replace dense global patch-to-patch communication?
-2. Do unrestricted anchors collapse into redundant representations?
-3. Can spatially constrained routing preserve anchor specialization while retaining global communication?
+A linear head scores every patch. In each block:
 
-A secondary hypothesis is that the computational benefits of this approach should become more apparent as image resolution increases.
+* **Coverage anchors.** A quarter of the anchors stay on a coarse fixed grid (4 of 16), so every
+  part of the image keeps a summary.
+* **Focus anchors.** The rest are placed one at a time at the soft-argmax of the scores. After
+  each placement, the scores around it are suppressed (strength β = 10, width σ_s = 1.5 patches),
+  so that the next anchor goes elsewhere. A weak prior towards spread-out home positions
+  (σ_h = 0.35) breaks ties early in training.
+* **Importance in pooling.** Gather logits are offset by the log-importance. This trains the
+  importance head from the classification loss alone.
 
----
-
-# Architecture
-
-## Partitioned Local-Global-Local
-
-The current architecture consists of:
-
-1. Patch embedding
-2. Local window attention
-3. Patch → regional anchor routing
-4. Global anchor → anchor self-attention
-5. Regional anchor → patch routing
-6. Feed-forward network
-
-Each patch belongs to exactly one spatial region.
-
-For example, at 224×224:
-
-```text
-224 × 224 image
-      │
-      ▼
-14 × 14 patch grid
-      │
-      ▼
-196 patches
-      │
-      ▼
-16 spatial regions
-      │
-      ▼
-16 regional anchors
-      │
-      ▼
-16 × 16 global anchor attention
-```
-
-The spatial partition is shared across transformer blocks.
+All anchors share one Voronoi partition. Focus anchors can crowd onto the object, which makes
+their regions small, but they never share a patch.
 
 ---
 
-## Why Regional Anchors?
+## Results
 
-An initial version allowed every anchor to attend to the entire patch set.
+### Main comparison (experiment 06)
 
-Although this dramatically compressed the number of global tokens, experiments revealed a significant problem: **anchor collapse**.
+Mean ± std over seeds 42/43/44. In **Cluttered CIFAR-10**, a CIFAR-10 image (upscaled to 64 px)
+sits at a random position on a 256² canvas among distractor crops. In the **Tiny ImageNet
+canvas**, a 64 px Tiny ImageNet image is pasted at native resolution among 32 px crops
+(200 classes).
 
-For the trained 32-anchor model:
+| Model | Params | GFLOPs | Cluttered, 30 ep | Tiny ImageNet, 15 ep |
+|---|---:|---:|---:|---:|
+| focus-16 | 11.4M | 5.49 | **66.82 ± 0.66** | 17.68 ± 0.33 |
+| focus-4 | 11.4M | 5.45 | 64.67 ± 0.26 | – |
+| fixed-16 (Partition RART) | 11.4M | 5.49 | 65.29 ± 0.94 | 16.73 ± 0.46 |
+| ViT, 256² input | 9.3M | 5.28 | 61.99 ± 0.54 | **18.25 ± 0.33** |
+| ViT, 128² input | 9.2M | 1.21 | 55.05 ± 0.26 | 12.49 ± 0.28 |
+| PVTv2-B0 | 3.4M | 1.51 | 75.07 ± 0.25 | – |
+| ResNet-18 (lr 1e-3) | 11.2M | 4.74 | 86.11 ± 0.26 | 37.07 ± 0.28 |
 
-| Metric                           |       Result |
-| -------------------------------- | -----------: |
-| Mean anchor similarity, Block 1  |       0.9887 |
-| Mean anchor similarity, Block 6  |       0.9950 |
-| Patch → Anchor attention entropy |       5.2720 |
-| Maximum entropy for 196 patches  |      ≈ 5.278 |
-| Effective patches attended       | 194.82 / 196 |
-| Anchor attention-map similarity  |       0.9995 |
+| Paired gap (95% CI) | Cluttered, 30 ep | Tiny ImageNet, 15 ep |
+|---|---:|---:|
+| focus-16 − fixed-16 | +1.54 [+0.53, +2.55] | +0.95 [−0.93, +2.83] |
+| focus-16 − ViT 256² | +4.83 [+3.86, +5.80] | −0.58 [−2.11, +0.95] |
+| focus-16 − ViT 128² | +11.77 [+9.73, +13.82] | +5.19 [+4.43, +5.95] |
 
-The anchors were therefore receiving almost identical global information.
+![Test accuracy over 30 epochs on Cluttered CIFAR-10](paper/figures/curves.png)
 
-This motivated explicit spatial routing.
+The dense ViT has no local windows, so part of the anchor models' lead over it may come from
+locality. The effect of moving the anchors alone is the focus − fixed gap.
 
----
+### Anchor collapse (experiment 03)
 
-# Spatial Partitioning
+Five anchor designs on one shared backbone (CIFAR-100, 224², 10 epochs, 3 seeds):
 
-Instead of allowing every anchor to access every patch, each patch is assigned to exactly one regional anchor.
+* Anchors whose queries do not depend on the image (RART-style, AnchorFormer-style) collapse to
+  a single summary: pooling-map similarity 0.998 and 0.990.
+* Image-derived anchors (competitive slots, PaCa-style) are only partly diverse (0.79 and 0.59),
+  and they grow more similar with depth.
+* The fixed partition has zero map overlap by construction, and it is the most accurate:
+  46.31 ± 0.56%, against 40.93 ± 0.95% for a dense pathway.
 
-At 224×224:
+### Ablations and sensitivity (experiment 06, focus-16, 10 epochs)
 
-* 196 patches
-* 16 anchors
-* 16 spatial regions
-* Region sizes: 9–16 patches
-* Mean region size: 12.25 patches
+| Variant | Accuracy (%) | Note |
+|---|---:|---|
+| Full model, clip + warmup | 53.78 ± 0.09 | reference |
+| No suppression, clip + warmup | 53.57 ± 0.43 | −0.21 [−1.51, +1.08]; one seed diverged without clipping |
+| No home prior (no clipping) | 47.23 ± 1.17 | −2.6 against 49.84 |
+| No coverage grid / 3×3 grid (no clipping) | 49.63 / 49.40 | no measurable effect |
+| Soft assignment, clip + warmup | 10.00 × 3 | diverged in every seed |
+| Soft + Sinkhorn balancing, clip + warmup | 9.98 / 10.00 / 12.44 | peaked at 26–39%, then diverged |
 
-This forces anchors to first summarize different spatial regions before communicating globally.
+Placement is robust near its defaults. In one seed per setting, β = 3, σ_s = 0.75 and
+σ_h ∈ {0.15, 1.0} all stay within 1.5 points of the reference. It breaks when suppression is
+much stronger (β = 30: −4.4 points) or much wider (σ_s = 3 patches: stalls near 20%).
 
-The resulting architecture is:
+### Compute skipping (experiments 05 and 06)
 
-```text
-Patch
-  │
-  ▼
-Local Attention
-  │
-  ▼
-Assigned Regional Anchor
-  │
-  ▼
-Global Anchor Attention
-  │
-  ▼
-Assigned Anchor
-  │
-  ▼
-Patch
-```
+Letting 75% of patches skip the FFN in blocks 3–6 cuts compute by 25% (5.31 → 3.96 GFLOPs).
+Random selection costs only 0.38 points (53.40 ± 0.35%, clip + warmup). Selection by the learned
+importance map is not better than random or token-norm selection, and a bounded
+straight-through importance gate diverges.
 
----
+### Cost
 
-# Experiments
+At 256², measured on an A100 (bf16, batch 128):
 
-## Dataset
+| Model | Train step | Peak train memory | Inference |
+|---|---:|---:|---:|
+| ViT 256² | 32.4 ms | 3,111 MB | 11,176 img/s |
+| fixed-16 | 60.7 ms | 4,314 MB | 6,408 img/s |
+| focus-16 | 99.3 ms | 4,528 MB | 5,259 img/s |
 
-Initial experiments use **CIFAR-100**:
+The sequential placement of focus anchors adds about 3–4 ms per focus anchor per step.
 
-* 50,000 training images
-* 10,000 test images
-* 100 classes
-* Images resized to 224×224
-* Patch size: 16×16
+At much higher resolution the picture changes. In experiment 02 (inference, batch 1, no
+FlashAttention), Partition RART overtook a dense ViT in latency between 1280² and 1536². At 2048²
+it used 2.4 GB of peak memory against 14.5 GB for the ViT. PVTv2-B1 and EfficientViT-B2 were
+still faster at 2048² (779 ms and 205 ms, against 1,756 ms).
 
-The high-resolution experiments are primarily intended to study **computational scaling**, rather than to claim that CIFAR-100 itself is a high-resolution vision benchmark.
+### Early experiments (01–02)
 
----
-
-# Baseline
-
-The baseline is a custom ViT with:
-
-| Configuration    |   Value |
-| ---------------- | ------: |
-| Embed dimension  |     384 |
-| Depth            |       6 |
-| Attention heads  |       6 |
-| MLP ratio        |       4 |
-| Patch size       |   16×16 |
-| Input resolution | 224×224 |
-| Patches          |     196 |
-
-Baseline:
-
-* Parameters: **11,057,380**
-* Test accuracy after 10 epochs: **45.44%**
-* Inference: **201.345 ms**
-* Peak GPU memory: **2039.25 MB**
-* Throughput: **635.73 images/sec**
+On CIFAR-100 at 224² (10 epochs, 1 seed), Partition RART reached 44.62%, against 45.44% for a
+ViT. Unrestricted anchors (RART-16/32) reached 42.21% and 39.73%. Their anchors collapsed:
+pairwise similarity 0.99, and each anchor attended to 194.8 of 196 patches. These results
+motivated experiments 03–06. Details are in [`docs/research_summary.md`](docs/research_summary.md).
 
 ---
 
-# Initial RART
+## Limitations
 
-The first anchor-based implementation used unrestricted compressed Patch → Anchor routing.
-
-### RART-16
-
-* 16 anchors
-* Anchor dimension: 128
-* Patch dimension: 384
-* Depth: 6
-
-Results:
-
-* Parameters: **11.27M**
-* Test accuracy: **42.21%**
-* Inference: **212.667 ms**
-* Peak memory: **2619.68 MB**
-* Throughput: **601.88 images/sec**
-
-### RART-32
-
-Results:
-
-* Parameters: **11.27M**
-* Test accuracy: **39.73%**
-* Inference: **215.096 ms**
-* Peak memory: **2802.46 MB**
-* Throughput: **595.08 images/sec**
-
-The degradation motivated the anchor-collapse investigation.
+* The tasks are small and synthetic, and all models are trained from scratch for 10–30 epochs.
+  Absolute accuracy is low, and a CNN and PVTv2 are far ahead.
+* Three seeds give wide confidence intervals, and some skipping rows and the sensitivity sweep
+  use one or two seeds.
+* There is no validation split, and the 30-epoch learning rate was chosen on test accuracy.
+* The AnchorFormer- and PaCa-style models are simplified reimplementations, not the published
+  models.
+* The importance map marks content in general rather than the class object.
+* The implementation is not optimised. At moderate resolution it is slower than dense attention,
+  and FlashAttention may narrow the memory gap at high resolution.
+* Real high-resolution data (for example traffic signs in full-HD street scenes) has not been
+  tested yet.
 
 ---
 
-# Local-Global-Local Experiment
+## Related work
 
-A constrained 5×5 routing version was introduced:
+Anchor-based token bottlenecks are not new. The closest prior work for each component:
 
-1. Local patch attention
-2. Local Patch → Anchor routing
-3. Global Anchor → Anchor attention
-4. Local Anchor → Patch routing
-5. FFN
+* **Fixed regional tokens:** [RegionViT](https://arxiv.org/abs/2106.02689) associates each
+  regional token with a fixed group of local tokens, close to the fixed partition here.
+* **Anchor bottlenecks (gather, interact, distribute):**
+  [AnchorFormer](https://arxiv.org/abs/2505.16463), [LeMeViT](https://arxiv.org/abs/2405.09789),
+  [PaCa-ViT](https://arxiv.org/abs/2203.11987),
+  [Representative Attention](https://arxiv.org/abs/2605.14913).
+* **Content-driven regions:** [SViT super tokens](https://arxiv.org/abs/2211.11167),
+  [SALG](https://arxiv.org/abs/2211.14705), [TCFormer / FTCFormer](https://arxiv.org/abs/2507.10283).
+* **Learned movement towards important regions:** [DAT](https://arxiv.org/abs/2201.00520),
+  [PS-ViT](https://arxiv.org/abs/2108.01684).
+* **High-resolution recognition under a memory budget:**
+  [Differentiable Patch Selection](https://arxiv.org/abs/2104.03059),
+  [Iterative Patch Selection](https://arxiv.org/abs/2210.13007).
 
-Results:
-
-| Metric        |            Result |
-| ------------- | ----------------: |
-| Parameters    |            11.27M |
-| Test accuracy |        **45.38%** |
-| Inference     |        399.040 ms |
-| Peak memory   |        4000.50 MB |
-| Throughput    | 320.77 images/sec |
-
-Anchor similarity remained substantially lower than in the unrestricted model:
-
-| Block | Anchor similarity |
-| ----- | ----------------: |
-| 1     |            0.2619 |
-| 2     |            0.2550 |
-| 3     |            0.2976 |
-| 4     |            0.3295 |
-| 5     |            0.3682 |
-| 6     |            0.4227 |
-
-This provided evidence that spatially constrained routing can preserve anchor specialization.
+What this project contributes is the combination: an exclusive partition that prevents collapse
+by construction, anchors that move to content without giving it up, and a controlled
+comparison of collapse across anchor designs.
 
 ---
 
-# Partition RART
-
-The current main architecture uses a fixed non-overlapping spatial partition.
-
-### Configuration
-
-* Image: 224×224
-* Patch size: 16×16
-* Patches: 196
-* Anchors: 16
-* Embed dimension: 384
-* Anchor dimension: 128
-* Depth: 6
-* Patch heads: 6
-* Anchor heads: 4
-* MLP ratio: 3
-
-Results after 10 epochs:
-
-| Model              | Parameters | Test Accuracy |
-| ------------------ | ---------: | ------------: |
-| ViT                |     11.06M |    **45.44%** |
-| MeanPool ViT       |     11.06M |        44.59% |
-| RART-16            |     11.27M |        42.21% |
-| RART-32            |     11.27M |        39.73% |
-| Local-Global-Local |     11.27M |    **45.38%** |
-| Partition RART     |     11.27M |    **44.62%** |
-
-Partition RART is within **0.82 percentage points** of the baseline ViT on this experiment.
-
-The result does **not** establish that Partition RART is more accurate than ViT. The primary motivation is its different global communication structure and its scaling behavior.
-
----
-
-# Global Interaction Reduction
-
-At 224×224:
-
-### Dense ViT
-
-There are 196 patches.
-
-Dense self-attention involves approximately:
-
-$$
-196^2 = 38,416
-$$
-
-patch-to-patch interactions per attention layer.
-
-### Partition RART
-
-Patch → Anchor communication:
-
-$$
-196
-$$
-
-Anchor → Anchor communication:
-
-$$
-16^2 = 256
-$$
-
-Total:
-
-$$
-196 + 256 = 452
-$$
-
-Thus, the global communication component uses approximately:
-
-$$
-\frac{38,416}{452} \approx 85\times
-$$
-
-fewer pairwise interactions.
-
-This is an **interaction-count comparison**, not an equivalent 85× wall-clock speedup.
-
-Local attention, projections, FFNs, memory movement, kernel launch overhead, and implementation details still contribute substantially to runtime.
-
----
-
-# High-Resolution Scaling
-
-The main computational hypothesis is that dense global attention becomes increasingly expensive as the number of patches grows.
-
-The number of anchors is therefore scaled with the spatial resolution.
-
-| Resolution | Patches | Anchors |
-| ---------: | ------: | ------: |
-|       224² |     196 |      16 |
-|       384² |     576 |      36 |
-|       512² |   1,024 |      64 |
-|       768² |   2,304 |     144 |
-|      1024² |   4,096 |     256 |
-|      1280² |   6,400 |     400 |
-|      1536² |   9,216 |     576 |
-|      2048² |  16,384 |   1,024 |
-
----
-
-## ViT vs Partition RART
-
-Matched high-resolution inference measurements:
-
-| Resolution |   RART Latency |    ViT Latency | RART Throughput | ViT Throughput |
-| ---------: | -------------: | -------------: | --------------: | -------------: |
-|       224² |       38.80 ms |        6.63 ms |         51.55/s |       301.66/s |
-|       384² |       77.92 ms |       12.90 ms |         25.67/s |       155.05/s |
-|       512² |      128.92 ms |       28.41 ms |         15.51/s |        70.41/s |
-|       768² |      286.45 ms |      101.09 ms |          6.98/s |        19.78/s |
-|      1024² |      505.65 ms |      265.06 ms |          3.96/s |         7.55/s |
-|      1280² |      790.15 ms |      641.85 ms |          2.53/s |         3.12/s |
-|      1536² | **1155.42 ms** | **1416.91 ms** |      **1.73/s** |     **1.41/s** |
-
-The measured crossover occurs between **1280×1280 and 1536×1536** in this implementation.
-
-At 1536×1536:
-
-* RART: **1155.4 ms**
-* ViT: **1416.9 ms**
-* RART peak memory: **1253 MB**
-* ViT peak memory: **8897 MB**
-
-This corresponds to approximately 18.5% lower latency for RART in this particular measurement and substantially lower peak memory.
-
-These measurements should be interpreted as implementation-specific benchmarks rather than universal complexity guarantees.
-
----
-
-# 2048×2048 Experiment
-
-At 2048×2048:
-
-* 16,384 patches
-* 1,024 regional anchors
-* 16 patches per anchor
-
-### Partition RART
-
-| Metric      |              Result |
-| ----------- | ------------------: |
-| Parameters  |              17.62M |
-| Latency     |       **1755.5 ms** |
-| Peak memory |       **2428.9 MB** |
-| Throughput  | **0.57 images/sec** |
-
-### Dense ViT
-
-Batch size 2 exceeded the available GPU memory.
-
-A batch-size-1 measurement was therefore used:
-
-| Metric      |          Result |
-| ----------- | --------------: |
-| Parameters  |          17.27M |
-| Latency     |       2519.3 ms |
-| Peak memory |      14494.7 MB |
-| Throughput  | 0.40 images/sec |
-
-At batch size 1, RART used approximately 83% less peak memory than the dense ViT in this experiment.
-
----
-
-# Efficient Transformer Baselines
-
-Additional high-resolution baselines were investigated using `timm`.
-
-At 2048×2048, batch size 1:
-
-| Model           | Parameters |      Latency |     Memory | Throughput |
-| --------------- | ---------: | -----------: | ---------: | ---------: |
-| Partition RART  |     17.62M |    1755.5 ms |  2428.9 MB |     0.57/s |
-| PVTv2-B1        |     13.55M |     778.9 ms |  3835.4 MB |     1.28/s |
-| EfficientViT-B2 |     22.03M | **204.8 ms** |  2907.4 MB | **4.88/s** |
-| ViT             |     17.27M |    2519.3 ms | 14494.7 MB |     0.40/s |
-
-These results are important because they show that reducing dense attention alone does not make Partition RART the fastest efficient-transformer architecture.
-
-The current evidence instead supports a narrower observation:
-
-> Spatially partitioned anchor routing can substantially reduce memory usage relative to dense ViT attention at very high resolutions while maintaining a relatively small global communication graph.
-
----
-
-# Complexity Intuition
-
-Let:
-
-* \(N\) = number of patches
-* \(A\) = number of anchors
-
-Dense ViT global attention has approximately:
-
-$$
-O(N^2)
-$$
-
-patch interactions.
-
-Partition RART separates communication into:
-
-### Local attention
-
-Local computation is restricted to spatial windows.
-
-### Patch → Anchor
-
-Each patch communicates with its assigned anchor:
-
-$$
-O(N)
-$$
-
-### Anchor → Anchor
-
-Global communication occurs among anchors:
-
-$$
-O(A^2)
-$$
-
-Therefore, the global routing component is approximately:
-
-$$
-O(N + A^2)
-$$
-
-instead of:
-
-$$
-O(N^2)
-$$
-
-When the number of anchors grows much more slowly than the number of patches, this creates a substantially smaller global interaction graph.
-
----
-
-# Key Findings So Far
-
-### 1. Unrestricted anchors can collapse
-
-The initial compressed anchor architecture produced extremely similar anchor representations.
-
-The trained 32-anchor model reached approximately **0.99 average pairwise cosine similarity** between anchors.
-
----
-
-### 2. Spatial constraints improve specialization
-
-Constraining patches to regional anchors dramatically reduced attention-map similarity and allowed different anchors to represent different spatial regions.
-
----
-
-### 3. Local → Global → Local recovers classification performance
-
-The constrained Local-Global-Local model achieved **45.38%** test accuracy, close to the **45.44%** ViT baseline in the initial experiment.
-
----
-
-### 4. Partition RART provides a compact global communication graph
-
-At 224×224:
-
-```text
-ViT:
-196 × 196 = 38,416 interactions
-
-Partition RART:
-196 patch→anchor
-+
-16 × 16 anchor→anchor
-=
-452 interactions
-```
-
----
-
-### 5. The computational benefit appears at higher resolution
-
-In the current implementation, RART is slower than the dense ViT at lower resolutions but becomes competitive at higher resolutions.
-
-The measured crossover is between **1280² and 1536²**.
-
-At 2048², dense ViT attention approaches the GPU memory limit, while Partition RART remains executable with substantially lower memory usage.
-
----
-
-# Limitations
-
-This project is still experimental and has several important limitations.
-
-### CIFAR-100
-
-The initial classification experiments use CIFAR-100 resized to high resolutions. This is useful for controlled architectural experiments but does not demonstrate effectiveness on genuinely high-resolution imagery.
-
-### Implementation efficiency
-
-The current implementation uses explicit routing and indexing operations. The theoretical reduction in attention interactions does not automatically translate into equivalent GPU speedups.
-
-### Baseline coverage
-
-Several efficient-transformer architectures exist, and the current experiments do not constitute an exhaustive comparison.
-
-### Accuracy
-
-Partition RART has not yet demonstrated superior classification accuracy over the baseline ViT.
-
-### High-resolution task validation
-
-The strongest motivation for this architecture is high-resolution vision, but this still needs to be evaluated on genuinely high-resolution tasks such as dense prediction or small-object detection.
-
----
-
-# Research Direction
-
-The next stage of the project is to evaluate the architecture on tasks where reducing image resolution can remove important information.
-
-Potential targets include:
-
-* High-resolution object detection
-* Tiny-object detection
-* Aerial imagery
-* Remote sensing
-* Dense prediction
-* Medical imaging
-
-A particularly relevant research question is whether spatially partitioned anchors can provide global context **without aggressively downsampling high-resolution images**.
-
----
-
-# Relation to Existing Work
-
-Anchor-based token bottlenecks are not themselves new.
-
-Related approaches include:
-
-* Vision Transformers
-* Perceiver
-* TokenLearner
-* Slot Attention
-* Focal Transformer
-* Anchor-based efficient transformers
-* Hierarchical vision transformers
-
-Closest prior work for specific components:
-
-* **Fixed regional tokens:** [RegionViT](https://arxiv.org/abs/2106.02689) already associates each regional token with a fixed spatial group of local tokens and lets the regional tokens attend globally, which is close to the fixed partition used here.
-* **Anchor bottlenecks:** [AnchorFormer](https://arxiv.org/abs/2505.16463), [LeMeViT](https://arxiv.org/abs/2405.09789), [PaCa-ViT](https://arxiv.org/abs/2203.11987) and [Representative Attention](https://arxiv.org/abs/2605.14913) (gather–interact–distribute).
-* **Content-driven regions:** [SViT super tokens](https://arxiv.org/abs/2211.11167), [SALG](https://arxiv.org/abs/2211.14705), [TCFormer / FTCFormer](https://arxiv.org/abs/2507.10283).
-* **Learned movement toward important regions:** [DAT](https://arxiv.org/abs/2201.00520), [PS-ViT](https://arxiv.org/abs/2108.01684).
-* **High-resolution recognition under a memory budget:** [Differentiable Patch Selection](https://arxiv.org/abs/2104.03059), [Iterative Patch Selection](https://arxiv.org/abs/2210.13007).
-
-The project therefore does **not** claim that using anchors, reducing quadratic attention, or a fixed spatial partition is novel by itself.
-
-The current research direction focuses on the combination of:
-
-1. Explicit, exclusive spatial partitioning
-2. Anchors that move to important regions while keeping that partition
-3. Local → Global → Local information flow
-4. Analysis of anchor collapse across anchor designs
-5. High-resolution scaling behavior
-
-Further direct comparisons with related anchor-based architectures are required before making a formal novelty claim.
-
----
-
-# Follow-up Experiments
-
-Every experiment lives in its own numbered folder under [`experiments/`](experiments/), with a
-README, its notebook and its results. Experiments 01 and 02 are the work described above; 03–05
-follow on from it:
-
-* **[03 — Anchor collapse across designs](experiments/03_anchor_collapse/).** RART-style, AnchorFormer-style and PaCa-style anchors, a competitive (slot-style) variant, the fixed partition and a dense no-anchor reference, trained on one shared backbone. Anchors that are the same for every image collapse completely (map similarity ≈ 0.99), image-derived anchors are only partly diverse, and the fixed partition does not collapse and reached the best accuracy in all three seeds (46.31 ± 0.56%, against 40.93% for the dense pathway).
-* **[04 — Moving anchors](experiments/04_moving_anchors/).** Positional anchors with an exclusive Voronoi partition on Cluttered CIFAR-10 (a small object on a large canvas with distractors). A *focus* design — a quarter of the anchors on a coarse fixed grid for coverage, the rest placed at the peaks of a learned importance map — beat the fixed partition in all 6 paired runs (3 seeds × 4 and 16 anchors): 47.52% vs 46.04% with 4 anchors and 49.84% vs 46.71% with 16 anchors (means), without collapse.
-* **[05 — Compute skipping](experiments/05_compute_skipping/).** Letting 75% of patches skip the feed-forward layers in blocks 3–6 cut compute by 25% (5.31 → 3.96 GFLOPs per image) with no accuracy loss for either `focus` or the fixed partition (single seed). However, random and token-norm selection did as well as the learned importance map, so this does not yet show that learned importance picks better patches.
-* **[06 — Main comparison](experiments/06_main_comparison/).** 102 runs on an A100, 3 seeds each:
-  * 30 epochs on Cluttered CIFAR-10: focus-16 66.82% vs fixed-16 65.29% (paired +1.54, 95% CI [0.53, 2.55]) vs a dense ViT at 256² 61.99% and a ViT on a 128² input 55.05%
-  * Tiny ImageNet canvas (objects at native 64 px): focus 17.68% vs fixed 16.73%, level with the dense ViT (18.25%), 5 points above downsampled ViTs
-  * PVTv2-B0 (75.1%) and ResNet-18 (86.1%) are far ahead in this from-scratch regime
-  * ablations: the home prior matters (−2.6 points), coverage grid neutral, soft assignment diverges in every seed even with clipping
-  * at 256² the anchor models are 1.9–3.1× slower per training step than the dense ViT; learned-importance skipping with a bounded gate diverges, random skipping costs ~0.4 points for 25% fewer FLOPs
-
-See [`experiments/README.md`](experiments/README.md) for an index of all experiments and how to run them.
-
----
-
-# Repository Layout
+## Repository layout
 
 ```text
 README.md                        this overview
-docs/research_summary.md         detailed research log for experiments 01–02
+docs/research_summary.md         detailed log of experiments 01–02
 experiments/
   README.md                      index of all experiments and how to run them
   01_partition_rart/             ViT, RART, Local-Global-Local and Partition RART on CIFAR-100
@@ -675,85 +221,50 @@ experiments/
   03_anchor_collapse/            anchor collapse across five anchor designs
   04_moving_anchors/             fixed, moving and focus anchors on Cluttered CIFAR-10
   05_compute_skipping/           FFN skipping guided by the learned importance map
-  06_main_comparison/            baselines, 30-epoch and Tiny ImageNet runs, ablations, cost (A100)
+  06_main_comparison/            baselines, 30-epoch and Tiny ImageNet runs, ablations, cost
 paper/                           LNCS paper draft (main.tex, refs.bib, figures/)
 ```
 
-Each experiment folder contains a `README.md`, its notebook, and `results/` split into
-`tables/`, `figures/`, `logs/` and (not committed) `checkpoints/`.
+Each experiment folder has a README covering the question, setup, results and findings, plus its
+code or notebook and a `results/` folder. Model checkpoints are not committed.
+
+## Reproducing
+
+* **Experiments 01–02:** Kaggle notebooks (PyTorch 2.10, CUDA 12.8, Tesla T4).
+* **Experiments 03–05:** notebooks that run on Kaggle or locally (PyTorch 2.11, RTX 5060 Laptop
+  GPU). They download CIFAR if it is not found under `/kaggle/input`.
+* **Experiment 06:** `train.py` and `run_suite.py`, configured through `RART_*` environment
+  variables. These were run on a rented A100-80GB in bf16, with phase V on the laptop GPU.
+
+Settings and commands for each experiment are in [`experiments/README.md`](experiments/README.md)
+and [`experiments/06_main_comparison/README.md`](experiments/06_main_comparison/README.md).
 
 ---
 
-# Reproducing the Experiments
+## Roadmap
 
-Experiments 01 and 02 were developed in a Kaggle GPU environment:
-
-```text
-Python 3.12
-PyTorch 2.10
-CUDA 12.8
-Tesla T4
-```
-
-Experiments 03–05 were run locally (PyTorch 2.11, CUDA 12.8, RTX 5060 Laptop GPU) and also run on
-Kaggle. Each notebook contains its own model definitions, experiments and analysis. The notebooks
-for 03–05 download CIFAR if it is not found under `/kaggle/input`; see
-[`experiments/README.md`](experiments/README.md) for their settings.
+* [x] ViT baseline, unrestricted anchors, Local-Global-Local and Partition RART (01)
+* [x] Resolution scaling to 2048² against dense and efficient transformers (02)
+* [x] Anchor collapse across five designs, 3 seeds, with a dense reference (03)
+* [x] Moving and focus anchors on Cluttered CIFAR-10, 3 seeds (04)
+* [x] Compute skipping against random and token-norm selection (05)
+* [x] 30-epoch, Tiny ImageNet, CNN and PVTv2 baselines; ablations; cost (06)
+* [x] Sinkhorn-balanced soft assignment and placement sensitivity (06, phase V)
+* [ ] Dense baseline with local windows
+* [ ] Real high-resolution data (DFG traffic signs, Megapixel MNIST) with a fair memory comparison
+* [ ] Comparison with the published AnchorFormer
+* [ ] Paper submission
 
 ---
 
-# Citation
-
-This repository currently represents an ongoing research project.
-
-If you use the implementation or experimental findings, please cite the repository once a formal paper or technical report is released.
+## Citation
 
 ```bibtex
-@misc{partitioned_rart,
-  title  = {Partitioned Local-Global-Local Vision Transformer},
+@misc{gupta2026partitionrart,
+  title  = {Anchors That Move Without Collapsing: Exclusive-Region Anchor Routing for Vision Transformers},
   author = {Aadi Gupta},
   year   = {2026},
-  note   = {Ongoing research project}
+  note   = {Work in progress},
+  url    = {https://github.com/ARRY7686/Partitioned-Residual-Anchor-Routing-Transformer}
 }
 ```
-
----
-
-# Status
-
-🚧 **Research in progress**
-
-Current focus:
-
-* [x] ViT baseline
-* [x] Initial anchor-based architecture
-* [x] Anchor-collapse analysis
-* [x] Spatial routing investigation
-* [x] Local-Global-Local architecture
-* [x] Partitioned routing
-* [x] High-resolution scaling experiments
-* [x] 2048×2048 experiment
-* [x] Efficient transformer baseline comparison
-* [x] Anchor-collapse comparison across anchor designs (AnchorFormer-style, PaCa-style, competitive)
-* [x] Moving anchors on a small-object task, with anchor-trajectory visualization (1 seed)
-* [x] Multi-seed confirmation of the moving-anchor results (3 seeds)
-* [x] Compute skipping against random and token-norm baselines (1 seed; learned importance not better)
-* [ ] Compute skipping: re-run keep-50% with a bounded gate, smaller budgets, more seeds
-* [ ] Direct comparison with the published AnchorFormer
-* [ ] High-resolution detection benchmark
-* [ ] Tiny-object evaluation
-* [ ] Training scalability experiments
-* [ ] Formal ablation study
-* [ ] Paper / technical report
-
----
-
-## Core Hypothesis
-
-The central hypothesis of this project is:
-
-> **Global reasoning in high-resolution vision may not require every image patch to communicate directly with every other patch. Spatially specialized regional anchors can provide a compact global communication layer while local attention preserves fine-grained spatial information.**
-
-The experiments so far suggest that **spatial specialization is important**: unrestricted anchor compression can produce severe anchor redundancy, while explicit regional routing encourages distinct anchor representations.
-
-Whether this translates into a meaningful advantage on real high-resolution vision tasks remains an open research question.
