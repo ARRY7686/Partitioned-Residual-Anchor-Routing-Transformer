@@ -711,7 +711,7 @@ If you use the implementation or experimental findings, please cite the reposito
 ```bibtex
 @misc{partitioned_rart,
   title  = {Partitioned Local-Global-Local Vision Transformer},
-  author = {Aadi Gupta, Priyansh Saxena},
+  author = {Aadi Gupta},
   year   = {2026},
   note   = {Ongoing research project}
 }
