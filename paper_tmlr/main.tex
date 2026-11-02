@@ -33,9 +33,9 @@
 \begin{abstract}
 Anchor tokens let a vision transformer exchange global information through a few summaries, but
 nothing forces different anchors to summarise different things. On one shared backbone we show
-that anchors with image-independent queries collapse to a single summary, including an
-AnchorFormer pathway with its mass normalisation (pooling-map similarity 0.99), while
-image-derived anchors such as Representative Attention stay partly redundant (0.68). An
+that a Perceiver-style pathway and an AnchorFormer pathway collapse to a single summary, the
+latter despite its mass normalisation (pooling-map similarity 0.99), while other soft pathways,
+including Representative Attention, stay partly redundant (0.59--0.79). An
 exclusive partition of the patch grid cannot collapse by construction, and matched component by
 component it is 2.4--3.6 points more accurate than Representative Attention on CIFAR-100. We
 then propose \emph{focus anchors}, which place most anchors at the peaks of a learned importance
@@ -71,8 +71,9 @@ content, and where such anchors help. Our contributions:
 \begin{enumerate}
 \item A controlled comparison of six anchor pathways on one backbone (Sec.~\ref{sec:collapse}),
 including AnchorFormer and Representative Attention implemented from their papers with their
-stabilisers. Image-independent anchors collapse even with mass normalisation; image-derived
-anchors stay partly redundant. An exclusive partition cannot collapse, and a component-matched
+stabilisers. The Perceiver-style and AnchorFormer pathways collapse, AnchorFormer even with mass
+normalisation; the other soft pathways stay partly redundant. An exclusive partition cannot
+collapse, and a component-matched
 ablation shows it is more accurate than Representative Attention, with or without the same
 local convolution.
 \item \emph{Focus anchors} (Sec.~\ref{sec:focus}): coverage anchors on a coarse fixed grid plus
@@ -267,12 +268,24 @@ Pathway & Test accuracy (\%) & Map similarity & Spread \\
 \end{tabular}
 \end{table}
 
-\paragraph{Results.} Table~\ref{tab:collapse} and Fig.~\ref{fig:collapse}. Pathways whose
-anchor queries are the same for every image collapse almost completely: map similarity
-0.990--0.998 and near-zero spread, AnchorFormer despite its mass normalisation. Image-derived
-anchors stay partly diverse (0.59--0.79), but their summaries grow more similar with depth;
-Representative Attention's stabilisers prevent full collapse, yet its summaries are far less
-distinct than the partition's (spread 0.27 against 0.60).
+\paragraph{Results.} Table~\ref{tab:collapse} and Fig.~\ref{fig:collapse}. The
+\textsc{perceiver} and \textsc{anchorformer} pathways collapse almost completely: map similarity
+0.990--0.998 and near-zero spread, AnchorFormer despite its mass normalisation. The
+\textsc{competitive}, \textsc{paca} and \textsc{rpattention} pathways stay partly diverse
+(0.59--0.79), but their summaries grow more similar with depth; Representative Attention's
+stabilisers prevent full collapse, yet its summaries are far less distinct than the partition's
+(spread 0.27 against 0.60).
+
+Our data do not single out one cause. AnchorFormer and Representative Attention route almost
+identically: both score each key against learned prototypes shared by all images, take a softmax
+over them and normalise each prototype's mass. They differ after gathering: Representative
+Attention's representatives attend to each other, and patches read them by attention over their
+keys, whereas AnchorFormer reads back through the same assignment in reverse
+($H=A\Delta^{-1}A^{\top}V$). A read-back by attention alone does not prevent collapse, however:
+the \textsc{perceiver} pathway also reads back by attention, and it collapses. We have not
+isolated which combination of competition between anchors, interaction among them and the form
+of the read-back keeps anchors distinct; the exclusive partition avoids the question by
+construction.
 
 Representative Attention is more accurate than the plain partition (+1.23 points, 95\% CI
 [+0.02, +2.45]), but it also has a $3\times3$ depth-wise convolution that the other pathways lack.
@@ -287,8 +300,9 @@ convolution helps every pathway.
 \centering
 \includegraphics[width=\textwidth]{figures/collapse_metrics_seed42.png}
 \caption{Collapse metrics per block (seed 42), trained (solid) and at initialisation (dashed),
-for the pathways of the original comparison. Image-independent anchors converge to the same
-summary; the fixed partition keeps zero map similarity and the highest spread.}
+for the pathways of the original comparison. The \textsc{perceiver} and \textsc{anchorformer}
+pathways converge to the same summary; the fixed partition keeps zero map similarity and the
+highest spread.}
 \label{fig:collapse}
 \end{figure}
 
@@ -607,9 +621,10 @@ than FlashAttention, and it never uses less memory.
 
 \section{Conclusion}
 
-Anchor bottlenecks only pay off if the anchors stay different. Anchors with image-independent
-queries collapse to a single summary even with mass normalisation, soft image-derived anchors stay
-partly redundant, and an exclusive partition prevents collapse by construction and, matched
+Anchor bottlenecks only pay off if the anchors stay different. Perceiver-style and AnchorFormer
+anchors collapse to a single summary, the latter even with mass normalisation; other soft
+pathways, Representative Attention included, stay partly redundant, and we could not tie the
+difference to a single design choice. An exclusive partition prevents collapse by construction and, matched
 component by component, routes most accurately among the designs we tested. Focus anchors keep
 that guarantee while moving to image content; they beat a fixed partition on a cluttered CIFAR-10
 canvas, though not on our high-resolution tasks, and on full-HD images both keep full resolution

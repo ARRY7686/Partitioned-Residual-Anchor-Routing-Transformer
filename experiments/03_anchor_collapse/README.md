@@ -62,9 +62,11 @@ backbone (local windows kept), as a no-anchor reference.
 
 ## Finding
 
-Anchors that are the same for every image (`perceiver`, `anchorformer`) collapse completely,
-AnchorFormer despite its mass normalisation. Anchors derived from the image (`competitive`,
-`paca`, `rpattention`) are partly diverse but grow more similar with depth: Representative
+The `perceiver` and `anchorformer` pathways collapse completely, AnchorFormer despite its mass
+normalisation. The `competitive`, `paca` and `rpattention` pathways are partly diverse but grow
+more similar with depth. No single design choice separates the two groups: AnchorFormer and
+Representative Attention route almost identically and differ only after gathering, and
+`perceiver` reads back by attention like Representative Attention yet still collapses. Representative
 Attention's stabilisers prevent full collapse (map similarity 0.68), but its summaries are far
 less distinct than the partition's (spread 0.27 against 0.60). Fixed exclusive regions cannot
 collapse (zero overlap holds by construction). Without a convolution bypass the partition beats

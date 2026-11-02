@@ -17,11 +17,12 @@ on synthetic canvases. They study a mechanism, not state-of-the-art accuracy.
 
 ## Summary of findings
 
-1. **Anchors with image-independent queries collapse.** On one shared backbone, RART- and
+1. **Soft anchor pathways collapse or stay redundant.** On one shared backbone, RART- and
    AnchorFormer-style anchors learn nearly identical pooling maps (map similarity 0.998 and
-   0.990), AnchorFormer despite implementing its mass normalisation. Image-derived anchors,
+   0.990), AnchorFormer despite implementing its mass normalisation. The other soft pathways,
    including a faithful reimplementation of Representative Attention, stay only partly diverse
-   (0.59–0.79). The exclusive partition cannot collapse by construction.
+   (0.59–0.79); no single design choice explains which group a pathway falls in. The exclusive
+   partition cannot collapse by construction.
 2. **Matched component by component, the exclusive partition is the most accurate anchor
    pathway.** Representative Attention's lead over the plain partition (+1.2 points on CIFAR-100)
    comes from its 3×3 depth-wise convolution bypass: with the same convolution on both, the
@@ -126,10 +127,12 @@ Six anchor designs on one shared backbone (CIFAR-100, 224², 10 epochs, 3 seeds)
 and Representative Attention have no public code and are implemented from their papers,
 including their mass-normalisation stabilisers:
 
-* Anchors whose queries do not depend on the image (RART-style, AnchorFormer) collapse to a
-  single summary: pooling-map similarity 0.998 and 0.990.
-* Image-derived anchors (competitive slots, PaCa-style, Representative Attention) are only
-  partly diverse (0.59–0.79) and grow more similar with depth.
+* The RART-style and AnchorFormer pathways collapse to a single summary: pooling-map
+  similarity 0.998 and 0.990.
+* The competitive, PaCa-style and Representative Attention pathways are only partly diverse
+  (0.59–0.79) and grow more similar with depth. AnchorFormer and Representative Attention route
+  almost identically (learned prototypes, softmax over them, mass normalisation) and differ after
+  gathering; we have not isolated which difference keeps the latter from collapsing.
 * The fixed partition has zero map overlap by construction. Representative Attention is 1.2
   points more accurate than the plain partition (47.54 against 46.31), but only because of its
   3×3 depth-wise convolution: with the same convolution added to both, the partition leads by
