@@ -12,6 +12,7 @@ notebook, and a `results/` folder split into `tables/` (JSON and Markdown summar
 | 04 | [Moving anchors](04_moving_anchors/) | Can anchors move to important regions without collapsing? | Done, 3 seeds (`fixed` / `focus`) | `focus` beats `fixed` in 6/6 paired runs: +1.48 (4 anchors) and +3.13 (16 anchors) points on average |
 | 05 | [Compute skipping](05_compute_skipping/) | Can learned importance save compute? | First round done, 1 seed | Keeping 25% of patches in the FFN of blocks 3–6 cuts GFLOPs by 25% at no accuracy cost, but random and token-norm selection do as well as learned importance |
 | 06 | [Main comparison](06_main_comparison/) | Does focus beat downsampling and standard models at equal compute? Does it hold at 30 epochs and on Tiny ImageNet? Which parts matter? | Done, 3 seeds (102 runs, A100) | 30 ep: focus 66.82 vs fixed 65.29 (+1.54, CI [0.53, 2.55]) vs ViT 61.99; beats downsampled ViTs by 4.7–11.8; PVTv2 75.1 and ResNet-18 86.1 far ahead; soft assignment never trains |
+| 07 | [High resolution](07_high_resolution/) | Do focus anchors help when downsampling destroys the signal, and do anchors save memory against FlashAttention? | Code ready, smoke-tested; not run | — |
 
 Experiment 06 has its own scripts and settings; see [its README](06_main_comparison/). The paper draft built from 03–06 is in [`../paper/`](../paper/).
 
