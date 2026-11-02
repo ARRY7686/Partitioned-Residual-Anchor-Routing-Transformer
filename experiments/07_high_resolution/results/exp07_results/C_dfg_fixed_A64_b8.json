@@ -1,0 +1,22 @@
+{
+  "tag": "C_dfg_fixed_A64_b8",
+  "measure_only": true,
+  "kind": "fixed",
+  "dataset": "dfg",
+  "canvas": [
+    1152,
+    1920
+  ],
+  "num_anchors": 64,
+  "vit_input": 0,
+  "sdpa": "auto",
+  "batch_size": 8,
+  "final_test_acc": null,
+  "gpu": "NVIDIA A100 80GB PCIe",
+  "params": 14592148,
+  "train_step_ms": 128.0254557961598,
+  "peak_train_memory_mb": 10621.013671875,
+  "throughput_img_s": 154.67479104083532,
+  "peak_inference_memory_mb": 1823.00341796875,
+  "gflops_total": 186.982284288
+}

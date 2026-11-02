@@ -1,0 +1,33 @@
+[N_resnet18_lr1e-3_seed44] resnet | mpmnist 512x512 (32x32 patches) | anchors 64 | seed 44 | epochs 30 | batch 32 | device NVIDIA A100 80GB PCIe
+[N_resnet18_lr1e-3_seed44] 11,181,642 parameters
+[N_resnet18_lr1e-3_seed44] epoch 01/30 | train loss 1.8174 | val 35.60 | test 35.40 | grad norm median 1.00 max 3.47 | 1.33 min
+[N_resnet18_lr1e-3_seed44] epoch 02/30 | train loss 0.6072 | val 69.20 | test 73.40 | grad norm median 2.54 max 4.56 | 0.94 min
+[N_resnet18_lr1e-3_seed44] epoch 03/30 | train loss 0.4537 | val 70.60 | test 76.00 | grad norm median 2.01 max 4.59 | 1.00 min
+[N_resnet18_lr1e-3_seed44] epoch 04/30 | train loss 0.3539 | val 81.00 | test 83.10 | grad norm median 1.72 max 3.20 | 1.07 min
+[N_resnet18_lr1e-3_seed44] epoch 05/30 | train loss 0.2733 | val 79.70 | test 84.00 | grad norm median 1.52 max 4.07 | 0.86 min
+[N_resnet18_lr1e-3_seed44] epoch 06/30 | train loss 0.2155 | val 93.00 | test 93.50 | grad norm median 1.28 max 3.11 | 0.99 min
+[N_resnet18_lr1e-3_seed44] epoch 07/30 | train loss 0.1885 | val 95.80 | test 95.50 | grad norm median 1.26 max 3.34 | 1.04 min
+[N_resnet18_lr1e-3_seed44] epoch 08/30 | train loss 0.1596 | val 93.10 | test 93.40 | grad norm median 1.12 max 3.19 | 0.99 min
+[N_resnet18_lr1e-3_seed44] epoch 09/30 | train loss 0.1313 | val 96.80 | test 97.30 | grad norm median 0.98 max 3.53 | 0.95 min
+[N_resnet18_lr1e-3_seed44] epoch 10/30 | train loss 0.1225 | val 98.20 | test 97.90 | grad norm median 1.02 max 3.41 | 0.99 min
+[N_resnet18_lr1e-3_seed44] epoch 11/30 | train loss 0.1164 | val 98.50 | test 98.50 | grad norm median 0.99 max 4.03 | 1.01 min
+[N_resnet18_lr1e-3_seed44] epoch 12/30 | train loss 0.1070 | val 98.40 | test 98.30 | grad norm median 0.86 max 3.70 | 1.03 min
+[N_resnet18_lr1e-3_seed44] epoch 13/30 | train loss 0.0879 | val 96.40 | test 96.00 | grad norm median 0.79 max 3.24 | 0.99 min
+[N_resnet18_lr1e-3_seed44] epoch 14/30 | train loss 0.0879 | val 97.00 | test 97.20 | grad norm median 0.80 max 3.29 | 0.97 min
+[N_resnet18_lr1e-3_seed44] epoch 15/30 | train loss 0.0744 | val 98.50 | test 98.10 | grad norm median 0.70 max 2.95 | 1.00 min
+[N_resnet18_lr1e-3_seed44] epoch 16/30 | train loss 0.0701 | val 99.10 | test 99.10 | grad norm median 0.66 max 2.91 | 0.88 min
+[N_resnet18_lr1e-3_seed44] epoch 17/30 | train loss 0.0584 | val 98.80 | test 98.30 | grad norm median 0.60 max 4.18 | 0.98 min
+[N_resnet18_lr1e-3_seed44] epoch 18/30 | train loss 0.0511 | val 98.50 | test 98.90 | grad norm median 0.44 max 5.45 | 1.02 min
+[N_resnet18_lr1e-3_seed44] epoch 19/30 | train loss 0.0493 | val 99.00 | test 99.00 | grad norm median 0.42 max 3.03 | 1.00 min
+[N_resnet18_lr1e-3_seed44] epoch 20/30 | train loss 0.0462 | val 99.20 | test 99.10 | grad norm median 0.40 max 4.53 | 0.95 min
+[N_resnet18_lr1e-3_seed44] epoch 21/30 | train loss 0.0409 | val 99.20 | test 98.90 | grad norm median 0.41 max 3.81 | 1.00 min
+[N_resnet18_lr1e-3_seed44] epoch 22/30 | train loss 0.0360 | val 99.30 | test 99.30 | grad norm median 0.35 max 4.10 | 1.01 min
+[N_resnet18_lr1e-3_seed44] epoch 23/30 | train loss 0.0353 | val 99.40 | test 99.20 | grad norm median 0.32 max 3.22 | 0.87 min
+[N_resnet18_lr1e-3_seed44] epoch 24/30 | train loss 0.0283 | val 99.20 | test 99.10 | grad norm median 0.23 max 2.92 | 0.67 min
+[N_resnet18_lr1e-3_seed44] epoch 25/30 | train loss 0.0245 | val 99.30 | test 99.20 | grad norm median 0.21 max 3.72 | 0.69 min
+[N_resnet18_lr1e-3_seed44] epoch 26/30 | train loss 0.0249 | val 99.40 | test 99.30 | grad norm median 0.20 max 4.03 | 0.69 min
+[N_resnet18_lr1e-3_seed44] epoch 27/30 | train loss 0.0228 | val 99.20 | test 99.30 | grad norm median 0.19 max 3.21 | 0.64 min
+[N_resnet18_lr1e-3_seed44] epoch 28/30 | train loss 0.0227 | val 99.50 | test 99.20 | grad norm median 0.19 max 3.00 | 0.45 min
+[N_resnet18_lr1e-3_seed44] epoch 29/30 | train loss 0.0275 | val 99.40 | test 99.40 | grad norm median 0.19 max 3.32 | 0.32 min
+[N_resnet18_lr1e-3_seed44] epoch 30/30 | train loss 0.0275 | val 99.40 | test 99.20 | grad norm median 0.19 max 3.83 | 0.33 min
+[N_resnet18_lr1e-3_seed44] done: val 99.40 | test 99.20 | 18.9 GFLOPs | 2312.3 img/s | saved /root/exp07/exp07_results/N_resnet18_lr1e-3_seed44.json

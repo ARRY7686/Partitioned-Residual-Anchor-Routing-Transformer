@@ -1,0 +1,23 @@
+[DM_focus_A64_seed43] focus | dfg 1152x1920 (72x120 patches) | anchors 64 | seed 43 | epochs 20 | batch 32 | device NVIDIA A100 80GB PCIe
+[DM_focus_A64_seed43] 14,594,458 parameters
+[DM_focus_A64_seed43] epoch 01/20 | train loss 0.2068 | val  7.69 | test  6.34 | grad norm median 0.42 max 5.90 | 1.78 min
+[DM_focus_A64_seed43] epoch 02/20 | train loss 0.1264 | val  9.94 | test  8.04 | grad norm median 0.37 max 0.59 | 1.77 min
+[DM_focus_A64_seed43] epoch 03/20 | train loss 0.1211 | val 11.77 | test 10.33 | grad norm median 0.35 max 0.58 | 1.77 min
+[DM_focus_A64_seed43] epoch 04/20 | train loss 0.1163 | val 14.97 | test 12.30 | grad norm median 0.35 max 0.69 | 1.77 min
+[DM_focus_A64_seed43] epoch 05/20 | train loss 0.1100 | val 17.32 | test 14.72 | grad norm median 0.33 max 0.59 | 1.81 min
+[DM_focus_A64_seed43] epoch 06/20 | train loss 0.1038 | val 21.61 | test 19.20 | grad norm median 0.35 max 0.58 | 1.77 min
+[DM_focus_A64_seed43] epoch 07/20 | train loss 0.0970 | val 26.47 | test 20.36 | grad norm median 0.37 max 0.60 | 1.77 min
+[DM_focus_A64_seed43] epoch 08/20 | train loss 0.0897 | val 28.28 | test 22.99 | grad norm median 0.37 max 0.53 | 1.81 min
+[DM_focus_A64_seed43] epoch 09/20 | train loss 0.0814 | val 33.63 | test 24.98 | grad norm median 0.37 max 0.62 | 1.79 min
+[DM_focus_A64_seed43] epoch 10/20 | train loss 0.0732 | val 36.12 | test 27.01 | grad norm median 0.36 max 0.56 | 1.79 min
+[DM_focus_A64_seed43] epoch 11/20 | train loss 0.0653 | val 35.85 | test 28.71 | grad norm median 0.37 max 0.59 | 1.79 min
+[DM_focus_A64_seed43] epoch 12/20 | train loss 0.0569 | val 36.85 | test 29.36 | grad norm median 0.36 max 0.59 | 1.80 min
+[DM_focus_A64_seed43] epoch 13/20 | train loss 0.0479 | val 37.38 | test 29.33 | grad norm median 0.33 max 0.56 | 1.81 min
+[DM_focus_A64_seed43] epoch 14/20 | train loss 0.0403 | val 40.30 | test 30.14 | grad norm median 0.31 max 0.50 | 2.04 min
+[DM_focus_A64_seed43] epoch 15/20 | train loss 0.0341 | val 39.13 | test 30.29 | grad norm median 0.30 max 0.50 | 3.66 min
+[DM_focus_A64_seed43] epoch 16/20 | train loss 0.0291 | val 38.46 | test 30.03 | grad norm median 0.26 max 0.44 | 3.72 min
+[DM_focus_A64_seed43] epoch 17/20 | train loss 0.0256 | val 38.76 | test 30.26 | grad norm median 0.25 max 0.37 | 3.43 min
+[DM_focus_A64_seed43] epoch 18/20 | train loss 0.0234 | val 39.04 | test 30.14 | grad norm median 0.23 max 0.41 | 3.72 min
+[DM_focus_A64_seed43] epoch 19/20 | train loss 0.0221 | val 39.19 | test 30.10 | grad norm median 0.23 max 0.36 | 2.21 min
+[DM_focus_A64_seed43] epoch 20/20 | train loss 0.0216 | val 39.17 | test 30.13 | grad norm median 0.22 max 0.38 | 1.79 min
+[DM_focus_A64_seed43] done: val 39.17 | test 30.13 | 187.0 GFLOPs | 92.8 img/s | saved /root/exp07/exp07_results/DM_focus_A64_seed43.json

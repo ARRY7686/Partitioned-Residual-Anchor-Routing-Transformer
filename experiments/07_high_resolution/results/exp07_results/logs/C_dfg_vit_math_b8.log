@@ -1,0 +1,2 @@
+[C_dfg_vit_math_b8] vit | dfg 1152x1920 (72x120 patches) | anchors 64 | seed 42 | epochs 0 | batch 32 | device NVIDIA A100 80GB PCIe
+[C_dfg_vit_math_b8] measured: 845.9 GFLOPs | nan ms/step | 8.6 img/s | 0 MB | TRAIN OOM

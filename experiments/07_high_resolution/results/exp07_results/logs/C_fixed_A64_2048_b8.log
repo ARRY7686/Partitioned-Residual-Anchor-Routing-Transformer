@@ -1,0 +1,2 @@
+[C_fixed_A64_2048_b8] fixed | mpmnist 2048x2048 (128x128 patches) | anchors 64 | seed 42 | epochs 0 | batch 32 | device NVIDIA A100 80GB PCIe
+[C_fixed_A64_2048_b8] measured: 354.5 GFLOPs | 232.1 ms/step | 83.4 img/s | 18915 MB

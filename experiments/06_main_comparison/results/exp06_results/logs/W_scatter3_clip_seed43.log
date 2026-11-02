@@ -1,0 +1,13 @@
+[W_scatter3_clip_seed43] focus | anchors 16 | seed 43 | epochs 10 | device NVIDIA A100 80GB PCIe
+[W_scatter3_clip_seed43] 11,365,008 parameters
+[W_scatter3_clip_seed43] epoch 01/10 | train acc 17.83% | test acc 23.86% | grad norm median 3.96 max 11.38 | skipped steps 0 | 1.32 min
+[W_scatter3_clip_seed43] epoch 02/10 | train acc 25.98% | test acc 28.01% | grad norm median 2.99 max 8.23 | skipped steps 0 | 1.20 min
+[W_scatter3_clip_seed43] epoch 03/10 | train acc 31.43% | test acc 34.80% | grad norm median 2.57 max 4.99 | skipped steps 0 | 1.31 min
+[W_scatter3_clip_seed43] epoch 04/10 | train acc 36.68% | test acc 39.00% | grad norm median 2.43 max 4.28 | skipped steps 0 | 1.24 min
+[W_scatter3_clip_seed43] epoch 05/10 | train acc 41.53% | test acc 42.37% | grad norm median 2.40 max 4.33 | skipped steps 0 | 1.27 min
+[W_scatter3_clip_seed43] epoch 06/10 | train acc 45.36% | test acc 46.58% | grad norm median 2.36 max 3.97 | skipped steps 0 | 1.31 min
+[W_scatter3_clip_seed43] epoch 07/10 | train acc 49.19% | test acc 49.63% | grad norm median 2.45 max 3.74 | skipped steps 0 | 1.22 min
+[W_scatter3_clip_seed43] epoch 08/10 | train acc 52.38% | test acc 52.86% | grad norm median 2.47 max 3.61 | skipped steps 0 | 1.31 min
+[W_scatter3_clip_seed43] epoch 09/10 | train acc 54.48% | test acc 53.86% | grad norm median 2.55 max 3.39 | skipped steps 0 | 1.24 min
+[W_scatter3_clip_seed43] epoch 10/10 | train acc 55.88% | test acc 54.16% | grad norm median 2.54 max 3.27 | skipped steps 0 | 1.27 min
+[W_scatter3_clip_seed43] done: 54.16% | 5.49 GFLOPs | 2107 img/s | saved /root/exp06/exp06_results/W_scatter3_clip_seed43.json

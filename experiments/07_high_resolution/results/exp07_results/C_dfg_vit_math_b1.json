@@ -1,0 +1,22 @@
+{
+  "tag": "C_dfg_vit_math_b1",
+  "measure_only": true,
+  "kind": "vit",
+  "dataset": "dfg",
+  "canvas": [
+    1152,
+    1920
+  ],
+  "num_anchors": 0,
+  "vit_input": 0,
+  "sdpa": "math",
+  "batch_size": 1,
+  "final_test_acc": null,
+  "gpu": "NVIDIA A100 80GB PCIe",
+  "params": 12496532,
+  "train_step_ms": 300.6361393025145,
+  "peak_train_memory_mb": 17052.103515625,
+  "throughput_img_s": 8.467855290366964,
+  "peak_inference_memory_mb": 4832.59521484375,
+  "gflops_total": 845.94918912
+}

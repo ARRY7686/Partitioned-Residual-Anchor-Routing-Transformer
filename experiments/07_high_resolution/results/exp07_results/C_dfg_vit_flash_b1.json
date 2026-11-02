@@ -1,0 +1,22 @@
+{
+  "tag": "C_dfg_vit_flash_b1",
+  "measure_only": true,
+  "kind": "vit",
+  "dataset": "dfg",
+  "canvas": [
+    1152,
+    1920
+  ],
+  "num_anchors": 0,
+  "vit_input": 0,
+  "sdpa": "flash",
+  "batch_size": 1,
+  "final_test_acc": null,
+  "gpu": "NVIDIA A100 80GB PCIe",
+  "params": 12496532,
+  "train_step_ms": 26.076139486394823,
+  "peak_train_memory_mb": 1690.1689453125,
+  "throughput_img_s": 129.9495020861441,
+  "peak_inference_memory_mb": 968.373046875,
+  "gflops_total": 845.94918912
+}

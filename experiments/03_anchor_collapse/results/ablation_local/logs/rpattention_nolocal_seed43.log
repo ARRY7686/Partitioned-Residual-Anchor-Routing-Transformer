@@ -1,0 +1,30 @@
+PyTorch: 2.11.0+cu128 | device: cuda NVIDIA A100 80GB PCIe
+Models: ['rpattention_nolocal'] | anchors: 16 | epochs: 10 | seed: 43 
+Results file: /root/exp03/ablation_local/step0_results_A16_seed43.json
+Train: (50000, 3, 32, 32) | Test: (10000, 3, 32, 32) | CIFAR root: /root/exp03/ablation_local/data
+dense           12,837,604 parameters
+perceiver       11,272,932 parameters
+competitive     11,272,932 parameters
+anchorformer    10,092,772 parameters
+rpattention     10,513,444 parameters
+rpattention_nolocal   10,505,764 parameters
+partition_local   11,280,612 parameters
+paca            11,402,308 parameters
+partition       11,272,932 parameters
+
+=== rpattention_nolocal | 10,505,764 parameters ===
+rpattention_nolocal epoch 01 | train acc  9.82% | test acc 15.05% | 0.77 min
+rpattention_nolocal epoch 02 | train acc 17.78% | test acc 21.07% | 0.73 min
+rpattention_nolocal epoch 03 | train acc 23.34% | test acc 24.94% | 0.69 min
+rpattention_nolocal epoch 04 | train acc 27.93% | test acc 27.51% | 0.77 min
+rpattention_nolocal epoch 05 | train acc 33.18% | test acc 31.73% | 0.77 min
+rpattention_nolocal epoch 06 | train acc 38.14% | test acc 35.33% | 0.77 min
+rpattention_nolocal epoch 07 | train acc 43.43% | test acc 38.34% | 0.70 min
+rpattention_nolocal epoch 08 | train acc 48.62% | test acc 40.43% | 0.73 min
+rpattention_nolocal epoch 09 | train acc 53.10% | test acc 42.26% | 0.77 min
+rpattention_nolocal epoch 10 | train acc 56.25% | test acc 42.76% | 0.77 min
+Saved: /root/exp03/ablation_local/step0_results_A16_seed43.json
+| Model | Params | Final test acc | When | Map sim (mean / last block) | Effective patches (of 196) | Summary sim | Anchor spread |
+|---|---:|---:|---|---:|---:|---:|---:|
+| rpattention_nolocal | 10.51M |  | init | 0.981 / 0.991 | 194.1 | 0.954 | 0.043 |
+|  |  | 42.76% | trained | 0.687 / 0.774 | 137.2 | 0.699 | 0.282 |

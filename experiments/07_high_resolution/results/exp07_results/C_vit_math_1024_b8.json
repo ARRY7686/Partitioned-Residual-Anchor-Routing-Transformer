@@ -1,0 +1,22 @@
+{
+  "tag": "C_vit_math_1024_b8",
+  "measure_only": true,
+  "kind": "vit",
+  "dataset": "mpmnist",
+  "canvas": [
+    1024,
+    1024
+  ],
+  "num_anchors": 0,
+  "vit_input": 0,
+  "sdpa": "math",
+  "batch_size": 8,
+  "final_test_acc": null,
+  "gpu": "NVIDIA A100 80GB PCIe",
+  "params": 10747786,
+  "train_step_ms": 548.5520614078268,
+  "peak_train_memory_mb": 30674.8115234375,
+  "throughput_img_s": 38.03385878349128,
+  "peak_inference_memory_mb": 7619.57080078125,
+  "gflops_total": 229.51232256
+}

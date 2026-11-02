@@ -1,0 +1,6 @@
+[probe_N_focus0] focus | mpmnist 512x512 (32x32 patches) | anchors 64 | seed 42 | epochs 3 | batch 32 | device NVIDIA A100 80GB PCIe
+[probe_N_focus0] 11,666,064 parameters
+[probe_N_focus0] epoch 01/3 | train loss 2.2632 | val 39.00 | test 37.00 | grad norm median 5.81 max 18.17 | 1.56 min
+[probe_N_focus0] epoch 02/3 | train loss 1.3198 | val 66.20 | test 60.10 | grad norm median 7.10 max 15.85 | 1.53 min
+[probe_N_focus0] epoch 03/3 | train loss 0.8252 | val 74.70 | test 75.60 | grad norm median 5.61 max 11.52 | 1.50 min
+[probe_N_focus0] done: val 74.70 | test 75.60 | 22.3 GFLOPs | 132.9 img/s | saved /root/exp07/probe/probe_N_focus0.json

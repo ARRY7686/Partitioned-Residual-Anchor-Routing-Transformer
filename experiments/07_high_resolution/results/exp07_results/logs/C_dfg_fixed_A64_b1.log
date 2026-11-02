@@ -1,0 +1,2 @@
+[C_dfg_fixed_A64_b1] fixed | dfg 1152x1920 (72x120 patches) | anchors 64 | seed 42 | epochs 0 | batch 32 | device NVIDIA A100 80GB PCIe
+[C_dfg_fixed_A64_b1] measured: 187.0 GFLOPs | 44.6 ms/step | 82.3 img/s | 2215 MB

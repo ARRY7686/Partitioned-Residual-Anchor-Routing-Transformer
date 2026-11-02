@@ -142,6 +142,14 @@ def phase_jobs(phase):
         # Last, as the longest runs (30 epochs, phase B recipe).
         jobs += [job(f"B_densewin_seed{s}", 30, "router", kind="densewin", lr=1.25e-4, seed=s, **stab)
                  for s in SEEDS]
+    if phase == "W":
+        # Second review round: patches reading from their k nearest anchors (gathering stays
+        # exclusive), and soft Gumbel-softmax assignment with an annealed temperature.
+        # Reference D2_full_clip (same recipe).
+        stab = dict(kind="focus", anchors=16, grad_clip=1.0, warmup_epochs=2)
+        jobs += [job(f"W_scatter{k}_clip_seed{s}", 10, "router", scatter_k=k, seed=s, **stab)
+                 for k in (2, 3) for s in SEEDS]
+        jobs += [job(f"W_gumbel_clip_seed{s}", 10, "router", assign="gumbel", seed=s, **stab) for s in SEEDS]
     if phase == "F2":
         # Phase F's bounded importance gate diverged (seeds 42/44 grad > 1e5, keep 0.5 at chance)
         # in the exp-04 recipe. Same skipping with clip 1.0 + 2-epoch warmup; reference D2_full_clip.

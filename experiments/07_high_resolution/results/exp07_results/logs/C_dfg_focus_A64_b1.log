@@ -1,0 +1,2 @@
+[C_dfg_focus_A64_b1] focus | dfg 1152x1920 (72x120 patches) | anchors 64 | seed 42 | epochs 0 | batch 32 | device NVIDIA A100 80GB PCIe
+[C_dfg_focus_A64_b1] measured: 187.0 GFLOPs | 189.8 ms/step | 14.2 img/s | 2350 MB

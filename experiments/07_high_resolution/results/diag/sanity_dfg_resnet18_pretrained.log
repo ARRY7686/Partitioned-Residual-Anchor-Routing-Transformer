@@ -1,0 +1,9 @@
+[sanity_dfg_resnet18_pretrained] resnet | dfg 1152x1920 (72x120 patches) | anchors 64 | seed 42 | epochs 6 | batch 32 | device NVIDIA A100 80GB PCIe
+[sanity_dfg_resnet18_pretrained] 11,186,772 parameters
+[sanity_dfg_resnet18_pretrained] epoch 01/6 | train loss 0.3644 | val  5.04 | test  4.50 | grad norm median 0.42 max 0.73 | 4.95 min
+[sanity_dfg_resnet18_pretrained] epoch 02/6 | train loss 0.1266 | val  6.45 | test  6.10 | grad norm median 0.10 max 0.15 | 4.02 min
+[sanity_dfg_resnet18_pretrained] epoch 03/6 | train loss 0.1201 | val  7.95 | test  7.80 | grad norm median 0.11 max 0.16 | 3.85 min
+[sanity_dfg_resnet18_pretrained] epoch 04/6 | train loss 0.1166 | val  8.79 | test  8.40 | grad norm median 0.10 max 0.17 | 3.89 min
+[sanity_dfg_resnet18_pretrained] epoch 05/6 | train loss 0.1140 | val  9.73 | test  8.68 | grad norm median 0.11 max 0.17 | 4.68 min
+[sanity_dfg_resnet18_pretrained] epoch 06/6 | train loss 0.1128 | val  9.52 | test  8.74 | grad norm median 0.10 max 0.15 | 3.34 min
+[sanity_dfg_resnet18_pretrained] done: val 9.52 | test 8.74 | 159.9 GFLOPs | 91.4 img/s | saved /root/exp07/diag/sanity_dfg_resnet18_pretrained.json

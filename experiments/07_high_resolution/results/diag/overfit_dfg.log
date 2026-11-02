@@ -1,0 +1,5 @@
+[overfit_dfg] resnet | dfg 1152x1920 (72x120 patches) | anchors 64 | seed 42 | epochs 1 | batch 16 | device NVIDIA A100 80GB PCIe | SMOKE
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+pass 10: loss 0.1203 | mAP on the same 64 frames 66.2
+pass 20: loss 0.0630 | mAP on the same 64 frames 94.2
+pass 30: loss 0.0210 | mAP on the same 64 frames 100.0

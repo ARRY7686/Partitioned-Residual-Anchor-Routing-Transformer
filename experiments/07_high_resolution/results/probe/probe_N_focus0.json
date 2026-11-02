@@ -1,0 +1,154 @@
+{
+  "tag": "probe_N_focus0",
+  "kind": "focus",
+  "num_anchors": 64,
+  "seed": 42,
+  "epochs": 3,
+  "dataset": "mpmnist",
+  "canvas": [
+    512,
+    512
+  ],
+  "image": [
+    512,
+    512
+  ],
+  "vit_input": 0,
+  "vit_patch": 16,
+  "coverage_side": "auto",
+  "suppression": 10.0,
+  "suppression_width": 1.5,
+  "home_width": 0.35,
+  "grad_clip": 1.0,
+  "warmup_epochs": 2.0,
+  "precision": "bf16",
+  "lr": 0.0002,
+  "batch": 32,
+  "metric": "accuracy",
+  "noise": 12,
+  "train_size": 10000,
+  "fresh": true,
+  "params": 11666064,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.2631607681274413,
+      "val_loss": 1.725688925743103,
+      "val_score": 38.999998569488525,
+      "test_loss": 1.7175854988098145,
+      "test_score": 37.00000047683716,
+      "minutes": 1.564633416865642,
+      "grad_norm_median": 5.807199954986572,
+      "grad_norm_max": 18.16944122314453,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.3198405559539794,
+      "val_loss": 0.9649148259162903,
+      "val_score": 66.20000004768372,
+      "test_loss": 1.089093755722046,
+      "test_score": 60.100001096725464,
+      "minutes": 1.5255434868663238,
+      "grad_norm_median": 7.098843574523926,
+      "grad_norm_max": 15.854439735412598,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.8251509656906127,
+      "val_loss": 0.6365202322006226,
+      "val_score": 74.6999979019165,
+      "test_loss": 0.636317400932312,
+      "test_score": 75.59999823570251,
+      "minutes": 1.497644700765765,
+      "grad_norm_median": 5.6076130867004395,
+      "grad_norm_max": 11.519438743591309,
+      "steps_skipped": 0
+    }
+  ],
+  "final_val_score": 74.6999979019165,
+  "final_test_score": 75.59999823570251,
+  "final_test_acc": 75.59999823570251,
+  "metrics_init": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.013799968524836004,
+      "object_mass": 0.6119870021939278,
+      "object_anchor_share": 0.06610107421875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.011882858001627028,
+      "object_mass": 0.5460561364889145,
+      "object_anchor_share": 0.0655517578125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.009929916472174227,
+      "object_mass": 0.5751109272241592,
+      "object_anchor_share": 0.06500244140625
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.0191371263936162,
+      "object_mass": 0.8777656555175781,
+      "object_anchor_share": 0.065185546875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.011496647377498448,
+      "object_mass": 0.6566101983189583,
+      "object_anchor_share": 0.0653076171875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.01394912670366466,
+      "object_mass": 0.7221264690160751,
+      "object_anchor_share": 0.06597900390625
+    }
+  ],
+  "metrics_trained": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.7397977635264397,
+      "object_mass": 1.925124853849411,
+      "object_anchor_share": 0.07073974609375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.7624456658959389,
+      "object_mass": 1.3333728462457657,
+      "object_anchor_share": 0.06903076171875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.7243359684944153,
+      "object_mass": 1.1565378904342651,
+      "object_anchor_share": 0.07122802734375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.6897776275873184,
+      "object_mass": 1.3512202948331833,
+      "object_anchor_share": 0.0751953125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.6299117058515549,
+      "object_mass": 1.2728575766086578,
+      "object_anchor_share": 0.07342529296875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.4962534122169018,
+      "object_mass": 0.9115408509969711,
+      "object_anchor_share": 0.06182861328125
+    }
+  ],
+  "gflops_total": 22.277856768,
+  "throughput_img_s": 132.8536481852462,
+  "peak_train_memory_mb": 5262.56298828125,
+  "gpu": "NVIDIA A100 80GB PCIe",
+  "total_minutes": 4.587821604497731
+}

@@ -1,0 +1,20 @@
+{
+  "tag": "C_vit_math_2048_b8",
+  "measure_only": true,
+  "kind": "vit",
+  "dataset": "mpmnist",
+  "canvas": [
+    2048,
+    2048
+  ],
+  "num_anchors": 0,
+  "vit_input": 0,
+  "sdpa": "math",
+  "batch_size": 8,
+  "final_test_acc": null,
+  "gpu": "NVIDIA A100 80GB PCIe",
+  "params": 15466378,
+  "train_oom": true,
+  "inference_oom": true,
+  "gflops_total": 2773.475139072
+}

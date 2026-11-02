@@ -1,0 +1,3 @@
+source /venv/main/bin/activate
+cd /root/exp07
+RART_SKIP_TAGS=D_focus_A64_seed42,D_focus_A64_seed43,D_focus_A64_seed44,D_fixed_A64_seed42,D_fixed_A64_seed43,D_fixed_A64_seed44,D_densewin_seed42,D_densewin_seed43,D_densewin_seed44,D_vit_native_seed42,D_vit_native_seed43,D_vit_native_seed44,D_vit960_seed42,D_vit960_seed43,D_vit960_seed44,D_vit480_seed43,D_vit480_seed44,D_pvt_seed42,D_pvt_seed43,D_pvt_seed44,D_resnet18_lr1e-3_seed43,D_resnet18_lr1e-3_seed44, RART_PHASES=M,D RART_JOBS_PER_GPU=1 RART_TIME_BUDGET_HOURS=22 python -u run_suite.py > suite_MD2.log 2>&1

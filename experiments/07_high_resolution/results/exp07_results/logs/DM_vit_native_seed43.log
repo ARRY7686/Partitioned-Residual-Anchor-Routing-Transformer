@@ -1,0 +1,23 @@
+[DM_vit_native_seed43] vit | dfg 1152x1920 (72x120 patches) | anchors 64 | seed 43 | epochs 20 | batch 32 | device NVIDIA A100 80GB PCIe
+[DM_vit_native_seed43] 12,496,532 parameters
+[DM_vit_native_seed43] epoch 01/20 | train loss 0.2519 | val  6.66 | test  5.76 | grad norm median 0.38 max 7.91 | 2.21 min
+[DM_vit_native_seed43] epoch 02/20 | train loss 0.1267 | val  9.98 | test  7.79 | grad norm median 0.35 max 0.56 | 2.16 min
+[DM_vit_native_seed43] epoch 03/20 | train loss 0.1220 | val 14.03 | test 10.72 | grad norm median 0.34 max 0.54 | 2.16 min
+[DM_vit_native_seed43] epoch 04/20 | train loss 0.1156 | val 17.09 | test 13.58 | grad norm median 0.35 max 0.68 | 2.16 min
+[DM_vit_native_seed43] epoch 05/20 | train loss 0.1083 | val 24.81 | test 16.81 | grad norm median 0.35 max 0.61 | 2.16 min
+[DM_vit_native_seed43] epoch 06/20 | train loss 0.1023 | val 27.21 | test 19.45 | grad norm median 0.37 max 0.63 | 2.17 min
+[DM_vit_native_seed43] epoch 07/20 | train loss 0.0952 | val 26.99 | test 20.07 | grad norm median 0.39 max 0.60 | 2.17 min
+[DM_vit_native_seed43] epoch 08/20 | train loss 0.0888 | val 32.42 | test 22.76 | grad norm median 0.38 max 0.55 | 2.17 min
+[DM_vit_native_seed43] epoch 09/20 | train loss 0.0818 | val 36.70 | test 24.20 | grad norm median 0.39 max 0.66 | 2.17 min
+[DM_vit_native_seed43] epoch 10/20 | train loss 0.0748 | val 35.95 | test 26.15 | grad norm median 0.39 max 0.63 | 2.17 min
+[DM_vit_native_seed43] epoch 11/20 | train loss 0.0682 | val 36.61 | test 27.20 | grad norm median 0.39 max 0.66 | 2.17 min
+[DM_vit_native_seed43] epoch 12/20 | train loss 0.0607 | val 37.24 | test 27.54 | grad norm median 0.39 max 0.66 | 2.17 min
+[DM_vit_native_seed43] epoch 13/20 | train loss 0.0523 | val 37.90 | test 26.73 | grad norm median 0.37 max 0.57 | 2.16 min
+[DM_vit_native_seed43] epoch 14/20 | train loss 0.0451 | val 38.89 | test 28.15 | grad norm median 0.35 max 0.61 | 2.17 min
+[DM_vit_native_seed43] epoch 15/20 | train loss 0.0385 | val 39.51 | test 28.41 | grad norm median 0.33 max 0.58 | 2.17 min
+[DM_vit_native_seed43] epoch 16/20 | train loss 0.0331 | val 39.99 | test 28.42 | grad norm median 0.31 max 0.51 | 2.17 min
+[DM_vit_native_seed43] epoch 17/20 | train loss 0.0292 | val 40.14 | test 28.88 | grad norm median 0.29 max 0.46 | 2.16 min
+[DM_vit_native_seed43] epoch 18/20 | train loss 0.0267 | val 40.47 | test 29.02 | grad norm median 0.28 max 0.46 | 2.17 min
+[DM_vit_native_seed43] epoch 19/20 | train loss 0.0253 | val 40.64 | test 28.79 | grad norm median 0.27 max 0.44 | 2.17 min
+[DM_vit_native_seed43] epoch 20/20 | train loss 0.0247 | val 40.46 | test 28.76 | grad norm median 0.26 max 0.42 | 2.17 min
+[DM_vit_native_seed43] done: val 40.46 | test 28.76 | 845.9 GFLOPs | 132.3 img/s | saved /root/exp07/exp07_results/DM_vit_native_seed43.json

@@ -1,0 +1,22 @@
+{
+  "tag": "C_focus_A64_1024_b1",
+  "measure_only": true,
+  "kind": "focus",
+  "dataset": "mpmnist",
+  "canvas": [
+    1024,
+    1024
+  ],
+  "num_anchors": 64,
+  "vit_input": 0,
+  "sdpa": "auto",
+  "batch_size": 1,
+  "final_test_acc": null,
+  "gpu": "NVIDIA A100 80GB PCIe",
+  "params": 12845712,
+  "train_step_ms": 231.4069916959852,
+  "peak_train_memory_mb": 1030.72265625,
+  "throughput_img_s": 10.431862313828129,
+  "peak_inference_memory_mb": 323.3525390625,
+  "gflops_total": 88.733326848
+}

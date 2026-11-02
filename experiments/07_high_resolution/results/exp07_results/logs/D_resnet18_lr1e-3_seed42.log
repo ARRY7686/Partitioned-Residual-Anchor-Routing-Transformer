@@ -1,0 +1,23 @@
+[D_resnet18_lr1e-3_seed42] resnet | dfg 1152x1920 (72x120 patches) | anchors 64 | seed 42 | epochs 20 | batch 32 | device NVIDIA A100 80GB PCIe
+[D_resnet18_lr1e-3_seed42] 11,186,772 parameters
+[D_resnet18_lr1e-3_seed42] epoch 01/20 | train loss 0.3022 | val  6.81 | test  5.81 | grad norm median 0.26 max 0.90 | 3.17 min
+[D_resnet18_lr1e-3_seed42] epoch 02/20 | train loss 0.1254 | val  7.11 | test  6.65 | grad norm median 0.09 max 0.14 | 2.47 min
+[D_resnet18_lr1e-3_seed42] epoch 03/20 | train loss 0.1232 | val  7.92 | test  6.11 | grad norm median 0.09 max 0.14 | 2.61 min
+[D_resnet18_lr1e-3_seed42] epoch 04/20 | train loss 0.1222 | val  8.00 | test  6.78 | grad norm median 0.09 max 0.16 | 2.49 min
+[D_resnet18_lr1e-3_seed42] epoch 05/20 | train loss 0.1215 | val  8.30 | test  7.07 | grad norm median 0.09 max 0.14 | 2.61 min
+[D_resnet18_lr1e-3_seed42] epoch 06/20 | train loss 0.1209 | val  6.98 | test  6.83 | grad norm median 0.09 max 0.15 | 2.49 min
+[D_resnet18_lr1e-3_seed42] epoch 07/20 | train loss 0.1205 | val  8.83 | test  7.33 | grad norm median 0.09 max 0.14 | 2.61 min
+[D_resnet18_lr1e-3_seed42] epoch 08/20 | train loss 0.1201 | val  9.22 | test  7.75 | grad norm median 0.09 max 0.14 | 2.49 min
+[D_resnet18_lr1e-3_seed42] epoch 09/20 | train loss 0.1193 | val  8.92 | test  7.00 | grad norm median 0.09 max 0.13 | 2.61 min
+[D_resnet18_lr1e-3_seed42] epoch 10/20 | train loss 0.1184 | val  9.75 | test  7.45 | grad norm median 0.08 max 0.12 | 2.53 min
+[D_resnet18_lr1e-3_seed42] epoch 11/20 | train loss 0.1181 | val  8.99 | test  7.83 | grad norm median 0.08 max 0.14 | 2.56 min
+[D_resnet18_lr1e-3_seed42] epoch 12/20 | train loss 0.1171 | val  9.16 | test  7.36 | grad norm median 0.08 max 0.14 | 2.54 min
+[D_resnet18_lr1e-3_seed42] epoch 13/20 | train loss 0.1167 | val  9.69 | test  7.75 | grad norm median 0.09 max 0.12 | 2.57 min
+[D_resnet18_lr1e-3_seed42] epoch 14/20 | train loss 0.1157 | val  9.69 | test  7.97 | grad norm median 0.09 max 0.13 | 2.53 min
+[D_resnet18_lr1e-3_seed42] epoch 15/20 | train loss 0.1149 | val  9.76 | test  8.10 | grad norm median 0.08 max 0.15 | 2.56 min
+[D_resnet18_lr1e-3_seed42] epoch 16/20 | train loss 0.1144 | val  9.88 | test  8.23 | grad norm median 0.08 max 0.14 | 2.57 min
+[D_resnet18_lr1e-3_seed42] epoch 17/20 | train loss 0.1137 | val 10.04 | test  8.26 | grad norm median 0.09 max 0.17 | 2.55 min
+[D_resnet18_lr1e-3_seed42] epoch 18/20 | train loss 0.1134 | val 10.03 | test  8.40 | grad norm median 0.09 max 0.14 | 2.57 min
+[D_resnet18_lr1e-3_seed42] epoch 19/20 | train loss 0.1131 | val 10.12 | test  8.37 | grad norm median 0.09 max 0.15 | 2.52 min
+[D_resnet18_lr1e-3_seed42] epoch 20/20 | train loss 0.1128 | val 10.16 | test  8.33 | grad norm median 0.09 max 0.14 | 2.61 min
+[D_resnet18_lr1e-3_seed42] done: val 10.16 | test 8.33 | 159.9 GFLOPs | 268.3 img/s | saved /root/exp07/exp07_results/D_resnet18_lr1e-3_seed42.json

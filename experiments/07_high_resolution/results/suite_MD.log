@@ -1,0 +1,3 @@
+48 jobs in phases ['M', 'D']: 0 done, 48 to run on GPUs [0, 1], 1 per GPU; estimated 72.0 GPU-hours
+[ 0.66 h] GPU 1 done D_fixed_A64_seed42: 8.14 in 39 min (1/48)
+[ 0.75 h] GPU 0 done D_focus_A64_seed42: 8.10 in 45 min (2/48)

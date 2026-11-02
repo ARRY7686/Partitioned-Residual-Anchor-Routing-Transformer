@@ -1,0 +1,33 @@
+[N_focus_A64_seed44] focus | mpmnist 512x512 (32x32 patches) | anchors 64 | seed 44 | epochs 30 | batch 32 | device NVIDIA A100 80GB PCIe
+[N_focus_A64_seed44] 11,666,064 parameters
+[N_focus_A64_seed44] epoch 01/30 | train loss 2.3132 | val 24.50 | test 27.30 | grad norm median 5.19 max 13.97 | 1.14 min
+[N_focus_A64_seed44] epoch 02/30 | train loss 1.4224 | val 63.80 | test 59.60 | grad norm median 6.02 max 18.36 | 1.13 min
+[N_focus_A64_seed44] epoch 03/30 | train loss 0.9153 | val 64.80 | test 67.20 | grad norm median 5.45 max 15.59 | 1.11 min
+[N_focus_A64_seed44] epoch 04/30 | train loss 0.7444 | val 70.50 | test 68.70 | grad norm median 4.68 max 9.59 | 1.11 min
+[N_focus_A64_seed44] epoch 05/30 | train loss 0.6731 | val 75.90 | test 77.30 | grad norm median 4.23 max 8.03 | 1.09 min
+[N_focus_A64_seed44] epoch 06/30 | train loss 0.5977 | val 77.20 | test 74.90 | grad norm median 3.94 max 6.81 | 1.09 min
+[N_focus_A64_seed44] epoch 07/30 | train loss 0.5867 | val 78.20 | test 74.20 | grad norm median 3.80 max 13.46 | 1.14 min
+[N_focus_A64_seed44] epoch 08/30 | train loss 0.5509 | val 78.90 | test 78.60 | grad norm median 3.58 max 7.69 | 1.14 min
+[N_focus_A64_seed44] epoch 09/30 | train loss 0.5158 | val 81.80 | test 84.20 | grad norm median 3.47 max 6.25 | 1.14 min
+[N_focus_A64_seed44] epoch 10/30 | train loss 0.4912 | val 80.50 | test 77.90 | grad norm median 3.30 max 5.82 | 1.09 min
+[N_focus_A64_seed44] epoch 11/30 | train loss 0.4731 | val 85.10 | test 82.10 | grad norm median 3.21 max 5.88 | 1.09 min
+[N_focus_A64_seed44] epoch 12/30 | train loss 0.4600 | val 82.00 | test 81.20 | grad norm median 3.18 max 6.37 | 1.12 min
+[N_focus_A64_seed44] epoch 13/30 | train loss 0.4313 | val 82.80 | test 82.40 | grad norm median 3.06 max 6.58 | 1.14 min
+[N_focus_A64_seed44] epoch 14/30 | train loss 0.4177 | val 86.40 | test 83.50 | grad norm median 2.97 max 5.17 | 1.12 min
+[N_focus_A64_seed44] epoch 15/30 | train loss 0.4063 | val 82.20 | test 81.00 | grad norm median 2.88 max 7.32 | 1.09 min
+[N_focus_A64_seed44] epoch 16/30 | train loss 0.3774 | val 85.30 | test 85.60 | grad norm median 2.96 max 5.43 | 1.11 min
+[N_focus_A64_seed44] epoch 17/30 | train loss 0.3531 | val 84.40 | test 84.80 | grad norm median 2.84 max 6.74 | 1.11 min
+[N_focus_A64_seed44] epoch 18/30 | train loss 0.3424 | val 86.70 | test 87.20 | grad norm median 2.88 max 4.93 | 1.11 min
+[N_focus_A64_seed44] epoch 19/30 | train loss 0.3343 | val 87.90 | test 87.90 | grad norm median 2.87 max 5.68 | 1.08 min
+[N_focus_A64_seed44] epoch 20/30 | train loss 0.3307 | val 89.30 | test 89.30 | grad norm median 2.87 max 6.69 | 1.11 min
+[N_focus_A64_seed44] epoch 21/30 | train loss 0.3068 | val 89.70 | test 87.10 | grad norm median 2.93 max 7.72 | 1.10 min
+[N_focus_A64_seed44] epoch 22/30 | train loss 0.3124 | val 90.40 | test 89.70 | grad norm median 2.97 max 6.25 | 1.08 min
+[N_focus_A64_seed44] epoch 23/30 | train loss 0.2868 | val 90.90 | test 90.70 | grad norm median 2.97 max 5.91 | 1.11 min
+[N_focus_A64_seed44] epoch 24/30 | train loss 0.2795 | val 91.10 | test 89.70 | grad norm median 2.87 max 5.83 | 1.12 min
+[N_focus_A64_seed44] epoch 25/30 | train loss 0.2627 | val 91.90 | test 91.80 | grad norm median 2.91 max 6.11 | 1.08 min
+[N_focus_A64_seed44] epoch 26/30 | train loss 0.2470 | val 90.90 | test 91.40 | grad norm median 2.94 max 5.49 | 1.07 min
+[N_focus_A64_seed44] epoch 27/30 | train loss 0.2563 | val 91.30 | test 91.70 | grad norm median 2.99 max 6.81 | 1.10 min
+[N_focus_A64_seed44] epoch 28/30 | train loss 0.2550 | val 91.30 | test 92.00 | grad norm median 2.94 max 9.13 | 1.09 min
+[N_focus_A64_seed44] epoch 29/30 | train loss 0.2544 | val 92.00 | test 92.20 | grad norm median 3.07 max 6.79 | 1.07 min
+[N_focus_A64_seed44] epoch 30/30 | train loss 0.2587 | val 92.00 | test 91.80 | grad norm median 3.02 max 6.06 | 1.11 min
+[N_focus_A64_seed44] done: val 92.00 | test 91.80 | 22.3 GFLOPs | 129.1 img/s | saved /root/exp07/exp07_results/N_focus_A64_seed44.json

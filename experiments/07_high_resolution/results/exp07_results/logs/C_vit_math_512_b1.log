@@ -1,0 +1,2 @@
+[C_vit_math_512_b1] vit | mpmnist 512x512 (32x32 patches) | anchors 64 | seed 42 | epochs 0 | batch 32 | device NVIDIA A100 80GB PCIe
+[C_vit_math_512_b1] measured: 28.4 GFLOPs | 13.0 ms/step | 296.0 img/s | 531 MB

@@ -1,0 +1,220 @@
+{
+  "tag": "W_scatter2_clip_seed43",
+  "kind": "focus",
+  "num_anchors": 16,
+  "seed": 43,
+  "epochs": 10,
+  "dataset": "cifar10",
+  "vit_input": 256,
+  "vit_patch": 16,
+  "keep_ratio": 1.0,
+  "skip_from": 2,
+  "skip_score": "importance",
+  "gate": "ratio",
+  "coverage_side": "auto",
+  "suppression": 10.0,
+  "suppression_width": 1.5,
+  "home_width": 0.35,
+  "assign": "hard",
+  "scatter_k": 2,
+  "grad_clip": 1.0,
+  "warmup_epochs": 2.0,
+  "precision": "bf16",
+  "lr": 0.0003,
+  "params": 11365008,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.1704861328125,
+      "train_acc": 17.72,
+      "test_loss": 2.064681640625,
+      "test_acc": 22.85,
+      "minutes": 0.666098933131434,
+      "grad_norm_median": 3.9091668128967285,
+      "grad_norm_max": 11.37850570678711,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.954574961013794,
+      "train_acc": 25.634,
+      "test_loss": 1.8810279296875,
+      "test_acc": 28.47,
+      "minutes": 0.6381882336805574,
+      "grad_norm_median": 2.919548273086548,
+      "grad_norm_max": 8.015069961547852,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.823657285194397,
+      "train_acc": 31.152,
+      "test_loss": 1.78174453125,
+      "test_acc": 33.48,
+      "minutes": 0.6503498987333539,
+      "grad_norm_median": 2.551767349243164,
+      "grad_norm_max": 4.640257358551025,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.7018186279678345,
+      "train_acc": 36.92,
+      "test_loss": 1.66785166015625,
+      "test_acc": 38.23,
+      "minutes": 0.6221031207668906,
+      "grad_norm_median": 2.403414249420166,
+      "grad_norm_max": 4.0814032554626465,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.6038858642578124,
+      "train_acc": 40.97,
+      "test_loss": 1.578123388671875,
+      "test_acc": 42.09,
+      "minutes": 0.9174443082185462,
+      "grad_norm_median": 2.386444330215454,
+      "grad_norm_max": 4.288164138793945,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.5169099340438843,
+      "train_acc": 44.634,
+      "test_loss": 1.4785155029296875,
+      "test_acc": 46.29,
+      "minutes": 1.3214206164508748,
+      "grad_norm_median": 2.3128695487976074,
+      "grad_norm_max": 3.582343101501465,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.418637841758728,
+      "train_acc": 48.796,
+      "test_loss": 1.3924932739257811,
+      "test_acc": 49.47,
+      "minutes": 1.2675269130190523,
+      "grad_norm_median": 2.3392176628112793,
+      "grad_norm_max": 3.635591745376587,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.3387169030761719,
+      "train_acc": 51.88,
+      "test_loss": 1.3325183471679687,
+      "test_acc": 51.65,
+      "minutes": 1.2920777974805484,
+      "grad_norm_median": 2.416417360305786,
+      "grad_norm_max": 3.535181760787964,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 9,
+      "train_loss": 1.2879015459442138,
+      "train_acc": 53.576,
+      "test_loss": 1.2929273315429688,
+      "test_acc": 53.43,
+      "minutes": 1.324035598450185,
+      "grad_norm_median": 2.5034356117248535,
+      "grad_norm_max": 3.356963634490967,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 10,
+      "train_loss": 1.2500472577667237,
+      "train_acc": 55.148,
+      "test_loss": 1.281894451904297,
+      "test_acc": 53.97,
+      "minutes": 1.228817053399204,
+      "grad_norm_median": 2.5361011028289795,
+      "grad_norm_max": 3.4213759899139404,
+      "steps_skipped": 0
+    }
+  ],
+  "final_test_acc": 53.97,
+  "metrics_init": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.12150412052869797,
+      "object_mass": 1.4431682527065277,
+      "object_anchor_share": 0.2081298828125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.09336626064032316,
+      "object_mass": 1.4210563749074936,
+      "object_anchor_share": 0.20892333984375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.06387522304430604,
+      "object_mass": 1.308832734823227,
+      "object_anchor_share": 0.2083740234375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.061740451492369175,
+      "object_mass": 1.3561500757932663,
+      "object_anchor_share": 0.20709228515625
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.050356758292764425,
+      "object_mass": 1.1006620228290558,
+      "object_anchor_share": 0.20849609375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.07785525731742382,
+      "object_mass": 1.405026063323021,
+      "object_anchor_share": 0.2091064453125
+    }
+  ],
+  "metrics_trained": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.324809979647398,
+      "object_mass": 1.5894251614809036,
+      "object_anchor_share": 0.20770263671875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.568403571844101,
+      "object_mass": 1.9810613989830017,
+      "object_anchor_share": 0.22882080078125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.4077116996049881,
+      "object_mass": 1.879303053021431,
+      "object_anchor_share": 0.19610595703125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.4138527549803257,
+      "object_mass": 1.8923883736133575,
+      "object_anchor_share": 0.2032470703125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.5550704002380371,
+      "object_mass": 2.1835120022296906,
+      "object_anchor_share": 0.20635986328125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.4769093804061413,
+      "object_mass": 1.8075248301029205,
+      "object_anchor_share": 0.193603515625
+    }
+  ],
+  "gflops_linear": 5.314371072,
+  "gflops_total": 5.491392,
+  "throughput_img_s": 2102.3608885384742,
+  "peak_train_memory_mb": 4601.701171875,
+  "gpu": "NVIDIA A100 80GB PCIe",
+  "total_minutes": 9.928062473330646
+}

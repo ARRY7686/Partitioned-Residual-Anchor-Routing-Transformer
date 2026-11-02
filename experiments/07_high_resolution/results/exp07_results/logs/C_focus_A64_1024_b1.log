@@ -1,0 +1,2 @@
+[C_focus_A64_1024_b1] focus | mpmnist 1024x1024 (64x64 patches) | anchors 64 | seed 42 | epochs 0 | batch 32 | device NVIDIA A100 80GB PCIe
+[C_focus_A64_1024_b1] measured: 88.7 GFLOPs | 231.4 ms/step | 10.4 img/s | 1031 MB

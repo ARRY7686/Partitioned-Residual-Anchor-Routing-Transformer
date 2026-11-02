@@ -1,0 +1,80 @@
+{
+  "tag": "probe_N_vit128",
+  "kind": "vit",
+  "num_anchors": 0,
+  "seed": 42,
+  "epochs": 3,
+  "dataset": "mpmnist",
+  "canvas": [
+    512,
+    512
+  ],
+  "image": [
+    512,
+    512
+  ],
+  "vit_input": 128,
+  "vit_patch": 16,
+  "coverage_side": "auto",
+  "suppression": 10.0,
+  "suppression_width": 1.5,
+  "home_width": 0.35,
+  "grad_clip": 1.0,
+  "warmup_epochs": 2.0,
+  "precision": "bf16",
+  "lr": 0.0002,
+  "batch": 32,
+  "metric": "accuracy",
+  "noise": 12,
+  "train_size": 10000,
+  "fresh": true,
+  "params": 9199498,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.012207381057739,
+      "val_loss": 1.5070557460784912,
+      "val_score": 44.40000057220459,
+      "test_loss": 1.5189123344421387,
+      "test_score": 45.500001311302185,
+      "minutes": 0.17732069901733968,
+      "grad_norm_median": 9.415447235107422,
+      "grad_norm_max": 18.162755966186523,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.3830228275299072,
+      "val_loss": 1.2951173248291015,
+      "val_score": 54.6999990940094,
+      "test_loss": 1.320480751991272,
+      "test_score": 53.79999876022339,
+      "minutes": 0.13215284603259836,
+      "grad_norm_median": 9.634749412536621,
+      "grad_norm_max": 15.102385520935059,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.0819820329666137,
+      "val_loss": 0.8816969094276428,
+      "val_score": 68.19999814033508,
+      "test_loss": 0.8678710746765137,
+      "test_score": 68.19999814033508,
+      "minutes": 0.13224128138196345,
+      "grad_norm_median": 7.795076370239258,
+      "grad_norm_max": 12.1314697265625,
+      "steps_skipped": 0
+    }
+  ],
+  "final_val_score": 68.19999814033508,
+  "final_test_score": 68.19999814033508,
+  "final_test_acc": 68.19999814033508,
+  "metrics_init": null,
+  "metrics_trained": null,
+  "gflops_total": 1.207967232,
+  "throughput_img_s": 3169.178596610438,
+  "peak_train_memory_mb": 438.79248046875,
+  "gpu": "NVIDIA A100 80GB PCIe",
+  "total_minutes": 0.4417148264319015
+}

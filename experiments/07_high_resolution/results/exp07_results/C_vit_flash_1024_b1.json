@@ -1,0 +1,22 @@
+{
+  "tag": "C_vit_flash_1024_b1",
+  "measure_only": true,
+  "kind": "vit",
+  "dataset": "mpmnist",
+  "canvas": [
+    1024,
+    1024
+  ],
+  "num_anchors": 0,
+  "vit_input": 0,
+  "sdpa": "flash",
+  "batch_size": 1,
+  "final_test_acc": null,
+  "gpu": "NVIDIA A100 80GB PCIe",
+  "params": 10747786,
+  "train_step_ms": 10.686590103432536,
+  "peak_train_memory_mb": 679.798828125,
+  "throughput_img_s": 345.75990999322016,
+  "peak_inference_memory_mb": 299.38232421875,
+  "gflops_total": 229.51232256
+}

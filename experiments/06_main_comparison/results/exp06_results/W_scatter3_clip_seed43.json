@@ -1,0 +1,220 @@
+{
+  "tag": "W_scatter3_clip_seed43",
+  "kind": "focus",
+  "num_anchors": 16,
+  "seed": 43,
+  "epochs": 10,
+  "dataset": "cifar10",
+  "vit_input": 256,
+  "vit_patch": 16,
+  "keep_ratio": 1.0,
+  "skip_from": 2,
+  "skip_score": "importance",
+  "gate": "ratio",
+  "coverage_side": "auto",
+  "suppression": 10.0,
+  "suppression_width": 1.5,
+  "home_width": 0.35,
+  "assign": "hard",
+  "scatter_k": 3,
+  "grad_clip": 1.0,
+  "warmup_epochs": 2.0,
+  "precision": "bf16",
+  "lr": 0.0003,
+  "params": 11365008,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.168950234298706,
+      "train_acc": 17.834,
+      "test_loss": 2.0314625,
+      "test_acc": 23.86,
+      "minutes": 1.3157129097497091,
+      "grad_norm_median": 3.9642322063446045,
+      "grad_norm_max": 11.382430076599121,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.949513750076294,
+      "train_acc": 25.982,
+      "test_loss": 1.8998916015625,
+      "test_acc": 28.01,
+      "minutes": 1.203595047017249,
+      "grad_norm_median": 2.9856536388397217,
+      "grad_norm_max": 8.232297897338867,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.813574238319397,
+      "train_acc": 31.43,
+      "test_loss": 1.78184189453125,
+      "test_acc": 34.8,
+      "minutes": 1.3081581128179096,
+      "grad_norm_median": 2.574758291244507,
+      "grad_norm_max": 4.993056297302246,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.7012568310546874,
+      "train_acc": 36.682,
+      "test_loss": 1.64415341796875,
+      "test_acc": 39.0,
+      "minutes": 1.2440071529825218,
+      "grad_norm_median": 2.429997682571411,
+      "grad_norm_max": 4.278756618499756,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.5941977979278565,
+      "train_acc": 41.528,
+      "test_loss": 1.575098583984375,
+      "test_acc": 42.37,
+      "minutes": 1.2717987455350037,
+      "grad_norm_median": 2.3984506130218506,
+      "grad_norm_max": 4.3326849937438965,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.5014208374404907,
+      "train_acc": 45.364,
+      "test_loss": 1.4698005126953124,
+      "test_acc": 46.58,
+      "minutes": 1.3093215443193913,
+      "grad_norm_median": 2.3573079109191895,
+      "grad_norm_max": 3.972653388977051,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.4045586694717407,
+      "train_acc": 49.192,
+      "test_loss": 1.37848056640625,
+      "test_acc": 49.63,
+      "minutes": 1.2173875797151898,
+      "grad_norm_median": 2.449126720428467,
+      "grad_norm_max": 3.7448625564575195,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.3196192041397095,
+      "train_acc": 52.376,
+      "test_loss": 1.3077239013671875,
+      "test_acc": 52.86,
+      "minutes": 1.3069311665332255,
+      "grad_norm_median": 2.4746832847595215,
+      "grad_norm_max": 3.6086220741271973,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 9,
+      "train_loss": 1.265594779586792,
+      "train_acc": 54.484,
+      "test_loss": 1.2673369018554688,
+      "test_acc": 53.86,
+      "minutes": 1.2365674034149075,
+      "grad_norm_median": 2.5482914447784424,
+      "grad_norm_max": 3.3887598514556885,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 10,
+      "train_loss": 1.2292013940048219,
+      "train_acc": 55.876,
+      "test_loss": 1.254849755859375,
+      "test_acc": 54.16,
+      "minutes": 1.2718201050146793,
+      "grad_norm_median": 2.5429375171661377,
+      "grad_norm_max": 3.2719383239746094,
+      "steps_skipped": 0
+    }
+  ],
+  "final_test_acc": 54.16,
+  "metrics_init": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.12143535260111094,
+      "object_mass": 1.4439443796873093,
+      "object_anchor_share": 0.20819091796875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.0932792779058218,
+      "object_mass": 1.4205842018127441,
+      "object_anchor_share": 0.2086181640625
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.06376673327758908,
+      "object_mass": 1.3098162412643433,
+      "object_anchor_share": 0.20855712890625
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.06158189754933119,
+      "object_mass": 1.3560344725847244,
+      "object_anchor_share": 0.2071533203125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.0499675334431231,
+      "object_mass": 1.1018831729888916,
+      "object_anchor_share": 0.20892333984375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.0776572534814477,
+      "object_mass": 1.4051545709371567,
+      "object_anchor_share": 0.20904541015625
+    }
+  ],
+  "metrics_trained": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.3428432419896126,
+      "object_mass": 1.680823192000389,
+      "object_anchor_share": 0.21087646484375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.6410545110702515,
+      "object_mass": 2.486894577741623,
+      "object_anchor_share": 0.27020263671875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.39268288761377335,
+      "object_mass": 1.8475957214832306,
+      "object_anchor_share": 0.1998291015625
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.397854458540678,
+      "object_mass": 2.153385579586029,
+      "object_anchor_share": 0.2152099609375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.5241517499089241,
+      "object_mass": 2.226217120885849,
+      "object_anchor_share": 0.218994140625
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.5159655176103115,
+      "object_mass": 3.360814183950424,
+      "object_anchor_share": 0.2672119140625
+    }
+  ],
+  "gflops_linear": 5.314371072,
+  "gflops_total": 5.491392,
+  "throughput_img_s": 2107.118132470037,
+  "peak_train_memory_mb": 4601.701171875,
+  "gpu": "NVIDIA A100 80GB PCIe",
+  "total_minutes": 12.685299767099787
+}

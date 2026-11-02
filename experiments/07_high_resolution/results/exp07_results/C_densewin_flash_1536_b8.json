@@ -1,0 +1,22 @@
+{
+  "tag": "C_densewin_flash_1536_b8",
+  "measure_only": true,
+  "kind": "densewin",
+  "dataset": "mpmnist",
+  "canvas": [
+    1536,
+    1536
+  ],
+  "num_anchors": 0,
+  "vit_input": 0,
+  "sdpa": "flash",
+  "batch_size": 8,
+  "final_test_acc": null,
+  "gpu": "NVIDIA A100 80GB PCIe",
+  "params": 16266762,
+  "train_step_ms": 231.94681839086115,
+  "peak_train_memory_mb": 8816.06787109375,
+  "throughput_img_s": 107.14887015764077,
+  "peak_inference_memory_mb": 1357.20751953125,
+  "gflops_total": 1021.933788672
+}

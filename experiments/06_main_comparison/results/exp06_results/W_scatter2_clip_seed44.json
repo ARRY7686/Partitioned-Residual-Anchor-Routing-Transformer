@@ -1,0 +1,220 @@
+{
+  "tag": "W_scatter2_clip_seed44",
+  "kind": "focus",
+  "num_anchors": 16,
+  "seed": 44,
+  "epochs": 10,
+  "dataset": "cifar10",
+  "vit_input": 256,
+  "vit_patch": 16,
+  "keep_ratio": 1.0,
+  "skip_from": 2,
+  "skip_score": "importance",
+  "gate": "ratio",
+  "coverage_side": "auto",
+  "suppression": 10.0,
+  "suppression_width": 1.5,
+  "home_width": 0.35,
+  "assign": "hard",
+  "scatter_k": 2,
+  "grad_clip": 1.0,
+  "warmup_epochs": 2.0,
+  "precision": "bf16",
+  "lr": 0.0003,
+  "params": 11365008,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.160711796798706,
+      "train_acc": 17.704,
+      "test_loss": 2.006925,
+      "test_acc": 23.62,
+      "minutes": 1.3182403800155347,
+      "grad_norm_median": 3.9752044677734375,
+      "grad_norm_max": 15.22480297088623,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.951152890663147,
+      "train_acc": 25.636,
+      "test_loss": 1.8816462890625,
+      "test_acc": 28.17,
+      "minutes": 1.224274118481359,
+      "grad_norm_median": 3.0998270511627197,
+      "grad_norm_max": 8.018627166748047,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.828236386642456,
+      "train_acc": 30.808,
+      "test_loss": 1.798169921875,
+      "test_acc": 32.22,
+      "minutes": 1.3089165294814544,
+      "grad_norm_median": 2.627302408218384,
+      "grad_norm_max": 6.01418924331665,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.709024550743103,
+      "train_acc": 36.2,
+      "test_loss": 1.675421435546875,
+      "test_acc": 38.94,
+      "minutes": 1.2748774072000135,
+      "grad_norm_median": 2.481480360031128,
+      "grad_norm_max": 6.2493133544921875,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.6115211426162719,
+      "train_acc": 40.712,
+      "test_loss": 1.558728466796875,
+      "test_acc": 42.83,
+      "minutes": 1.247434213932138,
+      "grad_norm_median": 2.4310905933380127,
+      "grad_norm_max": 4.75925874710083,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.512517875404358,
+      "train_acc": 44.876,
+      "test_loss": 1.470364208984375,
+      "test_acc": 45.85,
+      "minutes": 1.3092759621174386,
+      "grad_norm_median": 2.391162157058716,
+      "grad_norm_max": 4.255300998687744,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.4196954711532592,
+      "train_acc": 48.57,
+      "test_loss": 1.3803573608398438,
+      "test_acc": 49.58,
+      "minutes": 1.220221238618251,
+      "grad_norm_median": 2.4223244190216064,
+      "grad_norm_max": 3.4648044109344482,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.339253555908203,
+      "train_acc": 51.698,
+      "test_loss": 1.3424682006835937,
+      "test_acc": 50.95,
+      "minutes": 1.3105259375840737,
+      "grad_norm_median": 2.5063016414642334,
+      "grad_norm_max": 6.242938995361328,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 9,
+      "train_loss": 1.2768926068878175,
+      "train_acc": 54.194,
+      "test_loss": 1.285933966064453,
+      "test_acc": 53.46,
+      "minutes": 1.2831376324174926,
+      "grad_norm_median": 2.548103094100952,
+      "grad_norm_max": 3.720313310623169,
+      "steps_skipped": 0
+    },
+    {
+      "epoch": 10,
+      "train_loss": 1.2418285138702392,
+      "train_acc": 55.384,
+      "test_loss": 1.2784809326171875,
+      "test_acc": 53.69,
+      "minutes": 1.247519629165375,
+      "grad_norm_median": 2.5866122245788574,
+      "grad_norm_max": 3.4995241165161133,
+      "steps_skipped": 0
+    }
+  ],
+  "final_test_acc": 53.69,
+  "metrics_init": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.08680979162454605,
+      "object_mass": 1.298010230064392,
+      "object_anchor_share": 0.20745849609375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.06760148145258427,
+      "object_mass": 1.2016248255968094,
+      "object_anchor_share": 0.2060546875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.074467315338552,
+      "object_mass": 1.254728227853775,
+      "object_anchor_share": 0.2041015625
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.05646613985300064,
+      "object_mass": 0.9986889064311981,
+      "object_anchor_share": 0.2030029296875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.06734299752861261,
+      "object_mass": 1.1538451164960861,
+      "object_anchor_share": 0.2073974609375
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.05058921780437231,
+      "object_mass": 1.3111835271120071,
+      "object_anchor_share": 0.21099853515625
+    }
+  ],
+  "metrics_trained": [
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.39139223098754883,
+      "object_mass": 1.6473648101091385,
+      "object_anchor_share": 0.2138671875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.5128233134746552,
+      "object_mass": 1.600371778011322,
+      "object_anchor_share": 0.2138671875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.3716833293437958,
+      "object_mass": 1.7014474719762802,
+      "object_anchor_share": 0.1915283203125
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.33940619602799416,
+      "object_mass": 1.7426231503486633,
+      "object_anchor_share": 0.19354248046875
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.4709607772529125,
+      "object_mass": 1.9692109823226929,
+      "object_anchor_share": 0.2076416015625
+    },
+    {
+      "map_similarity": 0.0,
+      "anchor_spread": 0.49477917701005936,
+      "object_mass": 2.3072715997695923,
+      "object_anchor_share": 0.2178955078125
+    }
+  ],
+  "gflops_linear": 5.314371072,
+  "gflops_total": 5.491392,
+  "throughput_img_s": 2094.7152741774757,
+  "peak_train_memory_mb": 4601.701171875,
+  "gpu": "NVIDIA A100 80GB PCIe",
+  "total_minutes": 12.74442304901313
+}

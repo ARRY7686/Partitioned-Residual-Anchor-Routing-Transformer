@@ -1,0 +1,33 @@
+[N_pvt_seed42] pvt | mpmnist 512x512 (32x32 patches) | anchors 64 | seed 42 | epochs 30 | batch 32 | device NVIDIA A100 80GB PCIe
+[N_pvt_seed42] 3,412,330 parameters
+[N_pvt_seed42] epoch 01/30 | train loss 2.3176 | val  9.90 | test 11.20 | grad norm median 3.49 max 6.72 | 1.60 min
+[N_pvt_seed42] epoch 02/30 | train loss 1.9008 | val 48.70 | test 48.30 | grad norm median 4.67 max 18.34 | 0.61 min
+[N_pvt_seed42] epoch 03/30 | train loss 1.0252 | val 71.20 | test 71.00 | grad norm median 6.93 max 14.07 | 0.61 min
+[N_pvt_seed42] epoch 04/30 | train loss 0.7301 | val 72.80 | test 71.30 | grad norm median 6.50 max 14.97 | 0.64 min
+[N_pvt_seed42] epoch 05/30 | train loss 0.6015 | val 82.90 | test 81.80 | grad norm median 6.27 max 13.85 | 0.55 min
+[N_pvt_seed42] epoch 06/30 | train loss 0.4842 | val 81.50 | test 83.50 | grad norm median 5.87 max 12.75 | 0.78 min
+[N_pvt_seed42] epoch 07/30 | train loss 0.3930 | val 86.40 | test 86.50 | grad norm median 5.84 max 13.29 | 0.76 min
+[N_pvt_seed42] epoch 08/30 | train loss 0.3498 | val 87.30 | test 84.50 | grad norm median 5.67 max 13.91 | 0.76 min
+[N_pvt_seed42] epoch 09/30 | train loss 0.2999 | val 88.60 | test 89.00 | grad norm median 5.54 max 14.53 | 0.78 min
+[N_pvt_seed42] epoch 10/30 | train loss 0.2697 | val 87.80 | test 90.80 | grad norm median 5.35 max 16.71 | 0.76 min
+[N_pvt_seed42] epoch 11/30 | train loss 0.2594 | val 93.40 | test 93.20 | grad norm median 5.34 max 11.60 | 0.76 min
+[N_pvt_seed42] epoch 12/30 | train loss 0.2235 | val 90.80 | test 93.80 | grad norm median 5.19 max 14.75 | 0.76 min
+[N_pvt_seed42] epoch 13/30 | train loss 0.2055 | val 94.50 | test 95.20 | grad norm median 5.13 max 19.86 | 0.76 min
+[N_pvt_seed42] epoch 14/30 | train loss 0.1901 | val 92.50 | test 91.50 | grad norm median 5.26 max 16.59 | 0.76 min
+[N_pvt_seed42] epoch 15/30 | train loss 0.1679 | val 96.50 | test 95.10 | grad norm median 4.85 max 13.90 | 0.78 min
+[N_pvt_seed42] epoch 16/30 | train loss 0.1499 | val 95.70 | test 95.30 | grad norm median 4.70 max 12.74 | 0.76 min
+[N_pvt_seed42] epoch 17/30 | train loss 0.1463 | val 95.80 | test 96.20 | grad norm median 4.79 max 14.39 | 0.79 min
+[N_pvt_seed42] epoch 18/30 | train loss 0.1341 | val 96.50 | test 95.80 | grad norm median 4.68 max 13.87 | 0.75 min
+[N_pvt_seed42] epoch 19/30 | train loss 0.1252 | val 96.40 | test 95.90 | grad norm median 4.59 max 15.61 | 0.77 min
+[N_pvt_seed42] epoch 20/30 | train loss 0.1159 | val 96.40 | test 95.70 | grad norm median 4.68 max 15.82 | 0.77 min
+[N_pvt_seed42] epoch 21/30 | train loss 0.1116 | val 97.20 | test 96.90 | grad norm median 4.48 max 11.30 | 0.77 min
+[N_pvt_seed42] epoch 22/30 | train loss 0.0952 | val 97.20 | test 96.90 | grad norm median 4.47 max 14.97 | 0.74 min
+[N_pvt_seed42] epoch 23/30 | train loss 0.0899 | val 97.00 | test 96.90 | grad norm median 4.26 max 20.48 | 0.78 min
+[N_pvt_seed42] epoch 24/30 | train loss 0.0832 | val 98.10 | test 96.80 | grad norm median 3.90 max 15.84 | 0.74 min
+[N_pvt_seed42] epoch 25/30 | train loss 0.0773 | val 97.30 | test 97.80 | grad norm median 4.07 max 18.59 | 0.78 min
+[N_pvt_seed42] epoch 26/30 | train loss 0.0783 | val 97.60 | test 97.50 | grad norm median 3.84 max 19.00 | 0.74 min
+[N_pvt_seed42] epoch 27/30 | train loss 0.0756 | val 97.80 | test 97.50 | grad norm median 4.16 max 13.87 | 0.78 min
+[N_pvt_seed42] epoch 28/30 | train loss 0.0740 | val 97.90 | test 97.60 | grad norm median 3.83 max 16.88 | 0.74 min
+[N_pvt_seed42] epoch 29/30 | train loss 0.0769 | val 97.90 | test 97.60 | grad norm median 4.15 max 16.30 | 0.78 min
+[N_pvt_seed42] epoch 30/30 | train loss 0.0721 | val 97.90 | test 97.60 | grad norm median 3.98 max 17.65 | 0.74 min
+[N_pvt_seed42] done: val 97.90 | test 97.60 | 7.6 GFLOPs | 571.7 img/s | saved /root/exp07/exp07_results/N_pvt_seed42.json

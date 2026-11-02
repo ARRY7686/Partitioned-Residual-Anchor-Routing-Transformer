@@ -1,0 +1,2 @@
+[C_dfg_densewin_flash_b1] densewin | dfg 1152x1920 (72x120 patches) | anchors 64 | seed 42 | epochs 0 | batch 32 | device NVIDIA A100 80GB PCIe
+[C_dfg_densewin_flash_b1] measured: 912.2 GFLOPs | 31.5 ms/step | 106.1 img/s | 2004 MB

@@ -1,0 +1,33 @@
+[N_focus_A64_seed42] focus | mpmnist 512x512 (32x32 patches) | anchors 64 | seed 42 | epochs 30 | batch 32 | device NVIDIA A100 80GB PCIe
+[N_focus_A64_seed42] 11,666,064 parameters
+[N_focus_A64_seed42] epoch 01/30 | train loss 2.2632 | val 39.00 | test 37.00 | grad norm median 5.81 max 18.17 | 2.30 min
+[N_focus_A64_seed42] epoch 02/30 | train loss 1.3198 | val 66.20 | test 60.10 | grad norm median 7.10 max 15.85 | 2.31 min
+[N_focus_A64_seed42] epoch 03/30 | train loss 0.9158 | val 70.10 | test 69.00 | grad norm median 5.68 max 10.64 | 2.32 min
+[N_focus_A64_seed42] epoch 04/30 | train loss 0.7901 | val 71.50 | test 69.00 | grad norm median 5.06 max 9.31 | 2.27 min
+[N_focus_A64_seed42] epoch 05/30 | train loss 0.7097 | val 75.80 | test 72.80 | grad norm median 4.38 max 7.06 | 2.33 min
+[N_focus_A64_seed42] epoch 06/30 | train loss 0.6435 | val 76.00 | test 76.10 | grad norm median 4.26 max 7.47 | 2.31 min
+[N_focus_A64_seed42] epoch 07/30 | train loss 0.6028 | val 74.50 | test 74.00 | grad norm median 4.07 max 7.08 | 2.30 min
+[N_focus_A64_seed42] epoch 08/30 | train loss 0.5911 | val 77.90 | test 76.30 | grad norm median 4.00 max 8.53 | 2.31 min
+[N_focus_A64_seed42] epoch 09/30 | train loss 0.5592 | val 80.50 | test 78.10 | grad norm median 4.09 max 23.08 | 2.28 min
+[N_focus_A64_seed42] epoch 10/30 | train loss 0.5230 | val 79.90 | test 81.00 | grad norm median 3.69 max 7.74 | 2.30 min
+[N_focus_A64_seed42] epoch 11/30 | train loss 0.4989 | val 82.30 | test 83.40 | grad norm median 3.44 max 6.64 | 2.30 min
+[N_focus_A64_seed42] epoch 12/30 | train loss 0.4791 | val 79.80 | test 81.90 | grad norm median 4.93 max 34.17 | 2.15 min
+[N_focus_A64_seed42] epoch 13/30 | train loss 0.4751 | val 79.50 | test 82.70 | grad norm median 6.18 max 252.66 | 1.64 min
+[N_focus_A64_seed42] epoch 14/30 | train loss 0.4916 | val 81.10 | test 79.60 | grad norm median 14.03 max 224.38 | 1.65 min
+[N_focus_A64_seed42] epoch 15/30 | train loss 0.5771 | val 78.00 | test 77.30 | grad norm median 49.03 max 1392.15 | 1.70 min
+[N_focus_A64_seed42] epoch 16/30 | train loss 0.6205 | val 79.10 | test 77.60 | grad norm median 33.91 max 833.29 | 1.79 min
+[N_focus_A64_seed42] epoch 17/30 | train loss 0.5128 | val 79.30 | test 77.30 | grad norm median 9.32 max 7904.69 | 1.78 min
+[N_focus_A64_seed42] epoch 18/30 | train loss 0.5276 | val 80.80 | test 79.50 | grad norm median 100.81 max 4683.99 | 1.75 min
+[N_focus_A64_seed42] epoch 19/30 | train loss 0.5645 | val 80.30 | test 78.30 | grad norm median 282.04 max 9968.51 | 1.44 min
+[N_focus_A64_seed42] epoch 20/30 | train loss 0.6068 | val 81.40 | test 80.00 | grad norm median 259.79 max 108421.55 | 1.58 min
+[N_focus_A64_seed42] epoch 21/30 | train loss 0.6387 | val 81.10 | test 78.50 | grad norm median 416.29 max 9086.15 | 1.58 min
+[N_focus_A64_seed42] epoch 22/30 | train loss 0.6332 | val 79.80 | test 77.50 | grad norm median 579.38 max 43897.71 | 1.60 min
+[N_focus_A64_seed42] epoch 23/30 | train loss 0.6391 | val 80.60 | test 78.90 | grad norm median 623.51 max 7941.07 | 1.58 min
+[N_focus_A64_seed42] epoch 24/30 | train loss 0.6332 | val 81.70 | test 80.40 | grad norm median 584.05 max 222956.45 | 1.59 min
+[N_focus_A64_seed42] epoch 25/30 | train loss 0.6200 | val 82.30 | test 78.80 | grad norm median 677.03 max 16784.77 | 1.59 min
+[N_focus_A64_seed42] epoch 26/30 | train loss 0.6317 | val 81.70 | test 78.90 | grad norm median 847.03 max 62617.57 | 1.59 min
+[N_focus_A64_seed42] epoch 27/30 | train loss 0.6414 | val 81.30 | test 78.90 | grad norm median 989.55 max 61823.47 | 1.62 min
+[N_focus_A64_seed42] epoch 28/30 | train loss 0.6315 | val 81.20 | test 79.00 | grad norm median 954.84 max 10104.82 | 1.58 min
+[N_focus_A64_seed42] epoch 29/30 | train loss 0.6256 | val 81.10 | test 78.90 | grad norm median 1043.94 max 27358.72 | 1.58 min
+[N_focus_A64_seed42] epoch 30/30 | train loss 0.6399 | val 81.10 | test 79.00 | grad norm median 1134.65 max 517792.19 | 1.58 min
+[N_focus_A64_seed42] done: val 81.10 | test 79.00 | 22.3 GFLOPs | 130.1 img/s | saved /root/exp07/exp07_results/N_focus_A64_seed42.json

@@ -30,13 +30,16 @@ JOBS_PER_GPU = int(os.environ.get("RART_JOBS_PER_GPU", "1"))
 SKIP_TAGS = set(filter(None, os.environ.get("RART_SKIP_TAGS", "").split(",")))
 SEEDS = [int(s) for s in os.environ.get("RART_SEEDS", "42,43,44").split(",")]
 EPOCHS = {"mpmnist": int(os.environ.get("RART_EPOCHS_M", "30")), "dfg": int(os.environ.get("RART_EPOCHS_D", "20"))}
+# Phase N: Megapixel MNIST at 512² with 12 noise patches (the 1024² density) and 10,000 fresh
+# training layouts per epoch; at 1024² with 5000 fixed layouts the transformers stayed at chance.
+N_SETTINGS = dict(canvas=512, noise=12, train_size=10000, fresh=1)
 OUT_DIR = os.path.abspath(os.environ.get("RART_SUITE_OUT", "exp07_results"))
 DATA_DIR = os.path.abspath(os.environ.get("RART_DATA_DIR", "data"))
 LOG_DIR = os.path.join(OUT_DIR, "logs")
 os.makedirs(LOG_DIR, exist_ok=True)
 
 # Rough A100 minutes per epoch, only for the time budget; rescaled once jobs finish.
-MINUTES_PER_EPOCH = {"mpmnist": 2.0, "dfg": 6.0}
+MINUTES_PER_EPOCH = {"mpmnist": 2.0, "dfg": 6.0, "mpmnist512": 1.5}
 
 MODELS = {
     "mpmnist": {"focus_A64": dict(kind="focus", anchors=64), "fixed_A64": dict(kind="fixed", anchors=64),
@@ -47,13 +50,17 @@ MODELS = {
             "densewin": dict(kind="densewin"), "vit_native": dict(kind="vit", vit_input=0),
             "vit960": dict(kind="vit", vit_input=960), "vit480": dict(kind="vit", vit_input=480),
             "pvt": dict(kind="pvt"), "resnet18_lr1e-3": dict(kind="resnet", lr="1e-3")},
+    "mpmnist512": {"focus_A64": dict(kind="focus", anchors=64), "fixed_A64": dict(kind="fixed", anchors=64),
+                   "densewin": dict(kind="densewin"), "vit_native": dict(kind="vit", vit_input=0),
+                   "vit256": dict(kind="vit", vit_input=256), "vit128": dict(kind="vit", vit_input=128),
+                   "pvt": dict(kind="pvt"), "resnet18_lr1e-3": dict(kind="resnet", lr="1e-3")},
 }
 
 
-def job(tag, dataset, epochs, **settings):
+def job(tag, dataset, epochs, rate=None, **settings):
     env = {"RART_TAG": tag, "RART_DATASET": dataset, "RART_EPOCHS": str(epochs),
            **{f"RART_{k.upper()}": str(v) for k, v in settings.items()}}
-    return {"tag": tag, "env": env, "estimate": max(1, epochs) * MINUTES_PER_EPOCH[dataset]}
+    return {"tag": tag, "env": env, "estimate": max(1, epochs) * MINUTES_PER_EPOCH[rate or dataset]}
 
 
 def phase_jobs(phase):
@@ -61,6 +68,20 @@ def phase_jobs(phase):
         dataset = "mpmnist" if phase == "M" else "dfg"
         return [job(f"{phase}_{name}_seed{seed}", dataset, EPOCHS[dataset], seed=seed, **settings)
                 for seed in SEEDS for name, settings in MODELS[dataset].items()]
+    if phase == "N":
+        return [job(f"N_{name}_seed{seed}", "mpmnist", EPOCHS["mpmnist"], rate="mpmnist512", seed=seed,
+                    **N_SETTINGS, **settings)
+                for seed in SEEDS for name, settings in MODELS["mpmnist512"].items()]
+    if phase == "DM":
+        # DFG with max-pooled heads for every model: with average pooling even an ImageNet-
+        # pretrained ResNet-18 stayed near chance (small signs are averaged away over a full-HD frame).
+        names = ("focus_A64", "fixed_A64", "densewin", "vit_native", "vit480", "resnet18_lr1e-3", "pvt")
+        return [job(f"DM_{name}_seed{seed}", "dfg", EPOCHS["dfg"], seed=seed, pool="max", **MODELS["dfg"][name])
+                for seed in SEEDS for name in names]
+    if phase == "NF":
+        # Focus reruns for phase N: seed 42's first run became unstable (kept as N_focus_A64_seed42_unstable).
+        return [job(f"N_focus_A64_seed{seed}", "mpmnist", EPOCHS["mpmnist"], rate="mpmnist512", seed=seed,
+                    **N_SETTINGS, **MODELS["mpmnist512"]["focus_A64"]) for seed in (42, 44)]
     if phase == "C":
         models = {"vit_flash": dict(kind="vit", vit_input=0, sdpa="flash"),
                   "vit_math": dict(kind="vit", vit_input=0, sdpa="math"),

@@ -1,0 +1,18 @@
+[diag_A16_lr2e-4] focus | mpmnist 512x512 (32x32 patches) | anchors 16 | seed 42 | epochs 15 | batch 32 | device NVIDIA A100 80GB PCIe
+[diag_A16_lr2e-4] 11,659,920 parameters
+[diag_A16_lr2e-4] epoch 01/15 | train loss 2.2803 | val 36.50 | test 36.10 | grad norm median 5.81 max 19.57 | 2.31 min
+[diag_A16_lr2e-4] epoch 02/15 | train loss 1.3897 | val 60.60 | test 61.20 | grad norm median 8.55 max 23.61 | 1.73 min
+[diag_A16_lr2e-4] epoch 03/15 | train loss 0.9843 | val 71.40 | test 70.10 | grad norm median 6.67 max 22.78 | 1.69 min
+[diag_A16_lr2e-4] epoch 04/15 | train loss 0.8311 | val 66.10 | test 69.00 | grad norm median 5.72 max 11.86 | 1.75 min
+[diag_A16_lr2e-4] epoch 05/15 | train loss 0.7270 | val 74.20 | test 71.90 | grad norm median 5.07 max 9.24 | 1.76 min
+[diag_A16_lr2e-4] epoch 06/15 | train loss 0.6575 | val 75.20 | test 77.10 | grad norm median 4.74 max 11.16 | 1.71 min
+[diag_A16_lr2e-4] epoch 07/15 | train loss 0.5979 | val 76.90 | test 76.00 | grad norm median 4.29 max 12.30 | 1.75 min
+[diag_A16_lr2e-4] epoch 08/15 | train loss 0.5652 | val 78.70 | test 77.70 | grad norm median 4.17 max 12.92 | 1.64 min
+[diag_A16_lr2e-4] epoch 09/15 | train loss 0.5178 | val 80.00 | test 77.20 | grad norm median 4.17 max 16.49 | 1.75 min
+[diag_A16_lr2e-4] epoch 10/15 | train loss 0.4716 | val 80.60 | test 81.20 | grad norm median 4.05 max 21.05 | 1.64 min
+[diag_A16_lr2e-4] epoch 11/15 | train loss 0.4441 | val 83.80 | test 84.60 | grad norm median 4.07 max 9.34 | 1.68 min
+[diag_A16_lr2e-4] epoch 12/15 | train loss 0.4185 | val 84.30 | test 85.00 | grad norm median 4.12 max 22.39 | 1.69 min
+[diag_A16_lr2e-4] epoch 13/15 | train loss 0.3960 | val 85.00 | test 85.60 | grad norm median 3.99 max 9.28 | 1.74 min
+[diag_A16_lr2e-4] epoch 14/15 | train loss 0.3882 | val 85.20 | test 86.10 | grad norm median 4.04 max 11.58 | 1.75 min
+[diag_A16_lr2e-4] epoch 15/15 | train loss 0.3695 | val 85.80 | test 85.80 | grad norm median 4.00 max 13.88 | 1.83 min
+[diag_A16_lr2e-4] done: val 85.80 | test 85.80 | 21.9 GFLOPs | 142.0 img/s | saved /root/exp07/diag/diag_A16_lr2e-4.json

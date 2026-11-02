@@ -1,0 +1,18 @@
+[T_densewin_seed44] densewin | anchors 16 | seed 44 | epochs 15 | device NVIDIA A100 80GB PCIe
+[T_densewin_seed44] 12,901,192 parameters
+[T_densewin_seed44] epoch 01/15 | train acc  0.85% | test acc  1.73% | grad norm median 2.52 max 5.20 | skipped steps 0 | 0.75 min
+[T_densewin_seed44] epoch 02/15 | train acc  2.77% | test acc  4.08% | grad norm median 2.65 max 6.37 | skipped steps 0 | 0.74 min
+[T_densewin_seed44] epoch 03/15 | train acc  5.05% | test acc  5.83% | grad norm median 2.86 max 5.44 | skipped steps 0 | 0.74 min
+[T_densewin_seed44] epoch 04/15 | train acc  7.17% | test acc  7.90% | grad norm median 3.16 max 6.45 | skipped steps 0 | 0.74 min
+[T_densewin_seed44] epoch 05/15 | train acc  9.09% | test acc  9.82% | grad norm median 3.46 max 9.59 | skipped steps 0 | 0.74 min
+[T_densewin_seed44] epoch 06/15 | train acc 10.93% | test acc 10.93% | grad norm median 3.74 max 6.91 | skipped steps 0 | 1.70 min
+[T_densewin_seed44] epoch 07/15 | train acc 12.76% | test acc 13.01% | grad norm median 4.03 max 10.33 | skipped steps 0 | 1.78 min
+[T_densewin_seed44] epoch 08/15 | train acc 14.36% | test acc 14.43% | grad norm median 4.35 max 8.51 | skipped steps 0 | 1.84 min
+[T_densewin_seed44] epoch 09/15 | train acc 15.98% | test acc 15.82% | grad norm median 4.63 max 10.44 | skipped steps 0 | 1.79 min
+[T_densewin_seed44] epoch 10/15 | train acc 17.55% | test acc 17.56% | grad norm median 5.02 max 11.33 | skipped steps 0 | 1.84 min
+[T_densewin_seed44] epoch 11/15 | train acc 18.91% | test acc 18.15% | grad norm median 5.31 max 10.10 | skipped steps 0 | 1.79 min
+[T_densewin_seed44] epoch 12/15 | train acc 20.31% | test acc 19.15% | grad norm median 5.61 max 11.74 | skipped steps 0 | 1.83 min
+[T_densewin_seed44] epoch 13/15 | train acc 21.03% | test acc 19.71% | grad norm median 5.87 max 12.86 | skipped steps 0 | 1.78 min
+[T_densewin_seed44] epoch 14/15 | train acc 21.57% | test acc 20.27% | grad norm median 6.03 max 12.02 | skipped steps 0 | 1.83 min
+[T_densewin_seed44] epoch 15/15 | train acc 21.89% | test acc 20.30% | grad norm median 6.10 max 12.95 | skipped steps 0 | 1.78 min
+[T_densewin_seed44] done: 20.30% | 7.25 GFLOPs | 3047 img/s | saved /root/exp06/exp06_results/T_densewin_seed44.json

@@ -1,0 +1,2 @@
+[C_densewin_flash_1024_b1] densewin | mpmnist 1024x1024 (64x64 patches) | anchors 64 | seed 42 | epochs 0 | batch 32 | device NVIDIA A100 80GB PCIe
+[C_densewin_flash_1024_b1] measured: 260.9 GFLOPs | 17.0 ms/step | 245.4 img/s | 855 MB

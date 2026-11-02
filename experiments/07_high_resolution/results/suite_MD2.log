@@ -1,0 +1,3 @@
+48 jobs in phases ['M', 'D']: 22 done, 26 to run on GPUs [0, 1], 1 per GPU; estimated 28.0 GPU-hours
+[ 0.16 h] GPU 0 done D_vit480_seed42: 8.76 in 10 min (1/26)
+[ 0.87 h] GPU 1 done D_resnet18_lr1e-3_seed42: 8.33 in 52 min (2/26)

@@ -1,0 +1,3 @@
+[M_fixed_A64_seed42] fixed | mpmnist 1024x1024 (64x64 patches) | anchors 64 | seed 42 | epochs 30 | batch 32 | device NVIDIA A100 80GB PCIe
+[M_fixed_A64_seed42] 12,843,402 parameters
+[M_fixed_A64_seed42] epoch 01/30 | train loss 2.3668 | val 10.60 | test 11.60 | grad norm median 5.77 max 18.29 | 1.69 min

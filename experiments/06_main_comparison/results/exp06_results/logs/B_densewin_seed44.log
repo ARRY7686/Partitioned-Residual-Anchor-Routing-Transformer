@@ -1,0 +1,33 @@
+[B_densewin_seed44] densewin | anchors 16 | seed 44 | epochs 30 | device NVIDIA A100 80GB PCIe
+[B_densewin_seed44] 12,828,042 parameters
+[B_densewin_seed44] epoch 01/30 | train acc 17.21% | test acc 24.22% | grad norm median 4.65 max 13.50 | skipped steps 0 | 0.40 min
+[B_densewin_seed44] epoch 02/30 | train acc 27.28% | test acc 30.15% | grad norm median 4.46 max 17.13 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 03/30 | train acc 31.84% | test acc 32.09% | grad norm median 3.68 max 9.56 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 04/30 | train acc 36.21% | test acc 38.23% | grad norm median 3.54 max 6.62 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 05/30 | train acc 39.26% | test acc 38.52% | grad norm median 3.48 max 6.39 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 06/30 | train acc 41.92% | test acc 43.11% | grad norm median 3.41 max 6.29 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 07/30 | train acc 44.44% | test acc 43.93% | grad norm median 3.46 max 7.77 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 08/30 | train acc 45.88% | test acc 47.49% | grad norm median 3.56 max 5.63 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 09/30 | train acc 48.21% | test acc 47.53% | grad norm median 3.57 max 5.07 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 10/30 | train acc 50.03% | test acc 50.57% | grad norm median 3.58 max 5.40 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 11/30 | train acc 51.28% | test acc 51.88% | grad norm median 3.60 max 5.85 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 12/30 | train acc 53.12% | test acc 54.66% | grad norm median 3.71 max 5.21 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 13/30 | train acc 54.87% | test acc 54.36% | grad norm median 3.77 max 5.93 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 14/30 | train acc 56.12% | test acc 56.25% | grad norm median 3.87 max 5.69 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 15/30 | train acc 57.50% | test acc 57.66% | grad norm median 3.95 max 6.07 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 16/30 | train acc 58.94% | test acc 58.24% | grad norm median 4.06 max 5.65 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 17/30 | train acc 59.78% | test acc 59.89% | grad norm median 4.15 max 5.89 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 18/30 | train acc 61.31% | test acc 60.27% | grad norm median 4.23 max 8.47 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 19/30 | train acc 62.04% | test acc 61.31% | grad norm median 4.35 max 6.10 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 20/30 | train acc 63.23% | test acc 61.18% | grad norm median 4.49 max 6.66 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 21/30 | train acc 64.18% | test acc 62.53% | grad norm median 4.56 max 6.20 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 22/30 | train acc 65.04% | test acc 63.20% | grad norm median 4.70 max 6.99 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 23/30 | train acc 65.92% | test acc 63.76% | grad norm median 4.77 max 6.19 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 24/30 | train acc 66.23% | test acc 64.38% | grad norm median 4.95 max 6.57 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 25/30 | train acc 66.97% | test acc 65.02% | grad norm median 5.02 max 6.57 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 26/30 | train acc 67.57% | test acc 65.35% | grad norm median 5.09 max 6.47 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 27/30 | train acc 67.55% | test acc 65.18% | grad norm median 5.19 max 7.59 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 28/30 | train acc 68.24% | test acc 65.59% | grad norm median 5.27 max 6.77 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 29/30 | train acc 68.59% | test acc 65.37% | grad norm median 5.27 max 7.32 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] epoch 30/30 | train acc 68.48% | test acc 65.48% | grad norm median 5.21 max 6.75 | skipped steps 0 | 0.39 min
+[B_densewin_seed44] done: 65.48% | 7.25 GFLOPs | 6941 img/s | saved /root/exp06/exp06_results/B_densewin_seed44.json

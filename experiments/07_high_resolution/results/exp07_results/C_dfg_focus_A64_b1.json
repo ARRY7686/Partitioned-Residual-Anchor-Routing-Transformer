@@ -1,0 +1,22 @@
+{
+  "tag": "C_dfg_focus_A64_b1",
+  "measure_only": true,
+  "kind": "focus",
+  "dataset": "dfg",
+  "canvas": [
+    1152,
+    1920
+  ],
+  "num_anchors": 64,
+  "vit_input": 0,
+  "sdpa": "auto",
+  "batch_size": 1,
+  "final_test_acc": null,
+  "gpu": "NVIDIA A100 80GB PCIe",
+  "params": 14594458,
+  "train_step_ms": 189.8027434013784,
+  "peak_train_memory_mb": 2349.57666015625,
+  "throughput_img_s": 14.236644114472844,
+  "peak_inference_memory_mb": 1003.93212890625,
+  "gflops_total": 187.032050688
+}

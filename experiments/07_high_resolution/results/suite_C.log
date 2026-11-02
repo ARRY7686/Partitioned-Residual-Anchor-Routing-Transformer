@@ -1,0 +1,102 @@
+50 jobs in phases ['C']: 3 done, 47 to run on GPUs [0, 1], 1 per GPU; estimated 2.0 GPU-hours
+[ 0.00 h] GPU 1 done C_dfg_densewin_flash_b1: measured in 0 min (1/47)
+[ 0.00 h] GPU 0 done C_dfg_vit_flash_b1: measured in 0 min (2/47)
+[ 0.01 h] GPU 1 done C_dfg_vit_flash_b8: measured in 0 min (3/47)
+[ 0.01 h] GPU 1 done C_dfg_densewin_flash_b8: measured in 0 min (4/47)
+[ 0.01 h] GPU 0 done C_dfg_vit_math_b8: measured in 0 min (5/47)
+[ 0.01 h] GPU 1 done C_dfg_fixed_A64_b8: measured in 0 min (6/47)
+[ 0.01 h] GPU 0 done C_dfg_focus_A64_b8: measured in 0 min (7/47)
+[ 0.01 h] GPU 1 done C_vit_flash_512_b1: measured in 0 min (8/47)
+[ 0.01 h] GPU 0 done C_vit_math_512_b1: measured in 0 min (9/47)
+[ 0.01 h] GPU 1 done C_densewin_flash_512_b1: measured in 0 min (10/47)
+[ 0.02 h] GPU 0 done C_fixed_A64_512_b1: measured in 0 min (11/47)
+[ 0.02 h] GPU 0 done C_vit_flash_512_b8: measured in 0 min (12/47)
+[ 0.02 h] GPU 1 done C_focus_A64_512_b1: measured in 0 min (13/47)
+[ 0.02 h] GPU 1 done C_densewin_flash_512_b8: measured in 0 min (14/47)
+[ 0.02 h] GPU 0 done C_vit_math_512_b8: measured in 0 min (15/47)
+[ 0.02 h] GPU 1 done C_fixed_A64_512_b8: measured in 0 min (16/47)
+[ 0.02 h] GPU 0 done C_focus_A64_512_b8: measured in 0 min (17/47)
+[ 0.02 h] GPU 1 done C_vit_flash_1024_b1: measured in 0 min (18/47)
+[ 0.03 h] GPU 0 done C_vit_math_1024_b1: measured in 0 min (19/47)
+[ 0.03 h] GPU 1 done C_densewin_flash_1024_b1: measured in 0 min (20/47)
+[ 0.03 h] GPU 0 done C_fixed_A64_1024_b1: measured in 0 min (21/47)
+[ 0.03 h] GPU 1 done C_focus_A64_1024_b1: measured in 0 min (22/47)
+[ 0.03 h] GPU 0 done C_vit_flash_1024_b8: measured in 0 min (23/47)
+[ 0.03 h] GPU 0 done C_densewin_flash_1024_b8: measured in 0 min (24/47)
+[ 0.03 h] GPU 0 done C_fixed_A64_1024_b8: measured in 0 min (25/47)
+[ 0.03 h] GPU 1 done C_vit_math_1024_b8: measured in 0 min (26/47)
+[ 0.04 h] GPU 1 done C_vit_flash_1536_b1: measured in 0 min (27/47)
+[ 0.04 h] GPU 0 done C_focus_A64_1024_b8: measured in 0 min (28/47)
+[ 0.04 h] GPU 0 done C_densewin_flash_1536_b1: measured in 0 min (29/47)
+[ 0.04 h] GPU 1 done C_vit_math_1536_b1: measured in 0 min (30/47)
+[ 0.04 h] GPU 0 done C_fixed_A64_1536_b1: measured in 0 min (31/47)
+[ 0.04 h] GPU 1 done C_focus_A64_1536_b1: measured in 0 min (32/47)
+[ 0.04 h] GPU 0 done C_vit_flash_1536_b8: measured in 0 min (33/47)
+[ 0.05 h] GPU 0 done C_densewin_flash_1536_b8: measured in 0 min (34/47)
+[ 0.05 h] GPU 1 done C_vit_math_1536_b8: measured in 0 min (35/47)
+[ 0.05 h] GPU 0 done C_fixed_A64_1536_b8: measured in 0 min (36/47)
+[ 0.05 h] GPU 0 done C_vit_flash_2048_b1: measured in 0 min (37/47)
+[ 0.05 h] GPU 1 done C_focus_A64_1536_b8: measured in 0 min (38/47)
+[ 0.06 h] GPU 1 done C_densewin_flash_2048_b1: measured in 0 min (39/47)
+[ 0.06 h] GPU 1 done C_fixed_A64_2048_b1: measured in 0 min (40/47)
+[ 0.06 h] GPU 1 done C_focus_A64_2048_b1: measured in 0 min (41/47)
+[ 0.06 h] GPU 0 done C_vit_math_2048_b1: measured in 0 min (42/47)
+[ 0.06 h] GPU 0 done C_vit_math_2048_b8: measured in 0 min (43/47)
+[ 0.07 h] GPU 1 done C_vit_flash_2048_b8: measured in 0 min (44/47)
+[ 0.07 h] GPU 0 done C_densewin_flash_2048_b8: measured in 0 min (45/47)
+[ 0.07 h] GPU 1 done C_fixed_A64_2048_b8: measured in 0 min (46/47)
+[ 0.07 h] GPU 0 done C_focus_A64_2048_b8: measured in 0 min (47/47)
+
+Finished 47, failed 0, not started (time budget) 0 in 0.07 h
+
+measured                           GFLOPs  ms/step    img/s  train MB  infer MB
+C_densewin_flash_1024_b1            260.9     17.0    245.4       855       324
+C_densewin_flash_1024_b8            260.9     76.8    318.9      4094       680
+C_densewin_flash_1536_b1           1021.9     32.4    104.8      1633       554
+C_densewin_flash_1536_b8           1021.9    231.9    107.1      8816      1357
+C_densewin_flash_2048_b1           2899.1     84.0     40.5      2676       878
+C_densewin_flash_2048_b8           2899.1    590.2     43.8     15483      2306
+C_densewin_flash_512_b1              36.2     16.9    241.9       396       186
+C_densewin_flash_512_b8              36.2     17.1   1546.2      1214       273
+C_dfg_densewin_flash_b1             912.2     31.5    106.1      2004       995
+C_dfg_densewin_flash_b8             912.2    222.7    111.3      8798      1774
+C_dfg_fixed_A64_b1                  187.0     44.6     82.3      2215       995
+C_dfg_fixed_A64_b8                  187.0    128.0    154.7     10621      1823
+C_dfg_focus_A64_b1                  187.0    189.8     14.2      2350      1004
+C_dfg_focus_A64_b8                  187.0    204.2    114.9     11555      1832
+C_dfg_vit_flash_b1                  845.9     26.1    129.9      1690       968
+C_dfg_vit_flash_b8                  845.9    187.9    134.5      6603      1703
+C_dfg_vit_math_b1                   845.9    300.6      8.5     17052      4833
+C_dfg_vit_math_b8                   845.9      OOM      8.6       nan     32605
+C_fixed_A64_1024_b1                  88.7     72.1     47.3       965       319
+C_fixed_A64_1024_b8                  88.7     68.5    312.7      4945       699
+C_fixed_A64_1536_b1                 199.4     70.1     59.3      1860       554
+C_fixed_A64_1536_b8                 199.4    134.9    137.9     10744      1409
+C_fixed_A64_2048_b1                 354.5     44.0     73.5      3089       883
+C_fixed_A64_2048_b8                 354.5    232.1     83.4     18915      2403
+C_fixed_A64_512_b1                   22.3     55.7     43.7       403       177
+C_fixed_A64_512_b8                   22.3     44.7    647.3      1423       273
+C_focus_A64_1024_b1                  88.7    231.4     10.4      1031       323
+C_focus_A64_1024_b8                  88.7    196.7     77.5      5386       703
+C_focus_A64_1536_b1                 199.5    181.4      8.7      1999       565
+C_focus_A64_1536_b8                 199.5    296.2    110.1     11735      1419
+C_focus_A64_2048_b1                 354.6    184.8     17.0      3343       903
+C_focus_A64_2048_b8                 354.6    288.2     68.9     20677      2423
+C_focus_A64_512_b1                   22.3    274.3     17.1       419       178
+C_focus_A64_512_b8                   22.3    196.9    126.1      1538       274
+C_vit_flash_1024_b1                 229.5     10.7    345.8       680       299
+C_vit_flash_1024_b8                 229.5     58.9    413.4      3031       635
+C_vit_flash_1536_b1                 951.3     26.8    126.4      1298       527
+C_vit_flash_1536_b8                 951.3    198.4    130.9      6487      1283
+C_vit_flash_2048_b1                2773.5     73.4     46.4      2121       845
+C_vit_flash_2048_b8                2773.5    533.6     49.4     11381      2189
+C_vit_flash_512_b1                   28.4     10.6    421.5       317       163
+C_vit_flash_512_b8                   28.4     11.5   2232.6       913       247
+C_vit_math_1024_b1                  229.5     76.3     35.5      4130      1172
+C_vit_math_1024_b8                  229.5    548.6     38.0     30675      7620
+C_vit_math_1536_b1                  951.3    329.1      7.7     18772      4921
+C_vit_math_1536_b8                  951.3      OOM      7.7       nan     36429
+C_vit_math_2048_b1                 2773.5   1086.2      2.5     57416     14705
+C_vit_math_2048_b8                 2773.5      OOM      nan       nan       nan
+C_vit_math_512_b1                    28.4     13.0    296.0       531       220
+C_vit_math_512_b8                    28.4     44.8    475.9      2628       697

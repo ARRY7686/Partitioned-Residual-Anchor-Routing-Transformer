@@ -1,0 +1,2 @@
+[C_dfg_vit_flash_b1] vit | dfg 1152x1920 (72x120 patches) | anchors 64 | seed 42 | epochs 0 | batch 32 | device NVIDIA A100 80GB PCIe
+[C_dfg_vit_flash_b1] measured: 845.9 GFLOPs | 26.1 ms/step | 129.9 img/s | 1690 MB

@@ -1,0 +1,22 @@
+{
+  "tag": "C_fixed_A64_2048_b8",
+  "measure_only": true,
+  "kind": "fixed",
+  "dataset": "mpmnist",
+  "canvas": [
+    2048,
+    2048
+  ],
+  "num_anchors": 64,
+  "vit_input": 0,
+  "sdpa": "auto",
+  "batch_size": 8,
+  "final_test_acc": null,
+  "gpu": "NVIDIA A100 80GB PCIe",
+  "params": 17561994,
+  "train_step_ms": 232.07444921135902,
+  "peak_train_memory_mb": 18915.17041015625,
+  "throughput_img_s": 83.36834422342562,
+  "peak_inference_memory_mb": 2403.24560546875,
+  "gflops_total": 354.460835328
+}

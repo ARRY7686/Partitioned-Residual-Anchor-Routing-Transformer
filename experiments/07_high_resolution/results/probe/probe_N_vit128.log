@@ -1,0 +1,6 @@
+[probe_N_vit128] vit | mpmnist 512x512 (32x32 patches) | anchors 64 | seed 42 | epochs 3 | batch 32 | device NVIDIA A100 80GB PCIe
+[probe_N_vit128] 9,199,498 parameters
+[probe_N_vit128] epoch 01/3 | train loss 2.0122 | val 44.40 | test 45.50 | grad norm median 9.42 max 18.16 | 0.18 min
+[probe_N_vit128] epoch 02/3 | train loss 1.3830 | val 54.70 | test 53.80 | grad norm median 9.63 max 15.10 | 0.13 min
+[probe_N_vit128] epoch 03/3 | train loss 1.0820 | val 68.20 | test 68.20 | grad norm median 7.80 max 12.13 | 0.13 min
+[probe_N_vit128] done: val 68.20 | test 68.20 | 1.2 GFLOPs | 3169.2 img/s | saved /root/exp07/probe/probe_N_vit128.json

@@ -1,0 +1,102 @@
+23 jobs in phases ['NF', 'DM']: 0 done, 23 to run on GPUs [0, 1], 1 per GPU; estimated 43.5 GPU-hours
+[ 1.01 h] GPU 1 done DM_fixed_A64_seed42: 29.52 in 61 min (1/23)
+[ 1.07 h] GPU 0 done DM_focus_A64_seed42: 31.23 in 64 min (2/23)
+[ 1.79 h] GPU 0 done DM_vit_native_seed42: 29.15 in 43 min (3/23)
+[ 1.87 h] GPU 1 done DM_densewin_seed42: 29.60 in 52 min (4/23)
+[ 1.92 h] GPU 0 done DM_vit480_seed42: 15.86 in 8 min (5/23)
+[ 1.92 h] GPU 0 FAILED DM_pvt_seed42 (exit 1); see logs/DM_pvt_seed42.log
+[ 2.28 h] GPU 1 done DM_resnet18_lr1e-3_seed42: 34.88 in 25 min (6/23)
+[ 2.65 h] GPU 0 done DM_focus_A64_seed43: 30.13 in 44 min (7/23)
+[ 3.01 h] GPU 1 done DM_fixed_A64_seed43: 29.49 in 43 min (8/23)
+[ 3.73 h] GPU 1 done DM_vit_native_seed43: 28.76 in 44 min (9/23)
+[ 3.78 h] GPU 0 done DM_densewin_seed43: 30.02 in 67 min (10/23)
+[ 3.86 h] GPU 1 done DM_vit480_seed43: 15.11 in 8 min (11/23)
+[ 4.18 h] GPU 0 done DM_resnet18_lr1e-3_seed43: 36.47 in 24 min (12/23)
+[ 4.45 h] GPU 1 done DM_pvt_seed43: 19.45 in 35 min (13/23)
+[ 4.79 h] GPU 0 done DM_focus_A64_seed44: 29.50 in 36 min (14/23)
+[ 4.96 h] GPU 1 done DM_fixed_A64_seed44: 29.85 in 31 min (15/23)
+[ 5.63 h] GPU 0 done DM_densewin_seed44: 31.23 in 51 min (16/23)
+[ 5.69 h] GPU 1 done DM_vit_native_seed44: 27.90 in 44 min (17/23)
+[ 5.76 h] GPU 0 done DM_vit480_seed44: 16.44 in 8 min (18/23)
+[ 6.10 h] GPU 1 done DM_resnet18_lr1e-3_seed44: 38.17 in 24 min (19/23)
+[ 6.34 h] GPU 0 done DM_pvt_seed44: 17.77 in 35 min (20/23)
+[ 6.66 h] GPU 1 done N_focus_A64_seed42: 79.00 in 33 min (21/23)
+[ 6.90 h] GPU 0 done N_focus_A64_seed44: 91.80 in 33 min (22/23)
+
+Finished 22, failed 1, not started (time budget) 0 in 6.90 h
+Failed: ['DM_pvt_seed42']
+
+model                        seeds            val           test   GFLOPs    min
+DM_densewin                      3   38.92 ± 1.65   30.28 ± 0.85    912.2     56
+DM_fixed_A64                     3   40.00 ± 1.30   29.62 ± 0.20    187.0     45
+DM_focus_A64                     3   38.89 ± 1.52   30.28 ± 0.88    187.0     48
+DM_pvt                           2   20.97 ± 3.34   18.61 ± 1.18    194.6     35
+DM_resnet18_lr1e-3               3   44.48 ± 0.54   36.51 ± 1.65    159.9     24
+DM_vit480                        3   18.66 ± 0.05   15.80 ± 0.67     12.6      8
+DM_vit_native                    3   39.54 ± 0.88   28.60 ± 0.64    845.9     43
+D_densewin                       1   18.85 ± 0.00   12.35 ± 0.00    912.2    100
+D_fixed_A64                      1   10.57 ± 0.00    8.14 ± 0.00    187.0     39
+D_focus_A64                      1   10.93 ± 0.00    8.10 ± 0.00    187.0     45
+D_resnet18_lr1e-3                1   10.16 ± 0.00    8.33 ± 0.00    159.9     52
+D_vit480                         1   10.80 ± 0.00    8.76 ± 0.00     12.6      9
+D_vit_native                     1   16.03 ± 0.00   11.02 ± 0.00    845.9     89
+N_densewin                       3   92.30 ± 0.40   91.40 ± 0.20     36.2     41
+N_fixed_A64                      3   92.93 ± 0.81   91.87 ± 0.35     22.3     46
+N_focus_A64                      4   86.60 ± 6.35   85.07 ± 7.03     22.3     44
+N_pvt                            3   97.83 ± 0.31   97.43 ± 0.21      7.6     41
+N_resnet18_lr1e-3                3   99.37 ± 0.06   99.30 ± 0.26     18.9     35
+N_vit128                         3   88.47 ± 1.57   87.50 ± 1.90      1.2      6
+N_vit256                         3   93.30 ± 2.26   93.37 ± 2.40      5.3      9
+N_vit_native                     3   84.87 ± 0.76   86.10 ± 0.96     28.4     24
+
+measured                           GFLOPs  ms/step    img/s  train MB  infer MB
+C_densewin_flash_1024_b1            260.9     17.0    245.4       855       324
+C_densewin_flash_1024_b8            260.9     76.8    318.9      4094       680
+C_densewin_flash_1536_b1           1021.9     32.4    104.8      1633       554
+C_densewin_flash_1536_b8           1021.9    231.9    107.1      8816      1357
+C_densewin_flash_2048_b1           2899.1     84.0     40.5      2676       878
+C_densewin_flash_2048_b8           2899.1    590.2     43.8     15483      2306
+C_densewin_flash_512_b1              36.2     16.9    241.9       396       186
+C_densewin_flash_512_b8              36.2     17.1   1546.2      1214       273
+C_dfg_densewin_flash_b1             912.2     31.5    106.1      2004       995
+C_dfg_densewin_flash_b8             912.2    222.7    111.3      8798      1774
+C_dfg_fixed_A64_b1                  187.0     44.6     82.3      2215       995
+C_dfg_fixed_A64_b8                  187.0    128.0    154.7     10621      1823
+C_dfg_focus_A64_b1                  187.0    189.8     14.2      2350      1004
+C_dfg_focus_A64_b8                  187.0    204.2    114.9     11555      1832
+C_dfg_vit_flash_b1                  845.9     26.1    129.9      1690       968
+C_dfg_vit_flash_b8                  845.9    187.9    134.5      6603      1703
+C_dfg_vit_math_b1                   845.9    300.6      8.5     17052      4833
+C_dfg_vit_math_b8                   845.9      OOM      8.6       nan     32605
+C_fixed_A64_1024_b1                  88.7     72.1     47.3       965       319
+C_fixed_A64_1024_b8                  88.7     68.5    312.7      4945       699
+C_fixed_A64_1536_b1                 199.4     70.1     59.3      1860       554
+C_fixed_A64_1536_b8                 199.4    134.9    137.9     10744      1409
+C_fixed_A64_2048_b1                 354.5     44.0     73.5      3089       883
+C_fixed_A64_2048_b8                 354.5    232.1     83.4     18915      2403
+C_fixed_A64_512_b1                   22.3     55.7     43.7       403       177
+C_fixed_A64_512_b8                   22.3     44.7    647.3      1423       273
+C_focus_A64_1024_b1                  88.7    231.4     10.4      1031       323
+C_focus_A64_1024_b8                  88.7    196.7     77.5      5386       703
+C_focus_A64_1536_b1                 199.5    181.4      8.7      1999       565
+C_focus_A64_1536_b8                 199.5    296.2    110.1     11735      1419
+C_focus_A64_2048_b1                 354.6    184.8     17.0      3343       903
+C_focus_A64_2048_b8                 354.6    288.2     68.9     20677      2423
+C_focus_A64_512_b1                   22.3    274.3     17.1       419       178
+C_focus_A64_512_b8                   22.3    196.9    126.1      1538       274
+C_vit_flash_1024_b1                 229.5     10.7    345.8       680       299
+C_vit_flash_1024_b8                 229.5     58.9    413.4      3031       635
+C_vit_flash_1536_b1                 951.3     26.8    126.4      1298       527
+C_vit_flash_1536_b8                 951.3    198.4    130.9      6487      1283
+C_vit_flash_2048_b1                2773.5     73.4     46.4      2121       845
+C_vit_flash_2048_b8                2773.5    533.6     49.4     11381      2189
+C_vit_flash_512_b1                   28.4     10.6    421.5       317       163
+C_vit_flash_512_b8                   28.4     11.5   2232.6       913       247
+C_vit_math_1024_b1                  229.5     76.3     35.5      4130      1172
+C_vit_math_1024_b8                  229.5    548.6     38.0     30675      7620
+C_vit_math_1536_b1                  951.3    329.1      7.7     18772      4921
+C_vit_math_1536_b8                  951.3      OOM      7.7       nan     36429
+C_vit_math_2048_b1                 2773.5   1086.2      2.5     57416     14705
+C_vit_math_2048_b8                 2773.5      OOM      nan       nan       nan
+C_vit_math_512_b1                    28.4     13.0    296.0       531       220
+C_vit_math_512_b8                    28.4     44.8    475.9      2628       697

@@ -1,0 +1,33 @@
+[N_densewin_seed42] densewin | mpmnist 512x512 (32x32 patches) | anchors 64 | seed 42 | epochs 30 | batch 32 | device NVIDIA A100 80GB PCIe
+[N_densewin_seed42] 13,121,034 parameters
+[N_densewin_seed42] epoch 01/30 | train loss 2.0928 | val 57.10 | test 54.30 | grad norm median 7.32 max 24.56 | 1.31 min
+[N_densewin_seed42] epoch 02/30 | train loss 1.0979 | val 64.70 | test 64.40 | grad norm median 6.73 max 15.80 | 1.17 min
+[N_densewin_seed42] epoch 03/30 | train loss 0.8784 | val 69.50 | test 69.00 | grad norm median 4.97 max 9.09 | 1.17 min
+[N_densewin_seed42] epoch 04/30 | train loss 0.7645 | val 72.40 | test 70.20 | grad norm median 4.18 max 6.53 | 1.19 min
+[N_densewin_seed42] epoch 05/30 | train loss 0.7145 | val 71.70 | test 71.90 | grad norm median 3.86 max 6.41 | 1.18 min
+[N_densewin_seed42] epoch 06/30 | train loss 0.6531 | val 74.50 | test 76.10 | grad norm median 3.61 max 5.51 | 1.20 min
+[N_densewin_seed42] epoch 07/30 | train loss 0.5998 | val 75.60 | test 77.00 | grad norm median 3.36 max 5.77 | 1.21 min
+[N_densewin_seed42] epoch 08/30 | train loss 0.5906 | val 77.00 | test 77.20 | grad norm median 3.22 max 5.75 | 1.11 min
+[N_densewin_seed42] epoch 09/30 | train loss 0.5429 | val 80.30 | test 80.70 | grad norm median 3.08 max 5.14 | 1.17 min
+[N_densewin_seed42] epoch 10/30 | train loss 0.5217 | val 78.50 | test 80.40 | grad norm median 3.04 max 4.99 | 1.19 min
+[N_densewin_seed42] epoch 11/30 | train loss 0.5101 | val 82.40 | test 82.50 | grad norm median 2.92 max 4.69 | 1.23 min
+[N_densewin_seed42] epoch 12/30 | train loss 0.4807 | val 82.20 | test 79.50 | grad norm median 2.89 max 6.34 | 1.18 min
+[N_densewin_seed42] epoch 13/30 | train loss 0.4539 | val 83.20 | test 83.20 | grad norm median 2.83 max 4.65 | 1.21 min
+[N_densewin_seed42] epoch 14/30 | train loss 0.4333 | val 86.10 | test 84.40 | grad norm median 2.81 max 4.64 | 1.17 min
+[N_densewin_seed42] epoch 15/30 | train loss 0.4099 | val 84.40 | test 83.60 | grad norm median 2.73 max 4.77 | 1.15 min
+[N_densewin_seed42] epoch 16/30 | train loss 0.3864 | val 83.40 | test 84.60 | grad norm median 2.71 max 5.70 | 1.20 min
+[N_densewin_seed42] epoch 17/30 | train loss 0.3793 | val 85.60 | test 84.70 | grad norm median 2.75 max 5.26 | 1.19 min
+[N_densewin_seed42] epoch 18/30 | train loss 0.3574 | val 85.10 | test 86.30 | grad norm median 2.66 max 4.95 | 1.17 min
+[N_densewin_seed42] epoch 19/30 | train loss 0.3421 | val 87.50 | test 87.90 | grad norm median 2.75 max 5.87 | 1.19 min
+[N_densewin_seed42] epoch 20/30 | train loss 0.3264 | val 88.10 | test 88.40 | grad norm median 2.67 max 5.72 | 1.18 min
+[N_densewin_seed42] epoch 21/30 | train loss 0.3066 | val 89.20 | test 88.80 | grad norm median 2.69 max 5.32 | 1.16 min
+[N_densewin_seed42] epoch 22/30 | train loss 0.2971 | val 90.20 | test 88.90 | grad norm median 2.76 max 5.36 | 1.08 min
+[N_densewin_seed42] epoch 23/30 | train loss 0.2837 | val 90.30 | test 89.50 | grad norm median 2.84 max 6.00 | 1.08 min
+[N_densewin_seed42] epoch 24/30 | train loss 0.2670 | val 90.30 | test 90.20 | grad norm median 2.81 max 5.29 | 1.08 min
+[N_densewin_seed42] epoch 25/30 | train loss 0.2665 | val 91.60 | test 89.40 | grad norm median 2.93 max 6.14 | 1.12 min
+[N_densewin_seed42] epoch 26/30 | train loss 0.2535 | val 91.60 | test 90.30 | grad norm median 2.75 max 5.28 | 1.09 min
+[N_densewin_seed42] epoch 27/30 | train loss 0.2499 | val 91.60 | test 90.70 | grad norm median 2.95 max 6.82 | 1.05 min
+[N_densewin_seed42] epoch 28/30 | train loss 0.2479 | val 91.60 | test 90.90 | grad norm median 2.94 max 6.26 | 0.82 min
+[N_densewin_seed42] epoch 29/30 | train loss 0.2348 | val 91.70 | test 91.10 | grad norm median 2.89 max 6.94 | 0.71 min
+[N_densewin_seed42] epoch 30/30 | train loss 0.2498 | val 91.90 | test 91.20 | grad norm median 2.99 max 6.44 | 0.71 min
+[N_densewin_seed42] done: val 91.90 | test 91.20 | 36.2 GFLOPs | 737.3 img/s | saved /root/exp07/exp07_results/N_densewin_seed42.json

@@ -1,0 +1,10 @@
+[sanity_dfg_resnet18_pretrained_maxpool] resnet | dfg 1152x1920 (72x120 patches) | anchors 64 | seed 42 | epochs 6 | batch 32 | device NVIDIA A100 80GB PCIe
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[sanity_dfg_resnet18_pretrained_maxpool] 11,186,772 parameters
+[sanity_dfg_resnet18_pretrained_maxpool] epoch 01/6 | train loss 0.2750 | val  6.67 | test  5.24 | grad norm median 1.84 max 19.07 | 4.12 min
+[sanity_dfg_resnet18_pretrained_maxpool] epoch 02/6 | train loss 0.1171 | val 28.55 | test 22.96 | grad norm median 1.23 max 1.85 | 3.59 min
+[sanity_dfg_resnet18_pretrained_maxpool] epoch 03/6 | train loss 0.0765 | val 47.01 | test 37.06 | grad norm median 0.93 max 1.52 | 3.45 min
+[sanity_dfg_resnet18_pretrained_maxpool] epoch 04/6 | train loss 0.0459 | val 54.68 | test 44.28 | grad norm median 0.79 max 1.15 | 3.56 min
+[sanity_dfg_resnet18_pretrained_maxpool] epoch 05/6 | train loss 0.0270 | val 56.86 | test 47.52 | grad norm median 0.60 max 1.02 | 3.51 min
+[sanity_dfg_resnet18_pretrained_maxpool] epoch 06/6 | train loss 0.0207 | val 57.14 | test 47.76 | grad norm median 0.52 max 0.92 | 3.68 min
+[sanity_dfg_resnet18_pretrained_maxpool] done: val 57.14 | test 47.76 | 159.9 GFLOPs | 91.7 img/s | saved /root/exp07/diag/sanity_dfg_resnet18_pretrained_maxpool.json

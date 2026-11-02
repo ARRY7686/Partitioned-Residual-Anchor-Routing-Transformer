@@ -1,0 +1,13 @@
+[W_gumbel_clip_seed44] focus | anchors 16 | seed 44 | epochs 10 | device NVIDIA A100 80GB PCIe
+[W_gumbel_clip_seed44] 11,365,008 parameters
+[W_gumbel_clip_seed44] epoch 01/10 | train acc 17.80% | test acc 22.95% | grad norm median 4.08 max 17.08 | skipped steps 0 | 1.28 min
+[W_gumbel_clip_seed44] epoch 02/10 | train acc 25.41% | test acc 26.69% | grad norm median 3.28 max 11.21 | skipped steps 0 | 1.17 min
+[W_gumbel_clip_seed44] epoch 03/10 | train acc 29.75% | test acc 32.61% | grad norm median 2.65 max 7.61 | skipped steps 0 | 1.27 min
+[W_gumbel_clip_seed44] epoch 04/10 | train acc 34.31% | test acc 37.56% | grad norm median 2.54 max 4.88 | skipped steps 0 | 1.21 min
+[W_gumbel_clip_seed44] epoch 05/10 | train acc 37.64% | test acc 39.35% | grad norm median 2.69 max 14.85 | skipped steps 0 | 1.24 min
+[W_gumbel_clip_seed44] epoch 06/10 | train acc 41.83% | test acc 43.28% | grad norm median 2.54 max 4.21 | skipped steps 0 | 1.28 min
+[W_gumbel_clip_seed44] epoch 07/10 | train acc 45.53% | test acc 47.00% | grad norm median 2.55 max 3.54 | skipped steps 0 | 1.18 min
+[W_gumbel_clip_seed44] epoch 08/10 | train acc 48.61% | test acc 48.20% | grad norm median 2.58 max 3.81 | skipped steps 0 | 1.28 min
+[W_gumbel_clip_seed44] epoch 09/10 | train acc 50.69% | test acc 51.11% | grad norm median 2.63 max 3.92 | skipped steps 0 | 1.25 min
+[W_gumbel_clip_seed44] epoch 10/10 | train acc 51.83% | test acc 51.30% | grad norm median 2.70 max 3.67 | skipped steps 0 | 1.21 min
+[W_gumbel_clip_seed44] done: 51.30% | 5.49 GFLOPs | 2197 img/s | saved /root/exp06/exp06_results/W_gumbel_clip_seed44.json

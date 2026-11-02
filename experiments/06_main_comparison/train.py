@@ -60,6 +60,13 @@ HOME_WIDTH = float(env("RART_HOME_WIDTH", "0.35"))  # inf = no home prior
 # iterations so every anchor receives the same total mass, as balanced soft routing does).
 ASSIGN = env("RART_ASSIGN", "hard")
 SINKHORN_ITERS = 3
+# gumbel: soft Gumbel-softmax assignment (noise only in training), temperature annealed
+# exponentially from 1.0 to 0.1 over training; evaluation uses the noiseless softmax.
+GUMBEL_START, GUMBEL_END = 1.0, 0.1
+GUMBEL_TEMPERATURE = [GUMBEL_START]
+# Each patch reads (scatter) from its SCATTER_K nearest anchors, weighted by the distance
+# softmax renormalised over them; gathering stays exclusive. 1 = own anchor only.
+SCATTER_K = int(env("RART_SCATTER_K", "1"))
 
 # Training recipe. Defaults reproduce experiment 04 (no clipping, no warmup, cosine per
 # epoch). Phase B (30 epochs) uses clip 1.0 and a 2-epoch linear warmup: without them,
@@ -369,8 +376,23 @@ class VoronoiRouter(AnchorRouter):
                 log_assign = log_assign - log_assign.logsumexp(dim=-1, keepdim=True) + target
                 log_assign = log_assign.log_softmax(dim=1)
             return log_assign.exp(), hard > 0.5
+        if ASSIGN == "gumbel":
+            logits = -distance / self.tau
+            if self.training:
+                return F.gumbel_softmax(logits, tau=GUMBEL_TEMPERATURE[0], hard=False, dim=1), hard > 0.5
+            return (logits / GUMBEL_TEMPERATURE[0]).softmax(dim=1), hard > 0.5
         assign = soft if ASSIGN == "soft" else hard + soft - soft.detach()
         return assign, hard > 0.5
+
+    def scatter_weights(self, positions, assign):
+        """(B, A, N) weights each patch uses to read from anchors."""
+        if SCATTER_K <= 1:
+            return assign
+        distance = (positions[:, :, None, :] - self.coords[None, None]).square().sum(dim=-1)
+        soft = (-distance / self.tau).softmax(dim=1)
+        nearest = torch.zeros_like(soft).scatter(1, soft.topk(SCATTER_K, dim=1).indices, 1.0)
+        weights = soft * nearest
+        return weights / weights.sum(dim=1, keepdim=True)
 
     def place(self, x, positions):
         """Returns the anchor positions for this block and the patch importance
@@ -404,7 +426,7 @@ class VoronoiRouter(AnchorRouter):
 
         q, k, v = self.scatter_inputs(x, anchors)
         gate = torch.sigmoid((q @ k.transpose(-2, -1)).float() * self.scale)
-        read = (gate * assign.transpose(1, 2)[:, None]).to(v.dtype)
+        read = (gate * self.scatter_weights(positions, assign).transpose(1, 2)[:, None]).to(v.dtype)
         update = self.scatter_out(merge_heads(read @ v))
 
         self.keep(weights.mean(1), pooled, positions)
@@ -758,6 +780,7 @@ def run():
 
     history = []
     for epoch in range(1, NUM_EPOCHS + 1):
+        GUMBEL_TEMPERATURE[0] = GUMBEL_START * (GUMBEL_END / GUMBEL_START) ** ((epoch - 1) / max(1, NUM_EPOCHS - 1))
         model.train()
         start = time.perf_counter()
         total_loss, correct, seen = 0.0, 0, 0
@@ -805,7 +828,7 @@ def run():
               "epochs": NUM_EPOCHS, "dataset": DATASET, "vit_input": VIT_INPUT, "vit_patch": VIT_PATCH,
               "keep_ratio": KEEP_RATIO, "skip_from": SKIP_FROM, "skip_score": SKIP_SCORE, "gate": GATE,
               "coverage_side": COVERAGE_SIDE, "suppression": SUPPRESSION, "suppression_width": SUPPRESSION_PATCHES, "home_width": HOME_WIDTH,
-              "assign": ASSIGN, "grad_clip": GRAD_CLIP, "warmup_epochs": WARMUP_EPOCHS, "precision": PRECISION, "lr": LR}
+              "assign": ASSIGN, "scatter_k": SCATTER_K, "grad_clip": GRAD_CLIP, "warmup_epochs": WARMUP_EPOCHS, "precision": PRECISION, "lr": LR}
     result = {"tag": TAG, **config, "params": params, "history": history,
               "final_test_acc": history[-1]["test_acc"],
               "metrics_init": metrics_init, "metrics_trained": anchor_metrics(model),

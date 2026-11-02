@@ -1,0 +1,2 @@
+[C_vit_flash_1536_b8] vit | mpmnist 1536x1536 (96x96 patches) | anchors 64 | seed 42 | epochs 0 | batch 32 | device NVIDIA A100 80GB PCIe
+[C_vit_flash_1536_b8] measured: 951.3 GFLOPs | 198.4 ms/step | 130.9 img/s | 6487 MB

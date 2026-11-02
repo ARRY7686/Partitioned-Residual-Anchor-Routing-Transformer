@@ -55,6 +55,20 @@ BATCH_SIZE = int(env("RART_BATCH", "32"))
 # Attention kernel for the dense pathways: auto, flash, efficient or math (no fused kernel).
 SDPA = env("RART_SDPA", "auto")
 WORKERS = int(env("RART_WORKERS", "8"))
+# Megapixel MNIST: noise patches per canvas, training images per epoch, and whether training
+# layouts are drawn afresh every epoch (from the 50,000 training digits) instead of fixed.
+MPM_NOISE = int(env("RART_NOISE", "50"))
+MPM_TRAIN = int(env("RART_TRAIN_SIZE", "5000"))
+MPM_FRESH = env("RART_FRESH", "0") == "1"
+# Log the parameters with the largest gradients whenever the gradient norm exceeds this factor
+# times the recent median (0 = off), to find where an instability starts.
+SPIKE_FACTOR = float(env("RART_SPIKE_FACTOR", "0"))
+# ImageNet weights for the timm baselines: only a sanity check of the data pipeline (a
+# pretrained CNN must learn the task if labels, loading and metric are right).
+PRETRAINED = env("RART_PRETRAINED", "0") == "1"
+# Global pooling before the classifier: avg (mean over patches) or max. Max pooling keeps a
+# small object's evidence from being averaged away over a full-HD frame.
+POOL = env("RART_POOL", "avg")
 
 PATCH_SIZE, WINDOW = 16, 8
 EMBED_DIM, DEPTH, HEADS, MLP_RATIO = 384, 6, 6, 3.0
@@ -108,11 +122,12 @@ print(f"[{TAG}] {KIND} | {DATASET} {CANVAS_H}x{CANVAS_W} ({GRID_H}x{GRID_W} patc
 
 # ---------------------------------------------------------------- Megapixel MNIST
 class MegapixelMNIST:
-    """Fixed sets of layouts, composed on the GPU batch by batch. Every item (digit or noise
-    patch) sits in its own 32 px cell with a random 0–4 px offset, so items never overlap."""
+    """Sets of layouts, composed on the GPU batch by batch. Every item (digit or noise patch)
+    sits in its own 32 px cell with a random 0–4 px offset, so items never overlap. Validation
+    and test layouts are fixed; with RART_FRESH=1 the training layouts are redrawn each epoch."""
 
-    CELL, ITEM, NOISE, BANK = 32, 28, 50, 4096
-    SIZES = {"train": 5000, "val": 1000, "test": 1000}
+    CELL, ITEM, NOISE, BANK = 32, 28, MPM_NOISE, 4096
+    SIZES = {"train": MPM_TRAIN, "val": 1000, "test": 1000}
     MEAN, STD = 0.01, 0.08
 
     def __init__(self):
@@ -124,6 +139,7 @@ class MegapixelMNIST:
         pools = {"train": (train.data[:50000], train.targets[:50000]),
                  "val": (train.data[50000:], train.targets[50000:]),
                  "test": (test.data, test.targets)}
+        self.train_pool = pools["train"]
         generator = torch.Generator().manual_seed(2019)
         self.bank = self.noise_bank(generator).to(DEVICE)
         self.splits = {}
@@ -168,6 +184,10 @@ class MegapixelMNIST:
                 "labels": target.to(DEVICE)}
 
     def batches(self, split, train, generator=None):
+        if split == "train" and train and MPM_FRESH:
+            seed = int(torch.randint(2 ** 31, (1,), generator=generator))
+            size = self.splits["train"]["labels"].shape[0]
+            self.splits["train"] = self.layouts(*self.train_pool, size, torch.Generator().manual_seed(seed))
         data = self.splits[split]
         n = data["labels"].shape[0]
         order = torch.randperm(n, generator=generator).to(DEVICE) if train else torch.arange(n, device=DEVICE)
@@ -489,7 +509,8 @@ class AnchorViT(nn.Module):
                  self.start_positions.expand(batch, -1, -1).clone())
         for block in self.blocks:
             x, state = block(x, state)
-        return self.head(self.norm(x).mean(dim=1))
+        x = self.norm(x)
+        return self.head(x.amax(dim=1) if POOL == "max" else x.mean(dim=1))
 
 
 # ---------------------------------------------------------------- Baselines
@@ -532,19 +553,30 @@ class DenseViT(nn.Module):
         x = self.patch_embed(images).flatten(2).transpose(1, 2) + self.pos_embed
         for block in self.blocks:
             x = block(x)
-        return self.head(self.norm(x).mean(dim=1))
+        x = self.norm(x)
+        return self.head(x.amax(dim=1) if POOL == "max" else x.mean(dim=1))
 
 
 class TimmModel(nn.Module):
+    """A timm backbone. With RART_POOL=max the final feature map is max-pooled by our own
+    head, since not every timm model (e.g. PVTv2) offers max pooling."""
+
     def __init__(self, name):
         super().__init__()
         import timm
-        self.net = timm.create_model(name, pretrained=False, num_classes=NUM_CLASSES)
+        if POOL == "max":
+            self.net = timm.create_model(name, pretrained=PRETRAINED, num_classes=0, global_pool="")
+            self.head = nn.Linear(self.net.num_features, NUM_CLASSES)
+        else:
+            self.net = timm.create_model(name, pretrained=PRETRAINED, num_classes=NUM_CLASSES)
 
     def routers(self):
         return []
 
     def forward(self, images):
+        if POOL == "max":
+            features = self.net.forward_features(images)        # (B, C, H, W)
+            return self.head(features.amax(dim=(-2, -1)))
         return self.net(images)
 
 
@@ -645,7 +677,8 @@ def count_gflops_total(model, images):
     FlopCounterMode. Elementwise ops are not counted."""
     from torch.utils.flop_counter import FlopCounterMode
     model.eval()
-    with torch.enable_grad(), FlopCounterMode(display=False) as counter:
+    # Under autocast, as in training: the fused (flash) attention kernel needs bf16/fp16.
+    with torch.enable_grad(), FlopCounterMode(display=False) as counter,             torch.autocast(DEVICE.type, dtype=AMP_DTYPE, enabled=DEVICE.type == "cuda"):
         model(images)
     return counter.get_total_flops() / images.shape[0] / 1e9
 
@@ -720,6 +753,13 @@ def run():
             scaler.unscale_(optimizer)
             grad_norm = torch.nn.utils.clip_grad_norm_(
                 model.parameters(), GRAD_CLIP if GRAD_CLIP > 0 else float("inf")).item()
+            spike = len(grad_norms) > 50 and (grad_norm > SPIKE_FACTOR * float(np.median(grad_norms[-200:]))
+                                              or (grad_norm > 50 and len(grad_norms) % 50 == 0))
+            if SPIKE_FACTOR > 0 and spike:
+                top = sorted(((p.grad.norm().item(), n) for n, p in model.named_parameters() if p.grad is not None),
+                             reverse=True)[:6]
+                print(f"[{TAG}] SPIKE epoch {epoch} step {len(grad_norms)}: norm {grad_norm:.1f} (clipped grads) | "
+                      + " ; ".join(f"{n} {g:.3f}" for g, n in top), flush=True)
             scaler.step(optimizer)
             scaler.update()
             scheduler.step()
@@ -748,7 +788,8 @@ def run():
               "coverage_side": COVERAGE_SIDE, "suppression": SUPPRESSION,
               "suppression_width": SUPPRESSION_PATCHES, "home_width": HOME_WIDTH, "grad_clip": GRAD_CLIP,
               "warmup_epochs": WARMUP_EPOCHS, "precision": PRECISION, "lr": LR, "batch": BATCH_SIZE,
-              "metric": "mAP" if MULTILABEL else "accuracy"}
+              "metric": "mAP" if MULTILABEL else "accuracy",
+              **({"noise": MPM_NOISE, "train_size": MPM_TRAIN, "fresh": MPM_FRESH} if DATASET == "mpmnist" else {})}
     result = {"tag": TAG, **config, "params": params, "history": history,
               "final_val_score": history[-1]["val_score"], "final_test_score": history[-1]["test_score"],
               # final_test_acc keeps the experiment 06 runner's field name (mAP for DFG)

@@ -1,0 +1,33 @@
+[N_vit_native_seed42] vit | mpmnist 512x512 (32x32 patches) | anchors 64 | seed 42 | epochs 30 | batch 32 | device NVIDIA A100 80GB PCIe
+[N_vit_native_seed42] 9,568,138 parameters
+[N_vit_native_seed42] epoch 01/30 | train loss 2.0466 | val 44.40 | test 45.00 | grad norm median 9.46 max 30.37 | 0.98 min
+[N_vit_native_seed42] epoch 02/30 | train loss 1.2748 | val 62.80 | test 60.60 | grad norm median 8.95 max 21.25 | 0.81 min
+[N_vit_native_seed42] epoch 03/30 | train loss 1.0467 | val 65.10 | test 66.50 | grad norm median 6.51 max 12.37 | 0.79 min
+[N_vit_native_seed42] epoch 04/30 | train loss 0.9293 | val 64.30 | test 64.40 | grad norm median 5.48 max 8.50 | 0.86 min
+[N_vit_native_seed42] epoch 05/30 | train loss 0.8796 | val 67.00 | test 69.40 | grad norm median 5.01 max 8.40 | 0.84 min
+[N_vit_native_seed42] epoch 06/30 | train loss 0.8112 | val 69.00 | test 70.50 | grad norm median 4.67 max 8.41 | 0.85 min
+[N_vit_native_seed42] epoch 07/30 | train loss 0.7608 | val 70.20 | test 70.20 | grad norm median 4.39 max 7.09 | 0.86 min
+[N_vit_native_seed42] epoch 08/30 | train loss 0.7425 | val 72.30 | test 72.90 | grad norm median 4.21 max 7.40 | 0.86 min
+[N_vit_native_seed42] epoch 09/30 | train loss 0.7129 | val 76.00 | test 76.10 | grad norm median 4.12 max 6.60 | 0.83 min
+[N_vit_native_seed42] epoch 10/30 | train loss 0.6690 | val 75.70 | test 75.00 | grad norm median 4.01 max 9.03 | 0.84 min
+[N_vit_native_seed42] epoch 11/30 | train loss 0.6778 | val 75.50 | test 77.60 | grad norm median 3.84 max 6.87 | 0.84 min
+[N_vit_native_seed42] epoch 12/30 | train loss 0.6364 | val 74.70 | test 76.20 | grad norm median 3.83 max 6.97 | 0.84 min
+[N_vit_native_seed42] epoch 13/30 | train loss 0.6143 | val 76.00 | test 78.50 | grad norm median 3.66 max 5.98 | 0.84 min
+[N_vit_native_seed42] epoch 14/30 | train loss 0.5794 | val 76.60 | test 77.60 | grad norm median 3.61 max 6.80 | 0.86 min
+[N_vit_native_seed42] epoch 15/30 | train loss 0.5764 | val 78.70 | test 77.50 | grad norm median 3.61 max 5.72 | 0.91 min
+[N_vit_native_seed42] epoch 16/30 | train loss 0.5512 | val 79.20 | test 78.70 | grad norm median 3.63 max 5.47 | 0.84 min
+[N_vit_native_seed42] epoch 17/30 | train loss 0.5511 | val 79.60 | test 78.70 | grad norm median 3.55 max 6.00 | 0.82 min
+[N_vit_native_seed42] epoch 18/30 | train loss 0.5158 | val 78.50 | test 79.80 | grad norm median 3.49 max 5.84 | 0.86 min
+[N_vit_native_seed42] epoch 19/30 | train loss 0.5119 | val 81.50 | test 81.20 | grad norm median 3.57 max 5.60 | 0.84 min
+[N_vit_native_seed42] epoch 20/30 | train loss 0.4763 | val 79.90 | test 80.10 | grad norm median 3.51 max 5.52 | 0.81 min
+[N_vit_native_seed42] epoch 21/30 | train loss 0.4679 | val 80.70 | test 79.40 | grad norm median 3.54 max 6.12 | 0.84 min
+[N_vit_native_seed42] epoch 22/30 | train loss 0.4500 | val 82.20 | test 82.90 | grad norm median 3.51 max 6.01 | 0.87 min
+[N_vit_native_seed42] epoch 23/30 | train loss 0.4402 | val 83.00 | test 82.70 | grad norm median 3.49 max 6.80 | 0.84 min
+[N_vit_native_seed42] epoch 24/30 | train loss 0.4284 | val 83.30 | test 82.70 | grad norm median 3.50 max 6.26 | 0.84 min
+[N_vit_native_seed42] epoch 25/30 | train loss 0.4104 | val 82.90 | test 83.70 | grad norm median 3.52 max 6.07 | 0.86 min
+[N_vit_native_seed42] epoch 26/30 | train loss 0.4130 | val 84.20 | test 85.10 | grad norm median 3.53 max 5.84 | 0.84 min
+[N_vit_native_seed42] epoch 27/30 | train loss 0.4036 | val 85.70 | test 84.70 | grad norm median 3.54 max 5.71 | 0.85 min
+[N_vit_native_seed42] epoch 28/30 | train loss 0.3945 | val 85.80 | test 85.10 | grad norm median 3.52 max 5.62 | 0.87 min
+[N_vit_native_seed42] epoch 29/30 | train loss 0.3909 | val 85.40 | test 85.10 | grad norm median 3.50 max 8.87 | 0.86 min
+[N_vit_native_seed42] epoch 30/30 | train loss 0.3883 | val 85.70 | test 85.00 | grad norm median 3.53 max 6.26 | 0.82 min
+[N_vit_native_seed42] done: val 85.70 | test 85.00 | 28.4 GFLOPs | 519.8 img/s | saved /root/exp07/exp07_results/N_vit_native_seed42.json

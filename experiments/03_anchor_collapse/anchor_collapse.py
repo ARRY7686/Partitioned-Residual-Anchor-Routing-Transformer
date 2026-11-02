@@ -193,6 +193,8 @@ class AnchorStateRouter(Router):
         self.scatter_q = nn.Linear(da, da)
         self.scatter_kv = nn.Linear(da, da * 2)
         self.scatter_out = nn.Linear(da, EMBED_DIM)
+        self.grid = grid
+        self.local = None   # optional 3x3 depth-wise conv bypass on the patch values
 
     def pool_weights(self, logits):
         raise NotImplementedError
@@ -210,7 +212,11 @@ class AnchorStateRouter(Router):
 
         k2, v2 = (split_heads(t, self.heads) for t in self.scatter_kv(self.scatter_norm(anchors)).chunk(2, dim=-1))
         q2 = split_heads(self.scatter_q(self.scatter_in(x)), self.heads)
-        update = self.scatter_out(merge_heads(self.scatter(q2, k2, v2)))
+        read = merge_heads(self.scatter(q2, k2, v2))
+        if self.local is not None:
+            values = merge_heads(v).transpose(1, 2).reshape(x.shape[0], -1, self.grid, self.grid)
+            read = read + self.local(values).flatten(2).transpose(1, 2)
+        update = self.scatter_out(read)
 
         self.keep(weights.mean(1), pooled)
         return update, anchors
@@ -251,6 +257,15 @@ class PartitionRouter(AnchorStateRouter):
         k, v = k[:, :, self.region], v[:, :, self.region]
         gate = torch.sigmoid((q * k).sum(dim=-1, keepdim=True) * self.scale)
         return gate * v
+
+
+class PartitionLocalRouter(PartitionRouter):
+    """Ablation: the fixed partition plus Representative Attention's 3x3 depth-wise
+    convolution bypass on the patch values, added before the output projection."""
+
+    def __init__(self, num_anchors, grid):
+        super().__init__(num_anchors, grid)
+        self.local = nn.Conv2d(ANCHOR_DIM, ANCHOR_DIM, 3, padding=1, groups=ANCHOR_DIM)
 
 
 class AnchorFormerRouter(Router):
@@ -306,6 +321,57 @@ class PaCaRouter(Router):
         return update, anchors
 
 
+class RPAttentionRouter(Router):
+    """Representative Attention (Li et al., 2026), implemented from the paper's equations;
+    the official repository had no code. Per-head learned representatives W_g; tokens are
+    routed by a softmax over representatives of K W_g (Eq. 5, unscaled as in Eq. 14), each
+    representative's assignments are normalised by its total mass (Eq. 6), and latent keys
+    and values are the mass-weighted means (Eq. 7). The latents are layer-normalised and
+    refined by residual self-attention driven by the values (Eqs. 8-9); patches then read
+    them by query attention over the normalised latent keys, plus a 3x3 depth-wise
+    convolution bypass on the values (Eq. 10). Width and heads match the other pathways."""
+
+    use_local = True
+
+    def __init__(self, num_anchors, grid):
+        super().__init__()
+        da = ANCHOR_DIM
+        head_dim = da // ANCHOR_HEADS
+        self.heads = ANCHOR_HEADS
+        self.grid = grid
+        self.qkv = nn.Linear(EMBED_DIM, da * 3)
+        self.gather = nn.Parameter(torch.randn(ANCHOR_HEADS, head_dim, num_anchors) * head_dim ** -0.5)
+        self.key_norm = nn.LayerNorm(head_dim)
+        self.value_norm = nn.LayerNorm(head_dim)
+        self.latent_qkv = nn.Linear(head_dim, head_dim * 3)
+        self.local = nn.Conv2d(da, da, 3, padding=1, groups=da) if self.use_local else None
+        self.out = nn.Linear(da, EMBED_DIM)
+
+    def forward(self, x, anchors):
+        batch = x.shape[0]
+        q, k, v = (split_heads(t, self.heads) for t in self.qkv(x).chunk(3, dim=-1))
+        assign = (k.float() @ self.gather.float()).softmax(dim=-1)
+        pooling = (assign / (assign.sum(dim=-2, keepdim=True) + 1e-6)).transpose(-2, -1)
+        latent_k, latent_v = pooling @ k.float(), pooling @ v.float()
+        latent_k, latent_v = self.key_norm(latent_k), self.value_norm(latent_v)
+        lq, lk, lv = self.latent_qkv(latent_v).chunk(3, dim=-1)
+        refined = latent_v + F.scaled_dot_product_attention(lq, lk, lv).float()
+        read = F.scaled_dot_product_attention(q, latent_k.to(q.dtype), refined.to(q.dtype))
+        read = merge_heads(read)
+        if self.local is not None:
+            values = merge_heads(v).transpose(1, 2).reshape(batch, -1, self.grid, self.grid)
+            read = read + self.local(values).flatten(2).transpose(1, 2)
+        update = self.out(read)
+        self.keep(pooling.mean(1), merge_heads(latent_v))
+        return update, anchors
+
+
+class RPAttentionNoLocalRouter(RPAttentionRouter):
+    """Ablation: Representative Attention without its depth-wise convolution bypass."""
+
+    use_local = False
+
+
 class DenseRouter(Router):
     """Reference without a bottleneck: global self-attention over all patches in place of
     the anchor pathway (same local attention, FFN and head). Has no anchors to measure."""
@@ -323,6 +389,9 @@ ROUTERS = {
     "perceiver": PerceiverRouter,
     "competitive": CompetitiveRouter,
     "anchorformer": AnchorFormerRouter,
+    "rpattention": RPAttentionRouter,
+    "rpattention_nolocal": RPAttentionNoLocalRouter,
+    "partition_local": PartitionLocalRouter,
     "paca": PaCaRouter,
     "partition": PartitionRouter,
 }
@@ -375,7 +444,7 @@ class AnchorBottleneckViT(nn.Module):
 
 
 for kind in ROUTERS:
-    if kind == "partition" and math.isqrt(NUM_ANCHORS) ** 2 != NUM_ANCHORS:
+    if kind.startswith("partition") and math.isqrt(NUM_ANCHORS) ** 2 != NUM_ANCHORS:
         continue
     probe = AnchorBottleneckViT(kind, NUM_ANCHORS)
     print(f"{kind:13s} {sum(p.numel() for p in probe.parameters()):>12,d} parameters")

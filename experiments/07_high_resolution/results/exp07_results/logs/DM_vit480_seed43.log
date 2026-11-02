@@ -1,0 +1,23 @@
+[DM_vit480_seed43] vit | dfg 1152x1920 (72x120 patches) | anchors 64 | seed 43 | epochs 20 | batch 32 | device NVIDIA A100 80GB PCIe
+[DM_vit480_seed43] 9,386,132 parameters
+[DM_vit480_seed43] epoch 01/20 | train loss 0.2224 | val  6.34 | test  5.41 | grad norm median 0.36 max 6.34 | 0.40 min
+[DM_vit480_seed43] epoch 02/20 | train loss 0.1272 | val  8.23 | test  6.64 | grad norm median 0.33 max 0.52 | 0.37 min
+[DM_vit480_seed43] epoch 03/20 | train loss 0.1234 | val  9.21 | test  7.86 | grad norm median 0.31 max 0.48 | 0.37 min
+[DM_vit480_seed43] epoch 04/20 | train loss 0.1191 | val  9.92 | test  7.99 | grad norm median 0.32 max 0.62 | 0.37 min
+[DM_vit480_seed43] epoch 05/20 | train loss 0.1133 | val 11.33 | test  8.79 | grad norm median 0.32 max 0.55 | 0.37 min
+[DM_vit480_seed43] epoch 06/20 | train loss 0.1086 | val 12.51 | test 10.06 | grad norm median 0.35 max 0.55 | 0.38 min
+[DM_vit480_seed43] epoch 07/20 | train loss 0.1014 | val 13.27 | test 10.16 | grad norm median 0.37 max 0.55 | 0.38 min
+[DM_vit480_seed43] epoch 08/20 | train loss 0.0946 | val 15.70 | test 11.34 | grad norm median 0.37 max 0.57 | 0.37 min
+[DM_vit480_seed43] epoch 09/20 | train loss 0.0859 | val 17.43 | test 12.40 | grad norm median 0.37 max 0.58 | 0.38 min
+[DM_vit480_seed43] epoch 10/20 | train loss 0.0768 | val 18.02 | test 13.16 | grad norm median 0.37 max 0.58 | 0.38 min
+[DM_vit480_seed43] epoch 11/20 | train loss 0.0661 | val 17.35 | test 13.44 | grad norm median 0.37 max 0.59 | 0.38 min
+[DM_vit480_seed43] epoch 12/20 | train loss 0.0553 | val 17.65 | test 14.06 | grad norm median 0.36 max 0.55 | 0.38 min
+[DM_vit480_seed43] epoch 13/20 | train loss 0.0444 | val 18.41 | test 14.45 | grad norm median 0.33 max 0.51 | 0.38 min
+[DM_vit480_seed43] epoch 14/20 | train loss 0.0354 | val 18.03 | test 14.77 | grad norm median 0.29 max 0.45 | 0.38 min
+[DM_vit480_seed43] epoch 15/20 | train loss 0.0287 | val 18.16 | test 14.93 | grad norm median 0.26 max 0.40 | 0.39 min
+[DM_vit480_seed43] epoch 16/20 | train loss 0.0235 | val 18.22 | test 14.82 | grad norm median 0.23 max 0.34 | 0.38 min
+[DM_vit480_seed43] epoch 17/20 | train loss 0.0203 | val 18.16 | test 15.04 | grad norm median 0.21 max 0.32 | 0.38 min
+[DM_vit480_seed43] epoch 18/20 | train loss 0.0185 | val 18.60 | test 15.10 | grad norm median 0.20 max 0.28 | 0.39 min
+[DM_vit480_seed43] epoch 19/20 | train loss 0.0175 | val 18.67 | test 15.16 | grad norm median 0.18 max 0.31 | 0.38 min
+[DM_vit480_seed43] epoch 20/20 | train loss 0.0170 | val 18.61 | test 15.11 | grad norm median 0.18 max 0.28 | 0.38 min
+[DM_vit480_seed43] done: val 18.61 | test 15.11 | 12.6 GFLOPs | 2969.9 img/s | saved /root/exp07/exp07_results/DM_vit480_seed43.json
