@@ -1,0 +1,133 @@
+39 entries
+
+?? dosovitskiy2021vit  [OpenAlex]  arXiv (Cornell University) 2020 pp.
+    db title: An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale
+    - year bib 2021 vs db 2020
+
+?? touvron2021deit  [OpenAlex]  arXiv (Cornell University) 2020 pp.
+    db title: Training data-efficient image transformers & distillation through attention
+    - year bib 2021 vs db 2020
+
+OK liu2021swin  [Crossref 10.1109/iccv48922.2021.00986]  2021 IEEE/CVF International Conference on Computer Vision (ICCV) 2021 pp.9992-10002
+    db title: Swin Transformer: Hierarchical Vision Transformer using Shifted Windows
+
+OK wang2022pvtv2  [Crossref 10.1007/s41095-022-0274-8]  Computational Visual Media 2022 pp.415-424
+    db title: PVT v2: Improved baselines with pyramid vision transformer
+
+OK cai2023efficientvit  [Crossref 10.1109/iccv51070.2023.01587]  2023 IEEE/CVF International Conference on Computer Vision (ICCV) 2023 pp.17256-17267
+    db title: EfficientViT: Lightweight Multi-Scale Attention for High-Resolution Dense Prediction
+
+?? chen2022regionvit  [OpenAlex]  arXiv (Cornell University) 2021 pp.
+    db title: RegionViT: Regional-to-Local Attention for Vision Transformers
+    - year bib 2022 vs db 2021
+
+?? jaegle2021perceiver  [OpenAlex]  arXiv (Cornell University) 2021 pp.4651-4664
+    db title: Perceiver: General Perception with Iterative Attention
+    - authors differ: bib ['jaegle', 'gimeno', 'brock', 'vinyals', 'zisserman', 'carreira'] vs db ['jaegle', 'gimeno', 'brock', 'zisserman', 'vinyals', 'carreira']
+
+?? lee2019settransformer  [OpenAlex]  arXiv (Cornell University) 2018 pp.
+    db title: Set Transformer: A Framework for Attention-based Permutation-Invariant Neural Networks
+    - year bib 2019 vs db 2018
+
+OK locatello2020slot  [OpenAlex]  arXiv (Cornell University) 2020 pp.
+    db title: Object-Centric Learning with Slot Attention
+
+OK ryoo2021tokenlearner  [OpenAlex]  neural information processing systems 2021 pp.
+    db title: TokenLearner: Adaptive Space-Time Tokenization for Videos
+
+OK grainger2023paca  [Crossref 10.1109/cvpr52729.2023.01781]  2023 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) 2023 pp.18568-18578
+    db title: PaCa-ViT: Learning Patch-to-Cluster Attention in Vision Transformers
+
+OK jiang2024lemevit  [Crossref 10.24963/ijcai.2024/103]  Proceedings of the Thirty-ThirdInternational Joint Conference on Artificial Intelligence 2024 pp.929-937
+    db title: LeMeViT: Efficient Vision Transformer with Learnable Meta Tokens for Remote Sensing Image Interpretation
+
+OK anchorformer2025  [arXiv]  arXiv 2505.16463 2025 pp.
+    db title: AnchorFormer: Differentiable Anchor Attention for Efficient Vision Transformer
+
+OK representative2026  [arXiv]  arXiv 2605.14913 2026 pp.
+    db title: Representative Attention For Vision Transformers
+
+?? huang2023supertoken  [OpenAlex]  arXiv (Cornell University) 2022 pp.
+    db title: Vision Transformer with Super Token Sampling
+    - year bib 2023 vs db 2022
+
+OK zeng2022tcformer  [Crossref 10.1109/cvpr52688.2022.01082]  2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) 2022 pp.11091-11101
+    db title: Not All Tokens Are Equal: Human-centric Visual Analysis via Token Clustering Transformer
+
+OK xia2022dat  [Crossref 10.1109/cvpr52688.2022.00475]  2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) 2022 pp.4784-4793
+    db title: Vision Transformer with Deformable Attention
+
+OK yue2021psvit  [Crossref 10.1109/iccv48922.2021.00044]  2021 IEEE/CVF International Conference on Computer Vision (ICCV) 2021 pp.377-386
+    db title: Vision Transformer with Progressive Sampling
+
+OK chen2023sparsevit  [Crossref 10.1109/cvpr52729.2023.00205]  2023 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) 2023 pp.2061-2070
+    db title: SparseViT: Revisiting Activation Sparsity for Efficient High-Resolution Vision Transformer
+
+OK rao2021dynamicvit  [OpenAlex]  arXiv (Cornell University) 2021 pp.
+    db title: DynamicViT: Efficient Vision Transformers with Dynamic Token Sparsification
+
+?? bolya2023tome  [OpenAlex]  arXiv (Cornell University) 2022 pp.
+    db title: Token Merging: Your ViT But Faster
+    - year bib 2023 vs db 2022
+
+OK raposo2024mod  [arXiv]  arXiv 2404.02258 2024 pp.
+    db title: Mixture-of-Depths: Dynamically allocating compute in transformer-based language models
+
+OK cordonnier2021dps  [Crossref 10.1109/cvpr46437.2021.00238]  2021 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) 2021 pp.2351-2360
+    db title: Differentiable Patch Selection for Image Recognition
+
+?? bergner2023ips  [OpenAlex]  arXiv (Cornell University) 2022 pp.
+    db title: Iterative Patch Selection for High-Resolution Image Recognition
+    - year bib 2023 vs db 2022
+
+OK katharopoulos2019attsampling  [OpenAlex]  arXiv (Cornell University) 2019 pp.3282-3291
+    db title: Processing Megapixel Images with Deep Attention-Sampling Models
+
+OK mnih2014ram  [OpenAlex]  arXiv (Cornell University) 2014 pp.
+    db title: Recurrent Models of Visual Attention
+
+OK jaderberg2015stn  [OpenAlex]  arXiv (Cornell University) 2015 pp.
+    db title: Spatial Transformer Networks
+
+?? krizhevsky2009cifar  [OpenAlex]   2024 pp.
+    db title: Learning Multiple Layers of Features from Tiny Images
+    - year bib 2009 vs db 2024
+
+OK he2016resnet  [Crossref 10.1109/cvpr.2016.90]  2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR) 2016 pp.770-778
+    db title: Deep Residual Learning for Image Recognition
+
+?? le2015tinyimagenet  [Crossref 10.1007/s11263-015-0816-y]  International Journal of Computer Vision 2015 pp.211-252
+    db title: ImageNet Large Scale Visual Recognition Challenge
+    - title similarity 0.81
+    - authors differ: bib ['le', 'yang'] vs db ['russakovsky', 'deng', 'su', 'krause', 'satheesh', 'ma', 'huang', 'karpathy', 'khosla', 'bernstein', 'berg', 'fei']
+
+?? yin2022avit  [Crossref 10.1109/cvpr52688.2022.01054]  2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) 2022 pp.10799-10808
+    db title: A-ViT: Adaptive Tokens for Efficient Vision Transformer
+    - pages bib 10809--10818 vs db 10799-10808
+
+OK fayyaz2022ats  [OpenAlex]  Lecture notes in computer science 2022 pp.396-414
+    db title: Adaptive Token Sampling for Efficient Vision Transformers
+
+OK tabernik2020dfg  [Crossref 10.1109/tits.2019.2913588]  IEEE Transactions on Intelligent Transportation Systems 2020 pp.1427-1440
+    db title: Deep Learning for Large-Scale Traffic-Sign Detection and Recognition
+
+OK dao2022flashattention  [Crossref 10.52202/068431-1189]  Advances in Neural Information Processing Systems 35 2022 pp.16344-16359
+    db title: FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness
+
+?? jang2017gumbel  [OpenAlex]  arXiv (Cornell University) 2016 pp.
+    db title: Categorical Reparameterization with Gumbel-Softmax
+    - year bib 2017 vs db 2016
+
+OK cuturi2013sinkhorn  [OpenAlex]   2013 pp.2292-2300
+    db title: Sinkhorn Distances: Lightspeed Computation of Optimal Transport
+
+OK bengio2013straight  [arXiv]  arXiv 1308.3432 2013 pp.
+    db title: Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation
+
+OK lecun1998mnist  [Crossref 10.1109/5.726791]  Proceedings of the IEEE 1998 pp.2278-2324
+    db title: Gradient-based learning applied to document recognition
+
+?? yang2023gpvit  [OpenAlex]  arXiv (Cornell University) 2022 pp.
+    db title: GPViT: A High Resolution Non-Hierarchical Vision Transformer with Group Propagation
+    - year bib 2023 vs db 2022
+
