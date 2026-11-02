@@ -19,19 +19,28 @@ on synthetic canvases. They study a mechanism, not state-of-the-art accuracy.
 
 1. **Anchors with image-independent queries collapse.** On one shared backbone, RART- and
    AnchorFormer-style anchors learn nearly identical pooling maps (map similarity 0.998 and
-   0.990), and image-derived anchors are only partly diverse. The exclusive partition cannot collapse by construction, and it was the most
-   accurate anchor pathway in all three seeds on CIFAR-100 (46.31 ± 0.56%, against 40.93 ± 0.95%
-   for a dense pathway on the same backbone).
-2. **Focus anchors beat the fixed partition.** On a cluttered 256² CIFAR-10 canvas trained for
-   30 epochs, focus-16 reaches 66.82 ± 0.66% against 65.29 ± 0.94% for fixed-16. The paired gap is
-   +1.54 points (95% CI [0.53, 2.55]), and focus wins in 3 of 3 seeds.
-3. **Both beat downsampling.** Focus anchors beat ViTs on downsampled inputs by 4.7–11.8 points,
-   on Cluttered CIFAR-10 and on a Tiny ImageNet canvas.
-4. **Hard exclusive assignment is what makes moving anchors trainable.** Its softmax relaxation
-   diverges in every seed, with or without gradient clipping, and also with Sinkhorn balancing.
-5. **The limits are real.** PVTv2-B0 (75.1%) and ResNet-18 (86.1%) are far more accurate in this
-   from-scratch regime. At 256² the anchor models are slower per training step than a dense ViT
-   and use more memory. The memory advantage only appears at much higher resolution.
+   0.990), AnchorFormer despite implementing its mass normalisation. Image-derived anchors,
+   including a faithful reimplementation of Representative Attention, stay only partly diverse
+   (0.59–0.79). The exclusive partition cannot collapse by construction.
+2. **Matched component by component, the exclusive partition is the most accurate anchor
+   pathway.** Representative Attention's lead over the plain partition (+1.2 points on CIFAR-100)
+   comes from its 3×3 depth-wise convolution bypass: with the same convolution on both, the
+   partition is ahead by 2.4 points (95% CI [0.9, 3.9]).
+3. **Focus anchors beat the fixed partition where content is sparse.** On a cluttered 256²
+   CIFAR-10 canvas trained for 30 epochs, focus-16 reaches 66.82 ± 0.66% against 65.29 ± 0.94%
+   (paired +1.54, 95% CI [0.53, 2.55], 3 of 3 seeds). On Megapixel MNIST and full-HD traffic signs
+   the two are not distinguishable.
+4. **Anchors keep full resolution at a fraction of the cost of dense attention.** On DFG traffic
+   signs at 1920×1080, a ViT on a 480-wide input loses half its mAP (15.8 against about 30), while
+   focus and fixed anchors match dense attention with the same local windows (30.3 and 29.6
+   against 30.3) at about a fifth of its FLOPs.
+5. **Hard exclusive assignment is what makes moving anchors trainable.** Softmax relaxation and
+   Sinkhorn balancing diverge; Gumbel-softmax trains in 2 of 3 seeds but is 2.5–4.3 points worse.
+6. **The limits are real.** ResNet-18 is the best model on every task in this from-scratch
+   regime. Dense attention with local windows beats the anchors on the Tiny ImageNet canvas.
+   Anchors train faster than FlashAttention only from about 1536² (fixed) or 2048² (focus), and
+   never use less memory. Focus anchors became unstable in 1 of 3 seeds at learning rate 2e-4
+   (stable at 1e-4).
 
 ---
 
@@ -93,7 +102,8 @@ canvas**, a 64 px Tiny ImageNet image is pasted at native resolution among 32 px
 | focus-16 | 11.4M | 5.49 | **66.82 ± 0.66** | 17.68 ± 0.33 |
 | focus-4 | 11.4M | 5.45 | 64.67 ± 0.26 | – |
 | fixed-16 (Partition RART) | 11.4M | 5.49 | 65.29 ± 0.94 | 16.73 ± 0.46 |
-| ViT, 256² input | 9.3M | 5.28 | 61.99 ± 0.54 | **18.25 ± 0.33** |
+| Dense attention with local windows | 12.8M | 7.25 | 65.10 ± 0.45 | **20.50 ± 0.29** |
+| ViT, 256² input | 9.3M | 5.28 | 61.99 ± 0.54 | 18.25 ± 0.33 |
 | ViT, 128² input | 9.2M | 1.21 | 55.05 ± 0.26 | 12.49 ± 0.28 |
 | PVTv2-B0 | 3.4M | 1.51 | 75.07 ± 0.25 | – |
 | ResNet-18 (lr 1e-3) | 11.2M | 4.74 | 86.11 ± 0.26 | 37.07 ± 0.28 |
@@ -103,22 +113,27 @@ canvas**, a 64 px Tiny ImageNet image is pasted at native resolution among 32 px
 | focus-16 − fixed-16 | +1.54 [+0.53, +2.55] | +0.95 [−0.93, +2.83] |
 | focus-16 − ViT 256² | +4.83 [+3.86, +5.80] | −0.58 [−2.11, +0.95] |
 | focus-16 − ViT 128² | +11.77 [+9.73, +13.82] | +5.19 [+4.43, +5.95] |
+| focus-16 − dense with windows | +1.72 [−0.80, +4.25] | −2.82 [−3.99, −1.66] |
 
 ![Test accuracy over 30 epochs on Cluttered CIFAR-10](paper/figures/curves.png)
 
-The dense ViT has no local windows, so part of the anchor models' lead over it may come from
-locality. The effect of moving the anchors alone is the focus − fixed gap.
+Dense attention with the same local windows closes most of the anchors' lead over the plain
+dense ViT on Cluttered CIFAR-10, and is the best transformer on the Tiny ImageNet canvas.
 
 ### Anchor collapse (experiment 03)
 
-Five anchor designs on one shared backbone (CIFAR-100, 224², 10 epochs, 3 seeds):
+Six anchor designs on one shared backbone (CIFAR-100, 224², 10 epochs, 3 seeds). AnchorFormer
+and Representative Attention have no public code and are implemented from their papers,
+including their mass-normalisation stabilisers:
 
-* Anchors whose queries do not depend on the image (RART-style, AnchorFormer-style) collapse to
-  a single summary: pooling-map similarity 0.998 and 0.990.
-* Image-derived anchors (competitive slots, PaCa-style) are only partly diverse (0.79 and 0.59),
-  and they grow more similar with depth.
-* The fixed partition has zero map overlap by construction, and it is the most accurate:
-  46.31 ± 0.56%, against 40.93 ± 0.95% for a dense pathway.
+* Anchors whose queries do not depend on the image (RART-style, AnchorFormer) collapse to a
+  single summary: pooling-map similarity 0.998 and 0.990.
+* Image-derived anchors (competitive slots, PaCa-style, Representative Attention) are only
+  partly diverse (0.59–0.79) and grow more similar with depth.
+* The fixed partition has zero map overlap by construction. Representative Attention is 1.2
+  points more accurate than the plain partition (47.54 against 46.31), but only because of its
+  3×3 depth-wise convolution: with the same convolution added to both, the partition leads by
+  2.4 points (49.93 against 47.54, 95% CI [0.9, 3.9]); without it on both, by 3.6.
 
 ### Ablations and sensitivity (experiment 06, focus-16, 10 epochs)
 
@@ -130,6 +145,8 @@ Five anchor designs on one shared backbone (CIFAR-100, 224², 10 epochs, 3 seeds
 | No coverage grid / 3×3 grid (no clipping) | 49.63 / 49.40 | no measurable effect |
 | Soft assignment, clip + warmup | 10.00 × 3 | diverged in every seed |
 | Soft + Sinkhorn balancing, clip + warmup | 9.98 / 10.00 / 12.44 | peaked at 26–39%, then diverged |
+| Soft Gumbel-softmax, annealed, clip + warmup | 22.08 / 49.53 / 51.30 | seed 42 diverged at epoch 9 |
+| Read from the 3 nearest anchors, clip + warmup | 54.61 ± 0.55 | +0.83 [−0.55, +2.20] |
 
 Placement is robust near its defaults. In one seed per setting, β = 3, σ_s = 0.75 and
 σ_h ∈ {0.15, 1.0} all stay within 1.5 points of the reference. It breaks when suppression is
@@ -141,6 +158,25 @@ Letting 75% of patches skip the FFN in blocks 3–6 cuts compute by 25% (5.31 �
 Random selection costs only 0.38 points (53.40 ± 0.35%, clip + warmup). Selection by the learned
 importance map is not better than random or token-norm selection, and a bounded
 straight-through importance gate diverges.
+
+### High resolution (experiment 07)
+
+**DFG traffic signs**, 1920×1080 street scenes, recognising the 20 most frequent sign types
+(multi-label mAP, 3 seeds, max-pooled heads; with average pooling every model, including a
+pretrained ResNet-18, stayed near chance):
+
+| Model | Test mAP | GFLOPs |
+|---|---:|---:|
+| ResNet-18 | 36.51 ± 1.65 | 160 |
+| focus-64 | 30.28 ± 0.88 | 187 |
+| Dense attention with local windows | 30.28 ± 0.85 | 912 |
+| fixed-64 | 29.62 ± 0.20 | 187 |
+| Dense ViT, full HD | 28.60 ± 0.64 | 846 |
+| PVTv2-B0 | 19.50 ± 1.75 | 195 |
+| ViT, 480-wide input | 15.80 ± 0.67 | 13 |
+
+**Megapixel MNIST** at 512² (five 28 px digits among noise): fixed-64 91.87 ± 0.35, dense with
+windows 91.40 ± 0.20, dense ViT 86.10 ± 0.96, ViT on 256² 93.37 ± 2.40, ResNet-18 99.30 ± 0.26.
 
 ### Cost
 
@@ -154,10 +190,11 @@ At 256², measured on an A100 (bf16, batch 128):
 
 The sequential placement of focus anchors adds about 3–4 ms per focus anchor per step.
 
-At much higher resolution the picture changes. In experiment 02 (inference, batch 1, no
-FlashAttention), Partition RART overtook a dense ViT in latency between 1280² and 1536². At 2048²
-it used 2.4 GB of peak memory against 14.5 GB for the ViT. PVTv2-B1 and EfficientViT-B2 were
-still faster at 2048² (779 ms and 205 ms, against 1,756 ms).
+At high resolution, against a dense ViT with FlashAttention (experiment 07, training step at
+batch 8): fixed anchors are 1.5× faster at full HD and 2.3× faster at 2048², focus anchors only
+at 2048². The anchor models always use more training memory than FlashAttention (18.5–20.2 GB
+against 11.1 GB at 2048²). Experiment 02's large memory advantage holds only against attention
+without a fused kernel, which runs out of memory from 1536² at batch 8.
 
 ### Early experiments (01–02)
 
@@ -174,14 +211,16 @@ motivated experiments 03–06. Details are in [`docs/research_summary.md`](docs/
   Absolute accuracy is low, and a CNN and PVTv2 are far ahead.
 * Three seeds give wide confidence intervals, and some skipping rows and the sensitivity sweep
   use one or two seeds.
-* There is no validation split, and the 30-epoch learning rate was chosen on test accuracy.
-* The AnchorFormer- and PaCa-style models are simplified reimplementations, not the published
-  models.
+* Experiments 03–06 have no validation split, and their 30-epoch learning rate was chosen on test
+  accuracy; experiment 07 uses validation splits and fixed settings.
+* AnchorFormer and Representative Attention are implemented from their papers (no public code),
+  used as the global pathway of our block rather than as full published models. The PaCa-style
+  model is simplified.
+* Focus anchors became unstable in 1 of 3 seeds on Megapixel MNIST at learning rate 2e-4
+  (reproducibly; stable at 1e-4).
 * The importance map marks content in general rather than the class object.
-* The implementation is not optimised. At moderate resolution it is slower than dense attention,
-  and FlashAttention may narrow the memory gap at high resolution.
-* Real high-resolution data (for example traffic signs in full-HD street scenes) has not been
-  tested yet.
+* The implementation is not optimised: below about 1536² it is slower than dense attention with
+  FlashAttention, and it never uses less memory.
 
 ---
 
@@ -250,10 +289,12 @@ and [`experiments/06_main_comparison/README.md`](experiments/06_main_comparison/
 * [x] Compute skipping against random and token-norm selection (05)
 * [x] 30-epoch, Tiny ImageNet, CNN and PVTv2 baselines; ablations; cost (06)
 * [x] Sinkhorn-balanced soft assignment and placement sensitivity (06, phase V)
-* [ ] Dense baseline with local windows
-* [ ] Real high-resolution data (DFG traffic signs, Megapixel MNIST) with a fair memory comparison
-* [ ] Comparison with the published AnchorFormer
-* [ ] Paper submission
+* [x] Dense baseline with local windows (06, 07)
+* [x] Real high-resolution data (DFG traffic signs, Megapixel MNIST) and a cost comparison against FlashAttention (07)
+* [x] AnchorFormer and Representative Attention implemented from their papers, with a local-convolution ablation (03)
+* [x] k-nearest-anchor reading and Gumbel-softmax assignment (06, phase W)
+* [ ] Paper rewrite and submission (TMLR)
+* [ ] Follow-ups: long-range relational tasks, video
 
 ---
 

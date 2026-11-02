@@ -25,7 +25,8 @@ All phases use Cluttered CIFAR-10 at 256² with 3 seeds (42, 43, 44) unless note
 | R | ResNet-18 at lr 1.25e-4 and 1e-3 (30 epochs, and Tiny ImageNet 15 epochs); PVTv2-B0 at 30 epochs | 30 / 15 | Baselines from outside the ViT family (`timm`, no pretraining) |
 | D2 | soft assignment, no suppression, and the full model, each with clip 1.0 and 2-epoch warmup | 10 | Phase D's soft-assignment and no-suppression runs diverged: are they unstable or just worse? The full model is the matching reference. |
 | F2 | random skipping at keep 25% with clip 1.0 and 2-epoch warmup | 10 | Skipping cost under the stable recipe; the reference is D2's full model. The bounded-gate runs of this phase were stopped at epoch 5 (see results). |
-| V | focus-16 with soft assignment balanced by 3 Sinkhorn iterations (`RART_ASSIGN=balanced`, 3 seeds), and a one-at-a-time sweep of β (`RART_SUPPRESSION`), σ_s (`RART_SUPPRESSION_WIDTH`, patches) and σ_h (`RART_HOME_WIDTH`) at seed 42; all with clip 1.0 and 2-epoch warmup. The phase also lists `B_densewin` (anchor model with the anchor pathway replaced by global attention, local windows kept, 30 epochs), which was not run. | 10 | Review follow-ups: does balanced soft routing train, and how sensitive is focus placement? Reference: D2's full model. |
+| V | focus-16 with soft assignment balanced by 3 Sinkhorn iterations (`RART_ASSIGN=balanced`, 3 seeds), and a one-at-a-time sweep of β (`RART_SUPPRESSION`), σ_s (`RART_SUPPRESSION_WIDTH`, patches) and σ_h (`RART_HOME_WIDTH`) at seed 42; all with clip 1.0 and 2-epoch warmup. Phases V/VT also run `densewin` (the anchor model with the anchor pathway replaced by global attention among all patches, local windows kept) on Cluttered CIFAR-10 (30 epochs) and the Tiny ImageNet canvas (15 epochs), 3 seeds, on 2× A100. | 10 / 30 / 15 | Review follow-ups: does balanced soft routing train, how sensitive is focus placement, and is the anchors' lead over the dense ViT locality? Reference: D2's full model. |
+| W | focus-16 with patches reading from their 2 or 3 nearest anchors (`RART_SCATTER_K`; gathering stays exclusive), and soft Gumbel-softmax assignment with temperature annealed from 1.0 to 0.1 (`RART_ASSIGN=gumbel`); clip 1.0, 2-epoch warmup, 3 seeds | 10 | Second review round. Reference: D2's full model. |
 
 Every run records:
 * final test accuracy
@@ -74,9 +75,11 @@ points to focus-16, so on this task the loss comes from coarser tokens (the obje
 patches), not from lost pixels. Phase T was added so that downsampling also loses real detail.
 
 The dense ViT baselines use global attention in every block and no local windows, while the
-anchor models also have windowed local attention. Part of the anchor models' lead over the
-dense ViT can therefore come from locality; the effect of moving anchors alone is the
-focus − fixed gap.
+anchor models also have windowed local attention. `densewin` closes this gap: same blocks and
+windows, global attention instead of anchors. On Cluttered CIFAR-10 it explains the fixed
+partition's lead over the dense ViT (fixed − densewin +0.19 [−2.71, +3.08]), and focus anchors
+stay ahead of it in every seed without a significant gap (+1.72 [−0.80, +4.25]). On the Tiny
+ImageNet canvas densewin is the best transformer (20.50, against 17.68 for focus).
 
 ## Estimated cost
 
@@ -107,7 +110,9 @@ RART_PHASES=C RART_JOBS_PER_GPU=1 python run_suite.py
 ## Results
 
 All 102 runs of phases A–F2 finished on one vast.ai A100-80GB (2026-10-30/31, bf16); phase V
-ran on an RTX 5060 laptop GPU (2026-10-31, bf16, log in `results/exp06_results/suite_V.log`). Mean ± std over seeds
+ran on an RTX 5060 laptop GPU (2026-10-31, bf16, log in `results/exp06_results/suite_V.log`);
+the densewin runs (phases V/VT) and phase W ran on 2× A100-80GB (2026-11-02, bf16; logs
+`results/suite_VT.log`, `results/suite_W.log`). Mean ± std over seeds
 42 / 43 / 44; paired gaps with 95% t-intervals (n = 3). The full per-run table is printed at
 the end of each `results/suite_*.log`.
 
@@ -118,7 +123,8 @@ the end of each `results/suite_*.log`.
 | focus-16 | 11.4M | 5.49 | 49.84 ± 0.26 (exp 04) | **66.82 ± 0.66** | 17.68 ± 0.33 |
 | focus-4 | 11.4M | 5.45 | 47.52 ± 1.11 (exp 04) | 64.67 ± 0.26 | — |
 | fixed-16 | 11.4M | 5.49 | 46.71 ± 1.72 (exp 04) | 65.29 ± 0.94 | 16.73 ± 0.46 |
-| ViT 256² | 9.3M | 5.28 | 46.74 ± 0.42 | 61.99 ± 0.54 | **18.25 ± 0.33** |
+| dense with windows | 12.8M | 7.25 | — | 65.10 ± 0.45 | **20.50 ± 0.29** |
+| ViT 256² | 9.3M | 5.28 | 46.74 ± 0.42 | 61.99 ± 0.54 | 18.25 ± 0.33 |
 | ViT 128² | 9.2M | 1.21 | 43.20 ± 0.22 | 55.05 ± 0.26 | 12.49 ± 0.28 |
 | ViT 64², patch 8 | 9.0M | 1.18 | 42.39 ± 0.41 | — | 13.01 ± 0.39 |
 | PVTv2-B0 | 3.4M | 1.51 | 71.83 ± 0.30 | 75.07 ± 0.25 | — |
@@ -131,10 +137,14 @@ the end of each `results/suite_*.log`.
 | focus-16 − ViT 256² | +4.83 [+3.86, +5.80] | −0.58 [−2.11, +0.95] |
 | fixed-16 − ViT 256² | +3.29 [+1.32, +5.27] | −1.53 [−1.89, −1.16] |
 | focus-16 − ViT 128² | +11.77 [+9.73, +13.82] | +5.19 [+4.43, +5.95] |
+| focus-16 − dense with windows | +1.72 [−0.80, +4.25] | −2.82 [−3.99, −1.66] |
+| fixed-16 − dense with windows | +0.19 [−2.71, +3.08] | −3.77 [−4.65, −2.90] |
 
 Focus beats fixed in every paired seed on both datasets (significantly at 30 epochs on
-Cluttered CIFAR-10) and beats the downsampled ViTs by 4.7–11.8 points. On Tiny ImageNet the
-dense ViT is level with focus. PVTv2-B0 and ResNet-18 are far ahead in this from-scratch regime.
+Cluttered CIFAR-10) and beats the downsampled ViTs by 4.7–11.8 points. Dense attention with the
+same local windows is level with the anchors on Cluttered CIFAR-10 and ahead of them on the
+Tiny ImageNet canvas, at 7.25 against 5.49 GFLOPs. PVTv2-B0 and ResNet-18 are far ahead in this
+from-scratch regime.
 
 ### Ablations (focus-16, 10 epochs)
 
@@ -154,8 +164,24 @@ Balancing does not rescue soft assignment. With 3 Sinkhorn iterations (every anc
 the same total mass), clip and warmup, the runs peaked at 37.5 / 26.5 / 39.0% (epochs 4 / 2 / 5),
 then diverged with gradient norms of 1e11–1e15 and ended at 9.98 / 10.00 / 12.44% (phase V).
 
-Hard exclusive assignment is what keeps moving anchors trainable; suppression is a stability
-device, not an accuracy one.
+Gumbel-softmax assignment with an annealed temperature (phase W) is the only soft variant that
+trains: 49.53 and 51.30 for seeds 43 and 44 (−4.3 and −2.5 points against the hard reference),
+while seed 42 learned normally to 44.7% at epoch 8 and then diverged as the temperature
+approached 0.1 (gradient norms above 1000, final 22.08%).
+
+Hard exclusive assignment is the only variant that is both stable and most accurate;
+suppression is a stability device, not an accuracy one.
+
+### Reading from several anchors (phase W, clip + warmup)
+
+Patches read from their k nearest anchors, weighted by the distance softmax; gathering stays
+exclusive, so collapse cannot happen.
+
+| Variant | Accuracy | vs D2 full (paired, 95% CI) |
+|---|---:|---:|
+| own anchor (D2 full) | 53.78 ± 0.09 | |
+| 2 nearest anchors | 53.76 ± 0.19 | −0.03 [−0.35, +0.30] |
+| 3 nearest anchors | 54.61 ± 0.55 | +0.83 [−0.55, +2.20] |
 
 ### Placement sensitivity (phase V, seed 42, clip + warmup)
 
