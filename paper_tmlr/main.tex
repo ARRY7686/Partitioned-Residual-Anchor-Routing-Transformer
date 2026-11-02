@@ -84,8 +84,9 @@ significantly, on a Tiny ImageNet canvas), but not on Megapixel MNIST or full-HD
 On full-HD images both anchor variants match dense attention at a fifth of its compute, while
 downsampling halves accuracy.
 \item A study of what makes moving anchors trainable (Sec.~\ref{sec:stability}): hard
-exclusive assignment against softmax, Sinkhorn and Gumbel-softmax relaxations, reading from
-several anchors, placement hyperparameters, and a reproducible instability with its fix.
+exclusive assignment against softmax, Sinkhorn and Gumbel-softmax relaxations, with a
+gradient-magnitude argument for the difference; reading from several anchors; placement
+hyperparameters; and a reproducible instability with its fix.
 \item A cost comparison against dense attention with FlashAttention~\citep{dao2022flashattention}
 from $512^2$ to $2048^2$ (Sec.~\ref{sec:cost}), with the negative results that follow from it.
 \end{enumerate}
@@ -533,6 +534,33 @@ the straight-through hard assignment has the hard forward pass without that inst
 exclusive assignment is the only region assignment we tested that is both stable and most
 accurate.
 
+\paragraph{Why the straight-through assignment stays stable.} A gradient-magnitude argument
+explains part of this. Under the straight-through assignment the forward pass uses only the
+hard regions, and the gradient reaches an anchor position $p_k$ only through the soft
+assignment at the fixed temperature $\tau$:
+\begin{equation}
+\frac{\partial s_{ij}}{\partial p_k}=\frac{2}{\tau}\,s_{ij}\,(\delta_{jk}-s_{ik})\,(c_i-p_k),
+\qquad
+\Big\|\frac{\partial s_{ij}}{\partial p_k}\Big\|\le\frac{2}{\tau}\cdot\frac14\cdot\sqrt2
+=\frac{\sqrt2}{2\tau}=2\sqrt2\,A ,
+\label{eq:stbound}
+\end{equation}
+since $|s_{ij}(\delta_{jk}-s_{ik})|\le\frac14$, $\|c_i-p_k\|\le\sqrt2$ in normalised
+coordinates, and $\tau=(0.5/\sqrt A)^2$. The pooling weights of Eq.~\ref{eq:pool} divide by a
+denominator of at least 1 and use $e^{\ell-\max\ell}\le1$, so each derivative
+$\partial w/\partial m$ is at most 2 in magnitude, and the factor $\partial\mathcal{L}/\partial m$
+that multiplies this Jacobian is bounded by a small multiple of the loss gradient on the pooled
+values. Neither factor depends
+on how sharp the partition is or on how close two anchors are. A relaxation that uses the soft
+assignment in the forward pass at temperature $T$ has the same Jacobian with $\tau$ replaced by
+$\tau T$, so its bound grows as $1/T$, and it must sharpen ($T\to0$) to approach the hard
+partition that performs best. This matches the Gumbel-softmax runs, which trained normally
+while $T$ was large and diverged in one seed as $T$ approached 0.1, a tenfold larger bound. The
+argument does not explain why the plain softmax relaxation also diverges at $T=1$; there the
+forward pass mixes neighbouring regions, and focus anchors pulled towards the same content keep
+many patches near region boundaries, where $s(1-s)$ is largest, but we have not isolated this
+mechanism.
+
 \paragraph{Reading from several anchors.} If each patch reads from its $k$ nearest anchors,
 weighted by the distance softmax, while gathering stays exclusive, $k=2$ changes nothing and
 $k=3$ is ahead in all three seeds by +0.83 points without a significant gap. Exclusivity matters
@@ -567,7 +595,10 @@ Sections~\ref{sec:collapse}--\ref{sec:clutter} have no validation split and one 
 was chosen on test accuracy; Sec.~\ref{sec:highres} uses validation splits and settings fixed in
 advance. AnchorFormer and Representative Attention are implemented from their papers, without
 official code, and used as the global pathway of our block rather than as the full published
-models; the PaCa-style pathway is simplified. DFG's official split interleaves frames from the
+models; the PaCa-style pathway is simplified. Our conclusion that hard assignment is the most
+stable and accurate holds for the relaxations we tested (softmax, Sinkhorn, Gumbel-softmax); we
+did not test diversity or orthogonality regularisers on soft anchors, nor routing methods such
+as BiFormer or VECA. DFG's official split interleaves frames from the
 same video sequences, and its image-level labels make it a weakly supervised task; we needed max
 pooling for any model to learn it. The importance map marks content in general rather than the
 class object, and it does not choose patches for computation better than random
