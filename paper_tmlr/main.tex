@@ -41,8 +41,10 @@ component it is 2.4--3.6 points more accurate than Representative Attention on C
 then propose \emph{focus anchors}, which place most anchors at the peaks of a learned importance
 map while all anchors keep one exclusive Voronoi partition. Focus anchors beat a fixed partition
 on a cluttered canvas (+1.5 points, 95\% CI [0.5, 2.6]) but not on full-HD traffic-sign
-recognition, where both variants match dense attention with local windows at about a fifth of
-its FLOPs, and a ViT on a downsampled input loses half its mean average precision. Hard
+recognition. There, both variants match dense attention with local windows at about a fifth of
+its FLOPs, and the fixed partition also trains 1.5$\times$ faster per step than dense attention
+with FlashAttention, though both use more memory; a ViT on a downsampled input loses half its
+mean average precision. Hard
 exclusive assignment is the only region assignment we tested that is both stable and most
 accurate: softmax and Sinkhorn relaxations diverge, and Gumbel-softmax trains but is less
 accurate. We also report the limits: a ResNet-18 is more accurate on every task we trained it on
@@ -439,23 +441,25 @@ signs that cover under 1\% of it. All DFG results below use max-pooled heads for
 
 \begin{table}[t]
 \centering
-\caption{High-resolution tasks, mean $\pm$ std over 3 seeds. Megapixel MNIST: accuracy (\%);
-focus anchors over seeds 43 and 44 (seed 42: Sec.~\ref{sec:stability}). DFG: test mAP with
-max-pooled heads; GFLOPs per DFG image.}
+\caption{High-resolution tasks, mean $\pm$ std over 3 seeds. Megapixel MNIST: test accuracy
+(\%); focus anchors over seeds 43 and 44 (seed 42: Sec.~\ref{sec:stability}). DFG: mAP with
+max-pooled heads on the official test split and on our validation split, which holds out blocks
+of consecutive frames; GFLOPs per DFG image.}
 \label{tab:highres}
-\begin{tabular}{lccr}
+\begin{tabular}{lcccr}
 \toprule
-Model & Megapixel MNIST, $512^2$ & DFG, $1920\times1080$ & GFLOPs (DFG) \\
+& Megapixel MNIST & \multicolumn{2}{c}{DFG, $1920\times1080$} & \\
+Model & $512^2$, test & test & validation & GFLOPs \\
 \midrule
-\focus-64 & 91.15 $\pm$ 0.92 & \textbf{30.28 $\pm$ 0.88} & 187 \\
-\fixed-64 & \textbf{91.87 $\pm$ 0.35} & 29.62 $\pm$ 0.20 & 187 \\
-\densewin & 91.40 $\pm$ 0.20 & \textbf{30.28 $\pm$ 0.85} & 912 \\
-Dense ViT, full resolution & 86.10 $\pm$ 0.96 & 28.60 $\pm$ 0.64 & 846 \\
-ViT, $256^2$ / $256$-wide & 93.37 $\pm$ 2.40 & -- & -- \\
-ViT, $128^2$ / $480$-wide & 87.50 $\pm$ 1.90 & 15.80 $\pm$ 0.67 & 13 \\
+\focus-64 & 91.15 $\pm$ 0.92 & \textbf{30.28 $\pm$ 0.88} & 38.89 $\pm$ 1.52 & 187 \\
+\fixed-64 & \textbf{91.87 $\pm$ 0.35} & 29.62 $\pm$ 0.20 & \textbf{40.00 $\pm$ 1.30} & 187 \\
+\densewin & 91.40 $\pm$ 0.20 & \textbf{30.28 $\pm$ 0.85} & 38.92 $\pm$ 1.65 & 912 \\
+Dense ViT, full resolution & 86.10 $\pm$ 0.96 & 28.60 $\pm$ 0.64 & 39.54 $\pm$ 0.88 & 846 \\
+ViT, $256^2$ / $256$-wide & 93.37 $\pm$ 2.40 & -- & -- & -- \\
+ViT, $128^2$ / $480$-wide & 87.50 $\pm$ 1.90 & 15.80 $\pm$ 0.67 & 18.66 $\pm$ 0.05 & 13 \\
 \midrule
-PVTv2-B0 & 97.43 $\pm$ 0.21 & 19.50 $\pm$ 1.75 & 195 \\
-ResNet-18 & 99.30 $\pm$ 0.26 & 36.51 $\pm$ 1.65 & 160 \\
+PVTv2-B0 & 97.43 $\pm$ 0.21 & 19.50 $\pm$ 1.75 & 22.29 $\pm$ 3.29 & 195 \\
+ResNet-18 & 99.30 $\pm$ 0.26 & 36.51 $\pm$ 1.65 & 44.48 $\pm$ 0.54 & 160 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -464,7 +468,12 @@ ResNet-18 & 99.30 $\pm$ 0.26 & 36.51 $\pm$ 1.65 & 160 \\
 480-pixel-wide input reaches 15.8 mAP against 28.6--30.3 for the anchor models and both dense
 models at full resolution (fixed $-$ downsampled ViT +13.8 [+12.6, +15.1]). Both anchor models match dense attention at
 about a fifth of its FLOPs: focus $-$ \densewin{} +0.00 [$-$4.2, +4.2], fixed $-$ dense ViT +1.0
-[$-$1.1, +3.1]. Focus and fixed anchors are not distinguishable (+0.67 [$-$1.90, +3.23]). On
+[$-$1.1, +3.1]. Focus and fixed anchors are not distinguishable (+0.67 [$-$1.90, +3.23]). The
+official split interleaves frames from the same video sequences, so test images can be
+near-duplicates of training images; on our validation split, which holds out whole blocks of
+frames, every conclusion is the same (downsampled ViT 18.7 against 38.9--40.0 at full resolution,
+anchors level with dense attention, ResNet-18 best), and the near-duplicates are shared by all
+models alike. On
 Megapixel MNIST the anchor models and \densewin{} are level (fixed $-$ \densewin{} +0.47
 [$-$0.25, +1.18]) and 5.3--5.8 points above the dense ViT without windows. At $512^2$ the digits
 remain legible at half resolution, and the $256^2$ ViT is not significantly different from the
@@ -613,7 +622,8 @@ models; the PaCa-style pathway is simplified. Our conclusion that hard assignmen
 stable and accurate holds for the relaxations we tested (softmax, Sinkhorn, Gumbel-softmax); we
 did not test diversity or orthogonality regularisers on soft anchors, nor routing methods such
 as BiFormer or VECA. DFG's official split interleaves frames from the
-same video sequences, and its image-level labels make it a weakly supervised task; we needed max
+same video sequences (our block-held-out validation split gives the same conclusions), and its
+image-level labels make it a weakly supervised task; we needed max
 pooling for any model to learn it. The importance map marks content in general rather than the
 class object, and it does not choose patches for computation better than random
 (Appendix~\ref{app:skipping}). Our implementation is not fused: below about $1536^2$ it is slower
