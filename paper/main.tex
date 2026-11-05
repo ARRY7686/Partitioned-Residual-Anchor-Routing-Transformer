@@ -31,7 +31,8 @@ Anchor tokens let a vision transformer exchange global information through a few
 nothing forces different anchors to summarise different things. On one shared backbone we show
 that a Perceiver-style pathway and an AnchorFormer pathway collapse to a single summary, the
 latter despite its mass normalisation (pooling-map similarity 0.99), while other soft pathways,
-including Representative Attention, stay partly redundant (0.59--0.79). An
+including Representative Attention, stay partly redundant (0.59--0.79). These results concern the
+routing modules inside our block, not the full published models. An
 exclusive partition of the patch grid cannot collapse by construction, and matched component by
 component it is 2.4--3.6 points more accurate than Representative Attention on CIFAR-100. We
 then propose \emph{focus anchors}, which place most anchors at the peaks of a learned importance
@@ -102,19 +103,25 @@ Slot Attention~\cite{locatello2020slot} makes slots compete for inputs with a so
 slots. In ViTs, PaCa-ViT~\cite{grainger2023paca} attends from patches to learned clusters,
 LeMeViT~\cite{jiang2024lemevit} uses learnable meta tokens, GPViT~\cite{yang2023gpvit}
 propagates information through group tokens, and AnchorFormer~\cite{anchorformer2025} and
-Representative Attention~\cite{representative2026} gather into anchors, let them interact and
-distribute back. These methods route with soft, similarity-based weights, and several normalise
-the mass each representative receives to keep all representatives in use. None assigns each
-patch to exactly one anchor. We test AnchorFormer and Representative Attention, implemented from
-their papers, in Sec.~\ref{sec:collapse}.
+Representative Attention~\cite{representative2026} gather into anchors and distribute back,
+Representative Attention with interaction among its representatives. These methods route with
+soft, similarity-based weights, and several normalise the mass each representative receives to
+keep all representatives in use. None assigns each patch to exactly one anchor. We test
+AnchorFormer and Representative Attention, implemented from their papers, in
+Sec.~\ref{sec:collapse}. VECA~\cite{song2026veca} also routes global information only through a
+small set of learned cores, trained so that the number of cores can vary at inference, and
+reports cores that organise semantically without supervision.
 
 \paragraph{Regional tokens and partitions.}
 RegionViT~\cite{chen2022regionvit} attaches one regional token to each fixed window of local
 tokens and lets the regional tokens attend globally; our fixed partition is close to this design,
 and we do not claim it as new. Swin~\cite{liu2021swin} and PVT~\cite{wang2022pvtv2} reduce
 attention cost with windows and spatial reduction. Super tokens~\cite{huang2023supertoken} and
-token clustering~\cite{zeng2022tcformer} adapt regions to the image but do not keep a fixed
-number of exclusive regions with explicit positions.
+token clustering~\cite{zeng2022tcformer,zeng2024tcformer} adapt regions to the image but do not
+keep a fixed number of exclusive regions with explicit positions. Bi-level routing
+attention~\cite{zhu2023biformer} selects regions per query before token-level attention, and
+DeBiFormer~\cite{baolong2024debiformer} adds deformable agent queries. We do not compare with
+these methods or with VECA empirically.
 
 \paragraph{Learned movement and selection.}
 Deformable attention~\cite{xia2022dat} and progressive sampling~\cite{yue2021psvit} learn where
@@ -286,7 +293,10 @@ keys, whereas AnchorFormer reads back through the same assignment in reverse
 the \textsc{perceiver} pathway also reads back by attention, and it collapses. We have not
 isolated which combination of competition between anchors, interaction among them and the form
 of the read-back keeps anchors distinct; the exclusive partition avoids the question by
-construction.
+construction. These results describe the routing modules in our block, trained from scratch on
+CIFAR-100. They do not show that the published AnchorFormer or Representative Attention models
+collapse or underperform as designed; both papers report results on ImageNet and dense-prediction
+benchmarks, which we did not reproduce.
 
 Representative Attention is more accurate than the plain partition (+1.23 points, 95\% CI
 [+0.02, +2.45]), but it also has a $3\times3$ depth-wise convolution that the other pathways lack.
@@ -630,7 +640,7 @@ official code, and used as the global pathway of our block rather than as the fu
 models; the PaCa-style pathway is simplified. Our conclusion that hard assignment is the most
 stable and accurate holds for the relaxations we tested (softmax, Sinkhorn, Gumbel-softmax); we
 did not test diversity or orthogonality regularisers on soft anchors, nor routing methods such
-as BiFormer or VECA. DFG's official split interleaves frames from the
+as BiFormer, DeBiFormer or VECA. DFG's official split interleaves frames from the
 same video sequences (our block-held-out validation split gives the same conclusions), and its
 image-level labels make it a weakly supervised task; we needed max
 pooling for any model to learn it. The importance map marks content in general rather than the
