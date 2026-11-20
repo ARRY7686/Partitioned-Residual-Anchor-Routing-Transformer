@@ -52,8 +52,8 @@ def convert(tex):
     # Broader impact is a TMLR section; IRIS has none.
     body = re.sub(r"\\subsubsection\*\{Broader Impact Statement\}.*?(?=\\paragraph\{Code availability\.\})",
                   "", body, flags=re.S)
-    body = re.sub(r"\\url\{https://anonymous\.4open\.science/r/XXXX\} \(anonymised for review\)\.[^\n]*",
-                  r"\\url{" + CODE_LINK + "}.", body)
+    assert body.count(r"\codelink") == 1, "code link macro not found"
+    body = body.replace(r"\codelink", r"\url{" + CODE_LINK + "}")
     body = body.replace(r"\bibliographystyle{tmlr}", r"\bibliographystyle{splncs04}")
     body = re.sub(r"\\begin\{tabular\}(\{[^}]*\})", r"\\begin{adjustbox}{max width=\\linewidth}\n\\begin{tabular}\1", body)
     body = body.replace(r"\end{tabular}", r"\end{tabular}" + "\n" + r"\end{adjustbox}")
