@@ -136,7 +136,10 @@ iterative patch selection~\citep{cordonnier2021dps,bergner2023ips} process only 
 Token pruning and merging~\citep{rao2021dynamicvit,bolya2023tome}, SparseViT~\citep{chen2023sparsevit},
 mixture-of-depths~\citep{raposo2024mod}, A-ViT~\citep{yin2022avit} and ATS~\citep{fayyaz2022ats}
 skip computation for some tokens. Focus anchors move where global summaries are formed, not
-which patches exist.
+which patches exist. In multimodal language models, Lens~\citep{jiang2026lens} scores each visual
+token's relevance to the question and softens low-relevance tokens with learned noise instead of
+removing them; focus anchors also weight patches by a learned importance, but use it to decide
+where global summaries are formed.
 
 % ===========================================================================
 \section{Method}
@@ -402,7 +405,9 @@ transformers of this kind.
 \paragraph{Where the anchors go.} Fig.~\ref{fig:anchors}: focus anchors gather on \emph{all}
 image content, the object and the distractors, and leave the empty background to a few large
 coverage regions. The importance map learns where there is content, not where the class object
-is, which is what we expect when the distractors are real image fragments. With 4 anchors, the
+is, which is what we expect when the distractors are real image fragments. Conditioning the
+importance on a query, as question-conditioned relevance scoring does in multimodal
+models~\citep{jiang2026lens}, might steer anchors to the object; we have not tested this. With 4 anchors, the
 share whose region contains the object rises from 0.44 in the first block to 0.57 in the last,
 against 0.39 for the fixed partition. Moving anchors that take one importance-weighted Lloyd step
 inside their own region per block find the object in their importance map but move only about one
