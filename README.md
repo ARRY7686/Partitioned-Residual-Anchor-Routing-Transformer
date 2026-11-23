@@ -22,8 +22,10 @@ Transformers](https://arxiv.org/abs/2611.27855) (arXiv:2611.27855). The LaTeX so
 }
 ```
 
-**Status:** research in progress. The results below are from small, from-scratch training runs
-on synthetic canvases. They study a mechanism, not state-of-the-art accuracy.
+**Status:** preprint ([arXiv:2611.27855](https://arxiv.org/abs/2611.27855)). All models are
+trained from scratch at small scale, on CIFAR-100, cluttered CIFAR-10 and Tiny ImageNet canvases,
+Megapixel MNIST and full-HD DFG traffic-sign scenes. The results study how anchors route global
+information, not state-of-the-art accuracy; a ResNet-18 is more accurate on every task.
 
 ---
 
