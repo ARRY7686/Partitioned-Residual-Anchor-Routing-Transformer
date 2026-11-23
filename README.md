@@ -9,18 +9,7 @@ exclusive.
 **Paper:** [Anchors That Move Without Collapsing: Exclusive-Region Anchor Routing for Vision
 Transformers](https://arxiv.org/abs/2611.27855) (arXiv:2611.27855). The LaTeX source is in
 [`paper_tmlr/`](paper_tmlr/). All experiments, logs and result files are in
-[`experiments/`](experiments/).
-
-```bibtex
-@misc{anchors2026,
-  title         = {Anchors That Move Without Collapsing: Exclusive-Region Anchor Routing for Vision Transformers},
-  author        = {Gupta, Aadi},
-  year          = {2026},
-  eprint        = {2611.27855},
-  archivePrefix = {arXiv},
-  primaryClass  = {cs.CV}
-}
-```
+[`experiments/`](experiments/). To cite it, see [Citation](#citation).
 
 **Status:** preprint ([arXiv:2611.27855](https://arxiv.org/abs/2611.27855)). All models are
 trained from scratch at small scale, on CIFAR-100, cluttered CIFAR-10 and Tiny ImageNet canvases,
@@ -224,8 +213,9 @@ motivated experiments 03–06. Details are in [`docs/research_summary.md`](docs/
 
 ## Limitations
 
-* The tasks are small and synthetic, and all models are trained from scratch for 10–30 epochs.
-  Absolute accuracy is low, and a CNN and PVTv2 are far ahead.
+* The tasks are small (CIFAR-scale canvases, Megapixel MNIST and one full-HD dataset), and all
+  models are trained from scratch for 10–30 epochs, with no pretraining or ImageNet-scale results.
+  Absolute accuracy is low; ResNet-18 is ahead everywhere, and PVTv2 on the canvas tasks.
 * Three seeds give wide confidence intervals, and some skipping rows and the sensitivity sweep
   use one or two seeds.
 * Experiments 03–06 have no validation split, and their 30-epoch learning rate was chosen on test
@@ -274,11 +264,15 @@ experiments/
   README.md                      index of all experiments and how to run them
   01_partition_rart/             ViT, RART, Local-Global-Local and Partition RART on CIFAR-100
   02_resolution_scaling/         latency and memory from 224² to 2048², efficient baselines
-  03_anchor_collapse/            anchor collapse across five anchor designs
+  03_anchor_collapse/            anchor collapse across six anchor designs
   04_moving_anchors/             fixed, moving and focus anchors on Cluttered CIFAR-10
   05_compute_skipping/           FFN skipping guided by the learned importance map
   06_main_comparison/            baselines, 30-epoch and Tiny ImageNet runs, ablations, cost
-paper/                           LNCS paper draft (main.tex, refs.bib, figures/)
+  07_high_resolution/            DFG traffic signs, Megapixel MNIST, cost against FlashAttention
+  RESULTS_SUMMARY.md             every table and paired confidence interval
+paper_tmlr/                      the paper (LaTeX source of the arXiv version, refs.bib, figures/)
+paper/                           Springer LNCS version, generated from paper_tmlr/ by make_lncs.py
+LICENSE                          MIT
 ```
 
 Each experiment folder has a README covering the question, setup, results and findings, plus its
@@ -291,6 +285,8 @@ code or notebook and a `results/` folder. Model checkpoints are not committed.
   GPU). They download CIFAR if it is not found under `/kaggle/input`.
 * **Experiment 06:** `train.py` and `run_suite.py`, configured through `RART_*` environment
   variables. These were run on a rented A100-80GB in bf16, with phase V on the laptop GPU.
+* **Experiment 07:** `build_data.py` (downloads and indexes DFG, builds Megapixel MNIST), then
+  `train.py` and `run_suite.py`, on a rented A100 in bf16.
 
 Settings and commands for each experiment are in [`experiments/README.md`](experiments/README.md)
 and [`experiments/06_main_comparison/README.md`](experiments/06_main_comparison/README.md).
@@ -310,7 +306,8 @@ and [`experiments/06_main_comparison/README.md`](experiments/06_main_comparison/
 * [x] Real high-resolution data (DFG traffic signs, Megapixel MNIST) and a cost comparison against FlashAttention (07)
 * [x] AnchorFormer and Representative Attention implemented from their papers, with a local-convolution ablation (03)
 * [x] k-nearest-anchor reading and Gumbel-softmax assignment (06, phase W)
-* [ ] Paper rewrite and submission (TMLR)
+* [x] Paper written and posted on arXiv ([2611.27855](https://arxiv.org/abs/2611.27855))
+* [ ] Peer review
 * [ ] Follow-ups: long-range relational tasks, video
 
 ---
@@ -318,11 +315,12 @@ and [`experiments/06_main_comparison/README.md`](experiments/06_main_comparison/
 ## Citation
 
 ```bibtex
-@misc{partitionrart2026,
-  title  = {Anchors That Move Without Collapsing: Exclusive-Region Anchor Routing for Vision Transformers},
-  author = {Aadi Gupta},
-  year   = {2026},
-  note   = {Work in progress},
-  url    = {https://github.com/ARRY7686/Partitioned-Residual-Anchor-Routing-Transformer}
+@misc{anchors2026,
+  title         = {Anchors That Move Without Collapsing: Exclusive-Region Anchor Routing for Vision Transformers},
+  author        = {Gupta, Aadi},
+  year          = {2026},
+  eprint        = {2611.27855},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV}
 }
 ```
