@@ -6,9 +6,21 @@ anchors can never summarise the same patches. On top of that partition, **focus 
 to the parts of the image a learned importance map marks as relevant, while the partition stays
 exclusive.
 
-The paper draft is in [`paper/`](paper/) ("Anchors That Move Without Collapsing: Exclusive-Region
-Anchor Routing for Vision Transformers"). All experiments, logs and result files are in
+**Paper:** [Anchors That Move Without Collapsing: Exclusive-Region Anchor Routing for Vision
+Transformers](https://arxiv.org/abs/2611.27855) (arXiv:2611.27855). The LaTeX source is in
+[`paper_tmlr/`](paper_tmlr/). All experiments, logs and result files are in
 [`experiments/`](experiments/).
+
+```bibtex
+@misc{gupta2026anchors,
+  title         = {Anchors That Move Without Collapsing: Exclusive-Region Anchor Routing for Vision Transformers},
+  author        = {Gupta, Aadi},
+  year          = {2026},
+  eprint        = {2611.27855},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV}
+}
+```
 
 **Status:** research in progress. The results below are from small, from-scratch training runs
 on synthetic canvases. They study a mechanism, not state-of-the-art accuracy.
