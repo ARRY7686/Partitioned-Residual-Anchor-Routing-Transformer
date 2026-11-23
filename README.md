@@ -12,7 +12,7 @@ Transformers](https://arxiv.org/abs/2611.27855) (arXiv:2611.27855). The LaTeX so
 [`experiments/`](experiments/).
 
 ```bibtex
-@misc{gupta2026anchors,
+@misc{anchors2026,
   title         = {Anchors That Move Without Collapsing: Exclusive-Region Anchor Routing for Vision Transformers},
   author        = {Gupta, Aadi},
   year          = {2026},
@@ -316,7 +316,7 @@ and [`experiments/06_main_comparison/README.md`](experiments/06_main_comparison/
 ## Citation
 
 ```bibtex
-@misc{gupta2026partitionrart,
+@misc{partitionrart2026,
   title  = {Anchors That Move Without Collapsing: Exclusive-Region Anchor Routing for Vision Transformers},
   author = {Aadi Gupta},
   year   = {2026},
