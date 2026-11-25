@@ -1,0 +1,216 @@
+{
+ "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+ "torch": "2.11.0+cu128",
+ "rows": [
+  {
+   "variant": "vit",
+   "size": "1024",
+   "height": 1024,
+   "width": 1024,
+   "batch": 2,
+   "step_ms": 137.20804000040516,
+   "peak_mb": 865.025390625,
+   "params_m": 10.751636
+  },
+  {
+   "variant": "densewin",
+   "size": "1024",
+   "height": 1024,
+   "width": 1024,
+   "batch": 2,
+   "step_ms": 156.6785399976652,
+   "peak_mb": 1178.71240234375,
+   "params_m": 14.304532
+  },
+  {
+   "variant": "fixed_reference",
+   "size": "1024",
+   "height": 1024,
+   "width": 1024,
+   "batch": 2,
+   "step_ms": 61.667339998530224,
+   "peak_mb": 1337.73583984375,
+   "params_m": 12.847252
+  },
+  {
+   "variant": "fixed_indexed",
+   "size": "1024",
+   "height": 1024,
+   "width": 1024,
+   "batch": 2,
+   "step_ms": 58.87296000146307,
+   "peak_mb": 1147.78662109375,
+   "params_m": 12.847252
+  },
+  {
+   "variant": "fixed_indexed_ckpt",
+   "size": "1024",
+   "height": 1024,
+   "width": 1024,
+   "batch": 2,
+   "step_ms": 70.40651999996044,
+   "peak_mb": 1043.74853515625,
+   "params_m": 12.847252
+  },
+  {
+   "variant": "focus_indexed_parallel",
+   "size": "1024",
+   "height": 1024,
+   "width": 1024,
+   "batch": 2,
+   "step_ms": 68.49506000289693,
+   "peak_mb": 1239.83740234375,
+   "params_m": 12.849562
+  },
+  {
+   "variant": "focus_indexed_parallel_ckpt",
+   "size": "1024",
+   "height": 1024,
+   "width": 1024,
+   "batch": 2,
+   "step_ms": 83.769240003312,
+   "peak_mb": 1049.43798828125,
+   "params_m": 12.849562
+  },
+  {
+   "variant": "vit",
+   "size": "fullhd",
+   "height": 1152,
+   "width": 1920,
+   "batch": 2,
+   "step_ms": 468.88795999693684,
+   "peak_mb": 1634.8623046875,
+   "params_m": 12.496532
+  },
+  {
+   "variant": "densewin",
+   "size": "fullhd",
+   "height": 1152,
+   "width": 1920,
+   "batch": 2,
+   "step_ms": 511.4943599968683,
+   "peak_mb": 2226.794921875,
+   "params_m": 16.049428
+  },
+  {
+   "variant": "fixed_reference",
+   "size": "fullhd",
+   "height": 1152,
+   "width": 1920,
+   "batch": 2,
+   "step_ms": 150.83507999661379,
+   "peak_mb": 2585.09716796875,
+   "params_m": 14.592148
+  },
+  {
+   "variant": "fixed_indexed",
+   "size": "fullhd",
+   "height": 1152,
+   "width": 1920,
+   "batch": 2,
+   "step_ms": 135.54396000108682,
+   "peak_mb": 2197.70068359375,
+   "params_m": 14.592148
+  },
+  {
+   "variant": "fixed_indexed_ckpt",
+   "size": "fullhd",
+   "height": 1152,
+   "width": 1920,
+   "batch": 2,
+   "step_ms": 146.5316999994684,
+   "peak_mb": 1972.40771484375,
+   "params_m": 14.592148
+  },
+  {
+   "variant": "focus_indexed_parallel",
+   "size": "fullhd",
+   "height": 1152,
+   "width": 1920,
+   "batch": 2,
+   "step_ms": 153.06754000484943,
+   "peak_mb": 2376.13330078125,
+   "params_m": 14.594458
+  },
+  {
+   "variant": "focus_indexed_parallel_ckpt",
+   "size": "fullhd",
+   "height": 1152,
+   "width": 1920,
+   "batch": 2,
+   "step_ms": 164.5330599974841,
+   "peak_mb": 1981.68505859375,
+   "params_m": 14.594458
+  },
+  {
+   "variant": "vit",
+   "size": "2048",
+   "height": 2048,
+   "width": 2048,
+   "batch": 2,
+   "step_ms": 1404.5787000039127,
+   "peak_mb": 2911.650390625,
+   "params_m": 15.470228
+  },
+  {
+   "variant": "densewin",
+   "size": "2048",
+   "height": 2048,
+   "width": 2048,
+   "batch": 2,
+   "step_ms": 1480.8613000030164,
+   "peak_mb": 3973.7470703125,
+   "params_m": 19.023124
+  },
+  {
+   "variant": "fixed_reference",
+   "size": "2048",
+   "height": 2048,
+   "width": 2048,
+   "batch": 2,
+   "step_ms": 256.62024000193924,
+   "peak_mb": 4677.24560546875,
+   "params_m": 17.565844
+  },
+  {
+   "variant": "fixed_indexed",
+   "size": "2048",
+   "height": 2048,
+   "width": 2048,
+   "batch": 2,
+   "step_ms": 227.6655399997253,
+   "peak_mb": 3930.60888671875,
+   "params_m": 17.565844
+  },
+  {
+   "variant": "fixed_indexed_ckpt",
+   "size": "2048",
+   "height": 2048,
+   "width": 2048,
+   "batch": 2,
+   "step_ms": 260.5394799960777,
+   "peak_mb": 3515.75927734375,
+   "params_m": 17.565844
+  },
+  {
+   "variant": "focus_indexed_parallel",
+   "size": "2048",
+   "height": 2048,
+   "width": 2048,
+   "batch": 2,
+   "step_ms": 258.51544000324793,
+   "peak_mb": 4275.55419921875,
+   "params_m": 17.568154
+  },
+  {
+   "variant": "focus_indexed_parallel_ckpt",
+   "size": "2048",
+   "height": 2048,
+   "width": 2048,
+   "batch": 2,
+   "step_ms": 283.4801599965431,
+   "peak_mb": 3535.05224609375,
+   "params_m": 17.568154
+  }
+ ]
+}

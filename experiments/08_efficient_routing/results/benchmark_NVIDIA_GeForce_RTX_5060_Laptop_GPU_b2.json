@@ -1,0 +1,286 @@
+{
+ "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+ "torch": "2.11.0+cu128",
+ "rows": [
+  {
+   "variant": "fixed_reference",
+   "size": "1024",
+   "height": 1024,
+   "width": 1024,
+   "batch": 2,
+   "step_ms": 86.33571999962442,
+   "peak_mb": 1378.23876953125,
+   "params_m": 12.847252
+  },
+  {
+   "variant": "fixed_indexed",
+   "size": "1024",
+   "height": 1024,
+   "width": 1024,
+   "batch": 2,
+   "step_ms": 98.00580000155605,
+   "peak_mb": 1246.28955078125,
+   "params_m": 12.847252
+  },
+  {
+   "variant": "focus_reference",
+   "size": "1024",
+   "height": 1024,
+   "width": 1024,
+   "batch": 2,
+   "step_ms": 344.2833800043445,
+   "peak_mb": 1491.73486328125,
+   "params_m": 12.849562
+  },
+  {
+   "variant": "focus_indexed",
+   "size": "1024",
+   "height": 1024,
+   "width": 1024,
+   "batch": 2,
+   "step_ms": 380.7786599965766,
+   "peak_mb": 1399.87158203125,
+   "params_m": 12.849562
+  },
+  {
+   "variant": "focus_indexed_parallel",
+   "size": "1024",
+   "height": 1024,
+   "width": 1024,
+   "batch": 2,
+   "step_ms": 92.71886000060476,
+   "peak_mb": 1369.15283203125,
+   "params_m": 12.849562
+  },
+  {
+   "variant": "densewin",
+   "size": "1024",
+   "height": 1024,
+   "width": 1024,
+   "batch": 2,
+   "step_ms": 150.2351200033445,
+   "peak_mb": 1178.71240234375,
+   "params_m": 14.304532
+  },
+  {
+   "variant": "vit",
+   "size": "1024",
+   "height": 1024,
+   "width": 1024,
+   "batch": 2,
+   "step_ms": 135.9132600016892,
+   "peak_mb": 865.025390625,
+   "params_m": 10.751636
+  },
+  {
+   "variant": "fixed_reference",
+   "size": "1536",
+   "height": 1536,
+   "width": 1536,
+   "batch": 2,
+   "step_ms": 162.07647999981418,
+   "peak_mb": 2834.05810546875,
+   "params_m": 14.813332
+  },
+  {
+   "variant": "fixed_indexed",
+   "size": "1536",
+   "height": 1536,
+   "width": 1536,
+   "batch": 2,
+   "step_ms": 142.12213999708183,
+   "peak_mb": 2560.42138671875,
+   "params_m": 14.813332
+  },
+  {
+   "variant": "focus_reference",
+   "size": "1536",
+   "height": 1536,
+   "width": 1536,
+   "batch": 2,
+   "step_ms": 362.54813999985345,
+   "peak_mb": 3097.37060546875,
+   "params_m": 14.815642
+  },
+  {
+   "variant": "focus_indexed",
+   "size": "1536",
+   "height": 1536,
+   "width": 1536,
+   "batch": 2,
+   "step_ms": 398.1173200008925,
+   "peak_mb": 2903.11669921875,
+   "params_m": 14.815642
+  },
+  {
+   "variant": "focus_indexed_parallel",
+   "size": "1536",
+   "height": 1536,
+   "width": 1536,
+   "batch": 2,
+   "step_ms": 170.35654000355862,
+   "peak_mb": 2835.34326171875,
+   "params_m": 14.815642
+  },
+  {
+   "variant": "densewin",
+   "size": "1536",
+   "height": 1536,
+   "width": 1536,
+   "batch": 2,
+   "step_ms": 565.9097199968528,
+   "peak_mb": 2370.1064453125,
+   "params_m": 16.270612
+  },
+  {
+   "variant": "vit",
+   "size": "1536",
+   "height": 1536,
+   "width": 1536,
+   "batch": 2,
+   "step_ms": 510.0895199982915,
+   "peak_mb": 1737.759765625,
+   "params_m": 12.717716
+  },
+  {
+   "variant": "fixed_reference",
+   "size": "fullhd",
+   "height": 1152,
+   "width": 1920,
+   "batch": 2,
+   "step_ms": 152.41366000263952,
+   "peak_mb": 2662.14404296875,
+   "params_m": 14.592148
+  },
+  {
+   "variant": "fixed_indexed",
+   "size": "fullhd",
+   "height": 1152,
+   "width": 1920,
+   "batch": 2,
+   "step_ms": 139.23357999883592,
+   "peak_mb": 2398.61669921875,
+   "params_m": 14.592148
+  },
+  {
+   "variant": "focus_reference",
+   "size": "fullhd",
+   "height": 1152,
+   "width": 1920,
+   "batch": 2,
+   "step_ms": 335.32756000058725,
+   "peak_mb": 2908.40478515625,
+   "params_m": 14.594458
+  },
+  {
+   "variant": "focus_indexed",
+   "size": "fullhd",
+   "height": 1152,
+   "width": 1920,
+   "batch": 2,
+   "step_ms": 389.57615999970585,
+   "peak_mb": 2721.18701171875,
+   "params_m": 14.594458
+  },
+  {
+   "variant": "focus_indexed_parallel",
+   "size": "fullhd",
+   "height": 1152,
+   "width": 1920,
+   "batch": 2,
+   "step_ms": 155.7113799965009,
+   "peak_mb": 2658.84619140625,
+   "params_m": 14.594458
+  },
+  {
+   "variant": "densewin",
+   "size": "fullhd",
+   "height": 1152,
+   "width": 1920,
+   "batch": 2,
+   "step_ms": 498.422559996834,
+   "peak_mb": 2226.794921875,
+   "params_m": 16.049428
+  },
+  {
+   "variant": "vit",
+   "size": "fullhd",
+   "height": 1152,
+   "width": 1920,
+   "batch": 2,
+   "step_ms": 462.49991999939084,
+   "peak_mb": 1634.8623046875,
+   "params_m": 12.496532
+  },
+  {
+   "variant": "fixed_reference",
+   "size": "2048",
+   "height": 2048,
+   "width": 2048,
+   "batch": 2,
+   "step_ms": 284.1537199972663,
+   "peak_mb": 4821.24560546875,
+   "params_m": 17.565844
+  },
+  {
+   "variant": "fixed_indexed",
+   "size": "2048",
+   "height": 2048,
+   "width": 2048,
+   "batch": 2,
+   "step_ms": 247.04879999626428,
+   "peak_mb": 4315.42138671875,
+   "params_m": 17.565844
+  },
+  {
+   "variant": "focus_reference",
+   "size": "2048",
+   "height": 2048,
+   "width": 2048,
+   "batch": 2,
+   "step_ms": 396.3325000018813,
+   "peak_mb": 5289.29248046875,
+   "params_m": 17.568154
+  },
+  {
+   "variant": "focus_indexed",
+   "size": "2048",
+   "height": 2048,
+   "width": 2048,
+   "batch": 2,
+   "step_ms": 361.2148599990178,
+   "peak_mb": 4928.36669921875,
+   "params_m": 17.568154
+  },
+  {
+   "variant": "focus_indexed_parallel",
+   "size": "2048",
+   "height": 2048,
+   "width": 2048,
+   "batch": 2,
+   "step_ms": 291.5265800023917,
+   "peak_mb": 4806.30419921875,
+   "params_m": 17.568154
+  },
+  {
+   "variant": "densewin",
+   "size": "2048",
+   "height": 2048,
+   "width": 2048,
+   "batch": 2,
+   "step_ms": 1504.6939800027758,
+   "peak_mb": 3973.7470703125,
+   "params_m": 19.023124
+  },
+  {
+   "variant": "vit",
+   "size": "2048",
+   "height": 2048,
+   "width": 2048,
+   "batch": 2,
+   "step_ms": 1456.646380003076,
+   "peak_mb": 2911.650390625,
+   "params_m": 15.470228
+  }
+ ]
+}

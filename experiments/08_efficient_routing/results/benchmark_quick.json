@@ -1,0 +1,76 @@
+{
+ "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+ "torch": "2.11.0+cu128",
+ "rows": [
+  {
+   "variant": "fixed_reference",
+   "size": "512",
+   "height": 512,
+   "width": 512,
+   "batch": 4,
+   "step_ms": 70.95317999483086,
+   "peak_mb": 812.30810546875,
+   "params_m": 11.667604
+  },
+  {
+   "variant": "fixed_indexed",
+   "size": "512",
+   "height": 512,
+   "width": 512,
+   "batch": 4,
+   "step_ms": 98.38954000151716,
+   "peak_mb": 736.03466796875,
+   "params_m": 11.667604
+  },
+  {
+   "variant": "focus_reference",
+   "size": "512",
+   "height": 512,
+   "width": 512,
+   "batch": 4,
+   "step_ms": 352.17639999464154,
+   "peak_mb": 874.83544921875,
+   "params_m": 11.669914
+  },
+  {
+   "variant": "focus_indexed",
+   "size": "512",
+   "height": 512,
+   "width": 512,
+   "batch": 4,
+   "step_ms": 362.4258399999235,
+   "peak_mb": 815.57763671875,
+   "params_m": 11.669914
+  },
+  {
+   "variant": "focus_indexed_parallel",
+   "size": "512",
+   "height": 512,
+   "width": 512,
+   "batch": 4,
+   "step_ms": 103.84688000194728,
+   "peak_mb": 801.25732421875,
+   "params_m": 11.669914
+  },
+  {
+   "variant": "densewin",
+   "size": "512",
+   "height": 512,
+   "width": 512,
+   "batch": 4,
+   "step_ms": 38.21282000280917,
+   "peak_mb": 708.49658203125,
+   "params_m": 13.124884
+  },
+  {
+   "variant": "vit",
+   "size": "512",
+   "height": 512,
+   "width": 512,
+   "batch": 4,
+   "step_ms": 30.731539998669177,
+   "peak_mb": 520.263671875,
+   "params_m": 9.571988
+  }
+ ]
+}
